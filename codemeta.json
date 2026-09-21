@@ -1,6 +1,7 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
+  "identifier": "https://doi.org/10.5281/zenodo.22879993",
   "name": "SciMetricsPro",
   "description": "A self-contained, browser-based platform for bibliometric and scientometric analysis. It takes bibliographic records from the search to the paper: help to write the search string for each academic database; import of their exports (CSV, RIS, BibTeX, tagged text and spreadsheets) and direct download from an open bibliographic catalogue; cleaning with duplicate merging and normalisation of authors, institutions and countries; descriptive indicators (annual growth, document age, Bradford's law, Lotka's law with a Kolmogorov-Smirnov test, h, g and m indices, local citations, reference publication year spectroscopy); conceptual structure (keyword co-occurrence networks, Callon's thematic map, thematic evolution, correspondence analysis with k-means and silhouette); intellectual structure (co-citation of references, authors and sources, bibliographic coupling, coupling map, direct-citation historiograph); social structure (collaboration networks of authors, institutions and countries, world collaboration map, collaboration over time); PRISMA 2020 systematic review with screening and flow diagram; and export of journal-ready figures, tables, network files (GraphML, GEXF, .net, CSV), the clean data set (CSV, BibTeX) and an automatic report with a methods section written from the data.",
   "version": "1.0.0",

@@ -192,7 +192,7 @@ describe('project · example data, about page and guided tour', () => {
       ok(el('aboutThird').querySelector('a[href="../vendor/THIRD-PARTY-NOTICES.txt"]'), 'notices');
       eq(document.querySelector('.nav-link[aria-current="page"]').dataset.route, 'about');
       const dict = dictMatcher(lang);
-      strayTexts(el('view'), lang).filter(s => !dict(s) && !/^(SciMetricsPro|0000-0001-8057-2583|0000-0001-9679-6514|Luis Ángel Barrera-Guzmán|Gabriela Ramírez-Ojeda|@software[\s\S]*|vendor\/xlsx\.full\.min\.js|data\/world\.js|data\/example\.js)$/.test(s) && !s.startsWith('Barrera-Guzmán, L. Á.')).forEach(s => problems.push(lang + ': ' + s));
+      strayTexts(el('view'), lang).filter(s => !dict(s) && !/^(SciMetricsPro|0000-0001-8057-2583|0000-0001-9679-6514|Luis Ángel Barrera-Guzmán|Gabriela Ramírez-Ojeda|10\.5281\/zenodo\.\d+|@software[\s\S]*|vendor\/xlsx\.full\.min\.js|data\/world\.js|data\/example\.js)$/.test(s) && !s.startsWith('Barrera-Guzmán, L. Á.')).forEach(s => problems.push(lang + ': ' + s));
     }
     I18N.setLang('es');
     deepEq(problems, []);

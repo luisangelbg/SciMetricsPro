@@ -1,5 +1,6 @@
 # SciMetricsPro
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22879993.svg)](https://doi.org/10.5281/zenodo.22879993)
 [![Licencia: GPL v3](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](LICENSE)
 
 **Del análisis bibliométrico al artículo, sin programar.** Versión 1.0.0.
@@ -48,7 +49,7 @@ bibliográfico abierto salen a internet.
 ## Manual de usuario
 
 El manual en español está en [`manual/`](manual/): 14 partes en HTML, el documento unido
-(`manual/es/manual-completo.html`) y el PDF de 194 hojas. Explica cada pantalla con los datos de ejemplo,
+(`manual/es/manual-completo.html`) y el PDF de 195 hojas. Explica cada pantalla con los datos de ejemplo,
 con las cifras comprobadas fuera de la app, e incluye apéndices con los formatos de archivo, las fórmulas de
 los indicadores con su referencia, un glosario español–inglés y la solución de los problemas más comunes.
 
@@ -62,7 +63,10 @@ El programa se distribuye con la **Licencia Pública General de GNU, versión 3 
 ([GPL-3.0-or-later](LICENSE)).
 
 > Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. (2026). *SciMetricsPro: análisis bibliométrico y cienciométrico*
-> (versión 1.0.0) [Software].
+> (versión 1.0.0) [Software]. https://doi.org/10.5281/zenodo.22879993
+
+Ese DOI de concepto siempre lleva a la versión más reciente; el de esta versión es
+[10.5281/zenodo.22879994](https://doi.org/10.5281/zenodo.22879994).
 
 La página **Acerca de** de la app muestra la misma cita en texto y en BibTeX, con un botón para copiarla.
 

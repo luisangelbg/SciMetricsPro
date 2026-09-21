@@ -433,7 +433,7 @@ const Report = {
     return { lang: opts.lang, page: opts.page, title, author: opts.author, grayscale: !!opts.grayscale, blocks, figures: counters.figure, tables: counters.table, refs: refs.map(r => r.key) };
   },
 
-  softwareCitation() { return t('report.software', { year: Report.YEAR, version: APP.version }); },
+  softwareCitation() { return t('report.software', { year: Report.YEAR, version: APP.version, doi: APP.doi }); },
 
   figureSize(fig, opts) {
     const textCm = Math.min(Report.FIGURE_CM, DocxWriter.textWidthCm(opts.page));

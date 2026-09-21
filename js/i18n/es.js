@@ -4051,7 +4051,7 @@ window.I18N_DICT.es = {
       prFlow: 'Según el diagrama PRISMA 2020: registros identificados, {identified}; eliminados antes del cribado, {removed}; cribados, {screened}; excluidos, {excluded}; publicaciones evaluadas, {assessed}; publicaciones excluidas con motivo, {reportsExcluded}; estudios incluidos, {included}',
       prFlowPending: 'Según el diagrama PRISMA 2020: registros identificados, {identified}; eliminados antes del cribado, {removed}; cribados, {screened}; excluidos, {excluded}; publicaciones evaluadas, {assessed}; publicaciones excluidas con motivo, {reportsExcluded}; estudios incluidos, {included}; pendientes de decisión, {pending}',
     },
-    software: 'Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. ({year}). SciMetricsPro: análisis bibliométrico y cienciométrico (versión {version}) [Software].',
+    software: 'Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. ({year}). SciMetricsPro: análisis bibliométrico y cienciométrico (versión {version}) [Software]. https://doi.org/{doi}',
     citeText: 'Si usa este informe o sus figuras, cite el programa así: {citation}',
   },
   project: {
@@ -4130,6 +4130,8 @@ window.I18N_DICT.es = {
     app: {
       title: 'La aplicación',
       text: 'SciMetricsPro reúne en una sola aplicación web el análisis bibliométrico y cienciométrico completo: importación de varias bases de datos, limpieza, indicadores descriptivos, estructuras conceptual, intelectual y social, revisión sistemática PRISMA 2020, exportación de resultados e informe con texto metodológico. Cada indicador se calcula con su fórmula publicada y se validó contra implementaciones independientes.',
+      doi: 'DOI',
+      code: 'Código fuente',
       privacy: 'Funciona sin instalación y sin servidor: los datos se procesan solo en esta computadora; únicamente las búsquedas que decidas hacer en el catálogo bibliográfico abierto salen a internet.',
     },
     author: {

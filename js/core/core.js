@@ -13,6 +13,9 @@ const APP = {
   ],
   /* the names joined for the footer and the credits, in the language of the interface */
   authorNames() { return APP.authors.map(a => a.name).join(' ' + t('report.and') + ' '); },
+  /* concept DOI: it always resolves to the latest version */
+  doi: '10.5281/zenodo.22879993',
+  repo: 'https://github.com/luisangelbg/SciMetricsPro',
   storagePrefix: 'scimetricspro:',
   assetBase: '',       // prefix for img/ when the page lives in a subfolder (tests)
 };

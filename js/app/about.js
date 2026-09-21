@@ -15,6 +15,8 @@ const About = {
       + '  title = {{SciMetricsPro}: ' + t('about.cite.subtitle') + '},\n'
       + '  version = {' + APP.version + '},\n'
       + '  year = {' + APP.year + '},\n'
+      + '  doi = {' + APP.doi + '},\n'
+      + '  url = {https://doi.org/' + APP.doi + '},\n'
       + '  note = {' + t('about.cite.note') + '}\n}';
   },
 
@@ -37,6 +39,9 @@ const About = {
 
     const app = About.card(grid, 'aboutApp', 'sparkle', 'about.app.title');
     app.appendChild(mk('p', { class: 'about-version' }, '<strong>SciMetricsPro</strong> · ' + esc(t('footer.version', { v: APP.version }))));
+    app.appendChild(mk('p', { class: 'about-version' },
+      esc(t('about.app.doi')) + `: <a href="https://doi.org/${APP.doi}" target="_blank" rel="noopener noreferrer">${APP.doi}</a>`
+      + ` · <a href="${APP.repo}" target="_blank" rel="noopener noreferrer">${esc(t('about.app.code'))}</a>`));
     app.appendChild(mk('p', null, esc(t('about.app.text'))));
     app.appendChild(mk('p', { class: 'hint' }, icon('lock') + '<span>' + esc(t('about.app.privacy')) + '</span>'));
 
