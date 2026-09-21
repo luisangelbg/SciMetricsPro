@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22879993.svg)](https://doi.org/10.5281/zenodo.22879993)
 [![Licencia: GPL v3](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](LICENSE)
 
-**Del análisis bibliométrico al artículo, sin programar.** Versión 1.0.0.
+**Del análisis bibliométrico al artículo, sin programar.** Versión 1.0.1.
 
 **Versión en línea:** https://luisangelbg.github.io/SciMetricsPro/ ·
 **Manual de usuario (español):** [PDF](manual/SciMetricsPro%20User's%20Manual.pdf) ·
@@ -63,10 +63,10 @@ El programa se distribuye con la **Licencia Pública General de GNU, versión 3 
 ([GPL-3.0-or-later](LICENSE)).
 
 > Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. (2026). *SciMetricsPro: análisis bibliométrico y cienciométrico*
-> (versión 1.0.0) [Software]. https://doi.org/10.5281/zenodo.22879993
+> (versión 1.0.1) [Software]. https://doi.org/10.5281/zenodo.22879993
 
-Ese DOI de concepto siempre lleva a la versión más reciente; el de esta versión es
-[10.5281/zenodo.22879994](https://doi.org/10.5281/zenodo.22879994).
+Ese DOI de concepto siempre lleva a la versión más reciente; además, cada versión publicada tiene su propio DOI en
+[Zenodo](https://doi.org/10.5281/zenodo.22879993).
 
 La página **Acerca de** de la app muestra la misma cita en texto y en BibTeX, con un botón para copiarla.
 

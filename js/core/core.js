@@ -5,7 +5,7 @@
 
 const APP = {
   name: 'SciMetricsPro',
-  version: '1.0.0',
+  version: '1.0.1',
   year: 2026,
   authors: [
     { name: 'Luis Ángel Barrera-Guzmán', orcid: '0000-0001-8057-2583' },
