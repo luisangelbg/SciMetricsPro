@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 8 · Documentos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap8 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 8 -->
+<section class="capitulo cap8" id="cap-documentos" data-pestana="8" data-orden="8" style="--acento: var(--b7)">
+  <div class="cap-apertura">
+    <div class="cap-num">8</div>
+    <div class="cap-etiqueta">Capítulo ocho</div>
+    <h1>Documentos</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Qué se publica y qué se cita: los documentos más citados con tres medidas distintas, las citas locales que se hacen los documentos entre sí, las referencias más citadas, la espectroscopía de años de referencia que revela los trabajos fundacionales del campo, y las palabras, su crecimiento y los temas en tendencia.</p>
+    <div class="cap-franja"><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span></div>
+    <ul class="cap-contenido">
+      <li><b>8.1</b>La pantalla Documentos y sus tarjetas</li>
+      <li><b>8.2</b>Documentos más citados</li>
+      <li><b>8.3</b>Citas locales</li>
+      <li><b>8.4</b>Referencias más citadas</li>
+      <li><b>8.5</b>Espectroscopía de años de referencia (RPYS)</li>
+      <li><b>8.6</b>Palabras</li>
+      <li><b>8.7</b>Crecimiento y temas en tendencia</li>
+    </ul>
+  </div>
+
+  <p class="lead">Después de las fuentes y los autores, la pantalla <span class="ui">Documentos</span> mira los trabajos mismos: cuáles han recibido más atención, cuáles son la base común del campo y de qué hablan. Sus siete pestañas se dividen en dos familias: las cuatro primeras trabajan con citas y referencias; las tres últimas, con las palabras del campo de términos que elegiste en <span class="ui">Limpieza y filtros</span>.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los datos de este capítulo</div>
+    <p>Las figuras usan los <b>datos de ejemplo</b> del maracuyá (300 documentos del catálogo abierto), salvo las de la RPYS. Las referencias de ese catálogo llegan como identificadores de obras, sin año, y sin año no hay RPYS: para la sección 8.5 se usó un conjunto público de 147 artículos sobre análisis de cocitación y acoplamiento bibliográfico (1985–2015), exportado con sus referencias completas del índice de citas multidisciplinario B. Todas las cifras que se citan se comprobaron leyendo los archivos fuera de la app.</p>
+  </div>
+
+  <!-- 8.1 -->
+  <h2 id="s8-1"><span class="num">8.1</span>La pantalla Documentos y sus tarjetas</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-tarjetas.png" alt="Las seis tarjetas de la pantalla Documentos y sus siete pestañas">
+      <span class="marca" style="left:2.8%;top:9.5%">1</span>
+      <span class="marca" style="left:22.4%;top:10.9%">2</span>
+      <span class="marca" style="left:42.4%;top:9.5%">3</span>
+      <span class="marca" style="left:62.3%;top:10.9%">4</span>
+      <span class="marca" style="left:82.2%;top:10.9%">5</span>
+      <span class="marca" style="left:2.8%;top:52.3%">6</span>
+      <span class="marca" style="left:74.8%;top:91.8%">7</span>
+    </div>
+    <figcaption><b>Figura 8.1.</b> Las tarjetas de <span class="ui">Documentos</span> con los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Citas totales que informan las bases.</li>
+    <li><span class="n">2</span>El documento más citado.</li>
+    <li><span class="n">3</span>Citas locales: veces que un documento del conjunto cita a otro del conjunto.</li>
+    <li><span class="n">4</span>Referencias distintas en las bibliografías.</li>
+    <li><span class="n">5</span>Pico principal de la RPYS; aquí las referencias no traen año.</li>
+    <li><span class="n">6</span>Términos distintos del campo elegido en Limpieza.</li>
+    <li><span class="n">7</span>Las siete pestañas de la pantalla.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 8.1.</b> Las seis tarjetas de <span class="ui">Documentos</span>.</caption>
+    <thead><tr><th style="width:26%">Tarjeta</th><th>Qué mide</th><th style="width:24%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Citas totales</span></td><td>Suma de las citas que informan las bases, de toda su cobertura.</td><td>2,978 en 300 documentos</td></tr>
+      <tr><td><span class="ui">Documento más citado</span></td><td>El documento con más citas globales.</td><td>153 · Fonseca A., 2022</td></tr>
+      <tr><td><span class="ui">Citas locales</span></td><td>Enlaces de cita dentro del conjunto (sección 8.3).</td><td>396 · 150 documentos citados</td></tr>
+      <tr><td><span class="ui">Referencias distintas</span></td><td>Obras distintas en las listas de referencias, ya unificadas.</td><td>4,546 · 6,141 citas en 236 documentos</td></tr>
+      <tr><td><span class="ui">Pico principal de la RPYS</span></td><td>Año de referencia con la mayor desviación positiva (sección 8.5).</td><td>— · las referencias no traen año</td></tr>
+      <tr><td><span class="ui">Términos distintos</span></td><td>Términos del campo de análisis, con sinónimos y palabras vacías aplicados.</td><td>618 · palabras clave de índice</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el cálculo de las referencias</div>
+    <p>Las citas locales, las referencias más citadas y la RPYS dependen de emparejar miles de referencias entre sí y con los documentos del conjunto. Con pocas referencias el cálculo es inmediato; con más de 25,000 corre en segundo plano, con una barra de progreso y un botón <span class="ui">Cancelar</span>, y la pantalla dice mientras tanto <span class="ui">Calculando las citas locales y las referencias citadas de este conjunto…</span>. Si cancelas, aparece <span class="ui">Calcular de nuevo</span>. El resultado se comparte con el panorama general y con la estructura intelectual, así que no se repite al cambiar de pantalla.</p>
+  </div>
+
+  <!-- 8.2 -->
+  <h2 id="s8-2"><span class="num">8.2</span>Documentos más citados</h2>
+  <p>La primera pestaña ordena los documentos por sus citas. El selector <span class="ui">Medida de impacto</span> ofrece tres maneras de contarlas, porque «el más citado» depende de cuánto tiempo ha tenido cada documento para ser citado.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 8.2.</b> Las tres medidas de citas por documento.</caption>
+    <thead><tr><th style="width:22%">Medida</th><th>Cómo se calcula</th><th style="width:30%">Qué corrige</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Citas totales</span></td><td>Las citas que informa la base.</td><td>Nada: premia a los documentos antiguos.</td></tr>
+      <tr><td><span class="ui">Citas por año</span></td><td>Citas ÷ años transcurridos desde la publicación hasta el año de referencia, contando el de publicación.</td><td>La edad del documento.</td></tr>
+      <tr><td><span class="ui">Citas normalizadas</span></td><td>Citas ÷ promedio de citas de los documentos del conjunto publicados el mismo año.</td><td>La edad y el ritmo de citación de cada año; 1 es el promedio de su año.</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-citados.png" alt="Barras de los diez documentos con más citas totales, con el selector de medida">
+      <span class="marca" style="left:75%;top:5.2%">1</span>
+      <span class="marca" style="left:38.6%;top:22.7%">2</span>
+      <span class="marca" style="left:84%;top:38.7%">3</span>
+    </div>
+    <figcaption><b>Figura 8.2.</b> Los diez documentos con más citas totales en los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Medida de impacto, número de documentos y año de referencia.</li>
+    <li><span class="n">2</span>Las citas vienen de las bases; las citas por año, hasta el año de referencia.</li>
+    <li><span class="n">3</span>El documento más citado acumula 153 citas desde 2022.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · tres medidas, tres primeros lugares</div>
+    <p>Por <b>citas totales</b> gana una revisión de 2022 publicada en <i>Food Research International</i>, con 153 citas. Por <b>citas por año</b> gana la misma, con 30.6 citas anuales, pero la lista cambia más abajo: un artículo de 1988 con 50 citas, séptimo en totales, promedia apenas 1.28 al año. Por <b>citas normalizadas</b> el primer lugar pasa a un artículo de 2015 con 70 citas, <b>9.13 veces</b> el promedio de los documentos de su año, por encima de la revisión de 2022 (8.80). Las tres medidas, con los mismos valores, se reprodujeron fuera de la app. Debajo de la figura, la tabla trae las tres medidas de todos los documentos que tienen conteo de citas.</p>
+  </div>
+
+  <!-- 8.3 -->
+  <h2 id="s8-3"><span class="num">8.3</span>Citas locales</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · citas globales y citas locales</div>
+    <p>Las citas que informa una base de datos son <b>globales</b>: cuentan todos los documentos de la base que citan al tuyo, sean o no del tema. Las citas <b>locales</b> cuentan solo las que vienen de otros documentos de tu conjunto (Garfield, Pudovkin e Istomin, 2003). Un documento con muchas citas globales y pocas locales es influyente fuera del tema; uno con muchas locales es un trabajo de referencia dentro de él, aunque su conteo global sea modesto. Para calcularlas, la app empareja cada referencia de cada documento con los documentos del conjunto, en este orden: por DOI, por identificador del catálogo abierto y, si no, por primer autor y año con la fuente, las páginas o el título. Las referencias que coinciden con más de un documento se descartan como ambiguas.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-locales.png" alt="Aviso de emparejamiento y barras de los diez documentos con más citas locales">
+      <span class="marca" style="left:2%;top:3%">1</span>
+      <span class="marca" style="left:23.5%;top:18.7%">2</span>
+      <span class="marca" style="left:42.9%;top:34.2%">3</span>
+      <span class="marca" style="left:85%;top:48.3%">4</span>
+    </div>
+    <figcaption><b>Figura 8.3.</b> Los diez documentos con más citas locales en los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Cuántas referencias se emparejaron con documentos del conjunto, y por qué vía.</li>
+    <li><span class="n">2</span>Cuántos documentos entran en la figura.</li>
+    <li><span class="n">3</span>Subtítulo: veces que otros documentos del conjunto citan a cada uno.</li>
+    <li><span class="n">4</span>El documento con más citas locales: 12.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el más citado del mundo no es el más citado del tema</div>
+    <p>En los datos de ejemplo se emparejaron <b>396 de las 6,141 referencias</b>, todas por identificador del catálogo: 150 documentos del conjunto son citados por algún otro, desde 151 documentos que citan. El primer lugar lo ocupa un artículo de 1993 en <i>Journal of Horticultural Science</i>, con 12 citas locales de 38 globales. En cambio, la revisión de 2022 con 153 citas globales —la más citada del conjunto— tiene solo 7 locales: la citan sobre todo trabajos de fuera del tema, como los de la ciencia de los alimentos a la que pertenece su revista, y pocos de la nutrición del cultivo. La tabla de la pestaña trae la razón entre citas locales y globales de cada documento, y marca con <span class="ui">▲</span> los que tienen más citas locales que globales, lo que indica un conteo global que viene de otra base o un emparejamiento dudoso. Las 396 citas locales y los primeros lugares se reprodujeron fuera de la app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · sin referencias no hay citas locales</div>
+    <p>Las citas locales, las referencias más citadas y la RPYS necesitan exportaciones que incluyan la lista de referencias de cada documento. Si tus archivos no la traen, estas tres pestañas lo dicen en lugar de mostrar ceros. Es el mismo aviso de la pantalla <span class="ui">Importar</span> (capítulo 3): vuelve a exportar con la opción de referencias antes de sacar conclusiones.</p>
+  </div>
+
+  <!-- 8.4 -->
+  <h2 id="s8-4"><span class="num">8.4</span>Referencias más citadas</h2>
+  <p>La pestaña <span class="ui">Referencias</span> cuenta cuántos documentos del conjunto citan cada obra, esté o no en el conjunto. Es la base intelectual compartida del campo: las obras que casi todos citan. Antes de contar, la app une las referencias que son la misma obra escrita de distintas formas: las que comparten DOI o identificador, las que tienen el mismo primer autor, año, volumen y primera página, las que coinciden en su texto sin mayúsculas, acentos ni puntuación, y las que apuntan al mismo documento del conjunto.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-referencias.png" alt="Barras de las diez referencias más citadas, identificadas por su código del catálogo">
+      <span class="marca" style="left:75%;top:3.2%">1</span>
+      <span class="marca" style="left:28.7%;top:30.7%">2</span>
+      <span class="marca" style="left:80%;top:44.7%">3</span>
+    </div>
+    <figcaption><b>Figura 8.4.</b> Las diez referencias más citadas en los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Aviso: las referencias del catálogo abierto son identificadores de obras.</li>
+    <li><span class="n">2</span>Subtítulo: documentos del conjunto que citan cada obra.</li>
+    <li><span class="n">3</span>La obra más citada aparece en las referencias de 25 documentos.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · 6,141 referencias, 4,546 obras</div>
+    <p>Los 300 documentos del ejemplo traen referencias en 236 casos: 6,141 en total, que corresponden a 4,546 obras distintas. La más citada aparece en 25 documentos y no forma parte del conjunto: es un trabajo que el tema usa, pero que no trata de la nutrición del maracuyá. Como el catálogo abierto entrega sus referencias como códigos, la figura muestra el código de cada obra; la tabla de la pestaña los lista todos y los que están en el conjunto se marcan en la columna <span class="ui">En el conjunto</span>. Con las exportaciones de los índices de citas, las etiquetas son legibles («SMALL H, 1973, J AM SOC INFORM SCI»), como en la sección 8.5.</p>
+  </div>
+
+  <!-- 8.5 -->
+  <h2 id="s8-5"><span class="num">8.5</span>Espectroscopía de años de referencia (RPYS)</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · cómo encontrar las raíces de un campo</div>
+    <p>La RPYS (Marx, Bornmann, Barth y Leydesdorff, 2014) cuenta cuántas referencias citadas se publicaron cada año, sin importar quién las cite. Si un año tiene muchas más referencias que sus vecinos, casi siempre es porque en ese año se publicó una obra que todo el campo cita: un trabajo fundacional. Para ver esos años sobre el crecimiento general de la literatura, se resta a cada año la mediana de su ventana de cinco años:</p>
+    <p class="formula-linea"><i>D</i><sub><i>t</i></sub> = <i>NCR</i><sub><i>t</i></sub> − mediana(<i>NCR</i><sub><i>t</i>−2</sub>, …, <i>NCR</i><sub><i>t</i>+2</sub>)</p>
+    <p>donde <i>NCR</i><sub><i>t</i></sub> es el número de referencias citadas publicadas en el año <i>t</i>. Un <b>pico</b> es un año con desviación positiva mayor que la del año anterior y no menor que la del siguiente. La app los ordena por desviación y muestra las referencias más citadas de cada uno.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-rpys.png" alt="Espectro de años de publicación de las referencias entre 1950 y 2015 con sus picos etiquetados">
+      <span class="marca" style="left:45%;top:3.9%">1</span>
+      <span class="marca" style="left:42.4%;top:12.6%">2</span>
+      <span class="marca" style="left:57.4%;top:25.3%">3</span>
+      <span class="marca" style="left:37%;top:63%">4</span>
+      <span class="marca" style="left:50%;top:81%">5</span>
+    </div>
+    <figcaption><b>Figura 8.5.</b> La RPYS de 147 artículos sobre cocitación y acoplamiento bibliográfico, entre 1950 y 2015.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Intervalo de años; <span class="ui">Todos los años</span> lo restablece.</li>
+    <li><span class="n">2</span>Referencias sin año, que quedan fuera del espectro.</li>
+    <li><span class="n">3</span>Subtítulo: intervalo y desviación respecto a la mediana de 5 años.</li>
+    <li><span class="n">4</span>El pico de 1973, con su referencia más citada.</li>
+    <li><span class="n">5</span>La desviación: los picos son sus máximos locales.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-picos.png" alt="Tabla de picos de la RPYS con año, referencias citadas, mediana, desviación y referencias más citadas">
+      <span class="marca" style="left:43.6%;top:27.7%">1</span>
+      <span class="marca" style="left:22%;top:48%">2</span>
+    </div>
+    <figcaption><b>Figura 8.6.</b> Los picos ordenados por desviación, con las tres referencias más citadas de cada año.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Picos encontrados en el intervalo elegido.</li>
+    <li><span class="n">2</span>Cada pico con su número de referencias, la mediana de su ventana y la desviación.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · la RPYS encuentra a los fundadores</div>
+    <p>El pico más alto es <b>1973</b>: 99 referencias frente a una mediana de 29, desviación de 70. Lo forman el artículo de Small de 1973 en el <i>Journal of the American Society for Information Science</i>, citado 63 veces, y el de Marshakova-Shaikevich del mismo año, citado 12: los dos trabajos que propusieron, cada uno por su lado, el análisis de cocitación. El pico de <b>1963</b> (desviación de 37) es el artículo de Kessler que definió el acoplamiento bibliográfico, citado 35 veces. Los de 1990 y 1998 corresponden a los trabajos de McCain y de White y McCain que llevaron la cocitación al mapeo de autores y de disciplinas. En otras palabras, sin leer un solo documento, la RPYS reconstruye la historia intelectual del tema. Los picos, su orden y sus conteos por año se reprodujeron fuera de la app leyendo las referencias del archivo; solo difiere una referencia de 1998 (184 frente a 183).</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · cuándo no hay RPYS</div>
+    <p>La RPYS necesita el año de cada referencia. Las exportaciones de los índices de citas lo traen; las del catálogo abierto, no, porque sus referencias son identificadores. Con los datos de ejemplo la pestaña dice <span class="ui">Las referencias no traen año de publicación, así que no se puede calcular la RPYS</span> y la tarjeta del pico queda en «—». Cuando solo una parte de las referencias trae año, la pestaña lo avisa arriba del espectro, como el aviso de 28 referencias sin año de la figura 8.5.</p>
+  </div>
+
+  <!-- 8.6 -->
+  <h2 id="s8-6"><span class="num">8.6</span>Palabras</h2>
+  <p>La pestaña <span class="ui">Palabras</span> cuenta en cuántos documentos aparece cada término del campo de análisis (palabras clave de autor o de índice, o pares de palabras de títulos o resúmenes), con los sinónimos y las palabras vacías que definiste en el capítulo 4. El selector <span class="ui">Campo de términos</span> es el mismo de <span class="ui">Limpieza y filtros</span>: cambiarlo aquí lo cambia en toda la app. El selector <span class="ui">Figura</span> ofrece tres vistas: barras, nube de palabras y mapa de árbol.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-nube.png" alt="Nube de los cien términos más frecuentes de las palabras clave de índice">
+      <span class="marca" style="left:80%;top:3.5%">1</span>
+      <span class="marca" style="left:41.9%;top:22.3%">2</span>
+    </div>
+    <figcaption><b>Figura 8.7.</b> La nube de los 100 términos más frecuentes del ejemplo; el tamaño de cada palabra es su número de documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Campo de términos, tipo de figura y número de términos.</li>
+    <li><span class="n">2</span>Subtítulo: documentos en los que aparece cada término, y el campo usado.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · 618 términos y algunos intrusos</div>
+    <p>Las palabras clave de índice del ejemplo suman 618 términos distintos. Los más frecuentes son <i>Biology</i> (288 documentos), <i>Horticulture</i> (259), <i>Growth and nutrition in plants</i> (213), <i>Passion fruit</i> (201) y <i>Agronomy</i> (188). La nube también deja ver términos que el catálogo asignó mal: <i>Human fertilization</i> aparece en 68 documentos que tratan de la fertilización del cultivo, y hay otros como <i>Psychology</i>, <i>Medicine</i> o <i>Pulp (tooth)</i>. No son errores de la app sino de la clasificación automática del catálogo, y se corrigen mandándolos a palabras vacías (sección 4.6). Los conteos se reprodujeron fuera de la app a partir de las palabras clave, temas y conceptos de cada obra.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué vista de palabras usar</div>
+    <table class="compacta">
+      <thead><tr><th style="width:30%">Vista</th><th>Úsala para…</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ui">Barras</span></td><td>un artículo: se lee con precisión y compara valores; con 10 a 20 términos.</td></tr>
+        <tr><td><span class="ui">Nube de palabras</span></td><td>una presentación o una primera exploración; no permite leer valores, solo órdenes de magnitud.</td></tr>
+        <tr><td><span class="ui">Mapa de árbol</span></td><td>ver la proporción de cada término sobre el total con muchos términos a la vez; las áreas se comparan mejor que los tamaños de letra.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Las tres vistas usan los mismos datos, que se descargan con <span class="ui">Datos</span> o desde la tabla de la pestaña.</p>
+  </div>
+
+  <!-- 8.7 -->
+  <h2 id="s8-7"><span class="num">8.7</span>Crecimiento y temas en tendencia</h2>
+  <p>Las dos últimas pestañas añaden el tiempo a las palabras. <span class="ui">Crecimiento</span> dibuja, para los términos más frecuentes, cuántos documentos los usan cada año o de forma acumulada. <span class="ui">Temas en tendencia</span> resume la vida de cada término en tres años: el primer cuartil, la mediana y el tercer cuartil de los años de los documentos que lo usan.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-crecimiento.png" alt="Líneas de crecimiento acumulado de los cinco términos más frecuentes">
+      <span class="marca" style="left:77.1%;top:4.5%">1</span>
+      <span class="marca" style="left:41.9%;top:19.8%">2</span>
+      <span class="marca" style="left:90%;top:38%">3</span>
+    </div>
+    <figcaption><b>Figura 8.8.</b> Crecimiento acumulado de los cinco términos más frecuentes del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Campo, número de términos y frecuencia acumulada o por año.</li>
+    <li><span class="n">2</span>Subtítulo: documentos en los que aparece cada término.</li>
+    <li><span class="n">3</span>Las curvas se separan a partir de 2005: el tema despega.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · la mediana de los años de un término</div>
+    <p>Para cada término con al menos la frecuencia mínima elegida, la app ordena los años de los documentos que lo usan y calcula tres cuantiles de tipo 7 (Hyndman y Fan, 1996): el primer cuartil (Q1), la mediana y el tercer cuartil (Q3). El segmento de la figura va de Q1 a Q3 y el punto marca la mediana, con tamaño proporcional a la frecuencia. Los términos se ordenan por su año mediano, y de cada año se muestran los más frecuentes, hasta el número que elijas en <span class="ui">Términos por año</span>. Leído de arriba abajo, el gráfico es una cronología del vocabulario del tema: arriba los términos antiguos, abajo los recientes.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/documentos-tendencias.png" alt="Segmentos del primer al tercer cuartil y mediana del año de cada término frecuente">
+      <span class="marca" style="left:76%;top:3.5%">1</span>
+      <span class="marca" style="left:63.7%;top:15.3%">2</span>
+      <span class="marca" style="left:89%;top:85%">3</span>
+      <span class="marca" style="left:52%;top:94.7%">4</span>
+    </div>
+    <figcaption><b>Figura 8.9.</b> Temas en tendencia del ejemplo con frecuencia mínima de 15 documentos y dos términos por año.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Frecuencia mínima y términos por año.</li>
+    <li><span class="n">2</span>Subtítulo: el segmento es Q1–Q3 y el punto, la mediana.</li>
+    <li><span class="n">3</span>Uno de los temas más recientes: la fotosíntesis, con mediana en 2022.</li>
+    <li><span class="n">4</span>El tamaño del punto es el número de documentos del término.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · del fósforo a la salinidad</div>
+    <p>La cronología del ejemplo empieza con la biología floral y la polinización, pasa por la nutrición con fósforo y los biofertilizantes (mediana en 2015; la mitad central de sus 40 documentos, entre 2012 y 2017) y llega a los temas recientes: el agua salina (mediana en 2019), la calidad poscosecha y la <b>fotosíntesis</b>, con mediana en 2022 y la mitad central de sus 23 documentos entre 2020 y 2022.5. La lectura para una tesis es directa: el estrés salino y la fisiología bajo riego con agua salina son el frente activo del tema. Los cuartiles de estos términos se recalcularon fuera de la app con la misma regla y coinciden.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · qué no dicen los temas en tendencia</div>
+    <p>Un término reciente no es necesariamente un término en auge: puede aparecer en pocos documentos recientes y desaparecer. Por eso conviene subir la frecuencia mínima hasta que queden términos con suficientes documentos, y mirar la pestaña <span class="ui">Crecimiento</span> en modo <span class="ui">Por año</span> para confirmar que su uso aumenta. Para ver cómo se agrupan y evolucionan los temas, el capítulo 9 ofrece el mapa temático y la evolución temática.</p>
+  </div>
+
+  <p style="margin-top:0.12in">Con los documentos termina la parte descriptiva del análisis. Los tres capítulos siguientes pasan a las redes: la estructura conceptual (de qué habla el campo), la intelectual (sobre qué se apoya) y la social (quién colabora con quién).</p>
+</section>
+
+</body>
+</html>

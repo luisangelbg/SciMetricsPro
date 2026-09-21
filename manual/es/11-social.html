@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 11 · Estructura social</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap11 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap11 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 11 -->
+<section class="capitulo cap11" id="cap-social" data-pestana="11" data-orden="11" style="--acento: var(--b10)">
+  <div class="cap-apertura">
+    <div class="cap-num">11</div>
+    <div class="cap-etiqueta">Capítulo once</div>
+    <h1>Estructura social</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Quién trabaja con quién: la red de coautoría de autores, instituciones y países, el mapa mundial de la colaboración internacional con sus arcos entre países, y la cronología que muestra cómo cambia la colaboración con los años.</p>
+    <div class="cap-franja"><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span></div>
+    <ul class="cap-contenido">
+      <li><b>11.1</b>La pantalla y sus tres pestañas</li>
+      <li><b>11.2</b>Red de colaboración</li>
+      <li><b>11.3</b>Mapa mundial de colaboración</li>
+      <li><b>11.4</b>Cronología de la colaboración</li>
+    </ul>
+  </div>
+
+  <p class="lead">Después de las palabras (capítulo 9) y las referencias (capítulo 10), la <b>estructura social</b> mira a las personas y a los lugares. Dos autores, dos instituciones o dos países están unidos cuando firman un documento juntos. La pantalla <span class="ui">Social</span>, en el grupo <span class="ui">Estructuras</span>, ofrece tres vistas de esa colaboración.</p>
+
+  <!-- 11.1 -->
+  <h2 id="s11-1"><span class="num">11.1</span>La pantalla y sus tres pestañas</h2>
+  <p>La estructura social usa los autores, las instituciones y los países tal como quedaron en <span class="ui">Limpieza y filtros</span> (capítulo 4): las variantes de autores que uniste, las equivalencias de instituciones y los alias de países. Por eso conviene revisar esas pestañas de Limpieza antes de dibujar una red de colaboración.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 11.1.</b> Las tres pestañas de la estructura social.</caption>
+    <thead><tr><th style="width:26%">Pestaña</th><th>Qué muestra</th><th style="width:30%">Pregunta que responde</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Red de colaboración</span></td><td>Autores, instituciones o países unidos por los documentos que firman juntos.</td><td>¿Quién trabaja con quién?</td></tr>
+      <tr><td><span class="ui">Mapa mundial de colaboración</span></td><td>Los países coloreados por su producción y arcos entre los que firman juntos.</td><td>¿Con qué países colabora cada país?</td></tr>
+      <tr><td><span class="ui">Cronología de la colaboración</span></td><td>Autores, instituciones y países por documento, año por año, y el porcentaje de documentos internacionales.</td><td>¿La colaboración crece con el tiempo?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los datos de este capítulo</div>
+    <p>Las figuras usan los <b>datos de ejemplo</b> del maracuyá (300 documentos del catálogo abierto), sin ningún cambio en Limpieza: la estructura social no depende del campo de términos, así que las 14 palabras vacías de los capítulos 9 y 10 no cambian nada aquí. De los 300 documentos, 62 no traen afiliaciones y 236 tienen al menos un país reconocido. Las redes de autores y de países, el mapa y la cronología se comprobaron leyendo el archivo del ejemplo fuera de la app.</p>
+  </div>
+
+  <!-- 11.2 -->
+  <h2 id="s11-2"><span class="num">11.2</span>Red de colaboración</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · la coautoría como huella de la colaboración</div>
+    <p>La red de coautoría (Newman, 2001) une dos autores por el número de documentos que firman juntos; con instituciones o países, dos unidades se unen por los documentos con autores de ambas, y cada documento cuenta una vez para cada par. Se construye como la red de coocurrencia del capítulo 9, con los mismos pesos, comunidades y métricas: una comunidad es un grupo de investigación o una red de instituciones que publica junta con más frecuencia que con el resto. Firmar juntos es una medida parcial de la colaboración (Katz y Martin, 1997): deja fuera el trabajo que no termina en un artículo común, y cuenta igual a quien dirigió un estudio y a quien aportó una muestra.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Tabla 11.2.</b> Las tres unidades de la red y los documentos mínimos que la app propone para cada una.</caption>
+    <thead><tr><th style="width:18%">Unidad</th><th>Qué es un nodo</th><th style="width:18%">Documentos mínimos</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Autores</span></td><td>Un autor, con las variantes unidas en Limpieza (apellido e iniciales).</td><td>2</td></tr>
+      <tr><td><span class="ui">Instituciones</span></td><td>La organización de cada afiliación, con las equivalencias de Limpieza.</td><td>2</td></tr>
+      <tr><td><span class="ui">Países</span></td><td>Un país de las afiliaciones, reconocido por su nombre o por un alias.</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <p>Al cambiar la <span class="ui">Unidad de análisis</span>, la app pone los documentos mínimos de la tabla; puedes cambiarlos después. Los demás parámetros son los de la tabla 9.2, con <span class="ui">Documentos en coautoría mínimos</span> en lugar de las coocurrencias mínimas. Si algunos documentos no traen la información de la unidad elegida, un aviso dice cuántos quedan fuera de la red.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/social-red.png" alt="Panel de parámetros, seis tarjetas y red de colaboración de los 49 autores más productivos del ejemplo">
+      <span class="marca" style="left:18.3%;top:16%">1</span>
+      <span class="marca" style="left:18.3%;top:21.95%">2</span>
+      <span class="marca" style="left:21.2%;top:36.9%">3</span>
+      <span class="marca" style="left:90%;top:25.1%">4</span>
+      <span class="marca" style="left:95.7%;top:75%">5</span>
+      <span class="marca" style="left:63.8%;top:79.5%">6</span>
+    </div>
+    <figcaption><b>Figura 11.1.</b> La red de colaboración de los autores del ejemplo con dos documentos o más.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unidad: autores, instituciones o países.</li>
+    <li><span class="n">2</span>Documentos mínimos de cada unidad.</li>
+    <li><span class="n">3</span>Coautorías mínimas por arista y nodos aislados.</li>
+    <li><span class="n">4</span>La red tiene cuatro piezas separadas.</li>
+    <li><span class="n">5</span>Una pieza pequeña, junto a la principal.</li>
+    <li><span class="n">6</span>Naranja: el grupo del riego con agua salina.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · dos grupos brasileños unidos por pocos puentes</div>
+    <p>De los 300 documentos, 289 tienen dos autores o más. Los 49 autores con al menos dos documentos que firman con alguien forman 226 aristas en 7 comunidades, con modularidad 0.555: grupos bien definidos. Los dos mayores son brasileños. El azul gira alrededor del autor más productivo del conjunto (46 documentos) y trabaja con biofertilizantes y nutrición; el naranja es el grupo del riego con agua salina, cuyos tres autores principales firman juntos más que ningún otro par: 25, 23 y 20 documentos. Entre ambos grupos, unos cuantos autores hacen de puente (en rojo). Tres parejas quedan aparte, sin coautores en los grupos brasileños: una japonesa, otra brasileña y la de Menzel y Simpson, los autores australianos de los estudios clásicos del capítulo 10. Los 49 autores, sus documentos y las 226 aristas con sus documentos en coautoría se reprodujeron fuera de la app, sin ninguna diferencia.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · las piezas de una red</div>
+    <p>Cuando la red tiene varias piezas sin conexión entre sí, la app dibuja cada una con su propia disposición y las acomoda juntas, con la mayor al centro, en lugar de dejar que las pequeñas se alejen y encojan el dibujo. La tarjeta <span class="ui">Diámetro</span> dice cuántas piezas hay (componentes conexos). En el visor, una etiqueta que no cabe a la derecha de su nodo se escribe a su izquierda.</p>
+  </div>
+
+  <p>Al hacer clic en un nodo aparece su ficha, como en el capítulo 9: métricas, <span class="ui">Colaboradores más frecuentes</span> con sus documentos en coautoría, y los documentos del autor, la institución o el país, empezando por los más citados. Debajo del visor están la figura para publicar, las tablas de nodos, comunidades y aristas, y la tarjeta que guarda la red para otros programas (capítulo 13).</p>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · la red de instituciones depende de Limpieza</div>
+    <p>La red de instituciones es tan buena como el reconocimiento de las instituciones. En el ejemplo, la misma universidad aparece en portugués y en inglés (<i>Universidade Federal de Campina Grande</i> y <i>Federal University of Campina Grande</i>) y la red las dibuja como dos nodos que ni siquiera se tocan: la versión en inglés forma su propio grupo con las otras universidades escritas en inglés (<i>Federal University of Paraiba</i>, <i>Federal Rural University of the Semi-Arid</i>), un reflejo del grupo en portugués. Antes de interpretar una red de instituciones, revisa las primeras filas de <span class="ruta">Limpieza y filtros › Instituciones y países</span> y une con equivalencias las que sean la misma (sección 4.5). Con los países pasa algo parecido: las afiliaciones que no terminan en un país reconocible no entran en la red hasta que les asignas un alias.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/social-paises.png" alt="Red de colaboración de 25 países en cinco comunidades, con Brasil al centro">
+      <span class="marca" style="left:38%;top:67.9%">1</span>
+      <span class="marca" style="left:81.9%;top:19.8%">2</span>
+      <span class="marca" style="left:47.7%;top:19.8%">3</span>
+    </div>
+    <figcaption><b>Figura 11.2.</b> La red de colaboración entre países del ejemplo, lista para publicar.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Brasil, en 173 documentos: el centro.</li>
+    <li><span class="n">2</span>Cada comunidad, con su país mayor.</li>
+    <li><span class="n">3</span>Japón e India, en la comunidad de Estados Unidos.</li>
+  </ul>
+
+  <!-- 11.3 -->
+  <h2 id="s11-3"><span class="num">11.3</span>Mapa mundial de colaboración</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · documentos internacionales y pares de países</div>
+    <p>Un documento es <b>internacional</b> cuando sus autores traen afiliaciones de dos países o más (Glänzel y Schubert, 2004). Cada documento internacional suma 1 a cada par de sus países: un artículo con autores de Brasil, Colombia y España cuenta para los pares Brasil–Colombia, Brasil–España y Colombia–España (conteo completo). El mapa dibuja un arco por par, con grosor proporcional a sus documentos en coautoría, sobre los países coloreados por la medida que elijas: documentos, documentos internacionales o número de países colaboradores.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/social-mapa.png" alt="Panel del mapa, aviso de cobertura, cinco tarjetas y mapa mundial con los arcos de colaboración entre países">
+      <span class="marca" style="left:21.7%;top:19.9%">1</span>
+      <span class="marca" style="left:21.7%;top:26.6%">2</span>
+      <span class="marca" style="left:19%;top:37.2%">3</span>
+      <span class="marca" style="left:82.7%;top:14.2%">4</span>
+      <span class="marca" style="left:44.5%;top:42%">5</span>
+      <span class="marca" style="left:48.8%;top:73.5%">6</span>
+      <span class="marca" style="left:31.6%;top:96.3%">7</span>
+      <span class="marca" style="left:66.7%;top:96.3%">8</span>
+    </div>
+    <figcaption><b>Figura 11.3.</b> El mapa mundial de colaboración del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Documentos en coautoría mínimos por arco.</li>
+    <li><span class="n">2</span>Número máximo de arcos (los más fuertes).</li>
+    <li><span class="n">3</span>Medida que colorea los países.</li>
+    <li><span class="n">4</span>Documentos que traen algún país.</li>
+    <li><span class="n">5</span>El par más fuerte: Brasil–Estados Unidos, 5.</li>
+    <li><span class="n">6</span>El arco más grueso del mapa.</li>
+    <li><span class="n">7</span>Escala de color de los países.</li>
+    <li><span class="n">8</span>Grosor de los arcos.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 11.3.</b> Las tarjetas del mapa y sus valores en el ejemplo.</caption>
+    <thead><tr><th style="width:26%">Tarjeta</th><th>Qué mide</th><th style="width:26%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Países</span></td><td>Países en las afiliaciones y cuántos colaboran con otro país.</td><td>31 · 25 con colaboración</td></tr>
+      <tr><td><span class="ui">Colaboración internacional</span></td><td>Documentos internacionales y su porcentaje entre los documentos con país.</td><td>27 · 11.4 % de 236</td></tr>
+      <tr><td><span class="ui">Pares de países</span></td><td>Pares que firman al menos un documento juntos, y arcos dibujados.</td><td>39 pares y 39 arcos</td></tr>
+      <tr><td><span class="ui">Colaboración más fuerte</span></td><td>El par con más documentos en coautoría.</td><td>5 · Brasil–Estados Unidos</td></tr>
+      <tr><td><span class="ui">Más países colaboradores</span></td><td>El país que colabora con más países distintos.</td><td>16 · Brasil</td></tr>
+    </tbody>
+  </table>
+  <p>Debajo del mapa, la tabla <span class="ui">Colaboración entre países</span> lista los pares de países del más al menos frecuente, y la tabla <span class="ui">Países y sus colaboradores</span> da, para cada país, sus documentos, los internacionales y su porcentaje, sus colaboradores, el principal y la lista completa con los documentos de cada uno.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · una literatura nacional con puentes al exterior</div>
+    <p>Brasil aparece en 173 de los 236 documentos con país: el maracuyá es sobre todo un tema brasileño. Solo 27 documentos (11.4 %) son internacionales, pero Brasil colabora con 16 países; sus socios más frecuentes son Estados Unidos (5 documentos), Bélgica y Colombia (3 cada uno), Chile e Indonesia (2). Fuera de Brasil, Colombia, Estados Unidos, China, India y Japón completan los países con más documentos. Los documentos, los documentos internacionales y los colaboradores de 29 de los 30 países, y los 38 pares de países, se reprodujeron fuera de la app con los códigos de país del catálogo. La única diferencia es a favor de la app: un documento cuyo autor el catálogo asigna a un instituto chino trae en el texto de su afiliación una universidad de Sri Lanka, que la app reconoce, y agrega el par China–Sri Lanka.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · lo que el mapa simplifica</div>
+    <p>Los arcos no dan la vuelta al mundo: un arco entre México y Japón cruza el Atlántico en lugar del Pacífico. Los países pequeños que no aparecen en el contorno del mapa se dibujan con un punto aproximado en su capital, y si un país no tiene ubicación, un aviso lo dice y sus pares siguen en las tablas. El mapa cuenta documentos, no autores: un artículo con diez autores brasileños y uno estadounidense suma lo mismo que uno con un autor de cada país.</p>
+  </div>
+
+  <!-- 11.4 -->
+  <h2 id="s11-4"><span class="num">11.4</span>Cronología de la colaboración</h2>
+  <p>La tercera pestaña sigue la colaboración en el tiempo. Sus cuatro tarjetas dan los promedios de todo el conjunto; las dos figuras, los promedios de cada año. Cada promedio usa solo los documentos que traen esa información, así que un año sin afiliaciones queda vacío y la línea se corta, en lugar de caer a cero.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · cuidado con los años de pocos documentos</div>
+    <p>Un porcentaje de un año con uno o dos documentos puede saltar de 0 a 100 %: en 1976 hay un solo documento con país, y es internacional. La tabla <span class="ui">Colaboración por año</span>, debajo de las figuras, trae para cada año los documentos, los que tienen institución y país, y los promedios, así que puedes ver en cuántos documentos se apoya cada punto. Para comparar periodos, junta años o usa los filtros de Limpieza.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/social-cronologia.png" alt="Cuatro tarjetas con los promedios de colaboración y líneas de países e instituciones por documento por año">
+      <span class="marca" style="left:14.3%;top:11.3%">1</span>
+      <span class="marca" style="left:34.1%;top:11.3%">2</span>
+      <span class="marca" style="left:54%;top:11.3%">3</span>
+      <span class="marca" style="left:74.7%;top:11.3%">4</span>
+      <span class="marca" style="left:37.5%;top:52.8%">5</span>
+      <span class="marca" style="left:59%;top:80.7%">6</span>
+    </div>
+    <figcaption><b>Figura 11.4.</b> Tarjetas de la cronología y países e instituciones por documento en cada año del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Autores por documento, en los que traen autores.</li>
+    <li><span class="n">2</span>Instituciones, en los que traen afiliación.</li>
+    <li><span class="n">3</span>Países, en los que traen país.</li>
+    <li><span class="n">4</span>Porcentaje de documentos internacionales.</li>
+    <li><span class="n">5</span>Un año aislado con datos: se marca con un punto.</li>
+    <li><span class="n">6</span>Años sin afiliaciones: la línea se corta.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/social-internacional.png" alt="Porcentaje de documentos en colaboración internacional por año, de 0 a 100 %">
+      <span class="marca" style="left:37.5%;top:24.5%">1</span>
+      <span class="marca" style="left:69%;top:50%">2</span>
+      <span class="marca" style="left:84%;top:65.2%">3</span>
+    </div>
+    <figcaption><b>Figura 11.5.</b> Documentos en colaboración internacional por año en el ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>1976: un solo documento, internacional.</li>
+    <li><span class="n">2</span>2005 a 2007: la mitad de los documentos.</li>
+    <li><span class="n">3</span>2019: el máximo reciente, 25 %.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · más autores, pocos países</div>
+    <p>Los documentos del ejemplo tienen en promedio 5.17 autores, 2.5 instituciones y 1.16 países. Las instituciones por documento suben de 1 o 2 a finales de los años ochenta a entre 2.5 y 3 en la última década, mientras los países por documento se quedan cerca de 1: la colaboración crece entre instituciones de un mismo país, no entre países. La colaboración internacional tuvo un pico entre 2005 y 2007, cuando la mitad de los pocos documentos con país eran internacionales, y desde 2010 oscila entre 0 y 25 %. Los valores de 32 de los 33 años con país se reprodujeron fuera de la app; el que difiere, 2019, es el del documento con Sri Lanka de la sección anterior.</p>
+  </div>
+
+  <p style="margin-top:0.12in">Con la estructura social terminan los análisis bibliométricos. El capítulo 12 pasa a la revisión sistemática: el cribado de los documentos uno por uno y el diagrama de flujo PRISMA 2020.</p>
+</section>
+
+</body>
+</html>

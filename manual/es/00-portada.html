@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../manual.css">
+<style>
+  .cover { background: #ffffff; }
+  .cover text { font-kerning: normal; }
+</style>
+</head>
+<body>
+
+<section class="page cover" aria-label="Portada">
+  <svg id="cover" viewBox="0 0 850 1100" xmlns="http://www.w3.org/2000/svg" role="img"
+       aria-label="Portada del manual de SciMetricsPro: una red de coocurrencia de palabras clave con cuatro comunidades de color; al centro de cada una, una flor de maracuyá, una mazorca de maíz, una abeja y un chayote con sus nombres científicos; debajo, una curva de Bradford, un mapa temático, un globo con arcos de colaboración entre países y un diagrama de flujo PRISMA."></svg>
+</section>
+
+<script>
+/* The cover is drawn once, deterministically (fixed seed), as vector graphics:
+   it prints sharp at any size and every illustration is original. */
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('cover');
+  const el = (tag, attrs, parent, text) => {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) if (attrs[k] != null) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    (parent || svg).appendChild(n);
+    return n;
+  };
+  const rng = (seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(20260917);
+
+  const W = 850, H = 1100;
+  const INK = '#14213d', GRIS = '#5b6474', BLANCO = '#ffffff', NEUTRO = '#a9b1c0';
+  const AZUL = '#1d5bb0', AMBAR = '#e39b2d', TURQUESA = '#1f9e8f', ROSA = '#c8416a';
+  const rad = d => d * Math.PI / 180;
+  const pol = (cx, cy, r, a) => [cx + r * Math.cos(rad(a)), cy + r * Math.sin(rad(a))];
+  const f1 = v => (+v).toFixed(2);
+  const hex = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+  const mix = (a, b, t) => { const A = hex(a), B = hex(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, '0')).join(''); };
+
+  /* gradients only as fills of shapes with area */
+  const defs = el('defs');
+  function grad(kind, id, stops, attrs) {
+    const g = el(kind, Object.assign({ id }, attrs), defs);
+    stops.forEach(([off, c, op]) => el('stop', { offset: off, 'stop-color': c, 'stop-opacity': op }, g));
+    return `url(#${id})`;
+  }
+  const radial = (id, stops, a) => grad('radialGradient', id, stops, Object.assign({ cx: '50%', cy: '50%', r: '55%', fx: '34%', fy: '30%' }, a));
+  const linear = (id, stops, a) => grad('linearGradient', id, stops, Object.assign({ x1: 0, y1: 0, x2: 1, y2: 1 }, a));
+  const esfera = {};
+  const sphere = c => esfera[c] || (esfera[c] = radial('sp' + c.slice(1), [['0%', mix(c, BLANCO, 0.8)], ['30%', mix(c, BLANCO, 0.25)], ['70%', c], ['100%', mix(c, INK, 0.45)]]));
+
+  const G = {
+    petalo: linear('gPet', [['0%', '#ffffff'], ['70%', '#f3f1fa'], ['100%', '#d9d3ea']], { x1: 0.5, y1: 1, x2: 0.5, y2: 0 }),
+    sepalo: linear('gSep', [['0%', '#f7fbef'], ['60%', '#e3efcf'], ['100%', '#b9d49a']], { x1: 0.5, y1: 1, x2: 0.5, y2: 0 }),
+    hojaPas: linear('gHojaPas', [['0%', '#8cc56a'], ['55%', '#4f9a3f'], ['100%', '#2c6b2e']]),
+    fruto: radial('gFruto', [['0%', '#b58ad6'], ['45%', '#6b2f8f'], ['100%', '#3a1150']], { r: '62%', fx: '34%', fy: '30%' }),
+    grano: radial('gGrano', [['0%', '#fff4c2'], ['45%', '#f6c945'], ['100%', '#d69a14']], { r: '70%', fx: '35%', fy: '30%' }),
+    totomoxtle: linear('gToto', [['0%', '#c9e59a'], ['55%', '#7fb957'], ['100%', '#3f7d2c']], { x1: 0, y1: 0, x2: 1, y2: 0 }),
+    torax: radial('gTorax', [['0%', '#e9c07a'], ['60%', '#b77a2c'], ['100%', '#6e4312']], { r: '60%' }),
+    abdomen: linear('gAbd', [['0%', '#f7c64a'], ['100%', '#d48a12']], { x1: 0.5, y1: 0, x2: 0.5, y2: 1 }),
+    ala: linear('gAla', [['0%', '#ffffff', 0.85], ['100%', '#cfe3f5', 0.55]], { x1: 0, y1: 0, x2: 1, y2: 1 }),
+    chayote: radial('gChayote', [['0%', '#eaf6c8'], ['45%', '#b8dc79'], ['85%', '#7fb24a'], ['100%', '#5a8d33']], { r: '62%', fx: '38%', fy: '32%' }),
+    hojaChay: linear('gHojaChay', [['0%', '#a6d47f'], ['60%', '#5ea344'], ['100%', '#336f2c']]),
+    sombra: radial('gSombra', [['0%', INK, 0.2], ['100%', INK, 0]], { r: '50%', fx: '50%', fy: '50%' }),
+  };
+
+  el('rect', { x: 0, y: 0, width: W, height: H, fill: BLANCO });
+
+  /* ---------------------------------------------------------------- the colours of the chapters */
+  const CAPITULOS = ['#14213d', '#1d5bb0', '#0f766e', '#2f7d4f', '#b7791f', '#d9701f', '#b4234a', '#8a5a2b', '#2b8fb3', '#4f46a5', '#7e3fb0', '#c8416a', '#334155', '#111111'];
+  const wc = W / CAPITULOS.length;
+  CAPITULOS.forEach((c, i) => {
+    el('rect', { x: f1(i * wc), y: 0, width: f1(wc + 0.5), height: 9, fill: c });
+    el('rect', { x: f1(i * wc), y: H - 5, width: f1(wc + 0.5), height: 5, fill: c });
+  });
+
+  /* ---------------------------------------------------------------- title */
+  const tb = el('g', { 'text-anchor': 'middle' });
+  const t1 = el('text', { x: W / 2, y: 128, fill: INK, 'font-family': 'Cormorant, serif', 'font-size': 96, 'font-weight': 700, 'letter-spacing': 0.4 }, tb);
+  el('tspan', {}, t1, 'SciMetrics');
+  el('tspan', { fill: AZUL, 'font-style': 'italic', 'font-weight': 600 }, t1, 'Pro');
+  el('text', { x: W / 2, y: 208, fill: INK, 'font-family': 'Cormorant, serif', 'font-size': 50, 'font-weight': 600, 'letter-spacing': 0.8 }, tb, 'Manual de usuario');
+  el('text', { x: W / 2, y: 252, fill: AZUL, 'font-family': 'Cormorant, serif', 'font-size': 46, 'font-style': 'italic', 'font-weight': 500, 'letter-spacing': 0.6 }, tb, 'User Manual');
+  const oy = 275;
+  el('rect', { x: W / 2 - 170, y: oy - 0.5, width: 132, height: 1, fill: INK });
+  el('rect', { x: W / 2 + 38, y: oy - 0.5, width: 132, height: 1, fill: INK });
+  [AZUL, AMBAR, TURQUESA, ROSA].forEach((c, i) => el('circle', { cx: W / 2 - 22.5 + i * 15, cy: oy, r: 4, fill: sphere(c) }));
+  el('text', { x: W / 2, y: 301, fill: GRIS, 'font-family': 'Jost, sans-serif', 'font-size': 12, 'font-weight': 400, 'letter-spacing': 4.2 }, tb, 'ANÁLISIS BIBLIOMÉTRICO · BIBLIOMETRIC ANALYSIS');
+
+  /* ================================================================= the organisms (each drawn around its origin, ±38 px) */
+
+  /* passion flower (Passiflora edulis): sepals and petals, the banded corona, the anthers and three stigmas */
+  function passionFlower(g) {
+    const a = el('g', {}, g);
+    /* a three-lobed leaf behind */
+    const leaf = el('g', { transform: 'translate(-18 20) rotate(28) scale(0.62)' }, a);
+    el('path', { d: 'M0 0 C -6 -18 -30 -34 -40 -52 C -26 -50 -12 -40 -4 -30 C -4 -48 -2 -62 6 -74 C 12 -60 14 -46 12 -30 C 22 -42 36 -50 50 -50 C 42 -32 20 -16 0 0 Z', fill: G.hojaPas, stroke: '#2c6b2e', 'stroke-width': 1 }, leaf);
+    el('path', { d: 'M0 0 L-30 -46 M0 0 L6 -64 M0 0 L42 -46', fill: 'none', stroke: '#d9efc9', 'stroke-width': 1.1, opacity: 0.8 }, leaf);
+    const blade = (len, wid, rot, fill, stroke) => {
+      const b = el('g', { transform: `rotate(${rot})` }, a);
+      el('path', { d: `M0 -4 C ${f1(wid)} ${f1(-len * 0.3)} ${f1(wid * 0.8)} ${f1(-len * 0.85)} 0 ${f1(-len)} C ${f1(-wid * 0.8)} ${f1(-len * 0.85)} ${f1(-wid)} ${f1(-len * 0.3)} 0 -4 Z`, fill, stroke, 'stroke-width': 0.6 }, b);
+      el('path', { d: `M0 -6 L0 ${f1(-len * 0.9)}`, stroke: '#c9c2dc', 'stroke-width': 0.6, opacity: 0.7 }, b);
+    };
+    for (let k = 0; k < 5; k++) blade(34, 7, k * 72 + 36, G.sepalo, '#a8c48a');
+    for (let k = 0; k < 5; k++) blade(33, 8.5, k * 72, G.petalo, '#bdb4d2');
+    /* corona: fine filaments, purple at the base, white in the middle, purple and wavy at the tips */
+    for (let k = 0; k < 64; k++) {
+      const ang = k * 360 / 64 + (k % 2) * 2;
+      const [x1, y1] = pol(0, 0, 7, ang), [xm, ym] = pol(0, 0, 18, ang + 4), [x2, y2] = pol(0, 0, 29 + (k % 3), ang + (k % 2 ? 7 : -3));
+      const d = `M${f1(x1)} ${f1(y1)} Q ${f1(xm)} ${f1(ym)} ${f1(x2)} ${f1(y2)}`;
+      el('path', { d, fill: 'none', stroke: '#f6f0ff', 'stroke-width': 1.25, 'stroke-linecap': 'round' }, a);
+      const [xa, ya] = pol(0, 0, 15, ang + 2);
+      el('path', { d: `M${f1(x1)} ${f1(y1)} L${f1(xa)} ${f1(ya)}`, fill: 'none', stroke: '#4a1a6b', 'stroke-width': 1.35, 'stroke-linecap': 'round' }, a);
+      const [xb, yb] = pol(0, 0, 23, ang + 5);
+      el('path', { d: `M${f1(xb)} ${f1(yb)} Q ${f1((xb + x2) / 2 + (k % 2 ? 1.5 : -1.5))} ${f1((yb + y2) / 2)} ${f1(x2)} ${f1(y2)}`, fill: 'none', stroke: '#7b3fa0', 'stroke-width': 1.2, 'stroke-linecap': 'round' }, a);
+    }
+    el('circle', { cx: 0, cy: 0, r: 8, fill: '#6fae4a', stroke: '#3f7d2c', 'stroke-width': 0.8 }, a);
+    for (let k = 0; k < 5; k++) {
+      const ang = k * 72 - 90;
+      const [x, y] = pol(0, 0, 10, ang);
+      el('path', { d: `M0 0 L${f1(x)} ${f1(y)}`, stroke: '#4f8f36', 'stroke-width': 1.4 }, a);
+      el('ellipse', { cx: f1(x), cy: f1(y), rx: 5, ry: 2.4, fill: '#e3d25a', stroke: '#9c8a17', 'stroke-width': 0.5, transform: `rotate(${ang + 90} ${f1(x)} ${f1(y)})` }, a);
+    }
+    for (let k = 0; k < 3; k++) {
+      const ang = k * 120 - 90;
+      const [x, y] = pol(0, 0, 6.5, ang);
+      el('path', { d: `M0 -1 L${f1(x)} ${f1(y)}`, stroke: '#5b2b3f', 'stroke-width': 1.6, 'stroke-linecap': 'round' }, a);
+      el('circle', { cx: f1(x), cy: f1(y), r: 2.3, fill: '#6b2f4a' }, a);
+    }
+    el('circle', { cx: 0, cy: -0.5, r: 3, fill: '#8cc463' }, a);
+  }
+
+  /* maize ear (Zea mays): husks, rows of kernels and silk */
+  function maize(g) {
+    const a = el('g', { transform: 'rotate(-24) translate(0 2)' }, g);
+    el('path', { d: 'M-2 34 C -26 20 -30 -8 -20 -34 C -16 -10 -10 10 -2 34 Z', fill: G.totomoxtle, stroke: '#3f7d2c', 'stroke-width': 0.8 }, a);
+    el('path', { d: 'M2 34 C 26 18 28 -12 18 -36 C 16 -12 10 10 2 34 Z', fill: G.totomoxtle, stroke: '#3f7d2c', 'stroke-width': 0.8 }, a);
+    el('path', { d: 'M0 36 C -4 42 -2 48 0 52', fill: 'none', stroke: '#6b8f3a', 'stroke-width': 3.4, 'stroke-linecap': 'round' }, a);
+    /* the ear: kernels in staggered rows, narrower toward the tip */
+    el('path', { d: 'M0 -38 C 12 -34 15 -10 14 12 C 13 26 8 34 0 36 C -8 34 -13 26 -14 12 C -15 -10 -12 -34 0 -38 Z', fill: '#e9ad2a', stroke: '#b27a0d', 'stroke-width': 0.8 }, a);
+    for (let r = 0; r < 12; r++) {
+      const y = -32 + r * 5.8;
+      const half = Math.max(3, 13.2 * Math.sin(Math.PI * (r + 1.2) / 13.4));
+      const n = Math.max(2, Math.round(half / 3.2));
+      for (let c = 0; c < n; c++) {
+        const x = -half + (2 * half) * (c + 0.5 + (r % 2 ? 0.25 : -0.25)) / n;
+        if (Math.abs(x) > half - 1.2) continue;
+        el('rect', { x: f1(x - 2.2), y: f1(y - 2.4), width: 4.4, height: 4.8, rx: 1.8, fill: G.grano, stroke: '#c48a12', 'stroke-width': 0.35 }, a);
+      }
+    }
+    el('path', { d: 'M-14 20 C -18 0 -16 -20 -12 -30 C -8 -10 -6 12 -2 34 Z', fill: G.totomoxtle, stroke: '#3f7d2c', 'stroke-width': 0.7, opacity: 0.95 }, a);
+    for (let k = 0; k < 7; k++) el('path', { d: `M${f1(-3 + k)} -37 C ${f1(-8 + k * 3)} -46 ${f1(-12 + k * 5)} -50 ${f1(-16 + k * 6)} -56`, fill: 'none', stroke: k % 2 ? '#c98a4a' : '#e2b36f', 'stroke-width': 0.9, 'stroke-linecap': 'round' }, a);
+  }
+
+  /* honey bee (Apis mellifera) from above: wings, hairy thorax and a striped abdomen */
+  function bee(g) {
+    const a = el('g', { transform: 'rotate(-14) translate(0 2)' }, g);
+    for (const s of [1, -1]) {
+      el('path', { d: `M${s * 4} -6 L${s * 20} 6 L${s * 26} 18 M${s * 5} 2 L${s * 22} 16 L${s * 22} 28 M${s * 4} -12 L${s * 18} -18 L${s * 26} -12`, fill: 'none', stroke: '#3a2a14', 'stroke-width': 1.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, a);
+    }
+    for (const s of [1, -1]) {
+      const w = el('g', { transform: `scale(${s} 1)` }, a);
+      el('path', { d: 'M4 -10 C 16 -30 38 -38 44 -28 C 48 -18 32 -6 6 -4 Z', fill: G.ala, stroke: '#7d97b1', 'stroke-width': 0.8 }, w);
+      el('path', { d: 'M5 -4 C 18 -8 34 -6 38 2 C 40 10 26 12 6 2 Z', fill: G.ala, stroke: '#7d97b1', 'stroke-width': 0.7 }, w);
+      el('path', { d: 'M6 -8 C 18 -18 30 -24 40 -26 M14 -14 L26 -8 M22 -20 L34 -12', fill: 'none', stroke: '#8fa7bf', 'stroke-width': 0.5, opacity: 0.9 }, w);
+    }
+    el('ellipse', { cx: 0, cy: 18, rx: 11, ry: 17, fill: G.abdomen, stroke: '#7a4a0a', 'stroke-width': 0.8 }, a);
+    [8, 16, 24].forEach((y, i) => el('path', { d: `M${f1(-10.5 + i * 0.8)} ${y} C -4 ${y + 3.5} 4 ${y + 3.5} ${f1(10.5 - i * 0.8)} ${y}`, fill: 'none', stroke: '#2b1d0e', 'stroke-width': 3.2, 'stroke-linecap': 'round' }, a));
+    el('path', { d: 'M0 34 L0 38', stroke: '#2b1d0e', 'stroke-width': 1.4, 'stroke-linecap': 'round' }, a);
+    el('ellipse', { cx: 0, cy: -4, rx: 10, ry: 9, fill: G.torax, stroke: '#6e4312', 'stroke-width': 0.8 }, a);
+    for (let k = 0; k < 22; k++) { const ang = rng() * 360, r = 3 + rng() * 6; const [x, y] = pol(0, -4, r, ang); el('path', { d: `M${f1(x)} ${f1(y)} l${f1(Math.cos(rad(ang)) * 1.6)} ${f1(Math.sin(rad(ang)) * 1.6)}`, stroke: '#f1d59a', 'stroke-width': 0.6, 'stroke-linecap': 'round', opacity: 0.8 }, a); }
+    el('ellipse', { cx: 0, cy: -17, rx: 6.5, ry: 5.5, fill: '#3a2a14' }, a);
+    [-1, 1].forEach(s => { el('ellipse', { cx: s * 4.3, cy: -18, rx: 2.4, ry: 3.4, fill: '#15100a' }, a); el('path', { d: `M${s * 2} -22 C ${s * 5} -30 ${s * 10} -33 ${s * 14} -32`, fill: 'none', stroke: '#2b1d0e', 'stroke-width': 1.1, 'stroke-linecap': 'round' }, a); });
+    el('ellipse', { cx: -4, cy: 12, rx: 3, ry: 8, fill: BLANCO, opacity: 0.25 }, a);
+  }
+
+  /* chayote (Sechium edule): the furrowed fruit with a few soft spines, a leaf and a tendril */
+  function chayote(g) {
+    const a = el('g', { transform: 'translate(2 2)' }, g);
+    const leaf = el('g', { transform: 'translate(-10 -16) rotate(-32) scale(0.5)' }, a);
+    el('path', { d: 'M0 0 C -14 -8 -34 -6 -44 -24 C -30 -26 -22 -34 -20 -48 C -8 -42 -2 -52 4 -64 C 10 -52 18 -44 28 -46 C 26 -34 34 -26 46 -22 C 34 -8 16 -8 0 0 Z', fill: G.hojaChay, stroke: '#336f2c', 'stroke-width': 1.1 }, leaf);
+    el('path', { d: 'M0 0 L-36 -24 M0 0 L-16 -42 M0 0 L4 -58 M0 0 L22 -42 M0 0 L38 -22', fill: 'none', stroke: '#d8efc6', 'stroke-width': 1.2, opacity: 0.8 }, leaf);
+    el('path', { d: 'M8 -30 C 16 -40 28 -40 30 -32 C 32 -24 22 -22 20 -28 C 18 -34 26 -36 28 -30', fill: 'none', stroke: '#5ea344', 'stroke-width': 1.3, 'stroke-linecap': 'round' }, a);
+    el('path', { d: 'M2 -30 C 3 -36 6 -40 10 -42', fill: 'none', stroke: '#4f8a36', 'stroke-width': 3, 'stroke-linecap': 'round' }, a);
+    const body = el('g', { transform: 'rotate(10)' }, a);
+    el('path', { d: 'M0 -30 C 14 -30 22 -14 24 4 C 26 20 20 34 8 36 C 4 34 2 31 0 30 C -2 31 -4 34 -8 36 C -20 34 -26 20 -24 4 C -22 -14 -14 -30 0 -30 Z', fill: G.chayote, stroke: '#5a8d33', 'stroke-width': 0.9 }, body);
+    [[-14, -0.9], [-6, -0.35], [6, 0.35], [14, 0.9]].forEach(([x, s]) => el('path', { d: `M${f1(x * 0.4)} -28 C ${f1(x)} -12 ${f1(x * 1.1)} 10 ${f1(x * 0.5)} 32`, fill: 'none', stroke: '#6e9d3d', 'stroke-width': 1, opacity: 0.75 }, body));
+    el('path', { d: 'M-8 36 C -4 30 4 30 8 36', fill: 'none', stroke: '#4d7d2a', 'stroke-width': 1.2 }, body);
+    for (let k = 0; k < 16; k++) { const x = -18 + rng() * 36, y = -16 + rng() * 42; if (Math.abs(x) > 18 - Math.abs(y) * 0.15) continue; el('path', { d: `M${f1(x)} ${f1(y)} l${f1(x > 0 ? 1.6 : -1.6)} -1.2`, stroke: '#eef7d8', 'stroke-width': 0.9, 'stroke-linecap': 'round' }, body); }
+    el('ellipse', { cx: -9, cy: -6, rx: 5, ry: 11, fill: BLANCO, opacity: 0.28, transform: 'rotate(12 -9 -6)' }, body);
+  }
+
+  /* ================================================================= the co-occurrence network */
+  const HUBS = [
+    { x: 235, y: 478, c: AZUL, draw: passionFlower, s: 0.96, name: 'Passiflora edulis' },
+    { x: 615, y: 458, c: AMBAR, draw: maize, s: 0.84, name: 'Zea mays' },
+    { x: 285, y: 735, c: TURQUESA, draw: bee, s: 0.8, name: 'Apis mellifera' },
+    { x: 590, y: 745, c: ROSA, draw: chayote, s: 0.84, name: 'Sechium edule' },
+  ];
+  /* keywords as a database would write them: [label, x, y, radius, community, label side] */
+  const KW = [
+    ['nitrogen', 128, 410, 12, 0, 'a'], ['potassium', 104, 505, 10, 0, 'b'], ['fertilization', 190, 362, 13, 0, 'a'],
+    ['soil', 348, 398, 9, 0, 'a'], ['yield', 332, 565, 14, 0, 'b'], ['mineral nutrition', 150, 592, 11, 0, 'b'],
+    ['landraces', 520, 362, 12, 1, 'a'], ['genetic diversity', 722, 366, 13, 1, 'a'], ['breeding', 748, 470, 10, 1, 'r'],
+    ['drought', 702, 562, 11, 1, 'b'], ['irrigation', 482, 508, 10, 1, 'b'],
+    ['pollination', 158, 680, 13, 2, 'a'], ['flowering', 124, 788, 10, 2, 'b'], ['fruit set', 226, 828, 9, 2, 'b'],
+    ['biodiversity', 402, 822, 11, 2, 'b'], ['climate change', 428, 652, 12, 2, 'a'],
+    ['antioxidants', 722, 668, 13, 3, 'a'], ['phenolic compounds', 748, 778, 11, 3, 'b'], ['fruit quality', 556, 836, 12, 3, 'b'],
+    ['postharvest', 468, 748, 10, 3, 'b'], ['Mexico', 668, 842, 9, 3, 'b'],
+  ];
+  const id = label => KW.findIndex(k => k[0] === label);
+  const within = [['nitrogen', 'potassium'], ['nitrogen', 'fertilization'], ['fertilization', 'soil'], ['yield', 'mineral nutrition'], ['potassium', 'mineral nutrition'],
+    ['landraces', 'genetic diversity'], ['genetic diversity', 'breeding'], ['breeding', 'drought'], ['drought', 'irrigation'],
+    ['pollination', 'flowering'], ['flowering', 'fruit set'], ['climate change', 'biodiversity'], ['pollination', 'climate change'],
+    ['antioxidants', 'phenolic compounds'], ['postharvest', 'fruit quality'], ['fruit quality', 'Mexico'], ['phenolic compounds', 'Mexico']];
+  const between = [['yield', 'irrigation'], ['soil', 'irrigation'], ['fertilization', 'landraces'], ['fruit set', 'fruit quality'],
+    ['climate change', 'drought'], ['yield', 'pollination'], ['biodiversity', 'postharvest'], ['landraces', 'climate change'], ['antioxidants', 'drought']];
+
+  (function network() {
+    const g = el('g', { fill: 'none', 'stroke-linecap': 'round' });
+    /* soft colour fields of the four communities */
+    HUBS.forEach((h, i) => el('circle', { cx: h.x, cy: h.y, r: 178, fill: radial('gCom' + i, [['0%', h.c, 0.11], ['60%', h.c, 0.05], ['100%', h.c, 0]], { r: '50%', fx: '50%', fy: '50%' }) }, g));
+    const curve = (x1, y1, x2, y2, bend) => {
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1;
+      return `M${f1(x1)} ${f1(y1)} Q ${f1(mx - dy / L * bend)} ${f1(my + dx / L * bend)} ${f1(x2)} ${f1(y2)}`;
+    };
+    /* links between the hubs, then between communities, then inside them */
+    [[0, 2, 18], [1, 3, -16], [0, 1, 26], [2, 3, 20]].forEach(([a, b, bend]) => el('path', { d: curve(HUBS[a].x, HUBS[a].y, HUBS[b].x, HUBS[b].y, bend), stroke: NEUTRO, 'stroke-width': 3, opacity: 0.55 }, g));
+    between.forEach(([a, b], k) => { const A = KW[id(a)], B = KW[id(b)]; el('path', { d: curve(A[1], A[2], B[1], B[2], k % 2 ? 22 : -22), stroke: NEUTRO, 'stroke-width': 1.2, opacity: 0.55, 'stroke-dasharray': k % 3 ? null : '5 4' }, g); });
+    KW.forEach(k => { const h = HUBS[k[4]]; el('path', { d: curve(h.x, h.y, k[1], k[2], 10), stroke: h.c, 'stroke-width': 2.2, opacity: 0.6 }, g); });
+    within.forEach(([a, b]) => { const A = KW[id(a)], B = KW[id(b)]; el('path', { d: curve(A[1], A[2], B[1], B[2], 12), stroke: HUBS[A[4]].c, 'stroke-width': 1.3, opacity: 0.45 }, g); });
+    /* keyword nodes and their labels, with a white halo */
+    KW.forEach(([label, x, y, r, c, side]) => {
+      el('circle', { cx: x, cy: y, r, fill: sphere(HUBS[c].c), stroke: BLANCO, 'stroke-width': 1.6 });
+      const pos = { a: [x, y - r - 6, 'middle'], b: [x, y + r + 13, 'middle'], r: [x + r + 6, y + 4, 'start'], l: [x - r - 6, y + 4, 'end'] }[side];
+      el('text', { x: pos[0], y: pos[1], 'text-anchor': pos[2], fill: '#2f3a4d', 'font-family': 'Jost, sans-serif', 'font-size': 11, 'font-weight': 400, 'letter-spacing': 0.2, stroke: BLANCO, 'stroke-width': 3.2, 'stroke-linejoin': 'round', 'paint-order': 'stroke' }, null, label);
+    });
+    /* hubs: a white disc with the community ring, the organism and its scientific name */
+    HUBS.forEach(h => {
+      el('ellipse', { cx: h.x, cy: h.y + 50, rx: 38, ry: 6, fill: G.sombra });
+      el('circle', { cx: h.x, cy: h.y, r: 47, fill: BLANCO, stroke: h.c, 'stroke-width': 3.2 });
+      el('circle', { cx: h.x, cy: h.y, r: 41, fill: mix(h.c, BLANCO, 0.93), stroke: mix(h.c, BLANCO, 0.6), 'stroke-width': 0.8 });
+      h.draw(el('g', { transform: `translate(${h.x} ${h.y}) scale(${h.s})` }));
+      el('text', { x: h.x, y: h.y + 68, 'text-anchor': 'middle', fill: '#27324a', 'font-family': 'Cormorant, serif', 'font-style': 'italic', 'font-size': 16, 'font-weight': 600, stroke: BLANCO, 'stroke-width': 4, 'stroke-linejoin': 'round', 'paint-order': 'stroke' }, null, h.name);
+    });
+    /* caption on the left edge */
+    el('text', { x: 36, y: 604, 'text-anchor': 'middle', fill: '#7b8493', 'font-family': 'Jost, sans-serif', 'font-size': 9.5, 'letter-spacing': 2.4, transform: 'rotate(-90 36 604)' }, null, 'COOCURRENCIA DE PALABRAS CLAVE · KEYWORD CO-OCCURRENCE');
+  })();
+
+  /* ================================================================= bottom panels */
+  const PW = 172, PH = 118, PY = 946;
+  function panel(cx, caption) {
+    const g = el('g', { transform: `translate(${cx} ${PY})` });
+    el('rect', { x: -PW / 2, y: -PH / 2, width: PW, height: PH, rx: 10, fill: '#fbfbfe', stroke: '#e3e6ef' }, g);
+    el('text', { x: 0, y: PH / 2 - 5, 'text-anchor': 'middle', fill: '#7b8493', 'font-family': 'Jost, sans-serif', 'font-size': 7.4, 'letter-spacing': 1.1 }, g, caption);
+    return g;
+  }
+
+  /* Bradford: cumulative documents against the rank of the source (log scale), three zones */
+  (function bradford(cx) {
+    const g = panel(cx, 'LEY DE BRADFORD · BRADFORD');
+    const x0 = -PW / 2 + 16, x1 = PW / 2 - 12, y0 = -PH / 2 + 12, y1 = PH / 2 - 20;
+    const zones = [[0, 0.24, AZUL], [0.24, 0.62, AMBAR], [0.62, 1, ROSA]];
+    zones.forEach(([a, b, c]) => el('rect', { x: f1(x0 + (x1 - x0) * a), y: y0, width: f1((x1 - x0) * (b - a)), height: y1 - y0, fill: c, opacity: 0.1 }, g));
+    [0.24, 0.62].forEach(t => el('path', { d: `M${f1(x0 + (x1 - x0) * t)} ${y0} L${f1(x0 + (x1 - x0) * t)} ${y1}`, stroke: '#9aa3b2', 'stroke-width': 0.8, 'stroke-dasharray': '3 3' }, g));
+    el('path', { d: `M${x0} ${y0} L${x0} ${y1} L${x1} ${y1}`, fill: 'none', stroke: '#b7bcc8', 'stroke-width': 1 }, g);
+    let d = '';
+    for (let i = 0; i <= 40; i++) { const t = i / 40, yv = t < 0.24 ? Math.sqrt(t / 0.24) * 0.34 : 0.34 + (t - 0.24) / 0.76 * 0.66; d += (i ? 'L' : 'M') + f1(x0 + (x1 - x0) * t) + ' ' + f1(y1 - (y1 - y0) * yv); }
+    el('path', { d, fill: 'none', stroke: INK, 'stroke-width': 1.8 }, g);
+    for (let i = 1; i <= 12; i++) { const t = i / 12, yv = t < 0.24 ? Math.sqrt(t / 0.24) * 0.34 : 0.34 + (t - 0.24) / 0.76 * 0.66; el('circle', { cx: f1(x0 + (x1 - x0) * t), cy: f1(y1 - (y1 - y0) * yv), r: 2.2, fill: t < 0.24 ? AZUL : t < 0.62 ? AMBAR : ROSA }, g); }
+  })(146);
+
+  /* thematic map: centrality and density, four quadrants and bubbles */
+  (function thematic(cx) {
+    const g = panel(cx, 'MAPA TEMÁTICO · THEMATIC MAP');
+    const x0 = -PW / 2 + 14, x1 = PW / 2 - 14, y0 = -PH / 2 + 10, y1 = PH / 2 - 20, mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+    [[x0, y0, AZUL], [mx, y0, TURQUESA], [x0, my, AMBAR], [mx, my, ROSA]].forEach(([x, y, c]) => el('rect', { x, y, width: mx - x0, height: my - y0, fill: c, opacity: 0.08 }, g));
+    el('path', { d: `M${mx} ${y0} L${mx} ${y1} M${x0} ${my} L${x1} ${my}`, stroke: '#9aa3b2', 'stroke-width': 0.9, 'stroke-dasharray': '4 3' }, g);
+    [[-54, -22, 7, AZUL], [-24, -30, 5, AZUL], [38, -24, 10, TURQUESA], [58, -8, 6, TURQUESA], [-44, 14, 6, AMBAR], [-18, 22, 9, AMBAR], [30, 18, 12, ROSA], [60, 26, 5, ROSA]]
+      .forEach(([x, y, r, c]) => el('circle', { cx: x, cy: y, r, fill: c, opacity: 0.8, stroke: BLANCO, 'stroke-width': 1 }, g));
+  })(332);
+
+  /* collaboration: a globe with arcs between countries */
+  (function globe(cx) {
+    const g = panel(cx, 'COLABORACIÓN · COLLABORATION');
+    const R = 40, cy = -8;
+    el('circle', { cx: 0, cy, r: R, fill: radial('gGlobo', [['0%', '#f3f8ff'], ['70%', '#dfeaf8'], ['100%', '#c3d5ee']], { r: '60%', fx: '38%', fy: '32%' }), stroke: '#9fb4d3', 'stroke-width': 1 }, g);
+    [-0.5, 0, 0.5].forEach(t => el('ellipse', { cx: 0, cy: f1(cy + t * R * 0.9), rx: f1(R * Math.sqrt(1 - t * t * 0.81)), ry: f1(R * 0.22 * Math.sqrt(1 - t * t * 0.81)), fill: 'none', stroke: '#b5c6df', 'stroke-width': 0.7 }, g));
+    [0.35, 0.75].forEach(s => el('ellipse', { cx: 0, cy, rx: f1(R * s), ry: R, fill: 'none', stroke: '#b5c6df', 'stroke-width': 0.7 }, g));
+    el('path', { d: `M0 ${cy - R} L0 ${cy + R}`, stroke: '#b5c6df', 'stroke-width': 0.7 }, g);
+    const pts = [[-26, -14], [-12, 12], [8, -26], [24, -6], [18, 20], [-30, 8]];
+    [[0, 3, AZUL], [1, 3, AMBAR], [0, 2, TURQUESA], [5, 4, ROSA], [1, 2, AZUL], [2, 4, AMBAR]].forEach(([a, b, c]) => {
+      const [x1, y1] = pts[a], [x2, y2] = pts[b];
+      el('path', { d: `M${x1} ${y1 + cy} Q ${f1((x1 + x2) / 2)} ${f1(Math.min(y1, y2) + cy - 18)} ${x2} ${y2 + cy}`, fill: 'none', stroke: c, 'stroke-width': 1.6, opacity: 0.85 }, g);
+    });
+    pts.forEach(([x, y]) => el('circle', { cx: x, cy: y + cy, r: 2.6, fill: INK, stroke: BLANCO, 'stroke-width': 0.8 }, g));
+  })(518);
+
+  /* PRISMA 2020: identification, screening, inclusion */
+  (function prisma(cx) {
+    const g = panel(cx, 'PRISMA 2020');
+    const bw = 64, bh = 15, x = -20;
+    const rows = [[-44, AZUL], [-18, TURQUESA], [8, AMBAR], [34, ROSA]];
+    rows.forEach(([y, c], i) => {
+      el('rect', { x: x - bw / 2, y: y - bh / 2, width: bw, height: bh, rx: 3, fill: BLANCO, stroke: c, 'stroke-width': 1.4 }, g);
+      el('rect', { x: x - bw / 2 + 6, y: y - 1.5, width: f1(bw * (0.7 - i * 0.12)), height: 3, rx: 1.5, fill: c, opacity: 0.55 }, g);
+      if (i < 3) {
+        el('path', { d: `M${x} ${y + bh / 2} L${x} ${y + 26 - bh / 2 - 3}`, stroke: '#7b8493', 'stroke-width': 1 }, g);
+        el('path', { d: `M${x - 3} ${y + 26 - bh / 2 - 4} L${x} ${y + 26 - bh / 2} L${x + 3} ${y + 26 - bh / 2 - 4}`, fill: '#7b8493' }, g);
+      }
+      if (i < 3) {
+        el('path', { d: `M${x + bw / 2} ${y} L${x + bw / 2 + 12} ${y}`, stroke: '#7b8493', 'stroke-width': 1 }, g);
+        el('rect', { x: x + bw / 2 + 14, y: y - 6, width: 34, height: 12, rx: 3, fill: '#f1f3f8', stroke: '#b7bcc8', 'stroke-width': 0.9 }, g);
+      }
+    });
+    el('rect', { x: -PW / 2 + 6, y: -52, width: 6, height: 22, rx: 2, fill: AZUL, opacity: 0.8 }, g);
+    el('rect', { x: -PW / 2 + 6, y: -26, width: 6, height: 48, rx: 2, fill: TURQUESA, opacity: 0.8 }, g);
+    el('rect', { x: -PW / 2 + 6, y: 26, width: 6, height: 16, rx: 2, fill: ROSA, opacity: 0.8 }, g);
+  })(704);
+
+  /* ---------------------------------------------------------------- author */
+  const au = el('g', { 'text-anchor': 'middle' });
+  el('text', { x: W / 2, y: 1046, fill: INK, 'font-family': 'Cormorant, serif', 'font-size': 26, 'font-weight': 600, 'letter-spacing': 1 }, au, 'Luis Ángel Barrera-Guzmán · Gabriela Ramírez-Ojeda');
+  el('text', { x: W / 2, y: 1074, fill: GRIS, 'font-family': 'Jost, sans-serif', 'font-size': 10.5, 'font-weight': 400, 'letter-spacing': 4 }, au, 'VERSIÓN 1.0.0 · VERSION 1.0.0 · 2026');
+})();
+</script>
+</body>
+</html>

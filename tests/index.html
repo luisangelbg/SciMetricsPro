@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SciMetricsPro · pruebas</title>
+<link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .test-report { max-width: 980px; margin: 0 auto; padding: 24px 20px 10px; font: 14px/1.5 system-ui, sans-serif; }
+  .test-report h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  #summary { font-size: 1.1rem; font-weight: 700; margin: 8px 0 16px; padding: 10px 14px; border-radius: 10px; background: #e8eef7; }
+  body.all-pass #summary { background: #dcf3e2; color: #1d6b31; }
+  body.has-fail #summary { background: #fbe1dd; color: #9f2d22; }
+  .suite h2 { font-size: 0.95rem; margin: 16px 0 4px; }
+  .suite ul { list-style: none; margin: 0; padding: 0; }
+  .suite li { padding: 2px 0; font-size: 0.86rem; }
+  .suite li.pass { color: #1d6b31; }
+  .suite li.fail { color: #9f2d22; font-weight: 600; }
+  :root[data-theme="dark"] .suite li.pass { color: #5cc26f; }
+  #resultJson { display: none; }
+  .sandbox-note { max-width: 980px; margin: 30px auto 6px; padding: 0 20px; color: #5a6a81; font: 12px system-ui, sans-serif; }
+  #app { min-height: auto; border-top: 3px dashed #b9c7da; }
+</style>
+</head>
+<body>
+<div class="test-report">
+  <h1>SciMetricsPro · pruebas</h1>
+  <div id="summary">Ejecutando…</div>
+  <div id="results"></div>
+  <pre id="resultJson"></pre>
+</div>
+<p class="sandbox-note">La app se monta aquí abajo para las pruebas de la interfaz.</p>
+<div id="app"></div>
+
+<!-- same order as index.html, without js/app/main.js -->
+<script src="../vendor/xlsx.full.min.js"></script>
+<script src="../js/core/core.js"></script>
+<script>
+  /* the tests must not touch the user's saved language or theme, and they start from the defaults */
+  APP.storagePrefix = 'scimetricspro-test:'; APP.assetBase = '../';
+  /* no guided tour and no autosave or recovery question unless a test asks for them */
+  window.SMP_TEST = true;
+  Prefs.del('lang'); Prefs.del('theme');
+</script>
+<script src="../js/i18n/i18n.js"></script>
+<script src="../js/i18n/es.js"></script>
+<script src="../js/i18n/en.js"></script>
+<script src="../js/core/theme.js"></script>
+<script src="../js/core/figure.js"></script>
+<script src="../data/world.js"></script>
+<script src="../js/core/worker.js"></script>
+<script src="../js/export/zip.js"></script>
+<script src="../js/export/xlsx.js"></script>
+<script src="../js/export/docx.js"></script>
+<script src="../js/export/pdf.js"></script>
+<script src="../js/export/tabular.js"></script>
+<script src="../js/export/graph.js"></script>
+<script src="../js/export/records.js"></script>
+<script src="../js/export/report.js"></script>
+<script src="../js/components/empty-state.js"></script>
+<script src="../js/components/help-popover.js"></script>
+<script src="../js/components/metric-card.js"></script>
+<script src="../js/components/progress-overlay.js"></script>
+<script src="../js/components/data-table.js"></script>
+<script src="../js/components/chart-card.js"></script>
+<script src="../js/components/charts.js"></script>
+<script src="../js/components/network-view.js"></script>
+<script src="../js/components/network-panel.js"></script>
+<script src="../js/components/network-screen.js"></script>
+<script src="../js/parsers/text.js"></script>
+<script src="../js/model/countries.js"></script>
+<script src="../js/model/record.js"></script>
+<script src="../js/parsers/references.js"></script>
+<script src="../js/parsers/csv.js"></script>
+<script src="../js/parsers/tagged2.js"></script>
+<script src="../js/parsers/tagged4.js"></script>
+<script src="../js/parsers/ris.js"></script>
+<script src="../js/parsers/bibtex.js"></script>
+<script src="../js/parsers/openapi.js"></script>
+<script src="../js/parsers/detect.js"></script>
+<script src="../js/cleaning/dedup.js"></script>
+<script src="../js/cleaning/authors.js"></script>
+<script src="../js/cleaning/institutions.js"></script>
+<script src="../js/cleaning/terms.js"></script>
+<script src="../js/cleaning/filters.js"></script>
+<script src="../js/metrics/overview.js"></script>
+<script src="../js/metrics/sources.js"></script>
+<script src="../js/metrics/authors.js"></script>
+<script src="../js/metrics/documents.js"></script>
+<script src="../js/metrics/factorial.js"></script>
+<script src="../js/metrics/prisma.js"></script>
+<script src="../js/networks/build.js"></script>
+<script src="../js/networks/communities.js"></script>
+<script src="../js/networks/metrics.js"></script>
+<script src="../js/networks/layout.js"></script>
+<script src="../js/networks/analysis.js"></script>
+<script src="../js/networks/thematic.js"></script>
+<script src="../js/networks/intellectual.js"></script>
+<script src="../js/networks/social.js"></script>
+<script src="../js/search/glossary.js"></script>
+<script src="../js/search/strategy.js"></script>
+<script src="../js/parsers/index.js"></script>
+<script src="../js/modules/registry.js"></script>
+<script src="../js/modules/import-search.js"></script>
+<script src="../js/modules/import-keywords.js"></script>
+<script src="../js/modules/import.js"></script>
+<script src="../js/cleaning/pipeline.js"></script>
+<script src="../js/modules/cleaning.js"></script>
+<script src="../js/modules/overview.js"></script>
+<script src="../js/modules/sources.js"></script>
+<script src="../js/modules/authors.js"></script>
+<script src="../js/modules/documents.js"></script>
+<script src="../js/modules/conceptual.js"></script>
+<script src="../js/modules/intellectual.js"></script>
+<script src="../js/modules/social.js"></script>
+<script src="../js/modules/prisma.js"></script>
+<script src="../js/modules/export.js"></script>
+<script src="../js/components/tour.js"></script>
+<script src="../js/app/layout.js"></script>
+<script src="../js/app/home.js"></script>
+<script src="../js/app/about.js"></script>
+<script src="../js/app/project.js"></script>
+<script src="../js/app/app.js"></script>
+
+<script src="fixtures/idxa-csv.js"></script>
+<script src="fixtures/idxb-tagged.js"></script>
+<script src="fixtures/biomed-tagged.js"></script>
+<script src="fixtures/ris.js"></script>
+<script src="fixtures/bibtex.js"></script>
+<script src="fixtures/openapi.js"></script>
+
+<script src="harness.js"></script>
+<script src="core.test.js"></script>
+<script src="i18n.test.js"></script>
+<script src="components.test.js"></script>
+<script src="app.test.js"></script>
+<script src="parsers.test.js"></script>
+<script src="import.test.js"></script>
+<script src="openapi.test.js"></script>
+<script src="cleaning.test.js"></script>
+<script src="overview.test.js"></script>
+<script src="sources.test.js"></script>
+<script src="authors.test.js"></script>
+<script src="documents.test.js"></script>
+<script src="networks.test.js"></script>
+<script src="thematic.test.js"></script>
+<script src="intellectual.test.js"></script>
+<script src="social.test.js"></script>
+<script src="prisma.test.js"></script>
+<script src="export.test.js"></script>
+<script src="report.test.js"></script>
+<script src="project.test.js"></script>
+<script src="keywords.test.js"></script>
+<script src="formulas.test.js"></script>
+<script src="e2e.test.js"></script>
+<script>
+  window.addEventListener('load', () => { I18N.init(); TestHarness.run(); });
+</script>
+</body>
+</html>

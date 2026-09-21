@@ -1,0 +1,34 @@
+/* SciMetricsPro — manual de usuario / user manual
+   Hoja de estilo común a todas las partes. Página tamaño carta (21.59 × 27.94 cm),
+   pensada para imprimirse a PDF desde el navegador sin márgenes añadidos.
+   Tipografías: Cormorant (títulos) y Jost (rótulos), ambas con licencia SIL Open Font License 1.1. */
+
+@page { size: 8.5in 11in; margin: 0; }
+
+:root {
+  --tinta: #14213d;
+  --azul: #1d5bb0;       /* color de la app: "Pro" y acentos */
+  --ambar: #e39b2d;
+  --turquesa: #1f9e8f;
+  --rosa: #c8416a;
+  --serif: 'Cormorant', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --sans: 'Jost', 'Segoe UI', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: #5b6474; font-family: var(--serif); color: var(--tinta); }
+
+/* each .page is one sheet */
+.page {
+  width: 8.5in; height: 11in; margin: 0.35in auto; position: relative; overflow: hidden;
+  background: #ffffff; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  page-break-after: always; break-after: page;
+}
+.page > svg { display: block; width: 100%; height: 100%; }
+
+@media print {
+  body { background: none; }
+  .page { margin: 0; box-shadow: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

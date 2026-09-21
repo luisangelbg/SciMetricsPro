@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SciMetricsPro · galería de componentes</title>
+<link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .gallery { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+  .gallery > h1 { margin: 0 0 4px; }
+  .gallery > h2 { margin: 30px 0 10px; font-size: 1.05rem; color: var(--primary); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<!-- Página de desarrollo: muestra los componentes comunes con datos de juguete. No forma parte de la app. -->
+<div class="gallery">
+  <h1>Galería de componentes</h1>
+  <p class="hint">Datos de juguete para revisar el aspecto y el comportamiento de los componentes comunes.</p>
+  <div class="row">
+    <button class="btn btn-secondary btn-sm" id="gLang">ES / EN</button>
+    <button class="btn btn-secondary btn-sm" id="gTheme">Claro / oscuro</button>
+    <button class="btn btn-secondary btn-sm" id="gProgress">Probar ProgressOverlay</button>
+  </div>
+  <h2>MetricCard + HelpPopover</h2>
+  <div id="gMetrics"></div>
+  <h2>ChartCard</h2>
+  <div id="gChart"></div>
+  <h2>DataTable</h2>
+  <div id="gTable"></div>
+  <h2>EmptyState</h2>
+  <div id="gEmpty"></div>
+</div>
+
+<script src="../vendor/xlsx.full.min.js"></script>
+<script src="../js/core/core.js"></script>
+<script>APP.assetBase = '../';</script>
+<script src="../js/i18n/i18n.js"></script>
+<script src="../js/i18n/es.js"></script>
+<script src="../js/i18n/en.js"></script>
+<script src="../js/core/theme.js"></script>
+<script src="../js/core/figure.js"></script>
+<script src="../js/core/worker.js"></script>
+<script src="../js/export/tabular.js"></script>
+<script src="../js/components/empty-state.js"></script>
+<script src="../js/components/help-popover.js"></script>
+<script src="../js/components/metric-card.js"></script>
+<script src="../js/components/progress-overlay.js"></script>
+<script src="../js/components/data-table.js"></script>
+<script src="../js/components/chart-card.js"></script>
+<script>
+  window.App = { go: r => toast('App.go(' + r + ')') };
+  I18N.init(); Theme.init();
+  const hHelp = {
+    title: 'Índice h',
+    text: 'Número h de documentos que tienen al menos h citas cada uno.',
+    formula: '<var>h</var> = max { <var>i</var> : <var>c</var><sub>(<var>i</var>)</sub> ≥ <var>i</var> }',
+    where: [['<var>c</var><sub>(<var>i</var>)</sub>', 'citas del documento en la posición i, ordenados de mayor a menor']],
+    interpretation: 'Combina productividad e impacto; depende de la antigüedad y del campo.',
+    refs: ['Hirsch, J. E. (2005). An index to quantify an individual’s scientific research output. PNAS, 102(46), 16569–16572.'],
+  };
+  const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  const counts = [5, 3, 8, 7, 6, 5, 11, 13, 20, 14, 15];
+  function drawAll() {
+    ['gMetrics', 'gChart', 'gTable', 'gEmpty'].forEach(id => el(id).innerHTML = '');
+    MetricCard.grid('gMetrics', [
+      { label: 'Documentos', value: 190, sub: '1977–2026', icon: 'doc', tone: 'primary' },
+      { label: 'Índice h', value: 23, sub: 'de la colección', icon: 'sigma', tone: 'accent', help: hHelp },
+      { label: 'Autores', value: 1054, icon: 'people', tone: 'teal' },
+      { label: 'Tasa de crecimiento anual', value: '5.2 %', icon: 'gauge', tone: 'rose' },
+    ]);
+    const data = { columns: [{ key: 'year', label: 'Año' }, { key: 'n', label: 'Documentos' }], rows: years.map((y, i) => ({ year: y, n: counts[i] })) };
+    ChartCard.mount('gChart', {
+      id: 'figGallery', title: 'Producción científica anual', subtitle: 'Documentos por año de publicación', help: hHelp, data,
+      width: 820, height: 420,
+      render: cfg => {
+        const s = Fig.svg(cfg.width, cfg.height, cfg.theme);
+        const th = Fig.themes[cfg.theme] || Fig.themes.light;
+        const x0 = 70, y0 = cfg.height - 60, w = cfg.width - 100, h = cfg.height - 120, bw = w / years.length;
+        const max = Math.max(...counts);
+        counts.forEach((c, i) => s.appendChild(Fig.el('rect', { x: x0 + i * bw + 6, y: y0 - c / max * h, width: bw - 12, height: c / max * h, rx: 3, fill: Fig.color('scimetrics', 0) })));
+        years.forEach((y, i) => s.appendChild(Fig.text(x0 + i * bw + bw / 2, y0 + 20, String(y), { size: 12, anchor: 'middle', role: 'tick', fill: th.muted })));
+        s.appendChild(Fig.el('line', { x1: x0, y1: y0, x2: x0 + w, y2: y0, stroke: th.axis }));
+        s.appendChild(Fig.text(cfg.width / 2, 34, 'Producción científica anual', { size: 18, weight: 'bold', anchor: 'middle', role: 'title', fill: th.fg }));
+        return s;
+      },
+    });
+    const names = ['Cadena-Iñiguez, J.', 'Avendaño-Arrazate, C. H.', 'Arévalo-Galarza, M. L.', 'Soto-Hernández, M.', 'Aguirre-Medina, J. F.', 'Ruiz-Posadas, L. M.', 'Cisneros-Solano, V. M.', 'Ávila-Uribe, M.'];
+    const rows = [];
+    for (let i = 0; i < 40; i++) rows.push({ author: names[i % names.length] + (i >= names.length ? ' ' + (i + 1) : ''), docs: (i * 7) % 13 + 1, cites: i % 6 === 0 ? null : (i * 31) % 250, h: (i * 5) % 9 });
+    DataTable.mount('gTable', { title: 'Autores más productivos', fileName: 'autores', pageSize: 10, sort: { key: 'docs', dir: 'desc' },
+      columns: [{ key: 'author', label: 'Autor' }, { key: 'docs', label: 'Documentos', type: 'int' }, { key: 'cites', label: 'Citas', type: 'int' }, { key: 'h', label: 'Índice h', type: 'int' }], rows });
+    EmptyState.mount('gEmpty');
+  }
+  drawAll();
+  on('langchange', drawAll);
+  el('gLang').onclick = () => I18N.setLang(I18N.lang === 'es' ? 'en' : 'es');
+  el('gTheme').onclick = () => Theme.toggle();
+  el('gProgress').onclick = () => ProgressOverlay.run({
+    title: 'Calculando la red de coautoría', message: 'preparando…', payload: 40,
+    main: async (n, progress) => { for (let i = 1; i <= n; i++) { const t = Date.now(); while (Date.now() - t < 50) {} progress(i / n, 'paso ' + i + ' de ' + n); } return n; },
+  }).then(r => r && toast('Listo: ' + r));
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 12 · Revisión sistemática PRISMA 2020</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap12 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap12 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 12 -->
+<section class="capitulo cap12" id="cap-prisma" data-pestana="12" data-orden="12" style="--acento: var(--b11)">
+  <div class="cap-apertura">
+    <div class="cap-num">12</div>
+    <div class="cap-etiqueta">Capítulo doce</div>
+    <h1>Revisión sistemática PRISMA 2020</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Del conjunto de documentos a los estudios de una revisión: el cribado documento por documento con atajos de teclado, los motivos de exclusión, el diagrama de flujo PRISMA 2020 que se llena solo, y la opción de analizar con todos los módulos únicamente los estudios incluidos.</p>
+    <div class="cap-franja"><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span></div>
+    <ul class="cap-contenido">
+      <li><b>12.1</b>La revisión sistemática en la app</li>
+      <li><b>12.2</b>Cribado</li>
+      <li><b>12.3</b>Diagrama de flujo</li>
+      <li><b>12.4</b>Motivos de exclusión</li>
+      <li><b>12.5</b>Analizar solo los incluidos</li>
+    </ul>
+  </div>
+
+  <p class="lead">Un análisis bibliométrico describe todo lo que se publicó sobre un tema; una <b>revisión sistemática</b> elige, con criterios explícitos, los estudios que responden a una pregunta. La pantalla <span class="ui">PRISMA</span>, en el grupo <span class="ui">Revisión sistemática</span> de la barra lateral, lleva ese proceso dentro de la app: decides documento por documento, anotas por qué excluyes cada uno y la app dibuja el diagrama de flujo que piden las revistas.</p>
+
+  <!-- 12.1 -->
+  <h2 id="s12-1"><span class="num">12.1</span>La revisión sistemática en la app</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · la declaración PRISMA 2020</div>
+    <p>PRISMA (<i>Preferred Reporting Items for Systematic reviews and Meta-Analyses</i>) es la guía que usan las revistas para informar una revisión sistemática (Page y colaboradores, 2021). Su <b>diagrama de flujo</b> cuenta los registros en cada etapa: cuántos se <b>identificaron</b> en cada base de datos, cuántos se eliminaron antes de revisarlos (duplicados y otras razones), cuántos se <b>cribaron</b> por título y resumen, cuántas publicaciones se buscaron y se evaluaron en texto completo, por qué se excluyó cada una y cuántos estudios quedaron <b>incluidos</b>. El diagrama hace la revisión reproducible: cualquiera puede comprobar que los números cuadran.</p>
+  </div>
+
+  <p>La app arma el diagrama con información de tres lugares: los <b>registros de cada archivo</b> importado (capítulo 3), los <b>duplicados y los filtros</b> de <span class="ui">Limpieza y filtros</span> (capítulo 4) y las <b>decisiones</b> que tomes en la pestaña <span class="ui">Cribado</span>. Solo unos pocos números no los puede saber, y se escriben a mano en el panel del diagrama.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 12.1.</b> De dónde sale cada caja del diagrama PRISMA 2020.</caption>
+    <thead><tr><th style="width:34%">Caja</th><th>Cómo se calcula</th></tr></thead>
+    <tbody>
+      <tr><td>Registros identificados</td><td>Registros de cada archivo importado, más los registros de estudios escritos a mano.</td></tr>
+      <tr><td>Eliminados antes del cribado</td><td>Duplicados unidos en Limpieza + marcados por herramientas de automatización (a mano) + otras razones: los que quitan los filtros de Limpieza más los escritos a mano.</td></tr>
+      <tr><td>Registros cribados</td><td>Identificados − eliminados antes del cribado: los documentos de la pestaña <span class="ui">Cribado</span>.</td></tr>
+      <tr><td>Registros excluidos</td><td>Documentos excluidos <b>sin motivo</b>: descartados por título y resumen.</td></tr>
+      <tr><td>Publicaciones buscadas</td><td>Cribados − excluidos por título y resumen.</td></tr>
+      <tr><td>Publicaciones no recuperadas</td><td>Excluidos con el motivo <span class="ui">Texto completo no recuperado</span>.</td></tr>
+      <tr><td>Publicaciones evaluadas</td><td>Buscadas − no recuperadas.</td></tr>
+      <tr><td>Publicaciones excluidas</td><td>Excluidos con cualquier otro motivo, una línea por motivo.</td></tr>
+      <tr><td>Estudios incluidos</td><td>Documentos incluidos, y aparte los que siguen pendientes (sin decidir o dudosos).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el ejemplo de este capítulo</div>
+    <p>Las figuras usan los <b>datos de ejemplo</b> del maracuyá (300 documentos del catálogo abierto). Para simular una revisión se hicieron dos cosas: en <span class="ruta">Limpieza y filtros › Filtros</span> se dejaron solo los artículos (282 de 300; los otros 18 —tesis, actas, capítulos y una revisión— cuentan como eliminados por otras razones), y se cribaron los 20 primeros documentos con el teclado: 5 incluidos, 8 excluidos por título y resumen, 5 excluidos en texto completo con su motivo, 1 no recuperado y 1 dudoso. Cada caja del diagrama se comprobó a mano a partir de esas 20 decisiones.</p>
+  </div>
+
+  <!-- 12.2 -->
+  <h2 id="s12-2"><span class="num">12.2</span>Cribado</h2>
+  <p>La pestaña <span class="ui">Cribado</span> muestra un documento a la vez, en el orden del conjunto (en el ejemplo, del más al menos citado), con lo necesario para decidir: título, autores, año, fuente, DOI con enlace, resumen y palabras clave. Arriba están la barra de herramientas y el progreso; abajo, los botones de decisión.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/prisma-cribado.png" alt="Barra de herramientas, barra de progreso y ficha de cribado de un documento con términos resaltados y botones de decisión">
+      <span class="marca" style="left:90.7%;top:4.1%">1</span>
+      <span class="marca" style="left:39.5%;top:24%">2</span>
+      <span class="marca" style="left:61.4%;top:29%">3</span>
+      <span class="marca" style="left:95%;top:24%">4</span>
+      <span class="marca" style="left:47%;top:29.3%">5</span>
+      <span class="marca" style="left:62.3%;top:40%">6</span>
+      <span class="marca" style="left:91.4%;top:57.6%">7</span>
+      <span class="marca" style="left:52.5%;top:81.1%">8</span>
+      <span class="marca" style="left:43.5%;top:87%">9</span>
+    </div>
+    <figcaption><b>Figura 12.1.</b> La ficha de cribado del ejemplo, después de 20 decisiones.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Analizar solo los incluidos (sección 12.5).</li>
+    <li><span class="n">2</span>Términos que se resaltan en la ficha.</li>
+    <li><span class="n">3</span>Qué documentos mostrar.</li>
+    <li><span class="n">4</span>Pasar al siguiente al decidir.</li>
+    <li><span class="n">5</span>Exportar o borrar las decisiones.</li>
+    <li><span class="n">6</span>Progreso: decididos y cada estado.</li>
+    <li><span class="n">7</span>Un término resaltado en el título.</li>
+    <li><span class="n">8</span>Incluir, excluir, dudoso, quitar decisión.</li>
+    <li><span class="n">9</span>Motivo de la exclusión.</li>
+  </ul>
+
+  <p>Con el teclado el cribado es rápido: <kbd>I</kbd> incluye, <kbd>E</kbd> excluye con el motivo elegido, <kbd>D</kbd> marca como dudoso, <kbd>U</kbd> quita la decisión y <kbd>←</kbd> <kbd>→</kbd> pasan al documento anterior y al siguiente. Las teclas funcionan en cualquier parte de la pestaña, salvo mientras escribes en un campo, y la app las recuerda debajo de la ficha.</p>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla · el motivo decide la etapa</div>
+    <table>
+      <thead><tr><th>Si excluyes con…</th><th>el documento cuenta en…</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ui">Sin motivo (cribado de título y resumen)</span></td><td>Registros excluidos, en la etapa de cribado.</td></tr>
+        <tr><td><span class="ui">Texto completo no recuperado</span></td><td>Publicaciones no recuperadas.</td></tr>
+        <tr><td>Cualquier otro motivo (población, diseño, intervención…)</td><td>Publicaciones excluidas, en la línea de ese motivo.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">El selector conserva el último motivo elegido: vuelve a <span class="ui">Sin motivo</span> cuando regreses a cribar por título y resumen.</p>
+  </div>
+
+  <p>El selector <span class="ui">Mostrar</span> tiene cinco vistas: <span class="ui">Pendientes (sin decidir y dudosos)</span>, la que se usa para cribar, donde cada documento decidido sale de la lista y aparece el siguiente; <span class="ui">Todos</span>; y una vista por estado —incluidos, excluidos y dudosos— para revisar lo decidido. Las decisiones se guardan en esta computadora al momento y viajan dentro del proyecto (capítulo 2); cada documento se identifica por su DOI o, si no lo tiene, por su título y año, así que las decisiones se conservan aunque importes de nuevo los archivos. <span class="ui">Exportar decisiones (.xlsx)</span> descarga una hoja de cálculo con cada documento, su decisión, la etapa, el motivo y la fecha, y otra hoja con los números del diagrama.</p>
+
+  <!-- 12.3 -->
+  <h2 id="s12-3"><span class="num">12.3</span>Diagrama de flujo</h2>
+  <p>La pestaña <span class="ui">Diagrama de flujo</span> tiene a la izquierda el panel <span class="ui">Parámetros del diagrama</span>. Su primer grupo, <span class="ui">Bases de datos</span>, pide un nombre para cada archivo importado: por omisión es el nombre del archivo, y conviene cambiarlo por el nombre de la base y la fecha de la búsqueda, como se informará en el artículo. El segundo grupo, <span class="ui">Números que no calcula la app</span>, recibe los registros identificados en registros de estudios, los marcados por herramientas de automatización y los eliminados por otras razones que no sean los filtros.</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/prisma-diagrama-pantalla.png" alt="Panel de parámetros del diagrama, aviso de pendientes y cinco tarjetas con los números del diagrama">
+      <span class="marca" style="left:22.6%;top:23.6%">1</span>
+      <span class="marca" style="left:20%;top:67.4%">2</span>
+      <span class="marca" style="left:75.9%;top:36.8%">3</span>
+      <span class="marca" style="left:86%;top:83%">4</span>
+    </div>
+    <figcaption><b>Figura 12.2.</b> El panel del diagrama y sus tarjetas en el ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Nombre de la base para cada archivo.</li>
+    <li><span class="n">2</span>Números que se escriben a mano.</li>
+    <li><span class="n">3</span>Documentos que siguen pendientes.</li>
+    <li><span class="n">4</span>Las tarjetas resumen el diagrama.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/prisma-diagrama.png" alt="Diagrama de flujo PRISMA 2020 del ejemplo con las cajas de identificación, cribado e inclusión">
+      <span class="marca" style="left:4.8%;top:41.5%">1</span>
+      <span class="marca" style="left:46.5%;top:31.1%">2</span>
+      <span class="marca" style="left:92.6%;top:36.5%">3</span>
+      <span class="marca" style="left:77.5%;top:46.6%">4</span>
+      <span class="marca" style="left:85%;top:56.7%">5</span>
+      <span class="marca" style="left:89.7%;top:74.6%">6</span>
+      <span class="marca" style="left:40.5%;top:90%">7</span>
+    </div>
+    <figcaption><b>Figura 12.3.</b> El diagrama de flujo PRISMA 2020 del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Las tres fases: identificación, cribado, incluidos.</li>
+    <li><span class="n">2</span>El nombre escrito en el panel.</li>
+    <li><span class="n">3</span>Los 18 que quitó el filtro de tipos.</li>
+    <li><span class="n">4</span>Excluidos por título y resumen.</li>
+    <li><span class="n">5</span>Texto completo no recuperado.</li>
+    <li><span class="n">6</span>Excluidos en texto completo, por motivo.</li>
+    <li><span class="n">7</span>Incluidos y pendientes.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · veinte decisiones en el diagrama</div>
+    <p>Los 300 registros del catálogo se identifican en una base, con el nombre que se le dio en el panel. No hay duplicados; el filtro de artículos quita 18 registros, que aparecen como eliminados por otras razones, y quedan <b>282 cribados</b>. De los 20 decididos, 8 se excluyeron sin motivo por título y resumen, así que se buscan 274 publicaciones; una no se recuperó y se evalúan <b>273</b>. En texto completo se excluyeron 5: una por población, una por diseño, dos por intervención y una por resultados. Quedan <b>5 estudios incluidos</b> y 263 pendientes (262 sin decidir y 1 dudoso). Las cuentas cierran: 273 evaluadas − 5 excluidas = 5 incluidos + 263 pendientes.</p>
+  </div>
+
+  <p>Mientras queden documentos sin decidir, un aviso lo dice y el diagrama los muestra en la caja final como pendientes; con todos decididos, el diagrama queda completo. Si los números no cuadraran —por ejemplo, porque cambiaste los archivos después de cribar—, un aviso señala la diferencia. Desde <span class="ui">Editar figura</span> se cambian los textos del encabezado, los colores, el tamaño de letra y si se muestran los pendientes; la figura se exporta como cualquier otra (capítulo 13).</p>
+
+  <!-- 12.4 -->
+  <h2 id="s12-4"><span class="num">12.4</span>Motivos de exclusión</h2>
+  <p>Debajo del diagrama está la lista de motivos para excluir textos completos. La app trae seis de uso común; cámbiales el texto o agrega los de tu protocolo, para que el diagrama diga exactamente los criterios de tu revisión.</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/prisma-motivos.png" alt="Editor de los seis motivos de exclusión con cuántos documentos usa cada uno">
+      <span class="marca" style="left:62%;top:28.2%">1</span>
+      <span class="marca" style="left:62%;top:71%">2</span>
+      <span class="marca" style="left:62%;top:93.2%">3</span>
+    </div>
+    <figcaption><b>Figura 12.4.</b> El editor de motivos de exclusión del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>El texto se cambia en el campo.</li>
+    <li><span class="n">2</span>Solo se borran los que no se usan.</li>
+    <li><span class="n">3</span>Agregar un motivo nuevo.</li>
+  </ul>
+
+  <p>Cambiar el texto de un motivo lo cambia en la ficha de cribado, en el diagrama y en la hoja exportada, también para los documentos ya excluidos con él. Un motivo que ya se usó no se puede borrar: primero hay que quitar o cambiar esas decisiones, para que ninguna exclusión quede sin explicación.</p>
+
+  <!-- 12.5 -->
+  <h2 id="s12-5"><span class="num">12.5</span>Analizar solo los incluidos</h2>
+  <p>Al terminar el cribado, la casilla <span class="ui">Analizar solo los incluidos</span>, arriba de las pestañas, hace que <b>todos los módulos</b> —panorama, fuentes, autores, documentos, las tres estructuras y la exportación— usen solo los documentos incluidos. Así, el análisis bibliométrico de una revisión sistemática describe los estudios que la revisión eligió, no todo lo que devolvió la búsqueda. El contador del encabezado lo recuerda en todas las pantallas.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el panorama de cinco estudios</div>
+    <p>Con la casilla marcada, el panorama del ejemplo pasa de 300 documentos a los 5 incluidos: se publicaron entre 2014 y 2022 en 3 revistas, los firman 20 autores distintos (25 firmas en total, 5 por documento) y tienen 42.4 citas en promedio. Esos números se comprobaron a mano con las cinco fichas: tres estudios sobre riego con agua salina y fertilización potásica u organomineral, uno sobre biofertilizantes y uno sobre hongos micorrícicos y vermicomposta, con 61, 43, 35, 33 y 40 citas. Una inclusión nueva llega al instante a todos los módulos.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/prisma-incluidos.png" alt="Panorama general con el contador «5 de 300 documentos · solo incluidos» y las tarjetas calculadas con los cinco estudios incluidos">
+      <span class="marca" style="left:40%;top:5.5%">1</span>
+      <span class="marca" style="left:52.5%;top:52.8%">2</span>
+      <span class="marca" style="left:31.5%;top:76.8%">3</span>
+      <span class="marca" style="left:69.3%;top:76.8%">4</span>
+    </div>
+    <figcaption><b>Figura 12.5.</b> El panorama general del ejemplo con solo los cinco estudios incluidos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>El contador avisa que solo cuentan los incluidos.</li>
+    <li><span class="n">2</span>Los indicadores usan 5 de los 300 documentos.</li>
+    <li><span class="n">3</span>Los cinco estudios incluidos.</li>
+    <li><span class="n">4</span>Sus 20 autores distintos.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · lo que el módulo PRISMA no hace</div>
+    <p>La app sigue la plantilla PRISMA 2020 para revisiones nuevas con búsquedas en bases de datos y registros; no dibuja la columna de «otros métodos» (búsqueda de citas, sitios web, organizaciones) ni la plantilla para actualizar una revisión. Registra las decisiones de una sola persona: el doble cribado independiente y el acuerdo entre revisores se hacen fuera, por ejemplo comparando las hojas exportadas de cada revisor. Y cuenta un estudio por documento: si varias publicaciones informan el mismo estudio, anótalo en el artículo. Los números escritos a mano en el panel no se ligan a documentos concretos.</p>
+  </div>
+
+  <p style="margin-top:0.12in">Con el cribado terminado y el diagrama completo, queda llevar los resultados al artículo. El capítulo 13 explica cómo exportar las figuras, las tablas y las redes, y cómo generar el informe con su texto metodológico.</p>
+</section>
+
+</body>
+</html>

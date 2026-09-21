@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 2 · Inicio, proyecto y ayudas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  /* capturas de este capítulo */
+  .cap2 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap2 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+  .cap2 figure.mini .marco { width: 46%; margin: 0 auto; }
+  .cap2 .celular { display: grid; grid-template-columns: 2.6in 1fr; gap: 0.25in; align-items: start; }
+  .cap2 .celular figure { margin: 0; }
+  .cap2 .celular figure .marco { width: 100%; }
+  .cap2 .celular figcaption { margin: 0.07in 0 0; }
+  .cap2 kbd { font-family: var(--sans); font-size: 0.8em; font-weight: 500; color: var(--negro); background: #f3f5f9; border: 1px solid var(--linea); border-bottom-width: 2px; border-radius: 4px; padding: 0.02em 0.4em; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 2 -->
+<section class="capitulo cap2" id="cap-inicio" data-pestana="2" data-orden="2" style="--acento: var(--b1)">
+  <div class="cap-apertura">
+    <div class="cap-num">2</div>
+    <div class="cap-etiqueta">Capítulo dos</div>
+    <h1>Inicio, proyecto y ayudas</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">La portada de la app y lo que acompaña a todo el trabajo: el idioma y el tema, el proyecto que guarda tus datos y decisiones en un archivo, la copia automática que se recupera al volver, el recorrido guiado, las ayudas de cada indicador, la página Acerca de y el uso con el teclado.</p>
+    <div class="cap-franja"><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span></div>
+    <ul class="cap-contenido">
+      <li><b>2.1</b>La portada y la ruta de trabajo</li>
+      <li><b>2.2</b>Idioma y tema</li>
+      <li><b>2.3</b>Guardar y abrir un proyecto</li>
+      <li><b>2.4</b>Autoguardado y recuperación</li>
+      <li><b>2.5</b>El recorrido guiado y las ayudas</li>
+      <li><b>2.6</b>Acerca de: licencia y cómo citar</li>
+      <li><b>2.7</b>Teclado y accesibilidad</li>
+    </ul>
+  </div>
+
+  <!-- 2.1 -->
+  <h2 id="s2-1"><span class="num">2.1</span>La portada y la ruta de trabajo</h2>
+  <p class="lead">La portada (<span class="ui">Inicio</span>) es la puerta de entrada: resume qué hace la app, ofrece los dos caminos para empezar y muestra en qué orden conviene recorrer los módulos. Se abre al entrar y se vuelve a ella en cualquier momento con <span class="ui">Inicio</span> en la barra lateral o con un clic en el logotipo del encabezado.</p>
+  <p>La parte superior, que viste en la figura 1.1, tiene los botones <span class="ui">Importar mis datos</span> y <span class="ui">Cargar datos de ejemplo</span>, la descripción del ejemplo, el enlace <span class="ui">Hacer el recorrido guiado</span> y cuatro garantías: todo ocurre en el navegador, cada fórmula lleva su referencia, las figuras salen a 300&nbsp;dpi y la interfaz está en español y en inglés. Debajo vienen tres secciones más.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/inicio-secciones.png" alt="Secciones Cómo se usa, Qué puedes analizar y Principios de la portada">
+      <span class="marca" style="left:21.4%;top:2%">1</span>
+      <span class="marca" style="left:44.1%;top:20.6%">2</span>
+      <span class="marca" style="left:24.5%;top:26.3%">3</span>
+      <span class="marca" style="left:43.3%;top:34.1%">4</span>
+      <span class="marca" style="left:15.4%;top:77.8%">5</span>
+    </div>
+    <figcaption><b>Figura 2.1.</b> La parte inferior de la portada: la ruta de trabajo, los módulos y los principios de la app.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span><span class="ui">Cómo se usa</span>: los cuatro pasos en orden (importar, limpiar, analizar y exportar).</li>
+    <li><span class="n">2</span>Cada tarjeta de paso es un botón que abre su módulo.</li>
+    <li><span class="n">3</span><span class="ui">Qué puedes analizar</span>: los once módulos, agrupados igual que en la barra lateral.</li>
+    <li><span class="n">4</span>Cada módulo, con su descripción, abre su pantalla con un clic.</li>
+    <li><span class="n">5</span><span class="ui">Principios</span>: privacidad, rigor, resultados listos para publicar y bilingüismo.</li>
+  </ul>
+
+  <p>Los módulos se pueden abrir aunque todavía no haya datos. En ese caso muestran el aviso <span class="ui">Primero importa datos</span> con los mismos dos botones de la portada, así que nunca queda una pantalla vacía sin salida. En la barra lateral, el punto gris junto a cada módulo te recuerda que necesita datos; desaparece en cuanto los cargas.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · cargar el ejemplo con datos ya cargados</div>
+    <p>Si ya importaste archivos y pulsas <span class="ui">Cargar datos de ejemplo</span>, la app pregunta <i>«Cargar el ejemplo reemplaza los datos que tienes cargados. ¿Continuar?»</i>. Al aceptar, quita tus archivos, carga las 300 obras y abre el Panorama general. Como el ejemplo no trae palabras clave de autor, un aviso al pie de la pantalla dice que se eligió <span class="ui">Palabras clave de índice</span> como campo de términos. Si no quieres perder tu trabajo, guárdalo antes como proyecto (sección 2.3).</p>
+  </div>
+
+  <div class="dos">
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">4</div>
+      <div class="dato-txt"><div class="caja-t">Pasos</div>Importar, limpiar, analizar y exportar: el orden de la barra lateral.</div>
+    </div>
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">11</div>
+      <div class="dato-txt"><div class="caja-t">Módulos</div>En cinco grupos: Datos, Descriptivos, Estructuras, Revisión sistemática y Resultados.</div>
+    </div>
+  </div>
+
+  <!-- 2.2 -->
+  <h2 id="s2-2"><span class="num">2.2</span>Idioma y tema</h2>
+  <p>Los controles de la derecha del encabezado cambian el idioma y la apariencia de toda la app. Los dos cambios son inmediatos, no reinician ningún cálculo y el navegador los recuerda para la siguiente visita.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/inicio-oscuro-en.png" alt="Panorama general en inglés y en modo oscuro">
+      <span class="marca" style="left:91%;top:14.1%">1</span>
+      <span class="marca" style="left:97.4%;top:14.1%">2</span>
+      <span class="marca" style="left:33.5%;top:23%">3</span>
+    </div>
+    <figcaption><b>Figura 2.2.</b> El Panorama general de los datos de ejemplo con la interfaz en inglés y en modo oscuro.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span><span class="ui">ES</span> · <span class="ui">EN</span>: el idioma activo aparece resaltado.</li>
+    <li><span class="n">2</span>Botón del tema: la luna pasa a modo oscuro y el sol vuelve al claro.</li>
+    <li><span class="n">3</span>Menús, títulos, tarjetas, ayudas y etiquetas de las figuras cambian de idioma; las cifras no cambian.</li>
+  </ul>
+
+  <h3>El idioma</h3>
+  <p>La app abre en español la primera vez. Al pulsar <span class="ui">EN</span> cambian los textos de la interfaz, las ayudas, los mensajes, los títulos de tablas y las etiquetas de las figuras, incluidos los nombres de los países y de los idiomas, que toman la forma del idioma elegido. Lo que viene de tus registros no se traduce: títulos, palabras clave, nombres de revistas y de instituciones se muestran tal como los exportó la base. Tus datos, tu limpieza y tus parámetros se conservan al cambiar de idioma.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el informe tiene su propio idioma</div>
+    <p>El informe con el texto metodológico se escribe en español o en inglés según lo elijas en <span class="ruta">Exportar y reporte<span class="sep">›</span>Informe</span>, sin cambiar el idioma de la interfaz. Puedes trabajar en español y entregar el informe en inglés para una revista (capítulo 13).</p>
+  </div>
+
+  <h3>El tema claro u oscuro</h3>
+  <p>Mientras no elijas, la app sigue el tema de tu sistema operativo. Al pulsar el botón del tema, tu elección queda guardada y manda sobre la del sistema. El modo oscuro es para trabajar con la pantalla; las figuras se descargan siempre con <span class="ui">Fondo blanco</span>, salvo que elijas <span class="ui">Transparente (PNG)</span> en la barra de la figura, así que el tema no afecta lo que publicas.</p>
+
+  <!-- 2.3 -->
+  <h2 id="s2-3"><span class="num">2.3</span>Guardar y abrir un proyecto</h2>
+  <p class="lead">Un <b>proyecto</b> es un archivo con todo tu trabajo: los registros importados y todas las decisiones que tomaste sobre ellos. Sirve para seguir otro día, para llevar el trabajo a otra computadora, para compartirlo con quien colabora contigo y para dejar constancia de cómo se obtuvieron los resultados.</p>
+
+  <table>
+    <caption><b>Tabla 2.1.</b> Qué guarda un proyecto y qué no.</caption>
+    <thead><tr><th style="width:50%">Guarda</th><th>No guarda</th></tr></thead>
+    <tbody>
+      <tr><td>Los registros importados completos y la lista de archivos, con sus búsquedas en el catálogo abierto.</td><td>El conjunto limpio ya calculado: se vuelve a calcular al abrir, con las mismas decisiones, y queda idéntico.</td></tr>
+      <tr><td>La limpieza: duplicados separados a mano, uniones de autores, alias de instituciones y países, sinónimos, palabras vacías, campo de términos, filtros y año de referencia.</td><td>El idioma y el tema de la interfaz, que son preferencias de quien usa la app.</td></tr>
+      <tr><td>Las decisiones y los motivos del cribado PRISMA y la opción de analizar solo los incluidos.</td><td>La llave de acceso del catálogo abierto, que solo se recuerda en tu navegador si la marcas.</td></tr>
+      <tr><td>Los parámetros de cada módulo, la pestaña abierta, los ajustes de cada figura y las opciones de exportación y del informe.</td><td>Los archivos originales que importaste, que no se modifican nunca.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Guardar</h3>
+  <ol class="pasos">
+    <li><b>Pulsa</b> <span class="ui">Guardar</span> en el encabezado. El botón está desactivado mientras no haya datos.</li>
+    <li><b>Espera el aviso</b> <span class="ui">Proyecto guardado: …</span>. El navegador descarga un archivo con nombre <code>scimetricspro_proyecto_AAAA-MM-DD.smp.json</code>, con la fecha del día.</li>
+    <li><b>Muévelo a una carpeta de tu trabajo</b> y, si lo guardas varias veces el mismo día, cámbiale el nombre para distinguir las versiones.</li>
+  </ol>
+  <p>El archivo va comprimido. Con los datos de ejemplo pesa unos 355&nbsp;KB, cuando su contenido sin comprimir ocupa unos 2.6&nbsp;MB. Con colecciones grandes crece: con 10,000 registros ronda los 12&nbsp;MB y guardarlo tarda unos segundos, durante los cuales la app muestra el aviso <span class="ui">Guardando el proyecto…</span>.</p>
+
+  <h3>Abrir</h3>
+  <ol class="pasos">
+    <li><b>Pulsa</b> <span class="ui">Abrir</span> y elige un archivo <code>.smp.json</code>. También se aceptan proyectos sin comprimir.</li>
+    <li><b>Confirma</b> si ya tenías datos: abrir un proyecto reemplaza los datos y las decisiones cargados.</li>
+    <li><b>Sigue donde te quedaste.</b> La app recalcula el conjunto limpio, vuelve a la pantalla que tenías abierta y avisa cuántos registros y archivos abrió.</li>
+  </ol>
+
+  <table class="compacta">
+    <caption><b>Tabla 2.2.</b> Mensajes al abrir un proyecto.</caption>
+    <thead><tr><th style="width:46%">Mensaje</th><th>Qué significa</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">El archivo no es un proyecto de SciMetricsPro.</span></td><td>Elegiste otro tipo de archivo (una exportación, un informe) o el archivo está dañado. Las exportaciones se cargan en Importar.</td></tr>
+      <tr><td><span class="ui">El proyecto se guardó con una versión más reciente (…).</span></td><td>Quien lo guardó usa una versión posterior de la app. Actualiza tu copia del programa.</td></tr>
+      <tr><td><span class="ui">No se pudo abrir el proyecto: …</span></td><td>Otro problema al leer el archivo; el texto después de los dos puntos da el detalle.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Por qué el proyecto guarda registros y decisiones, no resultados</div>
+    <p>Un estudio bibliométrico es reproducible cuando otra persona puede partir de los mismos registros, aplicar las mismas decisiones y llegar a las mismas cifras. Por eso el proyecto no guarda tablas ni figuras terminadas: guarda los datos de partida y cada decisión, y la app rehace todo al abrirlo. Una ventaja práctica es que nada queda congelado: un duplicado unido se puede separar, un filtro se puede quitar y un sinónimo se puede corregir aunque el proyecto venga de otra computadora.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · antes de compartir un proyecto</div>
+    <p>El proyecto incluye los registros tal como los exportaste, con resúmenes, palabras clave y referencias. Las bases de datos con suscripción suelen limitar la redistribución de esos contenidos. Comparte el proyecto con quien trabaja contigo en el estudio; para publicar tus datos, usa las tablas de resultados o la lista de documentos que se exporta en el capítulo 13, y revisa las condiciones de uso de cada base.</p>
+  </div>
+
+  <!-- 2.4 -->
+  <h2 id="s2-4"><span class="num">2.4</span>Autoguardado y recuperación de la sesión</h2>
+  <p class="lead">Además del proyecto que guardas tú, la app guarda sola una copia de la sesión en el almacenamiento de tu navegador. Si cierras la pestaña por accidente, se apaga la computadora o el navegador se reinicia, al volver a abrir SciMetricsPro podrás recuperar el trabajo.</p>
+  <ul>
+    <li><b>Cuándo se guarda:</b> un segundo y medio después de cada cambio (datos, limpieza, cribado, pantalla o idioma), cada diez segundos mientras haya datos cargados y en el momento en que cierras o dejas la pestaña.</li>
+    <li><b>Qué guarda:</b> lo mismo que un proyecto (tabla 2.1). Los registros solo se vuelven a escribir cuando cambian los archivos, así que las copias siguientes son instantáneas.</li>
+    <li><b>Dónde:</b> en el navegador y la computadora donde trabajaste. No sale de tu equipo ni se comparte entre navegadores.</li>
+  </ul>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/inicio-recuperar.png" alt="Ventana ¿Recuperar la sesión anterior? con los botones Recuperar y Descartar">
+      <span class="marca" style="left:64.4%;top:22.9%">1</span>
+      <span class="marca" style="left:91.3%;top:36.2%">2</span>
+      <span class="marca" style="left:51.3%;top:74.8%">3</span>
+      <span class="marca" style="left:83%;top:88.3%">4</span>
+    </div>
+    <figcaption><b>Figura 2.3.</b> La pregunta al volver a abrir la app después de trabajar con los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Aparece al abrir la app sin datos cuando hay una copia guardada.</li>
+    <li><span class="n">2</span>Fecha y hora de la copia, registros y archivos que contiene.</li>
+    <li><span class="n">3</span><span class="ui">Recuperar</span> restaura todo y vuelve a la pantalla donde estabas.</li>
+    <li><span class="n">4</span><span class="ui">Descartar</span> borra la copia y empieza de cero.</li>
+  </ul>
+
+  <p>Mientras la pregunta está abierta la app no guarda nada, para no borrar la copia antes de que decidas. Si en lugar de responder importas otros archivos o cargas el ejemplo, la pregunta se cierra y el trabajo nuevo reemplaza la copia anterior. Al quitar todos los archivos en Importar (<span class="ui">Quitar todos</span>) la copia también se borra.</p>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · copia automática o proyecto</div>
+    <table class="compacta">
+      <thead><tr><th style="width:40%">Si necesitas…</th><th>usa…</th></tr></thead>
+      <tbody>
+        <tr><td>seguir mañana en la misma computadora</td><td>la copia automática; basta con pulsar <span class="ui">Recuperar</span>.</td></tr>
+        <tr><td>trabajar en otra computadora o en otro navegador</td><td>un proyecto guardado con <span class="ui">Guardar</span>.</td></tr>
+        <tr><td>compartir el trabajo o entregarlo con un artículo o una tesis</td><td>un proyecto, con nombre y fecha, junto con el informe.</td></tr>
+        <tr><td>conservar cómo estaba el estudio antes de un cambio grande (nuevos filtros, otra búsqueda)</td><td>un proyecto por cada etapa: la copia automática solo guarda la última sesión.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">La copia automática es una red de seguridad, no un respaldo: borrar los datos de navegación o usar una ventana privada la elimina.</p>
+  </div>
+
+  <!-- 2.5 -->
+  <h2 id="s2-5"><span class="num">2.5</span>El recorrido guiado y las ayudas</h2>
+  <h3>El recorrido guiado</h3>
+  <p>La primera vez que abres la app en un navegador empieza un recorrido de siete pasos que señala las partes principales. Puedes seguirlo, retroceder u omitirlo en cualquier momento, y repetirlo cuando quieras con <span class="ui">Hacer el recorrido guiado</span> en la portada.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/inicio-recorrido.png" alt="Paso 3 de 7 del recorrido guiado señalando Limpieza y filtros">
+      <span class="marca" style="left:38.8%;top:40.6%">1</span>
+      <span class="marca" style="left:61.2%;top:14.9%">2</span>
+      <span class="marca" style="left:61.2%;top:73.4%">3</span>
+      <span class="marca" style="left:67.1%;top:85.7%">4</span>
+      <span class="marca" style="left:86%;top:73.4%">5</span>
+    </div>
+    <figcaption><b>Figura 2.4.</b> El paso 3 del recorrido guiado.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>La parte de la app de la que habla el paso queda resaltada.</li>
+    <li><span class="n">2</span>Número del paso y título.</li>
+    <li><span class="n">3</span>Puntos de avance: uno por paso.</li>
+    <li><span class="n">4</span><span class="ui">Omitir recorrido</span> lo cierra en cualquier paso.</li>
+    <li><span class="n">5</span><span class="ui">Anterior</span> y <span class="ui">Siguiente</span>; en el último paso, <span class="ui">Terminar</span>.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 2.3.</b> Los siete pasos del recorrido.</caption>
+    <thead><tr><th style="width:6%" class="c">Paso</th><th style="width:34%">Título</th><th>Qué señala</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td><span class="ui">Te damos la bienvenida a SciMetricsPro</span></td><td>La app en general y la privacidad de los datos.</td></tr>
+      <tr><td class="c">2</td><td><span class="ui">Importa tus registros</span></td><td>Importar: varias bases a la vez, el catálogo abierto y el ejemplo.</td></tr>
+      <tr><td class="c">3</td><td><span class="ui">Limpia y filtra</span></td><td>Limpieza y filtros y el contador del encabezado.</td></tr>
+      <tr><td class="c">4</td><td><span class="ui">Analiza</span></td><td>Los descriptivos, las estructuras y el botón <span class="ui">?</span> de cada indicador.</td></tr>
+      <tr><td class="c">5</td><td><span class="ui">Revisión sistemática</span></td><td>El cribado con el teclado y el diagrama PRISMA 2020.</td></tr>
+      <tr><td class="c">6</td><td><span class="ui">Exporta y redacta</span></td><td>Figuras, tablas, redes, el paquete ZIP y el informe.</td></tr>
+      <tr><td class="c">7</td><td><span class="ui">Guarda tu trabajo</span></td><td>El botón <span class="ui">Guardar</span>, la copia automática, el idioma y el tema.</td></tr>
+    </tbody>
+  </table>
+  <p>Con el teclado, <kbd>→</kbd> avanza, <kbd>←</kbd> retrocede y <kbd>Esc</kbd> cierra el recorrido. En pantallas angostas, los pasos que señalan un módulo abren primero el menú de la barra lateral.</p>
+
+  <h3>Las ayudas de cada indicador</h3>
+  <p>El botón <span class="ui">?</span> acompaña a las tarjetas de indicadores, a las figuras, a las tablas, a los grupos de parámetros de las redes y a las opciones de exportación. Su ventana, que viste en la figura 1.6, explica qué mide el indicador, da su fórmula con el significado de cada símbolo, dice cómo interpretarlo y cita el artículo original del método. En las pantallas de Importar, Limpieza y Exportar, que no calculan indicadores publicados, la ayuda explica la regla que aplica la app.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los avisos al pie de la pantalla</div>
+    <p>Las confirmaciones (<span class="ui">Se cargaron 300 registros de ejemplo.</span>), las advertencias y los errores aparecen unos segundos en la parte inferior de la pantalla, en lenguaje llano y en el idioma activo. Los errores explican qué pasó y, cuando se puede, qué hacer; no hace falta abrir ninguna consola.</p>
+  </div>
+
+  <!-- 2.6 -->
+  <h2 id="s2-6"><span class="num">2.6</span>Acerca de: licencia y cómo citar</h2>
+  <p>La página <span class="ui">Acerca de</span>, al final de la barra lateral y en el pie de página, reúne los datos formales del programa: versión, autoría, licencia, forma de citarlo y componentes de terceros.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/inicio-acerca.png" alt="Página Acerca de SciMetricsPro">
+      <span class="marca" style="left:23%;top:16.6%">1</span>
+      <span class="marca" style="left:65.4%;top:27.8%">2</span>
+      <span class="marca" style="left:94%;top:32.2%">3</span>
+      <span class="marca" style="left:32.4%;top:84.3%">4</span>
+      <span class="marca" style="left:13.4%;top:96.7%">5</span>
+      <span class="marca" style="left:98%;top:73.3%">6</span>
+      <span class="marca" style="left:60.7%;top:90.3%">7</span>
+    </div>
+    <figcaption><b>Figura 2.5.</b> La página <span class="ui">Acerca de</span>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Nombre y versión del programa que estás usando.</li>
+    <li><span class="n">2</span>ORCID de cada autor: abre su perfil.</li>
+    <li><span class="n">3</span>Enlace al texto completo de la licencia.</li>
+    <li><span class="n">4</span>Cita en texto y en formato BibTeX, para un gestor de referencias.</li>
+    <li><span class="n">5</span><span class="ui">Copiar la cita</span> copia las dos formas al portapapeles.</li>
+    <li><span class="n">6</span>Componentes y datos de terceros, cada uno con su licencia.</li>
+    <li><span class="n">7</span>Enlace a los avisos completos de terceros.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">§</span>La licencia en pocas palabras</div>
+    <p>SciMetricsPro se distribuye con la Licencia Pública General de GNU, versión 3 o posterior. Puedes usar el programa con cualquier fin, estudiar cómo funciona, compartirlo y modificarlo. Si distribuyes una versión modificada, debe conservar la misma licencia y su código debe estar disponible. El programa se ofrece sin garantía. Los componentes de terceros conservan sus propias licencias: el lector de hojas de cálculo (Apache 2.0), los contornos de los países (dominio público) y los datos de ejemplo (CC0 1.0).</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · citar el programa en la sección de métodos</div>
+    <p>Cita la versión con la que obtuviste tus resultados. El informe del capítulo 13 escribe la frase por ti, con la versión y el año; en español dice: <i>«Los indicadores, las redes y las figuras se calcularon con SciMetricsPro [versión] (Barrera-Guzmán y Ramírez-Ojeda, [año]), que aplica en el navegador las fórmulas publicadas de cada método»</i>, y agrega la referencia completa del programa a la lista de referencias, junto con los artículos de los métodos que usaste.</p>
+  </div>
+
+  <!-- 2.7 -->
+  <h2 id="s2-7"><span class="num">2.7</span>Teclado y accesibilidad</h2>
+  <p>Toda la app se puede usar sin ratón. El foco del teclado se ve siempre, las ventanas lo retienen mientras están abiertas y las figuras llevan un nombre que leen los lectores de pantalla.</p>
+  <table class="compacta">
+    <caption><b>Tabla 2.4.</b> Teclas de la app.</caption>
+    <thead><tr><th style="width:30%">Teclas</th><th style="width:26%">Dónde</th><th>Qué hacen</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Tab</kbd> · <kbd>Mayús</kbd>+<kbd>Tab</kbd></td><td>Toda la app</td><td>Pasan al control siguiente o al anterior. El primer <kbd>Tab</kbd> muestra el enlace <span class="ui">Saltar al contenido</span>.</td></tr>
+      <tr><td><kbd>Intro</kbd> · <kbd>Espacio</kbd></td><td>Botones, casillas, tarjetas</td><td>Activan el control con el foco.</td></tr>
+      <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Pestañas de un módulo</td><td>Cambian a la pestaña anterior o siguiente.</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Ayuda, recorrido, menú</td><td>Cierran la ventana de ayuda, el recorrido guiado o el menú en pantallas angostas.</td></tr>
+      <tr><td><kbd>←</kbd> <kbd>→</kbd> · <kbd>Esc</kbd></td><td>Recorrido guiado</td><td>Paso anterior o siguiente; cerrar.</td></tr>
+      <tr><td><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd> · flechas · <kbd>Esc</kbd></td><td>Red interactiva con el foco</td><td>Acercar, alejar, encuadrar; mover el dibujo; quitar la selección.</td></tr>
+      <tr><td><kbd>Intro</kbd></td><td>Cuadro de búsqueda de una red</td><td>Busca y selecciona el término escrito.</td></tr>
+      <tr><td><kbd>I</kbd> <kbd>E</kbd> <kbd>D</kbd> <kbd>U</kbd> · <kbd>←</kbd> <kbd>→</kbd></td><td>Cribado PRISMA</td><td>Incluir, excluir, dudoso, deshacer; documento anterior o siguiente (capítulo 12).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pantallas angostas</h3>
+  <div class="celular">
+    <figure class="mini">
+      <div class="marco" style="position:relative">
+        <img src="../img/inicio-celular.png" alt="La app a 400 píxeles de ancho con el menú de módulos abierto">
+        <span class="marca" style="left:6.3%;top:6.4%">1</span>
+        <span class="marca" style="left:38.4%;top:6.4%">2</span>
+        <span class="marca" style="left:64.4%;top:6.4%">3</span>
+      </div>
+      <figcaption><b>Figura 2.6.</b> La app a 400 píxeles de ancho con el menú abierto.</figcaption>
+    </figure>
+    <div>
+      <p style="margin-top:0">Por debajo de 900 píxeles de ancho la barra lateral se vuelve un menú que se abre con el botón del encabezado, y los botones del encabezado muestran solo su ícono. La app funciona igual en una tableta o en un celular, aunque las redes y las tablas grandes se aprovechan mejor en una pantalla amplia.</p>
+      <ul class="leyenda-marcas" style="grid-template-columns:1fr">
+        <li><span class="n">1</span>El botón del menú; con el menú abierto se vuelve una <span class="ui">×</span> que lo cierra.</li>
+        <li><span class="n">2</span>El contador de documentos, abreviado.</li>
+        <li><span class="n">3</span><span class="ui">Abrir</span> y <span class="ui">Guardar</span> solo con su ícono; su nombre aparece al señalarlos y lo leen los lectores de pantalla.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · accesibilidad</div>
+    <p>Todas las pantallas se revisaron en modo claro y oscuro: cada botón y cada campo tienen nombre, las imágenes tienen texto alternativo, las figuras se anuncian con su título y los textos cumplen el contraste mínimo recomendado para lectura. Si usas un lector de pantalla, las tablas de cada figura (botón <span class="ui">Datos</span>) dan los mismos números en un formato que se recorre celda por celda.</p>
+  </div>
+
+  <p style="margin-top:0.3in">Con la app ya conocida, el siguiente capítulo empieza el trabajo con los datos: cómo convertir tu idea de investigación en cadenas de búsqueda, qué exportar de cada base y cómo importar los archivos.</p>
+</section>
+
+</body>
+</html>

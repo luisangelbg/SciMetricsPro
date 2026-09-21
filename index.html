@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>SciMetricsPro</title>
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  /* apply the saved theme before the first paint, so dark mode does not flash */
+  try { var th = JSON.parse(localStorage.getItem('scimetricspro:theme')); if (th === 'light' || th === 'dark') document.documentElement.dataset.theme = th; } catch (e) {}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<noscript><p>SciMetricsPro necesita JavaScript activado. · SciMetricsPro needs JavaScript to be enabled.</p></noscript>
+
+<!-- Keep this list in the same order in tests/index.html -->
+<script src="vendor/xlsx.full.min.js"></script>
+<script src="js/core/core.js"></script>
+<script src="js/i18n/i18n.js"></script>
+<script src="js/i18n/es.js"></script>
+<script src="js/i18n/en.js"></script>
+<script src="js/core/theme.js"></script>
+<script src="js/core/figure.js"></script>
+<script src="data/world.js"></script>
+<script src="js/core/worker.js"></script>
+<script src="js/export/zip.js"></script>
+<script src="js/export/xlsx.js"></script>
+<script src="js/export/docx.js"></script>
+<script src="js/export/pdf.js"></script>
+<script src="js/export/tabular.js"></script>
+<script src="js/export/graph.js"></script>
+<script src="js/export/records.js"></script>
+<script src="js/export/report.js"></script>
+<script src="js/components/empty-state.js"></script>
+<script src="js/components/help-popover.js"></script>
+<script src="js/components/metric-card.js"></script>
+<script src="js/components/progress-overlay.js"></script>
+<script src="js/components/data-table.js"></script>
+<script src="js/components/chart-card.js"></script>
+<script src="js/components/charts.js"></script>
+<script src="js/components/network-view.js"></script>
+<script src="js/components/network-panel.js"></script>
+<script src="js/components/network-screen.js"></script>
+<script src="js/parsers/text.js"></script>
+<script src="js/model/countries.js"></script>
+<script src="js/model/record.js"></script>
+<script src="js/parsers/references.js"></script>
+<script src="js/parsers/csv.js"></script>
+<script src="js/parsers/tagged2.js"></script>
+<script src="js/parsers/tagged4.js"></script>
+<script src="js/parsers/ris.js"></script>
+<script src="js/parsers/bibtex.js"></script>
+<script src="js/parsers/openapi.js"></script>
+<script src="js/parsers/detect.js"></script>
+<script src="js/cleaning/dedup.js"></script>
+<script src="js/cleaning/authors.js"></script>
+<script src="js/cleaning/institutions.js"></script>
+<script src="js/cleaning/terms.js"></script>
+<script src="js/cleaning/filters.js"></script>
+<script src="js/metrics/overview.js"></script>
+<script src="js/metrics/sources.js"></script>
+<script src="js/metrics/authors.js"></script>
+<script src="js/metrics/documents.js"></script>
+<script src="js/metrics/factorial.js"></script>
+<script src="js/metrics/prisma.js"></script>
+<script src="js/networks/build.js"></script>
+<script src="js/networks/communities.js"></script>
+<script src="js/networks/metrics.js"></script>
+<script src="js/networks/layout.js"></script>
+<script src="js/networks/analysis.js"></script>
+<script src="js/networks/thematic.js"></script>
+<script src="js/networks/intellectual.js"></script>
+<script src="js/networks/social.js"></script>
+<script src="js/search/glossary.js"></script>
+<script src="js/search/strategy.js"></script>
+<script src="js/parsers/index.js"></script>
+<script src="js/modules/registry.js"></script>
+<script src="js/modules/import-search.js"></script>
+<script src="js/modules/import-keywords.js"></script>
+<script src="js/modules/import.js"></script>
+<script src="js/cleaning/pipeline.js"></script>
+<script src="js/modules/cleaning.js"></script>
+<script src="js/modules/overview.js"></script>
+<script src="js/modules/sources.js"></script>
+<script src="js/modules/authors.js"></script>
+<script src="js/modules/documents.js"></script>
+<script src="js/modules/conceptual.js"></script>
+<script src="js/modules/intellectual.js"></script>
+<script src="js/modules/social.js"></script>
+<script src="js/modules/prisma.js"></script>
+<script src="js/modules/export.js"></script>
+<script src="js/components/tour.js"></script>
+<script src="js/app/layout.js"></script>
+<script src="js/app/home.js"></script>
+<script src="js/app/about.js"></script>
+<script src="js/app/project.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/main.js"></script>
+</body>
+</html>

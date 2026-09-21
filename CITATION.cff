@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SciMetricsPro: a browser-based platform for bibliometric and scientometric analysis"
+abstract: >-
+  SciMetricsPro is a self-contained web application for bibliometric and scientometric analysis
+  that runs entirely in the browser, with no installation and no server-side computation. It takes
+  a set of bibliographic records from the search to the paper: it helps write the search string for
+  each academic database, reads their exports (CSV, RIS, BibTeX, tagged text and spreadsheets) and
+  downloads records from an open bibliographic catalogue, merges duplicates and normalises authors,
+  institutions and countries, computes the classical indicators (annual growth, document age,
+  Bradford's law, Lotka's law with a Kolmogorov-Smirnov test, h, g and m indices, local citations
+  and reference publication year spectroscopy), and maps the conceptual, intellectual and social
+  structures (keyword co-occurrence, thematic map and thematic evolution, correspondence analysis
+  with k-means, co-citation, bibliographic coupling, coupling map, direct-citation historiograph,
+  collaboration networks and a world collaboration map). It also records a PRISMA 2020 systematic
+  review with its flow diagram, and exports journal-ready figures, tables, network files, the clean
+  data set and an automatic report with a methods section written from the data.
+type: software
+authors:
+  - given-names: "Luis Ángel"
+    family-names: "Barrera-Guzmán"
+    orcid: "https://orcid.org/0000-0001-8057-2583"
+  - given-names: "Gabriela"
+    family-names: "Ramírez-Ojeda"
+    orcid: "https://orcid.org/0000-0001-9679-6514"
+version: "1.0.0"
+date-released: "2026-09-21"
+repository-code: "https://github.com/luisangelbg/SciMetricsPro"
+url: "https://luisangelbg.github.io/SciMetricsPro/"
+license: GPL-3.0-or-later
+keywords:
+  - bibliometrics
+  - scientometrics
+  - science mapping
+  - co-citation analysis
+  - bibliographic coupling
+  - co-word analysis
+  - thematic map
+  - Bradford's law
+  - Lotka's law
+  - h-index
+  - PRISMA 2020
+  - systematic review
+  - research evaluation

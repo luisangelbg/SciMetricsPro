@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 13 · Exportar y reporte</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap13 figure.angosta .marco { width: 58%; margin: 0 auto; }
+  .cap13 figure.angosta figcaption { margin-left: 21%; margin-right: 21%; }
+  /* the same figure at one and two columns, at the same scale (8.5 : 17 = 1 : 2) */
+  .cap13 .par13 { display: flex; gap: 4%; align-items: flex-end; }
+  .cap13 .par13 .una { width: 32%; }
+  .cap13 .par13 .dos-col { width: 64%; }
+  .cap13 .par13-pie { display: flex; gap: 4%; font-family: var(--sans); font-size: 8pt; color: var(--gris); margin-top: 0.04in; }
+  .cap13 .par13-pie span:first-child { width: 32%; text-align: center; }
+  .cap13 .par13-pie span:last-child { width: 64%; text-align: center; }
+  .cap13 figure .marco + .marco { margin-top: 0.08in; }
+  .cap13 .arbol { font-family: var(--mono, ui-monospace, monospace); font-size: 8.4pt; line-height: 1.45; background: #f6f7f9; border: 1px solid var(--linea); border-radius: 6px; padding: 0.1in 0.16in; white-space: pre; margin: 0.12in 0 0.18in; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 13 -->
+<section class="capitulo cap13" id="cap-exportar" data-pestana="13" data-orden="13" style="--acento: var(--b12)">
+  <div class="cap-apertura">
+    <div class="cap-num">13</div>
+    <div class="cap-etiqueta">Capítulo trece</div>
+    <h1>Exportar y reporte</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Del análisis al artículo: figuras redibujadas al ancho de una o dos columnas con la letra y la resolución que pide la revista, tablas en hoja de cálculo, redes para otros programas, el conjunto limpio en CSV y BibTeX, un paquete ZIP con todo ordenado y un informe con el texto metodológico escrito con tus datos.</p>
+    <div class="cap-franja"><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span></div>
+    <ul class="cap-contenido">
+      <li><b>13.1</b>Figuras a tamaño de revista</li>
+      <li><b>13.2</b>Tablas, redes y datos</li>
+      <li><b>13.3</b>El paquete ZIP</li>
+      <li><b>13.4</b>El informe con el texto metodológico</li>
+    </ul>
+  </div>
+
+  <p class="lead">Cada resultado de SciMetricsPro se puede llevar fuera de la app. Lo que ves en pantalla —una figura, una tabla, una red— se descarga desde su propia tarjeta; la pantalla <span class="ui">Exportar y reporte</span>, al final de la barra lateral, reúne todo en un solo archivo ZIP y redacta un informe con la metodología, las figuras, las tablas y las referencias de los métodos. Nada sale de tu computadora: los archivos se generan en el navegador.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 13.1.</b> Qué se descarga y desde dónde.</caption>
+    <thead><tr><th style="width:24%">Quieres…</th><th style="width:36%">Dónde</th><th>Formatos</th></tr></thead>
+    <tbody>
+      <tr><td>Una figura</td><td>La barra de la figura</td><td>PNG, TIFF, PDF, SVG, JPG o WEBP.</td></tr>
+      <tr><td>Los datos de una figura</td><td>El botón <span class="ui">Datos</span> de la figura</td><td>Hoja de cálculo (.xlsx).</td></tr>
+      <tr><td>Una tabla</td><td>Los botones de la tabla</td><td>Hoja de cálculo (.xlsx) o CSV.</td></tr>
+      <tr><td>Una red</td><td>La tarjeta debajo de cada red</td><td>GraphML, GEXF, texto .net y CSV.</td></tr>
+      <tr><td>El conjunto limpio</td><td><span class="ruta">Exportar y reporte<span class="sep">›</span>Archivos</span></td><td>CSV, BibTeX y el diccionario de sinónimos.</td></tr>
+      <tr><td>Todo junto</td><td><span class="ruta">Exportar y reporte<span class="sep">›</span>Archivos</span></td><td>Un ZIP con carpetas y un índice.</td></tr>
+      <tr><td>El informe</td><td><span class="ruta">Exportar y reporte<span class="sep">›</span>Informe</span></td><td>Documento (.docx), PDF o página (.html).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 13.1 -->
+  <h2 id="s13-1"><span class="num">13.1</span>Figuras a tamaño de revista</h2>
+  <p>Todas las figuras de la app tienen la misma tarjeta. Arriba a la derecha, los botones rápidos <span class="ui">PNG</span>, <span class="ui">SVG</span> y <span class="ui">PDF</span> descargan la figura con el formato de impresión elegido, y <span class="ui">Datos</span> descarga la tabla que la alimenta. Debajo del dibujo, <span class="ui">Editar figura</span> abre el editor y la barra de descarga fija el formato del archivo.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-barra.png" alt="Tarjeta de la figura de las 10 fuentes más productivas con los botones PNG, SVG, PDF y Datos, el editor plegado y la barra de descarga con formato, ancho, letra, resolución, fondo, escala de grises y la línea de información">
+      <span class="marca" style="left:69%;top:3.9%">1</span>
+      <span class="marca" style="left:33%;top:79.1%">2</span>
+      <span class="marca" style="left:97.4%;top:87.9%">3</span>
+      <span class="marca" style="left:51.5%;top:94.5%">4</span>
+    </div>
+    <figcaption><b>Figura 13.1.</b> Una figura del ejemplo con su barra de descarga, en <span class="ruta">Fuentes<span class="sep">›</span>Más productivas</span>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Descarga rápida y datos de la figura.</li>
+    <li><span class="n">2</span>Editor: títulos, colores, letra y tamaños.</li>
+    <li><span class="n">3</span>Formato, ancho, letra, resolución y fondo.</li>
+    <li><span class="n">4</span>Tamaño del archivo que se descargará.</li>
+  </ul>
+
+  <p>La barra tiene seis controles. <span class="ui">Formato</span> elige el tipo de archivo (tabla 13.2). <span class="ui">Ancho</span> ofrece <span class="ui">Una columna · 8.5 cm</span>, <span class="ui">Dos columnas · 17 cm</span> —los anchos más comunes en las revistas—, un ancho personalizado de 2 a 60 cm y <span class="ui">Tamaño en pantalla</span>. <span class="ui">Letra (pt)</span> es el tamaño de la letra base de la figura impresa, de 5 a 16 puntos; <span class="ui">Resolución</span> es de 300, 600 o 1200 dpi; el fondo puede ser blanco o transparente (solo en PNG); y <span class="ui">Escala de grises</span> cambia cada color por el gris de la misma luminosidad. <span class="ui">Descargar figura</span> baja el archivo y la línea de la derecha dice cuánto medirá. Estas preferencias valen para todas las figuras y para los botones rápidos, y se guardan en el proyecto.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 13.2.</b> Los formatos de figura y para qué sirve cada uno.</caption>
+    <thead><tr><th style="width:12%">Formato</th><th style="width:36%">Qué es</th><th>Úsalo para</th></tr></thead>
+    <tbody>
+      <tr><td>PNG</td><td>Imagen sin pérdida, con la resolución dentro del archivo.</td><td>Documentos, presentaciones y la mayoría de las revistas.</td></tr>
+      <tr><td>TIFF</td><td>Imagen sin compresión, con la resolución dentro del archivo.</td><td>Revistas que la piden para el envío. Pesa mucho más: en el ejemplo, 6.2 MB contra 0.18 MB del PNG a 17 cm y 300 dpi.</td></tr>
+      <tr><td>PDF</td><td>Vectorial, con el texto como texto.</td><td>Imprimir a cualquier tamaño sin perder nitidez.</td></tr>
+      <tr><td>SVG</td><td>Vectorial y editable.</td><td>Retocar la figura en un programa de dibujo vectorial.</td></tr>
+      <tr><td>JPG</td><td>Imagen comprimida con pérdida.</td><td>Vistas rápidas; evítalo en figuras con texto fino.</td></tr>
+      <tr><td>WEBP</td><td>Imagen comprimida.</td><td>Páginas web.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · la figura se dibuja de nuevo para su ancho</div>
+    <p>Ampliar o reducir una captura de pantalla cambia también el tamaño de la letra: una figura pensada para una pantalla ancha, reducida a una columna, queda con letras ilegibles. Por eso la app no reduce la figura: la <b>vuelve a dibujar</b> con el ancho y la letra que elegiste. La letra base de las figuras mide 11 unidades de dibujo; para que se imprima a <i>p</i> puntos en un ancho de <i>w</i> centímetros, el dibujo se hace con un ancho de <i>w</i>&nbsp;/&nbsp;2.54&nbsp;×&nbsp;72&nbsp;/&nbsp;(<i>p</i>&nbsp;/&nbsp;11) unidades, y las etiquetas, los márgenes y la leyenda se acomodan a ese espacio. Después, el archivo recibe su tamaño físico: en PNG y TIFF, <i>w</i>&nbsp;/&nbsp;2.54&nbsp;×&nbsp;dpi píxeles con la resolución escrita dentro, así que el procesador de textos lo inserta con el ancho exacto; en SVG, el ancho en centímetros; en PDF, una página de ese tamaño. A 300 dpi, una figura de 17 cm mide 2008 píxeles de ancho y una de 8.5 cm, 1004.</p>
+  </div>
+
+  <figure>
+    <div class="par13">
+      <div class="marco una"><img src="../img/exportar-8-5cm.png" alt="La figura de producción científica anual descargada a una columna, con los años cada veinte y la leyenda en dos renglones"></div>
+      <div class="marco dos-col"><img src="../img/exportar-17cm.png" alt="La misma figura descargada a dos columnas, con los años cada cinco y la leyenda en un renglón"></div>
+    </div>
+    <div class="par13-pie"><span>8.5 cm · 1004 × 837 px</span><span>17 cm · 2008 × 1027 px</span></div>
+    <figcaption><b>Figura 13.2.</b> La figura de producción científica anual del ejemplo descargada en PNG a una y a dos columnas, a la misma escala. La letra mide 8 pt en las dos; en la angosta cambian la cantidad de años del eje, los renglones de la leyenda y la proporción.</figcaption>
+  </figure>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · los archivos medidos fuera de la app</div>
+    <p>Los archivos de la figura 13.1 se leyeron con programas independientes. A dos columnas, el PNG mide 2008 × 869 píxeles y trae 300 dpi escritos dentro, exactamente lo que anuncia la línea de información; a una columna, 1004 × 710 píxeles, con la letra a 8.0 pt. El PDF de la producción anual a 17 cm tiene una página de 481.89 puntos de ancho (17 cm), y el SVG, <code>width="17.00cm"</code> con la letra base a 7.995 pt. El TIFF de la producción anual lleva sus 300 dpi en las etiquetas de resolución; su versión en escala de grises tiene los tres canales iguales en cada píxel, y la de fondo transparente, 88&nbsp;% de píxeles transparentes.</p>
+  </div>
+
+  <p>Una figura angosta no siempre tiene espacio para todo. La app intenta primero acomodarla: el título largo pasa a dos renglones, la leyenda se reparte en varios, los nombres de las barras horizontales que ocupan más de media figura se cortan con «…» y el eje pone menos números. Si aun así las etiquetas no caben, el dibujo se ensancha y la letra impresa queda más chica que la pedida. En ese caso, la línea de información se pone en color y dice a qué tamaño se imprimirá la letra.</p>
+
+  <figure>
+    <div class="marco"><img src="../img/exportar-aviso.png" alt="Barra de descarga de la red de acoplamiento a una columna con el aviso: las etiquetas no caben en este ancho, la letra se imprime a 5.7 pt"></div>
+    <figcaption><b>Figura 13.3.</b> El aviso de la red de acoplamiento del ejemplo a una columna: con los nombres de sus comunidades en la leyenda, la letra se imprimiría a 5.7 pt en lugar de 8.</figcaption>
+  </figure>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · cuando las etiquetas no caben</div>
+    <p>El aviso se atiende de tres formas: acortar los nombres con <span class="ui">Largo máximo de los nombres (caracteres)</span> en <span class="ui">Editar figura</span>, mover o quitar la leyenda, o usar un ancho mayor. En el ejemplo, 23 de las 34 figuras salen a una columna con la letra exacta y una más a 7.9 pt; las demás son sobre todo mapas y redes con muchas etiquetas o con la leyenda a un lado. Esas figuras se leen mejor a dos columnas. El diagrama PRISMA conserva siempre su acomodo de cajas y, a una columna, se imprime completo con la letra más chica.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · antes de enviar las figuras</div>
+    <p>Revisa las instrucciones de la revista: casi todas piden 300 dpi para figuras con color o sombras y 600 o 1200 para dibujos de línea, en TIFF, PNG o PDF. Si la revista se imprime en blanco y negro, descarga una versión en escala de grises y comprueba que las series se sigan distinguiendo. El PDF usa las tipografías estándar del formato sin incrustarlas; si la revista exige tipografías incrustadas, envía TIFF o PNG.</p>
+  </div>
+
+  <h3>Editar figura</h3>
+  <p><span class="ui">Editar figura: títulos, colores, fuentes y tamaños</span> despliega dos pestañas. <span class="ui">Contenido y colores</span> es propia de cada figura: título y subtítulo, títulos de los ejes, paleta o color de las barras, posición de la leyenda, largo máximo de los nombres y las opciones de ese tipo de figura (zonas de Bradford, escala logarítmica, marcadores…). <span class="ui">Estilo y tipografía</span> es común a todas: tema (el de <span class="ui">Revista</span> tiene los ejes en blanco y negro), familia tipográfica, tamaños de letra para títulos, ejes y etiquetas, títulos de ejes en negritas y líneas de cuadrícula. Un cambio de estilo se aplica a todas las figuras, para que el artículo tenga un aspecto uniforme.</p>
+
+  <!-- 13.2 -->
+  <h2 id="s13-2"><span class="num">13.2</span>Tablas, redes y datos</h2>
+  <p><b>Tablas.</b> Cada tabla tiene dos botones sobre su encabezado: <span class="ui">.xlsx</span> y <span class="ui">CSV</span>. Los dos descargan <b>todas las filas de la vista actual</b>, no solo la página visible: con la búsqueda que escribiste aplicada y en el orden que elegiste. La hoja de cálculo trae el encabezado con formato, la primera fila fija, filtros en cada columna y los números como números; el CSV va en UTF-8, para que los acentos se lean bien en cualquier programa.</p>
+
+  <p><b>Redes.</b> Debajo de cada red —coocurrencia, cocitación, acoplamiento y colaboración— la tarjeta <span class="ui">Guardar la red para otros programas</span> guarda la red <b>tal como se dibuja</b>: los mismos nodos, sus comunidades con su color, las posiciones del diseño, el peso y el conteo de cada arista y las métricas de cada nodo.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 13.3.</b> Los cuatro formatos de red.</caption>
+    <thead><tr><th style="width:24%">Botón</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">GraphML (.graphml)</span></td><td>XML con nombre, comunidad, tamaño, posición, color y métricas de cada nodo, y peso y conteo de cada arista; lo abren casi todos los programas de análisis de redes.</td></tr>
+      <tr><td><span class="ui">GEXF (.gexf)</span></td><td>XML con los mismos atributos y el color, la posición y el tamaño para dibujar.</td></tr>
+      <tr><td><span class="ui">Texto de red (.net)</span></td><td>Texto plano: <code>*Vertices</code> con nombre y coordenadas de 0 a 1, y <code>*Edges</code> con su peso.</td></tr>
+      <tr><td><span class="ui">Nodos y aristas (CSV)</span></td><td>Dos archivos: uno con los nodos y sus métricas y otro con las aristas, sus nombres, su conteo y su peso.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · las cuatro redes leídas por otro programa</div>
+    <p>Las cuatro redes del ejemplo —coocurrencia (50 términos, 1,040 aristas), cocitación (50 referencias, 508), acoplamiento (45 documentos, 208) y colaboración de autores (49 autores, 226)— se abrieron con una biblioteca de análisis de redes independiente de la app, en sus tres formatos, con los mismos nodos, aristas y pesos. Esa biblioteca recalculó el grado, la fuerza, la intermediación normalizada, la cercanía y el PageRank de cada nodo, y coincidieron con los que trae el archivo con diferencias menores a 5 × 10<sup>−9</sup>, que es el redondeo a ocho decimales.</p>
+  </div>
+
+  <p><b>El conjunto limpio.</b> En <span class="ruta">Exportar y reporte<span class="sep">›</span>Archivos</span>, la tarjeta <span class="ui">Datos del conjunto limpio</span> descarga los documentos que usan los análisis: con los duplicados unidos, los autores, instituciones y países normalizados, los filtros aplicados y, si activaste la casilla del capítulo 12, solo los incluidos.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-archivos.png" alt="Pestaña Archivos con las tarjetas de formatos, datos del conjunto limpio, figuras, tablas y redes de todos los módulos, y paquete de resultados">
+      <span class="marca" style="left:14.8%;top:11.6%">1</span>
+      <span class="marca" style="left:86.3%;top:34.4%">2</span>
+      <span class="marca" style="left:56.8%;top:58.4%">3</span>
+      <span class="marca" style="left:21.8%;top:71.9%">4</span>
+      <span class="marca" style="left:51.8%;top:88.7%">5</span>
+    </div>
+    <figcaption><b>Figura 13.4.</b> La pestaña <span class="ui">Archivos</span> de <span class="ui">Exportar y reporte</span> con los datos de ejemplo, antes de buscar las figuras.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Formatos de figuras, tablas, redes y datos.</li>
+    <li><span class="n">2</span>Ancho, letra, resolución y grises.</li>
+    <li><span class="n">3</span>Descargar cada archivo de datos.</li>
+    <li><span class="n">4</span>Buscar figuras, tablas y redes.</li>
+    <li><span class="n">5</span>Lo que llevará el paquete.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 13.4.</b> Los archivos del conjunto limpio.</caption>
+    <thead><tr><th style="width:27%">Botón</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Documentos (CSV)</span></td><td>Una fila por documento con 30 campos: los datos bibliográficos (autores, título, año, fuente, volumen, páginas, DOI, ISSN…), resumen, palabras clave, afiliaciones, instituciones, países, citas, referencias e identificadores. Las listas se separan con «; ».</td></tr>
+      <tr><td><span class="ui">Documentos (BibTeX)</span></td><td>Una entrada por documento para un gestor de referencias o un documento en LaTeX (artículo, actas, capítulo, libro, tesis o informe) con sus datos, resumen, palabras clave y citas. La clave es el apellido del primer autor, el año y la primera palabra larga del título (con a, b, c… si se repite).</td></tr>
+      <tr><td><span class="ui">Diccionario de sinónimos (CSV)</span></td><td>Los sinónimos de Limpieza en el formato que la app vuelve a leer (capítulo 4), para usarlos en otro proyecto.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el conjunto limpio comprobado</div>
+    <p>El CSV del ejemplo tiene 300 filas y 30 columnas; sus citas suman 2,978 y trae 244 DOI distintos, igual que el archivo de ejemplo leído sin la app. El BibTeX se leyó con dos lectores independientes: el primero recuperó las 300 entradas; el más estricto, 281, porque 19 documentos no traen en el catálogo la revista, la institución o la editorial que BibTeX considera obligatorias. Al revisarlo apareció un error: el catálogo tenía una afiliación completa registrada como autor, y sus comas volvían inválido el nombre. Se corrigió: ahora esas partes van entre llaves.</p>
+  </div>
+
+  <!-- 13.3 -->
+  <h2 id="s13-3"><span class="num">13.3</span>El paquete ZIP</h2>
+  <p>Para llevarte todos los resultados de una vez, la pestaña <span class="ui">Archivos</span> arma un solo archivo ZIP con las figuras, tablas y redes de todos los módulos, los datos y un índice.</p>
+
+  <ol class="pasos">
+    <li><b>Elige los formatos</b> en la tarjeta <span class="ui">Formatos</span> (figura 13.4): los de figuras, tablas, redes y datos, y el ancho, la letra y la resolución de las figuras, que son los mismos de la barra de cada figura.</li>
+    <li>Pulsa <span class="ui">Buscar figuras y tablas</span>. La app dibuja fuera de la vista cada pestaña de <span class="ui">Panorama general</span>, <span class="ui">Fuentes</span>, <span class="ui">Autores</span>, <span class="ui">Documentos</span>, las tres estructuras y <span class="ui">PRISMA</span>, con los parámetros que dejaste en cada una; espera a que terminen las redes que se calculan en segundo plano.</li>
+    <li><b>Revisa la lista</b> (figura 13.5). Cada grupo es una pestaña de un módulo; al desplegarlo se ven sus figuras, tablas y redes con una casilla cada una. Todo empieza marcado; <span class="ui">Desmarcar todo</span> y la casilla de cada grupo ayudan a elegir solo lo que usarás.</li>
+    <li>Pulsa <span class="ui">Descargar ZIP</span>. Debajo del botón aparece el avance y, al final, el número de archivos y el tamaño del paquete.</li>
+  </ol>
+
+  <p>Los archivos del ZIP llevan nombres ordenados, sin acentos ni espacios, numerados en el orden de los módulos; el índice los describe uno por uno con su número, tipo, módulo, pestaña y título.</p>
+
+  <div class="arbol">scimetricspro_resultados_2026-09-18.zip
+├── indice.csv
+├── figuras/01_produccion_cientifica_anual.png
+│          02_citas_promedio_por_anio.png …
+├── tablas/01_tipos_de_documento.xlsx …
+├── redes/01_red_de_coocurrencia.graphml
+│        01_red_de_coocurrencia_nodos.csv
+│        01_red_de_coocurrencia_aristas.csv …
+└── datos/documentos.csv
+          documentos.bib
+          sinonimos.csv</div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-paquete.png" alt="Lista de figuras, tablas y redes agrupadas por módulo y pestaña, con el grupo de la ley de Bradford desplegado">
+      <span class="marca" style="left:37.8%;top:15.1%">1</span>
+      <span class="marca" style="left:21.3%;top:21.8%">2</span>
+      <span class="marca" style="left:28.6%;top:29.3%">3</span>
+      <span class="marca" style="left:26%;top:51.9%">4</span>
+    </div>
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-paquete-zip.png" alt="Tarjeta Paquete de resultados con 79 figuras, tablas y redes marcadas y el botón Descargar ZIP">
+      <span class="marca" style="left:50.8%;top:43.5%">5</span>
+    </div>
+    <figcaption><b>Figura 13.5.</b> La lista de resultados del ejemplo después de la búsqueda, con un grupo desplegado, y la tarjeta del paquete.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Buscar de nuevo, marcar o desmarcar todo.</li>
+    <li><span class="n">2</span>Cuántas figuras, tablas y redes hay.</li>
+    <li><span class="n">3</span>Un grupo: módulo · pestaña.</li>
+    <li><span class="n">4</span>Cada elemento con su tipo.</li>
+    <li><span class="n">5</span>Lo que llevará el ZIP.</li>
+  </ul>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el paquete refleja lo que dejaste en cada pantalla</div>
+    <p>Cada figura del ZIP sale con los parámetros que tenía su pestaña y con el estilo de <span class="ui">Editar figura</span>, a los tamaños de la tarjeta <span class="ui">Formatos</span> y con fondo blanco. Si después de buscar cambias un filtro o un parámetro, un aviso pide <span class="ui">Buscar de nuevo</span> para que el paquete refleje lo que ves.</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el paquete completo del ejemplo</div>
+    <p>La búsqueda encontró <b>34 figuras, 41 tablas y 4 redes</b>. Con los formatos por omisión —figuras en PNG, tablas en hoja de cálculo, redes en GraphML y CSV, y los tres archivos de datos— el ZIP tiene <b>91 archivos</b> (15.4 MB): el índice, 34 figuras, 41 tablas, 12 archivos de redes y 3 de datos. Un programa de descompresión independiente comprobó la integridad de cada archivo, y las 41 tablas, leídas con otro lector de hojas de cálculo, tienen las mismas filas, columnas y títulos que en pantalla.</p>
+  </div>
+
+  <!-- 13.4 -->
+  <h2 id="s13-4"><span class="num">13.4</span>El informe con el texto metodológico</h2>
+  <p>La pestaña <span class="ui">Informe</span> redacta un documento con tus resultados: una portada, la <b>metodología</b> escrita con tus datos y los parámetros de cada análisis, los <b>resultados</b> de las secciones elegidas —cada figura y tabla numerada, con un párrafo que da sus cifras—, las <b>referencias</b> de los métodos usados y la forma de citar la app. Es un borrador para adaptar a tu artículo o tesis, no un texto final.</p>
+
+  <p>En <span class="ui">Contenido del informe</span> se escriben el título (por omisión, «Análisis bibliométrico») y los autores, y se elige el <span class="ui">Idioma del informe</span>: español o inglés, sin importar el idioma de la interfaz; las figuras también se dibujan en ese idioma. <span class="ui">Tamaño de página</span> es carta o A4; <span class="ui">Filas por tabla</span>, de 3 a 50 (por omisión 10), limita las tablas largas a sus primeras filas con una nota; y <span class="ui">Figuras en escala de grises</span> sirve para una revista impresa en blanco y negro. Las ocho <span class="ui">Secciones</span> corresponden a los módulos de análisis.</p>
+
+  <p>La tarjeta <span class="ui">Fuentes de datos</span> tiene una línea por archivo importado. La cadena de búsqueda y la fecha de consulta no vienen dentro de las exportaciones: escríbelas aquí tal como las usaste. Las búsquedas hechas en la pestaña <span class="ui">Buscar</span> de Importar ya traen las dos (capítulo 3). El nombre de la fuente es el mismo del diagrama PRISMA (capítulo 12); si lo dejas vacío, el texto describe la fuente de forma genérica. Todo lo que escribas entra en el primer párrafo de la metodología.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-informe.png" alt="Pestaña Informe con el contenido del informe, las secciones, la fuente de datos con su cadena de búsqueda y fecha, y el botón Generar vista previa">
+      <span class="marca" style="left:84.5%;top:21%">1</span>
+      <span class="marca" style="left:66.3%;top:27.3%">2</span>
+      <span class="marca" style="left:90%;top:42.7%">3</span>
+      <span class="marca" style="left:51.6%;top:66.9%">4</span>
+      <span class="marca" style="left:22.3%;top:87.6%">5</span>
+    </div>
+    <figcaption><b>Figura 13.6.</b> Las opciones del informe con los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Título, autores e idioma del informe.</li>
+    <li><span class="n">2</span>Página, filas por tabla y escala de grises.</li>
+    <li><span class="n">3</span>Las secciones que entran.</li>
+    <li><span class="n">4</span>Nombre, cadena y fecha de cada archivo.</li>
+    <li><span class="n">5</span>Redactar el informe.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 13.5.</b> Las partes del informe.</caption>
+    <thead><tr><th style="width:26%">Parte</th><th>Qué contiene</th></tr></thead>
+    <tbody>
+      <tr><td>Portada</td><td>Título, número de documentos y periodo, autores, fecha y versión de la app.</td></tr>
+      <tr><td>Metodología · Datos</td><td>Las fuentes con su cadena, fecha y registros; los duplicados y el umbral; la normalización de autores, instituciones y países; el campo de términos, sinónimos y palabras vacías; los filtros; y el conjunto final por tipo de documento.</td></tr>
+      <tr><td>Metodología · Análisis</td><td>Un párrafo por análisis con sus parámetros: número de nodos, frecuencias mínimas, normalización, algoritmo de comunidades, resolución, periodos, número de grupos… cada método con su cita.</td></tr>
+      <tr><td>Resultados</td><td>Por sección, las figuras y tablas principales numeradas, cada una precedida por un párrafo con sus cifras.</td></tr>
+      <tr><td>Referencias y cita</td><td>Solo los métodos citados en el texto, en orden alfabético, más la cita sugerida de SciMetricsPro.</td></tr>
+    </tbody>
+  </table>
+
+  <p><span class="ui">Generar vista previa</span> dibuja las figuras en el idioma del informe y arma el documento en la misma pantalla. En el informe, las figuras miden 16 cm de ancho con letra base de 9 pt; una figura que pasaría de 19 cm de alto conserva su acomodo y se imprime más chica.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-vista.png" alt="Vista previa del informe con el resumen de 24 figuras y 10 tablas, los botones de descarga y el principio del documento: portada y metodología">
+      <span class="marca" style="left:75%;top:6.8%">1</span>
+      <span class="marca" style="left:63.6%;top:11%">2</span>
+      <span class="marca" style="left:10.7%;top:31.5%">3</span>
+    </div>
+    <figcaption><b>Figura 13.7.</b> La vista previa del informe del ejemplo con las ocho secciones.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Figuras, tablas e idioma del informe.</li>
+    <li><span class="n">2</span>Documento, PDF por impresión o página.</li>
+    <li><span class="n">3</span>El informe tal como se descarga.</li>
+  </ul>
+
+  <p>La vista previa es el mismo informe que se descarga, en tres formas. <span class="ui">Descargar documento (.docx)</span> produce un documento de texto editable, con estilos de título, las figuras como imágenes a 300 dpi, la numeración de figuras y tablas como campos que se actualizan solos y el número de página en el pie. <span class="ui">Imprimir o guardar como PDF</span> abre el diálogo de impresión del navegador; ahí se elige guardar como PDF. <span class="ui">Descargar página (.html)</span> guarda una página que se abre en cualquier navegador; en la impresión y en la página, las figuras siguen siendo vectoriales.</p>
+
+  <figure class="angosta">
+    <div class="marco" style="position:relative">
+      <img src="../img/exportar-resultados.png" alt="Sección de resultados de fuentes del informe con un párrafo de cifras, la figura de las diez fuentes más productivas, su pie, la ley de Bradford y la tabla de zonas">
+      <span class="marca" style="left:4%;top:12.6%">1</span>
+      <span class="marca" style="left:4%;top:27.9%">2</span>
+      <span class="marca" style="left:4%;top:41.9%">3</span>
+      <span class="marca" style="left:4%;top:92.2%">4</span>
+    </div>
+    <figcaption><b>Figura 13.8.</b> Los resultados de un informe con solo la sección <span class="ui">Fuentes</span>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Párrafo con las cifras de la figura.</li>
+    <li><span class="n">2</span>La figura a 16 cm.</li>
+    <li><span class="n">3</span>Pie con número y título.</li>
+    <li><span class="n">4</span>Tabla con filete superior e inferior.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el informe del ejemplo comprobado</div>
+    <p>Con las ocho secciones, el informe del ejemplo tiene <b>24 figuras y 10 tablas</b>. Sus cifras coinciden con las comprobadas en los capítulos anteriores: 396 citas locales, 8 grupos en el mapa de acoplamiento, 49 autores y 226 enlaces en la red de colaboración. Las que dependen de todo el conjunto se contaron en el archivo de ejemplo sin la app: 141 fuentes y 282 artículos, 9 trabajos de conferencia, 5 tesis, 3 capítulos y 1 revisión. El .docx se abrió como paquete: todas sus partes son XML bien formado, trae 24 imágenes de 1890 píxeles (16 cm a 300 dpi), 10 tablas, 34 campos de numeración —uno por figura y tabla— y página carta. La revisión también encontró una redacción engañosa: la fuente principal tenía «5.3&nbsp;% del total», pero ese porcentaje se calcula sobre los 282 documentos con fuente. Ahora el texto dice «de los documentos con fuente».</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · el informe describe; tú interpretas</div>
+    <p>Los párrafos del informe solo dicen cifras; no interpretan ni discuten. Léelos antes de copiarlos. Por ejemplo, el del panorama del ejemplo dice que la tasa de crecimiento anual fue de 0&nbsp;%: el primer año (1956) y el último (2026) tienen un documento cada uno, y la fórmula solo compara esos dos extremos. Es la trampa que explica el capítulo 5. Revisa también que los parámetros descritos en la metodología sean los que quieres informar: el informe usa los que dejaste en cada pantalla.</p>
+  </div>
+
+  <p>Si cambias los documentos después de generar el informe, un aviso pide generarlo de nuevo. Con el informe descargado, los resultados están listos para el artículo. Los apéndices reúnen como consulta rápida los formatos de cada base de datos, las fórmulas de los indicadores con sus referencias, un glosario y la solución de los problemas más comunes.</p>
+</section>
+
+</body>
+</html>

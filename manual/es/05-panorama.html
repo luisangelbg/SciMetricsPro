@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 5 · Panorama general</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  /* la ayuda emergente es alta y angosta: se muestra más pequeña */
+  .cap5 figure.angosta .marco { width: 58%; margin: 0 auto; }
+  .cap5 figure.angosta figcaption { margin-left: 21%; margin-right: 21%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 5 -->
+<section class="capitulo cap5" id="cap-panorama" data-pestana="5" data-orden="5" style="--acento: var(--b4)">
+  <div class="cap-apertura">
+    <div class="cap-num">5</div>
+    <div class="cap-etiqueta">Capítulo cinco</div>
+    <h1>Panorama general</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">La primera lectura del conjunto: cuántos documentos, autores y fuentes hay, en qué periodo se publicaron, a qué ritmo crece la literatura, cuánto se cita y de qué tipo son los documentos. Trece tarjetas, dos figuras y una tabla que resumen todo lo que viene después.</p>
+    <div class="cap-franja"><span class="k4"></span><span class="k4"></span><span class="k4"></span><span class="k4"></span><span class="k4"></span><span class="k4"></span></div>
+    <ul class="cap-contenido">
+      <li><b>5.1</b>Qué responde el panorama general</li>
+      <li><b>5.2</b>Las trece tarjetas</li>
+      <li><b>5.3</b>Producción científica anual</li>
+      <li><b>5.4</b>Citas promedio por año</li>
+      <li><b>5.5</b>Tipos de documento</li>
+      <li><b>5.6</b>Cuando hay filtros o faltan datos</li>
+      <li><b>5.7</b>Llevarse la figura y los datos</li>
+    </ul>
+  </div>
+
+  <p class="lead">Con el conjunto limpio y filtrado empieza el análisis, y empieza por lo más general: el tamaño del campo, su ritmo y su impacto. La pantalla <span class="ui">Panorama general</span> es la que se lee primero y la que se cita primero en un artículo: sus trece tarjetas son la tabla de «información principal» que abre casi cualquier estudio bibliométrico, con las definiciones de <b>Aria y Cuccurullo (2017)</b>.</p>
+
+  <!-- 5.1 -->
+  <h2 id="s5-1"><span class="num">5.1</span>Qué responde el panorama general</h2>
+  <p>Toda la pantalla contesta tres preguntas, y conviene leerla en ese orden:</p>
+  <ol class="pasos">
+    <li><b>¿Qué tan grande es el campo?</b> Documentos, fuentes, autores y palabras clave. Son números de tamaño: dicen si el tema da para una revisión sistemática, para un mapa temático o para una tesis completa.</li>
+    <li><b>¿A qué ritmo crece?</b> El periodo, la producción anual y la tasa de crecimiento. Dicen si el tema está despegando, estable o en declive, y si el último año está completo.</li>
+    <li><b>¿Cuánto se cita y quién colabora?</b> Citas promedio, coautores por documento, coautoría internacional y referencias citadas. Dicen cuánta atención ha recibido la literatura y cómo se produce.</li>
+  </ol>
+  <p>Cada tarjeta trae un signo <span class="ui">?</span> que abre su definición, su fórmula y una nota sobre cómo interpretarla; las dos figuras se descargan listas para publicar y las tablas que las alimentan se exportan con un clic.</p>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · el año de referencia</div>
+    <p>Arriba de las tarjetas hay un solo control: el <span class="ui">Año de referencia</span>. Por omisión es el año en curso y se usa en dos indicadores que dependen del tiempo: la <b>edad promedio</b> de los documentos (año de referencia − año de publicación) y las <b>citas por año citable</b> (los años transcurridos desde la publicación, contando el año de publicación como el primero). Si estás terminando un trabajo con datos descargados el año pasado, pon ese año: así la edad y las citas por año no se inflan con un año que tus datos no alcanzaron a cubrir. El valor viaja en el proyecto y aparece en el informe.</p>
+  </div>
+
+  <!-- 5.2 -->
+  <h2 id="s5-2"><span class="num">5.2</span>Las trece tarjetas</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/panorama-tarjetas.png" alt="Año de referencia y las trece tarjetas de información principal del conjunto de ejemplo">
+      <span class="marca" style="left:78%;top:4.9%">1</span>
+      <span class="marca" style="left:8.7%;top:33%">2</span>
+      <span class="marca" style="left:36%;top:15.5%">3</span>
+      <span class="marca" style="left:12.4%;top:62.9%">4</span>
+      <span class="marca" style="left:57%;top:68.5%">5</span>
+      <span class="marca" style="left:54.6%;top:93%">6</span>
+    </div>
+    <figcaption><b>Figura 5.1.</b> La información principal de los 328 documentos del ejemplo, con el año de referencia en 2026.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Año de referencia; cámbialo si tus datos son de otro año.</li>
+    <li><span class="n">2</span>Periodo de publicación y número de años que abarca.</li>
+    <li><span class="n">3</span>El signo <span class="ui">?</span> de cada tarjeta abre su definición y su fórmula (figura 5.2).</li>
+    <li><span class="n">4</span>Tasa de crecimiento anual compuesta entre el primer y el último año.</li>
+    <li><span class="n">5</span>El subtítulo trae el detalle: citas totales y documentos que traen conteo.</li>
+    <li><span class="n">6</span>Referencias citadas: total, cuántas distintas y en cuántos documentos.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 5.1.</b> Las trece tarjetas, con los valores del conjunto de ejemplo.</caption>
+    <thead><tr><th style="width:24%">Tarjeta</th><th>Qué mide</th><th style="width:16%">Ejemplo</th><th style="width:12%">Se detalla en</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Periodo</span></td><td>Primer y último año de publicación. Los documentos sin año no cuentan aquí, pero sí en los demás indicadores.</td><td>2000–2026 (27 años)</td><td>5.3</td></tr>
+      <tr><td><span class="ui">Documentos</span></td><td>Documentos únicos con los que trabajan todos los análisis.</td><td>328</td><td>capítulo 8</td></tr>
+      <tr><td><span class="ui">Fuentes</span></td><td>Revistas, libros y actas distintas, comparadas sin mayúsculas ni acentos y unidas por ISSN.</td><td>159</td><td>capítulo 6</td></tr>
+      <tr><td><span class="ui">Autores</span></td><td>Firmas distintas (apellido e iniciales, con las variantes que uniste). Las apariciones cuentan cada firma en cada documento.</td><td>1,234 · 1,812 apariciones</td><td>capítulo 7</td></tr>
+      <tr><td><span class="ui">Autores de trabajos de un solo autor</span></td><td>Personas que firman solas al menos un documento.</td><td>5 · en 5 documentos</td><td>capítulo 7</td></tr>
+      <tr><td><span class="ui">Tasa de crecimiento anual</span></td><td>Crecimiento compuesto que llevaría de los documentos del primer año a los del último.</td><td>3.31 %</td><td>5.3</td></tr>
+      <tr><td><span class="ui">Edad promedio</span></td><td>Años transcurridos desde la publicación, respecto al año de referencia.</td><td>7.79 años</td><td>5.1</td></tr>
+      <tr><td><span class="ui">Citas promedio por documento</span></td><td>Promedio de las citas que informan las bases, entre los documentos que traen conteo.</td><td>11.43 · 3,439 citas en 301</td><td>5.4</td></tr>
+      <tr><td><span class="ui">Coautores por documento</span></td><td>Autores por documento, en promedio.</td><td>5.52</td><td>capítulo 11</td></tr>
+      <tr><td><span class="ui">Coautoría internacional</span></td><td>Documentos con autores de más de un país, entre todos los documentos.</td><td>12.5 % · 41 de 328</td><td>capítulo 11</td></tr>
+      <tr><td><span class="ui">Palabras clave de autor</span></td><td>Términos distintos, con los sinónimos aplicados.</td><td>1,880</td><td>capítulo 9</td></tr>
+      <tr><td><span class="ui">Palabras clave de índice</span></td><td>Términos distintos asignados por las bases de datos.</td><td>165</td><td>capítulo 9</td></tr>
+      <tr><td><span class="ui">Referencias citadas</span></td><td>Referencias de las bibliografías: total, distintas y documentos que las traen.</td><td>1,072 · 930 distintas en 24</td><td>capítulo 10</td></tr>
+    </tbody>
+  </table>
+
+  <h3>La ayuda de cada indicador</h3>
+  <p>El signo <span class="ui">?</span> abre una ficha con cuatro partes: la <b>definición</b> en palabras, la <b>fórmula</b>, la lista de lo que significa cada símbolo y una nota de <b>cómo interpretarlo</b>, con la referencia del artículo donde se definió el indicador. Es la misma estructura en toda la app, y el texto de la ficha es el que conviene parafrasear en la sección de métodos.</p>
+
+  <figure class="angosta">
+    <div class="marco">
+      <img src="../img/panorama-ayuda.png" alt="Ayuda de la tasa de crecimiento anual con su fórmula, los símbolos, la interpretación y la referencia">
+    </div>
+    <figcaption><b>Figura 5.2.</b> La ayuda de la tasa de crecimiento anual. Se cierra con la <span class="ui">✕</span>, con <kbd style="font-family:var(--sans);font-size:0.8em">Esc</kbd> o pulsando fuera.</figcaption>
+  </figure>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · leer las tarjetas juntas</div>
+    <p>Los números sueltos dicen poco; las razones entre ellos, mucho. <b>Documentos ÷ fuentes</b> mide la concentración editorial: en el ejemplo, 328 ÷ 159 = 2.1 documentos por fuente, una literatura muy dispersa (la ley de Bradford del capítulo 6 la ordena). <b>Apariciones ÷ autores</b> mide la productividad media: 1,812 ÷ 1,234 = 1.5 documentos por autor, típico de un campo con muchos participantes ocasionales (la ley de Lotka del capítulo 7 lo formaliza). <b>Coautores por documento</b> junto con los trabajos de un solo autor describe la forma de trabajar: 5.52 autores por documento y solo 5 trabajos individuales indican un campo experimental de equipos grandes.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · tres tarjetas que dependen de lo que traigan tus archivos</div>
+    <ul style="margin:0">
+      <li><b>Citas promedio.</b> Solo entran los documentos con conteo de citas: en el ejemplo, 301 de 328. Si ninguna base trae el dato, la tarjeta lo dice en lugar de mostrar un cero engañoso.</li>
+      <li><b>Coautoría internacional.</b> Necesita afiliaciones con país reconocido: en el ejemplo, 315 de 328. El porcentaje se calcula sobre <b>todos</b> los documentos, así que si muchos no traen afiliación, saldrá bajo; el subtítulo dice en cuántos se reconoció el país.</li>
+      <li><b>Referencias citadas.</b> Solo 24 documentos del ejemplo traen su bibliografía, y de ahí salen 1,072 referencias (930 distintas). Es el mismo aviso del capítulo 3: sin referencias no hay cocitación ni acoplamiento.</li>
+    </ul>
+  </div>
+
+  <!-- 5.3 -->
+  <h2 id="s5-3"><span class="num">5.3</span>Producción científica anual</h2>
+  <p>La primera figura cuenta cuántos documentos se publicaron cada año (barras, eje izquierdo) y cuántos van acumulados (línea, eje derecho). Las dos series responden a preguntas distintas: las barras muestran los altibajos —un congreso, un número especial, un año con financiamiento— y la línea muestra la forma del crecimiento: recta si el campo crece a ritmo constante, curvada hacia arriba si se acelera.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/panorama-produccion.png" alt="Figura de producción científica anual con barras por año y línea acumulada, y su barra de descarga">
+      <span class="marca" style="left:39.8%;top:6.9%">1</span>
+      <span class="marca" style="left:67.6%;top:3.7%">2</span>
+      <span class="marca" style="left:45%;top:72.6%">3</span>
+      <span class="marca" style="left:31.8%;top:80.2%">4</span>
+      <span class="marca" style="left:52%;top:93.9%">5</span>
+    </div>
+    <figcaption><b>Figura 5.3.</b> La producción anual del ejemplo: de 3 documentos en 2000 a 42 en 2025, y 328 acumulados.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtítulo: qué son las barras y qué es la línea.</li>
+    <li><span class="n">2</span>Descarga de la figura en PNG, SVG o PDF, y de los datos de la tabla.</li>
+    <li><span class="n">3</span>Leyenda: las barras usan el eje izquierdo y la línea, el derecho.</li>
+    <li><span class="n">4</span><span class="ui">Editar figura</span>: títulos, colores, tipografías y tamaños.</li>
+    <li><span class="n">5</span>Formato, ancho de columna, tamaño de letra y resolución de la descarga.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · veintisiete años de producción</div>
+    <p>La serie del ejemplo empieza con 3 documentos en 2000 y 1 en 2001, se mantiene por debajo de 10 hasta 2005, tiene un primer salto en 2006 (10) y otro en 2011 (16), y despega a partir de 2020: 30, 19, 30, 27, 29 y <b>42 en 2025</b>, el año más productivo. El último dato, 2026 con 7 documentos, corresponde a un año que apenas iba a la mitad cuando se descargaron los archivos. En total, 328 documentos acumulados. La serie completa se comprobó contando los años de los seis archivos fuera de la app.</p>
+  </div>
+
+  <h3>La tasa de crecimiento y su trampa</h3>
+  <p>La tarjeta <span class="ui">Tasa de crecimiento anual</span> resume la serie en un número: el crecimiento compuesto que llevaría de los documentos del primer año a los del último. Con el ejemplo completo, de 3 documentos en 2000 a 7 en 2026 en 27 años, da <b>3.31 %</b>. Pero la fórmula <b>solo mira los dos extremos</b>, y el extremo derecho casi siempre está incompleto: si se filtra el periodo a 2020–2026, la misma fórmula va de 30 documentos a 7 y da <b>−21.54 %</b>, como si el tema se estuviera apagando, cuando en realidad 2025 fue su mejor año.</p>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · cómo informar el crecimiento</div>
+    <table class="compacta">
+      <thead><tr><th style="width:44%">Situación</th><th>Qué hacer</th></tr></thead>
+      <tbody>
+        <tr><td>El último año del periodo es el año en curso</td><td>Filtra hasta el año anterior y vuelve a leer la tasa; dilo así en métodos: «TCA 2000–2025».</td></tr>
+        <tr><td>El primer año tiene uno o dos documentos</td><td>La tasa se dispara por el denominador pequeño. Empieza el periodo en el primer año con producción estable y dilo.</td></tr>
+        <tr><td>La serie tiene altibajos grandes</td><td>Acompaña la tasa con la figura: un número no describe una serie irregular.</td></tr>
+        <tr><td>Quieres comparar dos temas</td><td>Usa el mismo periodo en los dos y verifica que las dos búsquedas se hicieron el mismo día.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">La app no corrige el año incompleto por ti: la decisión es metodológica y debe quedar escrita.</p>
+  </div>
+
+  <!-- 5.4 -->
+  <h2 id="s5-4"><span class="num">5.4</span>Citas promedio por año</h2>
+  <p>La segunda figura mira las citas desde el año de publicación. Las barras dan las <b>citas promedio por documento</b> publicado ese año; la línea las divide entre los <b>años citables</b> (los años transcurridos desde la publicación hasta el año de referencia, contando el de publicación), para poder comparar años lejanos con años recientes.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/panorama-citas.png" alt="Figura de citas promedio por año, con barras por documento y línea por año citable">
+      <span class="marca" style="left:46.1%;top:8.8%">1</span>
+      <span class="marca" style="left:20%;top:26%">2</span>
+      <span class="marca" style="left:66%;top:22%">3</span>
+    </div>
+    <figcaption><b>Figura 5.4.</b> Citas promedio por año del ejemplo, con el año de referencia en 2026.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Las barras usan el eje izquierdo (citas por documento) y la línea el derecho (citas por año citable).</li>
+    <li><span class="n">2</span>Un año con pocos documentos muy citados dispara el promedio: 2002 tiene 2 documentos con 97 citas, es decir 48.5 por documento.</li>
+    <li><span class="n">3</span>La línea corrige el efecto del tiempo y deja ver los años recientes con buena acogida.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · por qué un documento viejo parece mejor</div>
+    <p>Las citas se acumulan: un artículo de 2002 lleva veinticinco años recibiéndolas y uno de 2024 apenas dos. Por eso las barras de la izquierda casi siempre son más altas, y por eso no sirven para decidir qué año «produjo mejor ciencia». Dividir entre los años citables pone a todos los años en la misma escala de citas por año, que es lo que compara la línea. Aun así, quedan dos efectos que ninguna corrección arregla: los años con muy pocos documentos tienen promedios inestables (basta un artículo muy citado) y las citas siguen llegando después de la descarga, así que toda la figura es una fotografía de una fecha concreta.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · de dónde salen las citas</div>
+    <p>El número de citas es el que informa cada base de datos al exportar, no un conteo propio de la app: cada índice cuenta las citas que ve en su propia cobertura, así que el mismo documento puede traer números distintos según el archivo. Al fusionar duplicados (capítulo 4) se conserva <b>el mayor</b>. Los documentos sin conteo no entran en ningún promedio, y en el ejemplo son 27 de 328: casi todos del índice biomédico y de los RIS sin ese campo. Si necesitas citas comparables, usa una sola base o declara cuál aportó los conteos. El capítulo 8 ofrece una alternativa que no depende de las bases: las <b>citas locales</b>, las que recibe un documento dentro del propio conjunto.</p>
+  </div>
+
+  <!-- 5.5 -->
+  <h2 id="s5-5"><span class="num">5.5</span>Tipos de documento</h2>
+  <p>La tabla del final agrupa los documentos por tipo, con su porcentaje, sus citas promedio y las <b>etiquetas originales</b> que traían las bases. Esa última columna es la que permite auditar el agrupamiento: cada base escribe los tipos a su manera («Article», «Journal Article», «Conference paper», «Book chapter»), y la app los reduce a un conjunto común.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/panorama-tipos.png" alt="Tabla de tipos de documento con documentos, porcentaje, citas promedio y etiquetas originales">
+      <span class="marca" style="left:98%;top:27%">1</span>
+      <span class="marca" style="left:84%;top:49.8%">2</span>
+      <span class="marca" style="left:68%;top:58.7%">3</span>
+    </div>
+    <figcaption><b>Figura 5.5.</b> Los cinco tipos de documento del ejemplo, ordenados por número de documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Se ordena por cualquier columna y se descarga en hoja de cálculo o CSV.</li>
+    <li><span class="n">2</span>Porcentaje sobre los documentos del conjunto y citas promedio del tipo.</li>
+    <li><span class="n">3</span>Etiquetas originales de las bases que se agruparon en ese tipo.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · las revisiones se citan casi tres veces más</div>
+    <p>En el conjunto de las seis exportaciones, los artículos son el 89 % (292 documentos) con 11.45 citas promedio, y las revisiones, apenas el 4 % (13 documentos), promedian <b>31.91 citas</b>. Es un patrón conocido de la bibliometría: las revisiones acumulan más citas que los artículos originales, así que unas pocas pueden mover el promedio general del conjunto. Las 15 ponencias de congreso (1.6 citas) y los 7 capítulos de libro (0.43) tiran del promedio hacia abajo. Si tu estudio compara impacto, conviene analizar los tipos por separado o dejar solo los artículos con el filtro de tipo de documento (capítulo 4).</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · qué tipos reconoce la app</div>
+    <p>Los tipos comunes son artículo, revisión, conferencia, capítulo de libro, libro, carta, editorial, fe de erratas, nota, tesis, informe, datos, preprint y retractado; lo que no encaja queda como <span class="ui">Otro</span>, con su etiqueta original a la vista. Un documento retractado que siga contando como artículo en tu conjunto es un problema de la exportación, no de la app: búscalo por su etiqueta original en esta tabla.</p>
+  </div>
+
+  <!-- 5.6 -->
+  <h2 id="s5-6"><span class="num">5.6</span>Cuando hay filtros o faltan datos</h2>
+  <p>Con filtros activos, la pantalla avisa arriba de las tarjetas cuántos documentos está usando y todos los indicadores se recalculan. Es la mejor manera de ver el efecto de una decisión: filtra, mira las tarjetas, quita el filtro y compara.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/panorama-filtrado.png" alt="Panorama con el filtro de 2020 en adelante: aviso y tarjetas recalculadas">
+      <span class="marca" style="left:47.7%;top:5.1%">1</span>
+      <span class="marca" style="left:17.6%;top:38.4%">2</span>
+      <span class="marca" style="left:14.9%;top:88.6%">3</span>
+    </div>
+    <figcaption><b>Figura 5.6.</b> El mismo conjunto con el filtro «de 2020 en adelante»: 184 documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Aviso: los indicadores usan solo los documentos que cumplen los filtros.</li>
+    <li><span class="n">2</span>El periodo se ajusta al filtro y con él la edad promedio (3.13 años).</li>
+    <li><span class="n">3</span>La tasa se vuelve negativa porque el último año del periodo está incompleto.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 5.2.</b> Indicadores que salen raros y qué los explica.</caption>
+    <thead><tr><th style="width:30%">Lo que ves</th><th>Causa habitual</th><th style="width:26%">Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td>Tasa de crecimiento negativa en un tema que crece</td><td>El último año del periodo está incompleto.</td><td>Filtrar hasta el año anterior (sección 5.3).</td></tr>
+      <tr><td><span class="ui">Los registros no traen número de citas</span></td><td>Ninguna exportación trae ese campo.</td><td>Volver a exportar de un índice de citas, o usar las citas locales del capítulo 8.</td></tr>
+      <tr><td>Coautoría internacional del 0 %</td><td>Los registros no traen afiliaciones, o no se reconoció el país.</td><td>Revisar la pestaña <span class="ui">Instituciones y países</span> (sección 4.5).</td></tr>
+      <tr><td>Muchos más autores de los esperados</td><td>Variantes de nombre sin unir.</td><td>Revisar la pestaña <span class="ui">Autores</span> (sección 4.4).</td></tr>
+      <tr><td>Más fuentes que documentos por revista</td><td>Es un tema disperso, o hay nombres de fuente escritos de varias formas.</td><td>Ver la tabla completa de fuentes (capítulo 6).</td></tr>
+      <tr><td>Un año con citas promedio altísimas</td><td>Pocos documentos y uno muy citado.</td><td>Mirar el número de documentos de ese año en la figura anterior.</td></tr>
+      <tr><td><span class="ui">Ningún documento cumple los filtros</span></td><td>Los filtros globales dejaron el conjunto vacío.</td><td>Pulsar <span class="ui">Revisar los filtros</span>, que lleva directo a la pestaña.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 5.7 -->
+  <h2 id="s5-7"><span class="num">5.7</span>Llevarse la figura y los datos</h2>
+  <p>Las dos figuras de esta pantalla —y todas las de la app— traen la misma barra de herramientas. <span class="ui">PNG</span>, <span class="ui">SVG</span> y <span class="ui">PDF</span> descargan la imagen; <span class="ui">Datos</span> descarga la tabla que la alimenta, para revisarla o rehacer la figura en otro programa. Debajo, <span class="ui">Editar figura</span> despliega los títulos, los colores, la tipografía y los tamaños, y la última fila fija el formato de la descarga: ancho de una o dos columnas en centímetros, tamaño de letra en puntos, resolución en dpi, fondo blanco o transparente y escala de grises. El capítulo 13 explica esa barra a fondo y cómo preparar las figuras para una revista.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 5.3.</b> Columnas que descarga <span class="ui">Datos</span> en cada figura.</caption>
+    <thead><tr><th style="width:34%">Figura</th><th>Columnas</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Producción científica anual</span></td><td>Año · Documentos · Documentos acumulados.</td></tr>
+      <tr><td><span class="ui">Citas promedio por año</span></td><td>Año · Documentos · Documentos con número de citas · Citas · Citas promedio por documento · Años citables · Citas promedio por año citable.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · lo que el informe escribe solo</div>
+    <p>No hace falta copiar estos números a mano: el informe del capítulo 13 arma la tabla de información principal con las trece tarjetas, incrusta las dos figuras y redacta el párrafo de métodos con el periodo, el número de documentos, las bases consultadas y los filtros aplicados. Las tarjetas de esta pantalla son, además, las que más se citan en el resumen de un artículo bibliométrico.</p>
+  </div>
+
+  <p style="margin-top:0.3in">El panorama dice cuánto hay y a qué ritmo; los capítulos siguientes dicen <b>dónde</b> está. El próximo abre las <span class="ui">Fuentes</span>: las revistas más productivas, la ley de Bradford y el impacto de cada una.</p>
+</section>
+
+</body>
+</html>

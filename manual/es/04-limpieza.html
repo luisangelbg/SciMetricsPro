@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 4 · Limpieza y filtros</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  /* diagramas de este capítulo */
+  .cap4 .cap4-svg text { font-family: Jost, sans-serif; }
+  .cap4 td code { white-space: normal; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 4 -->
+<section class="capitulo cap4" id="cap-limpieza" data-pestana="4" data-orden="4" style="--acento: var(--b3)">
+  <div class="cap-apertura">
+    <div class="cap-num">4</div>
+    <div class="cap-etiqueta">Capítulo cuatro</div>
+    <h1>Limpieza y filtros</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Cómo convertir los registros de varias bases en un conjunto limpio: fusionar los documentos repetidos, unir las variantes de un mismo autor, unificar instituciones y países, agrupar las formas de una misma palabra clave y dejar fuera lo que no corresponde al estudio. Todo lo que se decide aquí alimenta los once análisis de los capítulos siguientes.</p>
+    <div class="cap-franja"><span class="k3"></span><span class="k3"></span><span class="k3"></span><span class="k3"></span><span class="k3"></span><span class="k3"></span></div>
+    <ul class="cap-contenido">
+      <li><b>4.1</b>Por qué limpiar antes de analizar</li>
+      <li><b>4.2</b>El resumen y el campo de términos</li>
+      <li><b>4.3</b>Duplicados</li>
+      <li><b>4.4</b>Variantes de nombres de autor</li>
+      <li><b>4.5</b>Instituciones y países</li>
+      <li><b>4.6</b>Palabras clave: sinónimos y palabras vacías</li>
+      <li><b>4.7</b>Filtros</li>
+    </ul>
+  </div>
+
+  <p class="lead">La pantalla <span class="ui">Limpieza y filtros</span> tiene seis pestañas que se recorren en orden. Las cuatro primeras corrigen los datos; la quinta agrupa las formas de las palabras clave; la última recorta el conjunto al periodo, los tipos de documento o los idiomas que interesan. Ninguna borra nada: los registros importados se conservan tal como se leyeron y cada decisión se puede deshacer.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.1.</b> Las seis pestañas de <span class="ui">Limpieza y filtros</span>.</caption>
+    <thead><tr><th style="width:24%">Pestaña</th><th>Qué resuelve</th><th style="width:20%">Sección</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Resumen</span></td><td>Cuántos registros entraron, cuántos documentos quedaron y con qué campo se van a contar los términos.</td><td>4.2</td></tr>
+      <tr><td><span class="ui">Duplicados</span></td><td>El mismo documento descargado de dos o más bases.</td><td>4.3</td></tr>
+      <tr><td><span class="ui">Autores</span></td><td>La misma persona escrita con distintas iniciales.</td><td>4.4</td></tr>
+      <tr><td><span class="ui">Instituciones y países</span></td><td>La misma organización escrita de varias formas y las afiliaciones sin país reconocido.</td><td>4.5</td></tr>
+      <tr><td><span class="ui">Palabras clave</span></td><td>Singulares y plurales, guiones, erratas y palabras sin contenido.</td><td>4.6</td></tr>
+      <tr><td><span class="ui">Filtros</span></td><td>Años, tipo de documento, idioma, fuente, área temática y mínimo de citas.</td><td>4.7</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.1 -->
+  <h2 id="s4-1"><span class="num">4.1</span>Por qué limpiar antes de analizar</h2>
+  <p>Un conjunto bibliográfico recién importado casi nunca está listo. Si buscaste en varias bases, el mismo artículo llega dos o tres veces, con títulos escritos de distinta manera y con conteos de citas diferentes. Cada base escribe los nombres de los autores a su modo: unas dan solo las iniciales, otras el nombre completo, y basta que una escriba una partícula («dos», «de», «van») para que una misma persona aparezca dos veces en la lista de autores más productivos. Las afiliaciones mezclan departamento, universidad, ciudad y país en una sola línea de texto, a veces en inglés y a veces en el idioma del país. Y las palabras clave conviven en singular y plural, con guion y sin guion, con el nombre científico completo y abreviado.</p>
+  <p>Nada de esto es un defecto de las bases: son catálogos distintos, hechos con reglas distintas. Pero si no se corrige, los indicadores mienten en la misma dirección: <b>se sobreestima el número de documentos</b> (duplicados), <b>se reparte la producción de una persona entre varias</b> (variantes de nombre) y <b>se dispersa un tema entre muchas palabras</b> (variantes de escritura). Un núcleo de Bradford, una ley de Lotka o una red de coocurrencia calculados sobre datos sucios son técnicamente correctos y sustantivamente falsos.</p>
+
+  <figure class="cap4-diagrama">
+    <svg class="cap4-svg" viewBox="0 0 700 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Del conjunto importado al conjunto que usan los análisis: fusión de duplicados, normalización y filtros">
+      <g font-size="10.5">
+        <rect x="8" y="46" width="150" height="74" rx="8" fill="#eaf3ed" stroke="#2f7d4f" stroke-width="1.4"/>
+        <text x="83" y="38" text-anchor="middle" font-weight="600" fill="#2f7d4f">Lo que importaste</text>
+        <text x="83" y="72" text-anchor="middle" font-size="18" font-weight="600" fill="#22252c">402</text>
+        <text x="83" y="90" text-anchor="middle" fill="#5d6472">registros</text>
+        <text x="83" y="106" text-anchor="middle" fill="#5d6472">de 6 archivos</text>
+
+        <path d="M164 83 H206" stroke="#2f7d4f" stroke-width="1.4" fill="none" marker-end="url(#f4a)"/>
+        <text x="185" y="62" text-anchor="middle" font-size="9" fill="#2f7d4f">fusionar</text>
+        <text x="185" y="74" text-anchor="middle" font-size="9" fill="#2f7d4f">duplicados</text>
+        <text x="185" y="102" text-anchor="middle" font-size="9" fill="#a03030">−74</text>
+
+        <rect x="214" y="46" width="150" height="74" rx="8" fill="#eaf3ed" stroke="#2f7d4f" stroke-width="1.4"/>
+        <text x="289" y="38" text-anchor="middle" font-weight="600" fill="#2f7d4f">Conjunto limpio</text>
+        <text x="289" y="72" text-anchor="middle" font-size="18" font-weight="600" fill="#22252c">328</text>
+        <text x="289" y="90" text-anchor="middle" fill="#5d6472">documentos únicos</text>
+        <text x="289" y="106" text-anchor="middle" fill="#5d6472">nombres unificados</text>
+
+        <path d="M370 83 H412" stroke="#2f7d4f" stroke-width="1.4" fill="none" marker-end="url(#f4a)"/>
+        <text x="391" y="68" text-anchor="middle" font-size="9" fill="#2f7d4f">filtros</text>
+        <text x="391" y="102" text-anchor="middle" font-size="9" fill="#5d6472">y PRISMA</text>
+
+        <rect x="420" y="46" width="150" height="74" rx="8" fill="#f4f7f5" stroke="#2f7d4f" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <text x="495" y="38" text-anchor="middle" font-weight="600" fill="#2f7d4f">Lo que se analiza</text>
+        <text x="495" y="72" text-anchor="middle" font-size="18" font-weight="600" fill="#22252c">328</text>
+        <text x="495" y="90" text-anchor="middle" fill="#5d6472">sin filtros activos</text>
+        <text x="495" y="106" text-anchor="middle" fill="#5d6472">162 con los del ejemplo</text>
+
+        <path d="M576 83 H618" stroke="#2f7d4f" stroke-width="1.4" fill="none" marker-end="url(#f4a)"/>
+        <text x="660" y="70" text-anchor="middle" font-size="9.5" fill="#22252c">los once</text>
+        <text x="660" y="84" text-anchor="middle" font-size="9.5" fill="#22252c">análisis, las</text>
+        <text x="660" y="98" text-anchor="middle" font-size="9.5" fill="#22252c">figuras y el informe</text>
+
+        <rect x="8" y="146" width="562" height="54" rx="8" fill="#fbfbf9" stroke="#d8dbe0" stroke-width="1"/>
+        <text x="20" y="166" font-size="9.5" font-weight="600" fill="#2f7d4f">Decisiones que puedes cambiar cuando quieras</text>
+        <text x="20" y="182" font-size="9.5" fill="#5d6472">umbral de similitud · qué grupos se fusionan · uniones de autores · alias de instituciones y países ·</text>
+        <text x="20" y="194" font-size="9.5" fill="#5d6472">sinónimos · palabras vacías · campo de términos · filtros</text>
+      </g>
+      <defs><marker id="f4a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f7d4f"/></marker></defs>
+    </svg>
+    <figcaption><b>Figura 4.1.</b> El camino de los datos. Cada cambio en una pestaña vuelve a recorrer el camino completo y recalcula todos los resultados.</figcaption>
+  </figure>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · nada se borra</div>
+    <p>Los registros importados no se modifican nunca. La app guarda <b>decisiones</b> (este grupo se fusiona, estas dos firmas son la misma persona, este término prefiere aquella forma) y con ellas construye el conjunto limpio cada vez. Por eso puedes desmarcar una fusión, deshacer una unión de autores o quitar un sinónimo y todo vuelve a su lugar, incluso después de guardar y abrir el proyecto.</p>
+  </div>
+
+  <!-- 4.2 -->
+  <h2 id="s4-2"><span class="num">4.2</span>El resumen y el campo de términos</h2>
+  <p>La pestaña <span class="ui">Resumen</span> es el tablero de la limpieza: cuatro tarjetas con el antes y el después, la tabla de registros por archivo y la elección del campo con el que se contarán los términos en toda la app.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-resumen.png" alt="Pestaña Resumen con cuatro tarjetas, la tabla de registros por archivo y el campo de análisis de términos">
+      <span class="marca" style="left:64%;top:5.3%">1</span>
+      <span class="marca" style="left:32.8%;top:19.2%">2</span>
+      <span class="marca" style="left:88.8%;top:13.9%">3</span>
+      <span class="marca" style="left:69.8%;top:30.9%">4</span>
+      <span class="marca" style="left:40%;top:40.6%">5</span>
+      <span class="marca" style="left:2%;top:92.6%">6</span>
+    </div>
+    <figcaption><b>Figura 4.2.</b> El resumen de la limpieza con las seis exportaciones del capítulo 3: 402 registros se convierten en 328 documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Las seis pestañas; las flechas <kbd style="font-family:var(--sans);font-size:0.8em">←</kbd> <kbd style="font-family:var(--sans);font-size:0.8em">→</kbd> pasan de una a otra.</li>
+    <li><span class="n">2</span>Registros que se fusionaron y en cuántos grupos.</li>
+    <li><span class="n">3</span>Lo que usan los análisis; el subtítulo avisa si hay filtros activos.</li>
+    <li><span class="n">4</span>Recordatorio: cualquier cambio en estas pestañas recalcula los resultados.</li>
+    <li><span class="n">5</span>Registros leídos de cada archivo, con los mismos números de la pantalla <span class="ui">Importar</span>.</li>
+    <li><span class="n">6</span>Campo con el que se cuentan los términos en toda la app.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.2.</b> Las cuatro tarjetas del resumen.</caption>
+    <thead><tr><th style="width:26%">Tarjeta</th><th>Qué cuenta</th><th style="width:16%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Registros importados</span></td><td>Suma de los registros de todos los archivos y búsquedas, antes de limpiar.</td><td>402</td></tr>
+      <tr><td><span class="ui">Duplicados fusionados</span></td><td>Registros que desaparecieron al unirse con otro, y en cuántos grupos.</td><td>74 en 67 grupos</td></tr>
+      <tr><td><span class="ui">Documentos únicos</span></td><td>Lo que queda después de fusionar: el conjunto limpio.</td><td>328</td></tr>
+      <tr><td><span class="ui">Tras los filtros</span></td><td>Documentos que cumplen los filtros globales; es lo que leen los análisis.</td><td>328</td></tr>
+    </tbody>
+  </table>
+
+  <h3>El campo de análisis de términos</h3>
+  <p>Varios análisis —los términos más frecuentes, la red de coocurrencia, el mapa temático, la evolución temática y el análisis factorial— necesitan una lista de términos por documento. La app ofrece cuatro fuentes posibles para esa lista y la elección vale para toda la sesión y para el informe.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.3.</b> Los cuatro campos de términos.</caption>
+    <thead><tr><th style="width:26%">Campo</th><th>Qué es</th><th style="width:34%">Cuándo conviene</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Palabras clave de autor</span></td><td>Las que los autores escribieron en el artículo.</td><td>Por omisión. Reflejan el lenguaje de quien investiga; son las más usadas en bibliometría.</td></tr>
+      <tr><td><span class="ui">Palabras clave de índice</span></td><td>Las que asigna la base de datos con su vocabulario controlado.</td><td>Cuando faltan las de autor, o para comparar con un tesauro; son más uniformes y más numerosas.</td></tr>
+      <tr><td><span class="ui">Títulos (pares de palabras)</span></td><td>Pares de palabras seguidas del título, sin palabras vacías.</td><td>Cuando los registros no traen ninguna palabra clave.</td></tr>
+      <tr><td><span class="ui">Resúmenes (pares de palabras)</span></td><td>Los mismos pares, tomados del resumen.</td><td>Cuando quieres el vocabulario completo del texto; da muchos más términos y más ruido.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Si los documentos no traen el campo elegido, la app no deja la pantalla vacía: escoge sola el primer campo que sí exista, lo avisa con un mensaje y lo explica en la tarjeta. La preferencia guardada no cambia: vuelve en cuanto los datos la traigan.</p>
+
+  <figure>
+    <div class="marco">
+      <img src="../img/limpieza-campo.png" alt="Tarjeta del campo de términos con el aviso de que se eligió palabras clave de índice">
+    </div>
+    <figcaption><b>Figura 4.3.</b> Los datos de ejemplo vienen del catálogo abierto, que no trae palabras clave de autor: la app eligió las de índice y lo dice.</figcaption>
+  </figure>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué campo de términos usar</div>
+    <table class="compacta">
+      <thead><tr><th style="width:44%">Si tus registros…</th><th>elige…</th></tr></thead>
+      <tbody>
+        <tr><td>traen palabras clave de autor en casi todos</td><td><span class="ui">Palabras clave de autor</span>; revisa antes los sinónimos (sección 4.6).</td></tr>
+        <tr><td>vienen de una sola base con vocabulario controlado</td><td><span class="ui">Palabras clave de índice</span>; los términos ya están unificados por la base.</td></tr>
+        <tr><td>mezclan bases y las de autor solo están en unos pocos</td><td>Los dos: compara los conteos y quédate con el que describa mejor tu tema.</td></tr>
+        <tr><td>no traen palabras clave (muchos RIS y el catálogo abierto)</td><td><span class="ui">Títulos</span> si hay pocos documentos, <span class="ui">Resúmenes</span> si hay muchos y quieres más detalle.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Cambiar el campo recalcula los conteos, las redes y los mapas en cuanto lo eliges; no hay que volver a importar nada.</p>
+  </div>
+
+  <!-- 4.3 -->
+  <h2 id="s4-3"><span class="num">4.3</span>Duplicados</h2>
+  <p>Dos registros son el mismo documento cuando comparten el DOI o cuando, sin DOI que los contradiga, tienen títulos iguales o casi iguales, el mismo año y un primer autor compatible. La app hace esa comparación sola al terminar la importación y presenta cada grupo para que lo apruebes o lo rechaces.</p>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · cómo se comparan los títulos</div>
+    <p>Comparar todos los títulos contra todos sería inviable: con 402 registros son más de 80,000 comparaciones, y con 20,000 registros, doscientos millones. La app usa el <b>método de vecindario ordenado</b> (Hernández y Stolfo, 1995): ordena los títulos normalizados alfabéticamente, y otra vez leyéndolos al revés, y solo compara cada uno con sus vecinos inmediatos. Así, un título que difiere al principio se encuentra en la segunda pasada y otro que difiere al final, en la primera.</p>
+    <p>La comparación misma es la <b>distancia de edición</b> (Levenshtein, 1966): el número mínimo de letras que hay que insertar, borrar o cambiar para pasar de un título al otro. La similitud es 1 − distancia ÷ longitud del título más largo, así que 0.95 quiere decir «difieren en menos del 5&nbsp;% de sus letras». El cálculo se detiene en cuanto la distancia supera el umbral, de modo que los títulos muy distintos se descartan en unos pocos pasos.</p>
+  </div>
+
+  <p>A la similitud se le suman tres salvaguardas, porque dos artículos distintos pueden tener títulos casi idénticos: los <b>números del título</b> deben coincidir («Parte I» no es «Parte II»), el <b>año</b> debe ser el mismo (se admite un año de diferencia solo entre archivos distintos, porque una base fecha la publicación en línea y otra la impresa) y los <b>apellidos del primer autor</b> deben ser compatibles. Si los dos registros traen DOI y son distintos, no se agrupan nunca.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-duplicados.png" alt="Pestaña Duplicados con el umbral, el conteo de grupos y dos grupos de ejemplo">
+      <span class="marca" style="left:56%;top:12.9%">1</span>
+      <span class="marca" style="left:33%;top:19%">2</span>
+      <span class="marca" style="left:36%;top:28.8%">3</span>
+      <span class="marca" style="left:6.5%;top:33.5%">4</span>
+      <span class="marca" style="left:21%;top:38.7%">5</span>
+      <span class="marca" style="left:38%;top:56.4%">6</span>
+      <span class="marca" style="left:46.5%;top:62.2%">7</span>
+    </div>
+    <figcaption><b>Figura 4.4.</b> Dos de los 67 grupos de duplicados del ejemplo, los dos por DOI compartido entre bases distintas.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Similitud mínima de títulos, entre 0.80 y 1.00.</li>
+    <li><span class="n">2</span>Grupos encontrados y cuántos se están fusionando.</li>
+    <li><span class="n">3</span>Busca un título dentro de los grupos.</li>
+    <li><span class="n">4</span>Desmarca <span class="ui">Fusionar</span> para conservar los registros por separado.</li>
+    <li><span class="n">5</span>Por qué se agruparon (tabla 4.4).</li>
+    <li><span class="n">6</span>Archivo, año, DOI y citas de cada registro del grupo.</li>
+    <li><span class="n">7</span>Campos que el documento fusionado tomó de otro registro, con su archivo.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.4.</b> Razones que muestra cada grupo.</caption>
+    <thead><tr><th style="width:26%">Etiqueta</th><th>Qué significa</th><th style="width:30%">Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Mismo DOI</span></td><td>Los registros comparten el identificador digital.</td><td>Aceptar; es la evidencia más fuerte.</td></tr>
+      <tr><td><span class="ui">Título similar al N %</span></td><td>Ninguno contradice al otro con su DOI y los títulos coinciden en ese porcentaje, con el mismo año y un primer autor compatible.</td><td>Leer los dos títulos. Con 100&nbsp;% suele ser seguro; por debajo de 96&nbsp;% conviene mirar.</td></tr>
+      <tr><td><span class="ui">Mismo DOI y título similar</span></td><td>El grupo se armó por las dos vías (pasa en grupos de tres o más).</td><td>Aceptar.</td></tr>
+      <tr><td><span class="ui">DOI distintos: revisar</span></td><td>Un registro sin DOI unió dos registros cuyos DOI no coinciden.</td><td>Comparar con cuidado; si no son el mismo documento, desmarcar <span class="ui">Fusionar</span>.</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-dup-titulo.png" alt="Grupo de duplicados encontrado por título similar al 100 %, con un registro sin DOI">
+      <span class="marca" style="left:36%;top:12.7%">1</span>
+      <span class="marca" style="left:26.3%;top:39.1%">2</span>
+      <span class="marca" style="left:30%;top:92%">3</span>
+    </div>
+    <figcaption><b>Figura 4.5.</b> El único grupo del ejemplo que no se encontró por el DOI: el registro del índice regional no lo trae.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>La búsqueda por título deja a la vista un grupo concreto.</li>
+    <li><span class="n">2</span>Razón: los títulos normalizados son idénticos.</li>
+    <li><span class="n">3</span>El segundo registro dice <span class="ui">sin DOI</span>; al fusionar, el documento se queda con el DOI y con las 5 citas del primero.</li>
+  </ul>
+
+  <h3>Qué conserva el documento fusionado</h3>
+  <p>Al fusionar no se elige un registro y se tiran los demás: se arma uno nuevo con lo mejor de cada uno. El registro más completo sirve de base y los campos vacíos se rellenan con los de sus compañeros.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.5.</b> Cómo se resuelve cada campo al fusionar un grupo.</caption>
+    <thead><tr><th style="width:34%">Campo</th><th>Regla</th></tr></thead>
+    <tbody>
+      <tr><td>Resumen y texto de financiamiento</td><td>Se queda el más largo.</td></tr>
+      <tr><td>Título, fuente, volumen, número, páginas, DOI, editorial, idioma, tipo de documento</td><td>Se queda el del registro base; si está vacío, el del primer registro que lo traiga.</td></tr>
+      <tr><td>Palabras clave, referencias citadas, áreas temáticas, afiliaciones</td><td>Se queda la lista más larga.</td></tr>
+      <tr><td>Autores</td><td>La lista con más autores que traen afiliación; si empatan, la más larga.</td></tr>
+      <tr><td>Número de citas</td><td>El mayor de todos los registros del grupo.</td></tr>
+      <tr><td>Acceso abierto, ISSN, ISBN, países</td><td>Se combinan: basta que un registro lo diga.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · 402 registros, 67 grupos, 328 documentos</div>
+    <p>En las seis exportaciones del capítulo 3 se formaron <b>67 grupos</b>: 66 por DOI compartido y 1 por título idéntico (el de la figura 4.5). Son 61 parejas, 5 tríos y un grupo de cuatro registros, es decir <b>74 registros que desaparecen</b> y 328 documentos únicos. Los cruces más frecuentes fueron el RIS del índice de citas multidisciplinario A con el índice regional de revistas (34 grupos), las dos exportaciones del índice biomédico entre sí (14), la plataforma de la editorial con el índice A (13) y el índice biomédico con el índice A (5); un solo documento estaba en los cuatro archivos a la vez.</p>
+    <p>La fusión no solo quita registros: <b>54 de los 67 documentos fusionados ganaron algún campo</b> que su registro base no traía. El más frecuente fueron las palabras clave de autor (32 documentos), seguidas de las páginas (18), el identificador del índice biomédico (5), la lista de autores (5), el resumen (4) y las palabras clave de índice (4). Los 67 grupos, los 74 registros y los 328 documentos se comprobaron con un lector independiente que leyó los seis archivos fuera de la app.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el umbral, el tamaño del conjunto y la reversibilidad</div>
+    <ul style="margin:0">
+      <li><b>Umbral.</b> 0.95 es el valor recomendado. Bajarlo a 0.90 encuentra más parejas y también más falsos positivos (artículos de una misma serie); subirlo a 1.00 solo agrupa títulos idénticos letra por letra. Cambiarlo vuelve a buscar los grupos y conserva las decisiones que ya tomaste.</li>
+      <li><b>Conjuntos grandes.</b> Con más de 3,000 registros la búsqueda corre en segundo plano, con barra de progreso y botón de cancelar; la pantalla muestra mientras tanto <span class="ui">Buscando registros duplicados…</span>.</li>
+      <li><b>Reversibilidad.</b> Desmarcar <span class="ui">Fusionar</span> devuelve los registros al conjunto en el momento, y la decisión se guarda en el proyecto. La lista muestra 25 grupos y crece con <span class="ui">Mostrar 25 más</span>.</li>
+      <li><b>Lo que no hace.</b> Un mismo documento publicado dos veces con DOI distintos (preprint y versión final, por ejemplo) no se detecta por DOI; si los títulos coinciden, sí aparece como grupo por título.</li>
+    </ul>
+  </div>
+
+  <!-- 4.4 -->
+  <h2 id="s4-4"><span class="num">4.4</span>Variantes de nombres de autor</h2>
+  <p>Todos los nombres se escriben en una sola forma, <span class="ui">Apellido, I.</span>, tomando las iniciales del nombre de pila. Las diferencias que no cambian esa forma —acentos, guiones, mayúsculas, espacios, partículas en minúscula— se unen solas: <code>Cadena-Iñiguez J.</code> y <code>Cadena Iniguez, Jorge</code> son la misma clave sin que tengas que hacer nada.</p>
+  <p>Lo que la app <b>no</b> decide sola es el caso contrario: dos firmas con el mismo apellido y la misma primera inicial, pero distintas iniciales siguientes. Puede tratarse de la misma persona (una base escribió todos sus nombres y otra solo uno) o de dos personas distintas de una familia académica. Esa decisión es tuya, y la pestaña te da la evidencia para tomarla: cuántos documentos firma cada variante y <b>cuántos coautores comparte con la variante principal</b>.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-autores.png" alt="Pestaña Autores con dos grupos de variantes y los botones Unir y Mantener separados">
+      <span class="marca" style="left:19.6%;top:12.3%">1</span>
+      <span class="marca" style="left:5.7%;top:25.8%">2</span>
+      <span class="marca" style="left:13.6%;top:35.9%">3</span>
+      <span class="marca" style="left:33.2%;top:47.4%">4</span>
+      <span class="marca" style="left:40.9%;top:61.9%">5</span>
+    </div>
+    <figcaption><b>Figura 4.6.</b> Los dos primeros grupos de variantes del ejemplo, ordenados por número de documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Grupos de variantes que quedan por revisar.</li>
+    <li><span class="n">2</span>Estado del grupo: <span class="ui">Por revisar</span>, <span class="ui">Unidos</span> o <span class="ui">Separados</span>.</li>
+    <li><span class="n">3</span>La grafía más frecuente encabeza el grupo.</li>
+    <li><span class="n">4</span>Documentos de cada variante y coautores en común con la primera.</li>
+    <li><span class="n">5</span><span class="ui">Unir como</span> fija el nombre que queda; <span class="ui">Unir</span> o <span class="ui">Mantener separados</span> aplican la decisión, y después queda <span class="ui">Deshacer</span>.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · una persona y dos personas</div>
+    <p>El primer grupo de la figura 4.6 reúne tres firmas del mismo apellido e inicial. <span class="ui">Soares, L.A.A.</span> aparece en 12 documentos y <span class="ui">Soares, L.A.D.A.</span> en 5, y estas dos comparten <b>11 coautores</b>: es la misma persona, escrita por una base con las iniciales de sus dos apellidos maternos y por otra incluyendo la partícula («Lauriane A. dos A.» frente a «L.A.D.A.»). La tercera, <span class="ui">Soares, L.A.L.</span>, firma un solo documento y comparte <b>un</b> coautor: no hay evidencia para unirla, y lo prudente es <span class="ui">Mantener separados</span> o unir solo las dos primeras.</p>
+    <p>El segundo grupo es el caso opuesto: <span class="ui">Pereira, W.E.</span> (13 documentos) y <span class="ui">Pereira, W.R.</span> (1 documento) no comparten <b>ningún</b> coautor. Son dos personas. Las cifras se comprobaron leyendo los seis archivos fuera de la app: las 12 apariciones de la primera firma y las 5 de la segunda corresponden a 17 documentos distintos, con los mismos 11 coautores en común.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · unir o mantener separados</div>
+    <table class="compacta">
+      <thead><tr><th style="width:46%">Si las variantes…</th><th>entonces…</th></tr></thead>
+      <tbody>
+        <tr><td>comparten varios coautores y trabajan el mismo tema</td><td>únelas con la grafía más completa o más frecuente.</td></tr>
+        <tr><td>no comparten ningún coautor</td><td>déjalas separadas; casi siempre son personas distintas.</td></tr>
+        <tr><td>comparten uno o dos coautores y una firma un solo documento</td><td>consulta el documento (autor de correspondencia, afiliación) antes de decidir; en la duda, sepáralas.</td></tr>
+        <tr><td>son muchas y el estudio no trata de autores</td><td>revisa solo los primeros grupos: están ordenados por número de documentos, y los de abajo casi no mueven los indicadores.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Unir o separar cambia la productividad, la ley de Lotka, el impacto por autor y la red de colaboración; no cambia el número de documentos.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · qué nombre se conserva</div>
+    <p>Una vez unido el grupo, toda la app muestra una sola grafía: la que eliges en <span class="ui">Unir como</span>. Si no unes nada, cada clave conserva igualmente la grafía más frecuente entre las que aparecen en los documentos, así que las listas no muestran la forma de una sola base. Las uniones viajan en el proyecto y se recuperan al abrirlo.</p>
+  </div>
+
+  <!-- 4.5 -->
+  <h2 id="s4-5"><span class="num">4.5</span>Instituciones y países</h2>
+  <p>Las afiliaciones llegan como una sola línea de texto que mezcla laboratorio, departamento, facultad, universidad, ciudad, código postal y país. Para contar instituciones hay que decidir cuál de esas partes nombra a la organización. La app parte la línea en las comas y prefiere la parte que contiene una palabra de organización completa (universidad, instituto, colegio, academia, hospital, consejo, fundación…) sobre la que nombra una subunidad (departamento, facultad, escuela, laboratorio, unidad, programa). Después escribe completas las abreviaturas de las exportaciones etiquetadas (<code>Univ</code> → <i>University</i>, <code>Natl</code> → <i>National</i>, <code>Agr</code> → <i>Agricultural</i>) y pasa a formato título los nombres escritos todos en mayúsculas. Por último, las escrituras que solo difieren en acentos, mayúsculas o espacios se cuentan como una sola institución, con su grafía más frecuente: <i>Paraíba</i> y <i>Paraiba</i> son la misma. Es la misma regla en esta tabla, en la pantalla <span class="ui">Autores</span> y en la red de colaboración.</p>
+  <p>El país sale del final de la afiliación, con un diccionario propio que reconoce las formas habituales de cada nombre en varios idiomas. Lo que no reconoce se puede resolver con un alias.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-lugares.png" alt="Tablas de instituciones y de países, cada una con búsqueda, descarga y paginación">
+      <span class="marca" style="left:2%;top:19.8%">1</span>
+      <span class="marca" style="left:20%;top:26.6%">2</span>
+      <span class="marca" style="left:38.1%;top:48.1%">3</span>
+      <span class="marca" style="left:49.9%;top:24.9%">4</span>
+      <span class="marca" style="left:89.8%;top:7.2%">5</span>
+      <span class="marca" style="left:48.8%;top:89.4%">6</span>
+    </div>
+    <figcaption><b>Figura 4.7.</b> Instituciones y países de los datos de ejemplo (300 documentos, 238 con afiliación), que puedes cargar con un clic para reproducir esta pantalla.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Búsqueda dentro de la tabla.</li>
+    <li><span class="n">2</span>Nombre de la organización, deducido de la afiliación.</li>
+    <li><span class="n">3</span>La misma universidad escrita en inglés aparece aparte: se une con un alias.</li>
+    <li><span class="n">4</span>Países con su código ISO y su número de documentos.</li>
+    <li><span class="n">5</span>Descarga de la tabla en hoja de cálculo o en CSV.</li>
+    <li><span class="n">6</span>Filas por página y navegación entre páginas.</li>
+  </ul>
+
+  <p>Debajo de las tablas hay dos formularios de equivalencias. El primero unifica nombres de instituciones: se escribe el nombre <b>como aparece en la tabla</b> y el nombre preferido. El segundo asigna un país a un texto de afiliación, y trae debajo la lista de las afiliaciones más frecuentes cuyo país no se reconoció, con un botón <span class="ui">Asignar</span> que las copia al formulario.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-alias.png" alt="Formularios de alias de instituciones y de países, con la lista de afiliaciones sin país reconocido">
+      <span class="marca" style="left:49.9%;top:7%">1</span>
+      <span class="marca" style="left:45%;top:19.4%">2</span>
+      <span class="marca" style="left:35%;top:29.6%">3</span>
+      <span class="marca" style="left:45%;top:52.9%">4</span>
+    </div>
+    <figcaption><b>Figura 4.8.</b> Una equivalencia de instituciones ya agregada y la lista de afiliaciones sin país reconocido.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Nombre como aparece → nombre preferido.</li>
+    <li><span class="n">2</span>Cada equivalencia se aplica de inmediato a las tablas y a todos los análisis.</li>
+    <li><span class="n">3</span>Texto de la afiliación → país de la lista.</li>
+    <li><span class="n">4</span>Afiliaciones frecuentes sin país; <span class="ui">Asignar</span> las lleva al formulario.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · la misma universidad en dos idiomas</div>
+    <p>En los datos de ejemplo, <i>Universidade Federal de Campina Grande</i> aparece en primer lugar con 29 documentos, empatada con <i>Universidade Federal da Paraíba</i>, y dos filas más abajo está <i>Federal University of Campina Grande</i> con 11: son la misma institución, escrita en portugués por unas fuentes y en inglés por otras. Al agregar la equivalencia de la figura 4.8, la tabla pasa a mostrar <b>40 documentos</b> en una sola fila, que queda sola en el primer lugar, y el total de instituciones distintas baja de 379 a 378. La fila siguiente, <i>Federal University of Paraiba</i> con 8, es el mismo caso para la otra universidad y se resuelve igual.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · hasta dónde llega el reconocimiento automático</div>
+    <p>Deducir la institución de una línea de texto libre nunca es exacto. La app prefiere la parte de la afiliación que nombra la organización completa sobre los departamentos, las unidades y los programas («Academic Unit of Agricultural Sciences, Universidade Federal de Campina Grande» cuenta para la universidad), pero una afiliación escrita solo con siglas, como «PPGA/CCA/UFPB», deja filas como <i>PPGA</i> o <i>UFPB</i>, que no se reconocen como la universidad. Si tu estudio cuenta instituciones, revisa las primeras filas de la tabla y resuelve con equivalencias lo que veas mal: es trabajo de unos minutos y cambia el resultado. Lo mismo vale para los países: el ejemplo tiene afiliaciones que terminan en el nombre de la universidad o en una sigla («UFPB», «PB», «CE») en lugar del país, y solo un alias las coloca.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · dónde se guardan las equivalencias</div>
+    <p>Las equivalencias de instituciones y de países, igual que los sinónimos, las palabras vacías y el campo de términos, se recuerdan <b>en esta computadora</b> y además viajan dentro del proyecto. Así, el trabajo de un estudio se reaprovecha en el siguiente sin volver a escribirlo, y al abrir un proyecto en otra computadora las equivalencias llegan con él.</p>
+  </div>
+
+  <!-- 4.6 -->
+  <h2 id="s4-6"><span class="num">4.6</span>Palabras clave: sinónimos y palabras vacías</h2>
+  <p>La pestaña <span class="ui">Palabras clave</span> tiene cuatro partes: el campo de términos (el mismo de la sección 4.2), la lista de términos más frecuentes, las sugerencias de sinónimos y las dos listas que puedes editar —la tabla de sinónimos y las palabras vacías—.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-terminos.png" alt="Tabla de términos más frecuentes y lista de sugerencias de sinónimos">
+      <span class="marca" style="left:33.3%;top:11%">1</span>
+      <span class="marca" style="left:16%;top:26.4%">2</span>
+      <span class="marca" style="left:49.9%;top:13.8%">3</span>
+    </div>
+    <figcaption><b>Figura 4.9.</b> Los términos más frecuentes del ejemplo y las sugerencias de sinónimos que propone la app.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Términos distintos que hay en el campo elegido.</li>
+    <li><span class="n">2</span>Cada término con el número de documentos que lo usan; se ordena y se descarga como cualquier tabla.</li>
+    <li><span class="n">3</span>Variantes que la app propone unir bajo un término preferido; <span class="ui">Agregar</span> las manda a la tabla de sinónimos. La lista se recorre con la barra lateral.</li>
+  </ul>
+
+  <p>Las sugerencias salen de tres comparaciones: las escrituras que coinciden al quitar espacios, guiones y puntuación; los singulares y plurales; y las escrituras muy parecidas (la misma distancia de edición de la sección 4.3, con un 90&nbsp;% de similitud). El término preferido que propone es el más frecuente del grupo. Nada se aplica hasta que pulsas <span class="ui">Agregar</span>: la app sugiere, tú decides.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-sinonimos.png" alt="Tabla de sinónimos con un par agregado y las listas de palabras vacías en español e inglés">
+      <span class="marca" style="left:40%;top:17.4%">1</span>
+      <span class="marca" style="left:37.3%;top:25.4%">2</span>
+      <span class="marca" style="left:45%;top:34%">3</span>
+      <span class="marca" style="left:30%;top:62%">4</span>
+      <span class="marca" style="left:32.3%;top:93.6%">5</span>
+    </div>
+    <figcaption><b>Figura 4.10.</b> La tabla de sinónimos con el primer par aceptado y, debajo, las listas de palabras vacías.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Agrega un par a mano: término → término preferido.</li>
+    <li><span class="n">2</span>Importa o exporta la tabla como CSV de dos columnas, o bórrala entera.</li>
+    <li><span class="n">3</span>Cada par se aplica en el momento a los conteos, las redes y los mapas.</li>
+    <li><span class="n">4</span>Listas de palabras vacías en español y en inglés, separadas por comas.</li>
+    <li><span class="n">5</span><span class="ui">Guardar listas</span> las aplica; <span class="ui">Restaurar las listas originales</span> vuelve a las de fábrica.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · 19 formas de escribir una variedad botánica</div>
+    <p>Las 328 obras del ejemplo traen 1,880 palabras clave de autor distintas. Entre ellas hay <b>19 escrituras diferentes</b> que contienen «flavicarpa» —<i>Passiflora edulis f. flavicarpa</i>, <i>… Sims f. flavicarpa Deg.</i>, <i>… Degener</i>, <i>… var. flavicarpa</i>, <i>Passiflora edulisf.flavicarpa</i> y hasta dos con la errata <i>falvicarpa</i>—, repartidas en 40 apariciones. Sin unificarlas, la variedad más estudiada del maracuyá no aparece en ningún mapa temático, porque ninguna de sus formas junta suficientes documentos por separado.</p>
+    <p>Otros casos son más simples y también cuentan: <i>Passiflora eduli</i> (4 documentos, una letra menos) frente a <i>Passiflora edulis</i> (114), <i>Passion fruits</i> (14) y <i>Passionfruit</i> (2) frente a <i>passion fruit</i> (39), o <i>Fruits</i> (14) frente a <i>fruit</i> (24). Los conteos se comprobaron contando las palabras clave de los seis archivos fuera de la app.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · qué hacen exactamente las palabras vacías</div>
+    <ul style="margin:0">
+      <li>Las listas de fábrica (artículos, preposiciones, verbos de método como <i>study</i>, <i>results</i>, <i>evaluated</i>) solo <b>cortan los pares de palabras</b> de títulos y resúmenes: un par nunca cruza una palabra vacía, así que no se forman términos como «effect of» o «de la».</li>
+      <li>Las palabras que <b>tú</b> agregas hacen algo más: también excluyen palabras clave completas. Es la manera de quitar términos de indización que no dicen nada del tema, como <i>Article</i> o <i>nonhuman</i>, que en el ejemplo aparecen en 18 documentos cada uno.</li>
+      <li>Por eso las de fábrica no excluyen claves completas: así no se pierde una palabra clave legítima que coincida con una palabra vacía en inglés, como «ITS», el espaciador transcrito interno.</li>
+      <li>Las listas se guardan al pulsar <span class="ui">Guardar listas</span>; los sinónimos, en cambio, se aplican en cuanto se agregan.</li>
+    </ul>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · hasta dónde unificar términos</div>
+    <table class="compacta">
+      <thead><tr><th style="width:46%">Caso</th><th>Qué conviene</th></tr></thead>
+      <tbody>
+        <tr><td>Singular y plural, guiones, mayúsculas, erratas evidentes</td><td>Unificar siempre; es corrección, no interpretación.</td></tr>
+        <tr><td>Nombre científico completo y abreviado de la misma especie</td><td>Unificar, y decirlo en la metodología.</td></tr>
+        <tr><td>Sinónimos de campo (<i>salinity</i> y <i>salt stress</i>)</td><td>Depende de la pregunta: unificar simplifica el mapa, separar conserva el matiz. Decide una vez y documéntalo.</td></tr>
+        <tr><td>Términos genéricos (<i>agriculture</i>, <i>plants</i>) o de indización (<i>Article</i>)</td><td>Mandarlos a palabras vacías, no a sinónimos.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">La tabla de sinónimos se exporta a CSV: guárdala junto al proyecto y publícala como material suplementario para que tu estudio se pueda reproducir.</p>
+  </div>
+
+  <!-- 4.7 -->
+  <h2 id="s4-7"><span class="num">4.7</span>Filtros</h2>
+  <p>Los filtros recortan el conjunto limpio para todos los análisis a la vez. No borran documentos: los dejan fuera mientras estén activos. Sin marcar ninguna opción se incluyen todas, y cada opción muestra a su lado cuántos documentos tiene, así que la pantalla sirve además como descripción rápida del conjunto.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-filtros.png" alt="Pestaña Filtros con años, mínimo de citas, tipo de documento, idioma, fuente y área temática">
+      <span class="marca" style="left:37.8%;top:3.9%">1</span>
+      <span class="marca" style="left:88%;top:8.5%">2</span>
+      <span class="marca" style="left:25%;top:12.6%">3</span>
+      <span class="marca" style="left:48.4%;top:18.7%">4</span>
+      <span class="marca" style="left:63.1%;top:29.5%">5</span>
+      <span class="marca" style="left:49.9%;top:44.4%">6</span>
+      <span class="marca" style="left:25%;top:95.5%">7</span>
+    </div>
+    <figcaption><b>Figura 4.11.</b> Los seis filtros con los 328 documentos del ejemplo y el número de documentos de cada opción.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Cuántos documentos cumplen los filtros, de los únicos.</li>
+    <li><span class="n">2</span><span class="ui">Quitar filtros</span>, disponible solo cuando hay alguno activo.</li>
+    <li><span class="n">3</span>Intervalo de años; los recuadros muestran en gris el primero y el último del conjunto.</li>
+    <li><span class="n">4</span>Mínimo de citas; deja fuera también a los registros sin conteo de citas.</li>
+    <li><span class="n">5</span>Tipos de documento con su número de documentos.</li>
+    <li><span class="n">6</span>Buscador de fuentes: se muestran las 30 más frecuentes de las 159.</li>
+    <li><span class="n">7</span>Cuando los registros no traen el dato, el filtro lo dice en lugar de quedar vacío.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 4.6.</b> Los seis filtros globales.</caption>
+    <thead><tr><th style="width:24%">Filtro</th><th>Cómo funciona</th><th style="width:30%">Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Años de publicación</span></td><td>Intervalo cerrado. Los documentos sin año quedan fuera en cuanto escribes cualquiera de los dos extremos.</td><td>Para acotar el periodo del estudio o comparar décadas.</td></tr>
+      <tr><td><span class="ui">Mínimo de citas</span></td><td>Conserva los documentos con ese número de citas o más.</td><td>Para quedarte con la literatura que ha tenido eco; úsalo con cuidado, castiga a lo reciente.</td></tr>
+      <tr><td><span class="ui">Tipo de documento</span></td><td>Varias casillas; se incluye el documento si es de alguno de los tipos marcados.</td><td>Para excluir editoriales, notas y erratas, o para analizar solo revisiones.</td></tr>
+      <tr><td><span class="ui">Idioma</span></td><td>Igual que el anterior; <span class="ui">Sin idioma</span> agrupa a los registros que no lo traen.</td><td>Para un estudio en un idioma, o para medir cuánta literatura local hay.</td></tr>
+      <tr><td><span class="ui">Fuente</span></td><td>Se muestran las 30 fuentes con más documentos; el buscador encuentra las demás.</td><td>Para centrarse en un conjunto de revistas o excluir una atípica.</td></tr>
+      <tr><td><span class="ui">Área temática</span></td><td>Las áreas que asigna la base de datos, cuando las trae.</td><td>Para separar la parte agronómica de la parte biomédica de una búsqueda amplia.</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/limpieza-filtros-activos.png" alt="La misma pantalla con dos filtros activos: el contador del encabezado en ámbar y un punto en la pestaña Filtros">
+      <span class="marca" style="left:53.5%;top:3.8%">1</span>
+      <span class="marca" style="left:64.9%;top:43.8%">2</span>
+      <span class="marca" style="left:37.6%;top:57.2%">3</span>
+      <span class="marca" style="left:88%;top:62.5%">4</span>
+      <span class="marca" style="left:25%;top:71.5%">5</span>
+      <span class="marca" style="left:30%;top:88.5%">6</span>
+    </div>
+    <figcaption><b>Figura 4.12.</b> Con dos filtros activos —de 2020 en adelante y solo artículos— quedan 162 de los 328 documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>El contador del encabezado se pone en ámbar y acompaña a todas las pantallas.</li>
+    <li><span class="n">2</span>Un punto en la pestaña <span class="ui">Filtros</span> recuerda que hay filtros activos.</li>
+    <li><span class="n">3</span>El mismo conteo, con el detalle.</li>
+    <li><span class="n">4</span><span class="ui">Quitar filtros</span> ya está disponible.</li>
+    <li><span class="n">5</span>Año inicial escrito; el final sigue en el último año del conjunto.</li>
+    <li><span class="n">6</span>Casilla marcada, con el número de documentos de ese tipo.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · de 328 a 162 documentos</div>
+    <p>De los 328 documentos del ejemplo, <b>184 son de 2020 en adelante</b> (cifra comprobada leyendo los seis archivos fuera de la app). Al marcar además <span class="ui">Artículo</span> quedan <b>162</b>: los 22 restantes son 8 revisiones, 7 ponencias de congreso y 7 capítulos de libro. Con esos filtros puestos, el panorama general, las fuentes, los autores, las redes y el informe describen solo esos 162 documentos, y la metodología que redacta el informe lo deja escrito.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · los filtros se declaran</div>
+    <p>Filtrar es una decisión metodológica, no un ajuste de pantalla. Si dejas fuera un periodo, un tipo de documento o un idioma, dilo en tu artículo o tesis con el número de documentos antes y después: es parte de la reproducibilidad del estudio, igual que la cadena de búsqueda. El informe del capítulo 13 escribe ese párrafo con los filtros que tengas puestos, y el diagrama PRISMA del capítulo 12 los cuenta como registros excluidos.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · filtros y revisión sistemática</div>
+    <p>Si además haces cribado PRISMA (capítulo 12), los análisis pueden restringirse a los documentos <b>incluidos</b> en la revisión. Entonces el contador del encabezado dice <span class="ui">… documentos · solo incluidos</span> y al pulsarlo lleva a la pantalla <span class="ui">PRISMA</span> en lugar de a los filtros. Los dos recortes se acumulan: primero los filtros, después la inclusión.</p>
+  </div>
+
+  <p style="margin-top:0.3in">Con el conjunto limpio y filtrado empieza el análisis. El capítulo siguiente abre el <span class="ui">Panorama general</span>: las trece tarjetas que resumen la colección, la producción anual, las citas por año y los tipos de documento.</p>
+</section>
+
+</body>
+</html>

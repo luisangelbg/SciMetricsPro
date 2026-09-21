@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Apéndices</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .ap td.f { font-family: var(--serif); font-size: 10.3pt; color: var(--negro); }
+  .ap td.f i { font-style: italic; }
+  .ap table.campos { font-size: 8pt; }
+  .ap table.campos td, .ap table.campos th { padding: 0.03in 0.05in; }
+  .ap table.campos td:first-child { font-weight: 500; }
+  .ap h3.ap-sub { font-size: 13pt; }
+  /* glosario */
+  .ap tr.letra td { background: #eef1f6 !important; font-family: var(--serif); font-size: 12pt; font-weight: 600; color: var(--negro); }
+  .ap td.termino b { font-family: var(--serif); font-size: 10.3pt; }
+  .ap td.en { font-family: var(--sans); font-size: 8.6pt; color: var(--gris); }
+  /* referencias */
+  .ap ul.refs { list-style: none; padding: 0; margin: 0.12in 0 0.2in; font-size: 9.7pt; line-height: 1.36; }
+  .ap ul.refs li { padding-left: 1.5em; text-indent: -1.5em; margin-bottom: 0.32em; break-inside: avoid; text-align: left; hyphens: manual; }
+  .ap ul.refs .doi { font-family: var(--sans); font-size: 0.8em; color: var(--gris); overflow-wrap: anywhere; }
+  .ap ul.refs .m { font-family: var(--sans); color: var(--marino); font-size: 0.78em; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== APÉNDICES -->
+<section class="capitulo ap" id="apendices" data-pestana="A" data-orden="14" style="--acento: var(--bx)">
+  <div class="cap-apertura">
+    <div class="cap-num">A–F</div>
+    <div class="cap-etiqueta">Apéndices · material de consulta</div>
+    <h1>Apéndices</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Los apéndices no se leen de corrido: se consultan. Aquí están las reglas exactas con que la app reconoce y lee cada archivo, las fórmulas de los indicadores con su referencia, un glosario español–inglés, la solución de los problemas más comunes con los mensajes de la app, las referencias completas de los métodos y los componentes de terceros con sus licencias.</p>
+    <div class="cap-franja"><span class="kx"></span><span class="kx" style="opacity:.75"></span><span class="kx" style="opacity:.5"></span><span class="kx" style="opacity:.3"></span></div>
+    <ul class="cap-contenido">
+      <li><b>A</b>Formatos de archivo</li>
+      <li><b>B</b>Indicadores, fórmulas y referencias</li>
+      <li><b>C</b>Glosario español–inglés</li>
+      <li><b>D</b>Solución de problemas</li>
+      <li><b>E</b>Referencias</li>
+      <li><b>F</b>Componentes de terceros</li>
+    </ul>
+  </div>
+
+  <!-- ====================================================================== A -->
+  <h2 id="ap-a"><span class="num">A</span>Formatos de archivo</h2>
+  <p class="lead">El capítulo 3 explica qué exportar de cada base (tabla 3.4). Este apéndice reúne las reglas exactas: cómo reconoce la app cada archivo, de qué campo o etiqueta saca cada dato y qué columnas entiende en una tabla cualquiera.</p>
+
+  <h3 class="ap-sub">A.1 Cómo reconoce la app un archivo</h3>
+  <p>La app no se fía de la extensión: primero mira el contenido del archivo y solo usa la extensión cuando el contenido no basta. Revisa las reglas de la tabla A.1 en ese orden y se queda con la primera que se cumple; dentro de cada formato, decide de qué base viene por las columnas o los campos que trae.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla A.1.</b> Las reglas para reconocer cada archivo, en el orden en que se revisan.</caption>
+    <thead><tr><th style="width:24%">Formato</th><th style="width:38%">Cómo lo reconoce</th><th>De qué base viene</th></tr></thead>
+    <tbody>
+      <tr><td><b>Texto etiquetado de cuatro caracteres</b></td><td>Una línea que empieza con <code>PMID-</code> en las primeras líneas, o la extensión <code>.nbib</code>.</td><td>Índice biomédico público.</td></tr>
+      <tr><td><b>Texto etiquetado de dos letras</b></td><td>Al principio, una línea <code>FN</code>, <code>VR</code> o <code>PT</code>, y etiquetas <code>PT</code>, <code>AU</code> o <code>TI</code>.</td><td>Índice de citas multidisciplinario B.</td></tr>
+      <tr><td><b>RIS</b></td><td>Una línea <code>TY&nbsp;&nbsp;-</code> en las primeras líneas, o la extensión <code>.ris</code>.</td><td>Índice A si al menos la mitad de los registros trae notas <code>N1</code> con «Export Date:» o «Cited By:»; si no, RIS de origen no reconocido.</td></tr>
+      <tr><td><b>BibTeX</b></td><td>Una entrada <code>@tipo{</code> o la extensión <code>.bib</code> o <code>.bibtex</code>.</td><td>Índice A si sus entradas traen <code>author_keywords</code>, <code>abbrev_source_title</code>, <code>publication_stage</code> o una nota «Cited by:»; índice B si traen <code>keywords-plus</code>, <code>times-cited</code>, <code>cited-references</code>, <code>unique-id</code> o <code>research-areas</code>; si no, BibTeX genérico.</td></tr>
+      <tr><td><b>Texto delimitado</b> (<code>.csv .tsv .txt .tab</code>) y <b>hojas de cálculo</b> (<code>.xlsx .xls .xlsm .ods</code>)</td><td>Una primera línea con comas, tabuladores o puntos y comas. De una hoja de cálculo se lee la primera hoja con datos.</td><td>Por los encabezados: índice A si trae «Author full names», «Authors with affiliations» o «EID», y «Source title» o «Title»; índice B tabulado si los encabezados son las etiquetas <code>PT</code>, <code>AU</code>, <code>TI</code> y <code>UT</code> o <code>SO</code>; índice biomédico (resumen) si trae «PMID» y «Citation»; si no, tabla genérica (tabla A.3).</td></tr>
+      <tr><td>Ninguno de los anteriores</td><td colspan="2">Aviso <span class="ui">No se reconoció el formato del archivo.</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla · lo que vale para todos los archivos</div>
+    <table>
+      <tbody>
+        <tr><td style="width:27%">Codificación</td><td>UTF-8, con o sin marca inicial, o UTF-16 con marca. Si no es UTF-8 válido, se lee como Latin-1 y aparece un aviso para revisar acentos y eñes.</td></tr>
+        <tr><td>Separador</td><td>El que más aparece fuera de comillas en la primera línea, entre coma, tabulador y punto y coma; si empatan, la coma. Las comillas dobles protegen separadores y saltos de línea.</td></tr>
+        <tr><td>Encabezados</td><td>La primera fila; si trae una sola nota («Exportado el …»), la primera de las cinco siguientes con al menos dos columnas. Las columnas se buscan por nombre, sin mayúsculas ni acentos, nunca por posición.</td></tr>
+        <tr><td>Registros sin título</td><td>Se omiten, con el aviso de cuántos fueron.</td></tr>
+        <tr><td>Archivo repetido</td><td>Uno con el mismo nombre y tamaño que otro ya cargado se omite.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="ap-sub">A.2 De dónde sale cada dato</h3>
+  <p>La tabla A.2 dice de qué columna, etiqueta o campo lee la app cada dato en los formatos de las bases. Un guion significa que ese formato no lo trae; por eso los avisos de la tabla de archivos (capítulo 3) dicen qué análisis no se podrán hacer.</p>
+
+  <table class="compacta campos">
+    <caption><b>Tabla A.2.</b> Columnas, etiquetas y campos que lee la app en cada formato.</caption>
+    <thead><tr><th style="width:15%">Dato</th><th style="width:19%">CSV del índice A</th><th style="width:13%">Etiquetas de dos letras</th><th style="width:15%">Etiquetas de cuatro caracteres</th><th style="width:17%">RIS</th><th>BibTeX</th></tr></thead>
+    <tbody>
+      <tr><td>Título</td><td>Title</td><td><code>TI</code></td><td><code>TI</code>, <code>BTI</code></td><td><code>TI</code>, <code>T1</code>, <code>CT</code>, <code>BT</code></td><td><code>title</code></td></tr>
+      <tr><td>Autores</td><td>Author full names (o Authors)</td><td><code>AF</code> (o <code>AU</code>, <code>CA</code>)</td><td><code>FAU</code> (o <code>AU</code>), <code>CN</code></td><td><code>AU</code>, <code>A1</code></td><td><code>author</code></td></tr>
+      <tr><td>Año</td><td>Year</td><td><code>PY</code> (o <code>EY</code>, <code>EA</code>)</td><td><code>DP</code></td><td><code>PY</code>, <code>Y1</code>, <code>DA</code>, <code>Y2</code></td><td><code>year</code>, <code>date</code></td></tr>
+      <tr><td>Fuente</td><td>Source title</td><td><code>SO</code></td><td><code>JT</code></td><td><code>T2</code>, <code>JO</code>, <code>JF</code>, <code>JA</code>, <code>T3</code></td><td><code>journal</code>, <code>booktitle</code>, <code>series</code>, <code>school</code>, <code>institution</code></td></tr>
+      <tr><td>DOI</td><td>DOI</td><td><code>DI</code></td><td><code>LID</code> o <code>AID</code> con «[doi]»</td><td><code>DO</code> (o en <code>UR</code>)</td><td><code>doi</code> (o en <code>url</code>)</td></tr>
+      <tr><td>Resumen</td><td>Abstract</td><td><code>AB</code></td><td><code>AB</code></td><td><code>AB</code>, <code>N2</code></td><td><code>abstract</code></td></tr>
+      <tr><td>Palabras clave de autor</td><td>Author Keywords</td><td><code>DE</code></td><td><code>OT</code></td><td><code>KW</code></td><td>Índice A: <code>author_keywords</code>; índice B y genérico: <code>keywords</code></td></tr>
+      <tr><td>Palabras clave de índice</td><td>Index Keywords</td><td><code>ID</code></td><td><code>MH</code> (descriptores)</td><td>—</td><td>Índice A: <code>keywords</code>; índice B: <code>keywords-plus</code></td></tr>
+      <tr><td>Afiliaciones</td><td>Authors with affiliations, Affiliations</td><td><code>C1</code></td><td><code>AD</code></td><td><code>AD</code>, <code>C1</code></td><td><code>affiliations</code>, <code>affiliation</code></td></tr>
+      <tr><td>Autor de correspondencia</td><td>Correspondence Address</td><td><code>RP</code></td><td>—</td><td>Nota <code>N1</code> «Correspondence Address:» (índice A)</td><td>Índice A: <code>correspondence_address</code></td></tr>
+      <tr><td>Referencias citadas</td><td>References</td><td><code>CR</code></td><td>—</td><td>Nota <code>N1</code> «References:» (índice A)</td><td>Índice A: <code>references</code>; índice B: <code>cited-references</code></td></tr>
+      <tr><td>Citas</td><td>Cited by (vacío = 0)</td><td><code>TC</code></td><td>—</td><td>Nota <code>N1</code> «Cited By:» (índice A)</td><td>Nota «Cited by:» o <code>times-cited</code></td></tr>
+      <tr><td>Idioma</td><td>Language of Original Document</td><td><code>LA</code></td><td><code>LA</code></td><td><code>LA</code></td><td><code>language</code>, <code>langid</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · el catálogo abierto y las otras bases</div>
+    <p>Las búsquedas del catálogo bibliográfico abierto (sección 3.7) no pasan por un archivo: la app recibe cada obra en formato JSON y toma el título, el año, la fuente, el DOI, el resumen, los autores con sus instituciones y países, las palabras clave y los temas que asigna el catálogo (como palabras clave de índice), las citas y las referencias, que llegan como identificadores del catálogo. El buscador académico abierto, la base de investigación enlazada y el índice regional se leen con las reglas generales de RIS, BibTeX o tabla.</p>
+  </div>
+
+  <h3 class="ap-sub">A.3 Una tabla cualquiera</h3>
+  <p>Una tabla CSV o una hoja de cálculo que no viene de una base reconocida se lee como tabla genérica, con el aviso <span class="ui">Tabla de origen no reconocido: se leyeron solo las columnas con nombres habituales.</span> La app busca estos encabezados, sin distinguir mayúsculas ni acentos; las demás columnas no se usan.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla A.3.</b> Encabezados que la app entiende en una tabla genérica.</caption>
+    <thead><tr><th style="width:22%">Dato</th><th style="width:44%">Encabezados aceptados</th><th>Cómo se lee</th></tr></thead>
+    <tbody>
+      <tr><td>Título</td><td>title, article title, document title, título</td><td>Obligatorio: sin título, la fila se omite.</td></tr>
+      <tr><td>Autores</td><td>authors, author, author names, autores</td><td>Separados por «;», o por «, » entre nombres del tipo «Apellido, Iniciales», o por « and ».</td></tr>
+      <tr><td>Año</td><td>year, publication year, pubyear, año, date</td><td>Un número entre 1500 y 2100, o el año dentro de una fecha.</td></tr>
+      <tr><td>Fuente</td><td>source title, journal, source, publication title, revista</td><td></td></tr>
+      <tr><td>DOI</td><td>doi</td><td></td></tr>
+      <tr><td>Resumen</td><td>abstract, resumen</td><td></td></tr>
+      <tr><td>Palabras clave</td><td>author keywords, keywords, palabras clave</td><td>Separadas por «;» o «,»; cuentan como palabras clave de autor.</td></tr>
+      <tr><td>Citas</td><td>cited by, times cited, citations, citation count</td><td>Número entero.</td></tr>
+      <tr><td>Tipo de documento</td><td>document type, type, publication type</td><td></td></tr>
+      <tr><td>Idioma</td><td>language, idioma</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="ap-sub">A.4 Archivos propios de la app</h3>
+  <table class="compacta">
+    <caption><b>Tabla A.4.</b> Archivos que la app escribe y vuelve a leer.</caption>
+    <thead><tr><th style="width:24%">Archivo</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td><b>Proyecto</b> <code>.smp.json</code></td><td>JSON comprimido con los registros importados, la limpieza, los filtros, las decisiones de PRISMA y los parámetros (capítulo 2). Se abre con <span class="ui">Abrir</span>; también acepta el JSON sin comprimir.</td></tr>
+      <tr><td><b>Diccionario de sinónimos</b> <code>.csv</code></td><td>Dos columnas: el término y su término preferido, con el encabezado <code>term,preferred</code>. Al importarlo, el encabezado es opcional y el separador se detecta solo (capítulo 4).</td></tr>
+      <tr><td>Figuras, tablas, redes, datos, ZIP e informe</td><td>Descritos en el capítulo 13 (tablas 13.2 a 13.5).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ====================================================================== B -->
+  <h2 id="ap-b" data-nueva-hoja><span class="num">B</span>Indicadores, fórmulas y referencias</h2>
+  <p class="lead">Cada indicador de la app tiene su ayuda (<span class="ui">?</span>) con la fórmula, la interpretación y la referencia. Este apéndice las reúne. Notación: <i>D</i> es el conjunto de documentos y <i>N</i> su número; <i>A</i>(<i>d</i>), <i>Ref</i>(<i>d</i>) y <i>T</i>(<i>d</i>) son los autores, las referencias y los términos del documento <i>d</i>; <i>TC</i><sub><i>d</i></sub> son sus citas totales; <i>Y</i><sub><i>d</i></sub> su año y <i>Y</i><sub>ref</sub> el año de referencia; <i>c</i><sub>(<i>i</i>)</sub> son las citas ordenadas de mayor a menor.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla B.1.</b> Panorama general, fuentes y autores.</caption>
+    <thead><tr><th style="width:25%">Indicador</th><th style="width:47%">Fórmula</th><th>Referencia</th></tr></thead>
+    <tbody>
+      <tr><td>Tasa de crecimiento anual</td><td class="f"><i>TCA</i> = ((<i>N</i><sub>último</sub> / <i>N</i><sub>primero</sub>)<sup>1/(<i>a</i> − 1)</sup> − 1) × 100, con <i>a</i> años en el periodo</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Edad promedio</td><td class="f">(1/<i>N</i><sub>a</sub>) Σ<sub><i>d</i></sub> (<i>Y</i><sub>ref</sub> − <i>Y</i><sub><i>d</i></sub>)</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Citas promedio por documento</td><td class="f">(1/<i>N</i><sub>c</sub>) Σ<sub><i>d</i></sub> <i>TC</i><sub><i>d</i></sub>, con <i>N</i><sub>c</sub> documentos con número de citas</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Citas por año citable</td><td class="f"><i>C̄</i><sub><i>t</i></sub> / (<i>Y</i><sub>ref</sub> − <i>t</i> + 1)</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Coautores por documento</td><td class="f">(1/<i>N</i><sub>A</sub>) Σ<sub><i>d</i></sub> |<i>A</i>(<i>d</i>)|</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Coautoría internacional</td><td class="f"><i>N</i><sub>int</sub> / <i>N</i> × 100</td><td>Aria y Cuccurullo (2017)</td></tr>
+      <tr><td>Zonas de Bradford</td><td class="f"><i>k</i><sub>1</sub> = arg min<sub><i>k</i></sub> |<i>C</i><sub><i>k</i></sub> − <i>N</i>/3|, <i>k</i><sub>2</sub> = arg min<sub><i>k</i> &gt; <i>k</i><sub>1</sub></sub> |<i>C</i><sub><i>k</i></sub> − 2<i>N</i>/3|, con <i>C</i><sub><i>k</i></sub> los documentos acumulados de las <i>k</i> fuentes más productivas</td><td>Bradford (1934)</td></tr>
+      <tr><td>Multiplicador de Bradford</td><td class="f"><i>k</i> = ½ (<i>s</i><sub>2</sub>/<i>s</i><sub>1</sub> + <i>s</i><sub>3</sub>/<i>s</i><sub>2</sub>), con <i>s</i><sub>z</sub> fuentes de la zona <i>z</i></td><td>Bradford (1934)</td></tr>
+      <tr><td>Índice h</td><td class="f"><i>h</i> = max { <i>i</i> : <i>c</i><sub>(<i>i</i>)</sub> ≥ <i>i</i> }</td><td>Hirsch (2005)</td></tr>
+      <tr><td>Índice g</td><td class="f"><i>g</i> = max { <i>g</i> : Σ<sub><i>i</i> ≤ <i>g</i></sub> <i>c</i><sub>(<i>i</i>)</sub> ≥ <i>g</i><sup>2</sup> }</td><td>Egghe (2006)</td></tr>
+      <tr><td>Índice m</td><td class="f"><i>m</i> = <i>h</i> / (<i>Y</i><sub>ref</sub> − <i>Y</i><sub>0</sub> + 1), con <i>Y</i><sub>0</sub> el año del primer documento</td><td>Hirsch (2005)</td></tr>
+      <tr><td>Conteo fraccionado</td><td class="f"><i>f</i><sub><i>a</i></sub> = Σ<sub><i>d</i> : <i>a</i> ∈ <i>A</i>(<i>d</i>)</sub> 1 / |<i>A</i>(<i>d</i>)|</td><td></td></tr>
+      <tr><td>Ley de Lotka</td><td class="f"><i>f</i>(<i>x</i>) = <i>C</i> / <i>x</i><sup><i>β</i></sup>; ajuste: log<sub>10</sub> <i>f</i>(<i>x</i>) = log<sub>10</sub> <i>C</i> − <i>β</i> log<sub>10</sub> <i>x</i></td><td>Lotka (1926); Pao (1985)</td></tr>
+      <tr><td>Prueba de Kolmogorov-Smirnov</td><td class="f"><i>D</i> = max<sub><i>x</i></sub> |<i>F</i><sub>obs</sub>(<i>x</i>) − <i>F</i><sub>Lotka</sub>(<i>x</i>)|, con <i>β</i> = 2; <i>D</i><sub>0.05</sub> = 1.36 / √<i>N</i></td><td>Pao (1985); Stephens (1970)</td></tr>
+      <tr><td>Colaboración de un país</td><td class="f">MCP<sub>ratio</sub> = MCP / (SCP + MCP)</td><td></td></tr>
+      <tr><td>Firmas por país</td><td class="f"><i>n</i><sub><i>p</i></sub> = Σ<sub><i>d</i></sub> |{ <i>a</i> ∈ <i>A</i>(<i>d</i>) : país(<i>a</i>) = <i>p</i> }|</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla B.2.</b> Documentos y palabras.</caption>
+    <thead><tr><th style="width:25%">Indicador</th><th style="width:47%">Fórmula</th><th>Referencia</th></tr></thead>
+    <tbody>
+      <tr><td>Citas por año</td><td class="f"><i>TC</i><sub><i>d</i></sub> / (<i>Y</i><sub>ref</sub> − <i>Y</i><sub><i>d</i></sub> + 1)</td><td></td></tr>
+      <tr><td>Citas normalizadas</td><td class="f"><i>NTC</i><sub><i>d</i></sub> = <i>TC</i><sub><i>d</i></sub> / <i>TC̄</i><sub><i>Y</i><sub><i>d</i></sub></sub>, con el promedio de los documentos del mismo año</td><td></td></tr>
+      <tr><td>Citas locales</td><td class="f"><i>LCS</i><sub><i>d</i></sub> = |{ <i>c</i> ≠ <i>d</i> : <i>d</i> ∈ <i>Ref</i>(<i>c</i>) }|</td><td>Garfield y colaboradores (2003)</td></tr>
+      <tr><td>Referencia más citada</td><td class="f"><i>n</i><sub><i>r</i></sub> = |{ <i>d</i> : <i>r</i> ∈ <i>Ref</i>(<i>d</i>) }|</td><td></td></tr>
+      <tr><td>RPYS: desviación</td><td class="f"><i>D</i><sub><i>t</i></sub> = <i>NCR</i><sub><i>t</i></sub> − mediana(<i>NCR</i><sub><i>t</i>−2</sub>, …, <i>NCR</i><sub><i>t</i>+2</sub>)</td><td>Marx y colaboradores (2014)</td></tr>
+      <tr><td>RPYS: pico</td><td class="f"><i>D</i><sub><i>t</i></sub> &gt; 0, <i>D</i><sub><i>t</i></sub> &gt; <i>D</i><sub><i>t</i>−1</sub>, <i>D</i><sub><i>t</i></sub> ≥ <i>D</i><sub><i>t</i>+1</sub></td><td>Marx y colaboradores (2014)</td></tr>
+      <tr><td>Frecuencia de un término</td><td class="f"><i>n</i><sub><i>w</i></sub> = |{ <i>d</i> : <i>w</i> ∈ <i>T</i>(<i>d</i>) }|</td><td></td></tr>
+      <tr><td>Mapa de árbol</td><td class="f">área<sub><i>w</i></sub> = área total · <i>n</i><sub><i>w</i></sub> / Σ<sub><i>v</i></sub> <i>n</i><sub><i>v</i></sub></td><td>Bruls y colaboradores (2000)</td></tr>
+      <tr><td>Temas en tendencia</td><td class="f">cuartiles de los años: <i>Q</i>(<i>p</i>) = <i>x</i><sub>(<i>j</i>)</sub> + (<i>h</i> − <i>j</i>)(<i>x</i><sub>(<i>j</i>+1)</sub> − <i>x</i><sub>(<i>j</i>)</sub>), <i>h</i> = (<i>n</i> − 1)<i>p</i> + 1, <i>j</i> = ⌊<i>h</i>⌋</td><td>Hyndman y Fan (1996)</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla B.3.</b> Redes: pesos, comunidades y métricas.</caption>
+    <thead><tr><th style="width:25%">Indicador</th><th style="width:47%">Fórmula</th><th>Referencia</th></tr></thead>
+    <tbody>
+      <tr><td>Coocurrencia</td><td class="f"><i>c</i><sub><i>ij</i></sub> = |{ <i>d</i> : <i>i</i> ∈ <i>d</i>, <i>j</i> ∈ <i>d</i> }|, <i>C</i> = <i>A</i><sup>T</sup><i>A</i></td><td></td></tr>
+      <tr><td>Fuerza de asociación</td><td class="f"><i>AS</i> = <i>c</i><sub><i>ij</i></sub> / (<i>c</i><sub><i>i</i></sub> <i>c</i><sub><i>j</i></sub>)</td><td>van Eck y Waltman (2009)</td></tr>
+      <tr><td>Coseno de Salton</td><td class="f">cos = <i>c</i><sub><i>ij</i></sub> / √(<i>c</i><sub><i>i</i></sub> <i>c</i><sub><i>j</i></sub>)</td><td>Salton y McGill (1983)</td></tr>
+      <tr><td>Índice de Jaccard</td><td class="f"><i>J</i> = <i>c</i><sub><i>ij</i></sub> / (<i>c</i><sub><i>i</i></sub> + <i>c</i><sub><i>j</i></sub> − <i>c</i><sub><i>ij</i></sub>)</td><td>Jaccard (1901)</td></tr>
+      <tr><td>Índices de inclusión y equivalencia</td><td class="f"><i>I</i> = <i>c</i><sub><i>ij</i></sub> / min(<i>c</i><sub><i>i</i></sub>, <i>c</i><sub><i>j</i></sub>), <i>E</i> = <i>c</i><sub><i>ij</i></sub><sup>2</sup> / (<i>c</i><sub><i>i</i></sub> <i>c</i><sub><i>j</i></sub>)</td><td>Callon y colaboradores (1991)</td></tr>
+      <tr><td>Modularidad</td><td class="f"><i>Q</i> = (1/2<i>m</i>) Σ<sub><i>ij</i></sub> [<i>A</i><sub><i>ij</i></sub> − γ <i>k</i><sub><i>i</i></sub><i>k</i><sub><i>j</i></sub>/2<i>m</i>] δ(<i>c</i><sub><i>i</i></sub>, <i>c</i><sub><i>j</i></sub>)</td><td>Newman y Girvan (2004); Reichardt y Bornholdt (2006)</td></tr>
+      <tr><td>Comunidades</td><td class="f">partición que maximiza <i>Q</i><sub>γ</sub></td><td>Blondel y colaboradores (2008); Clauset y colaboradores (2004)</td></tr>
+      <tr><td>Densidad</td><td class="f"><i>D</i> = 2<i>E</i> / [<i>n</i>(<i>n</i> − 1)]</td><td></td></tr>
+      <tr><td>Transitividad</td><td class="f"><i>T</i> = 3 × triángulos / tripletas conectadas</td><td>Newman (2003)</td></tr>
+      <tr><td>Intermediación</td><td class="f"><i>C</i><sub>B</sub>(<i>v</i>) = [2 / (<i>n</i> − 1)(<i>n</i> − 2)] Σ<sub><i>s</i>&lt;<i>t</i></sub> σ<sub><i>st</i></sub>(<i>v</i>) / σ<sub><i>st</i></sub></td><td>Freeman (1979); Brandes (2001)</td></tr>
+      <tr><td>Cercanía</td><td class="f"><i>C</i><sub>C</sub>(<i>v</i>) = [(<i>r</i> − 1)/(<i>n</i> − 1)] · (<i>r</i> − 1) / Σ<sub><i>u</i></sub> <i>d</i>(<i>v</i>, <i>u</i>), con <i>r</i> nodos alcanzables</td><td>Freeman (1979); Wasserman y Faust (1994)</td></tr>
+      <tr><td>PageRank</td><td class="f"><i>PR</i><sub><i>i</i></sub> = (1 − δ)/<i>n</i> + δ Σ<sub><i>j</i></sub> (<i>w</i><sub><i>ji</i></sub>/<i>k</i><sub><i>j</i></sub>) <i>PR</i><sub><i>j</i></sub>, δ = 0.85</td><td>Brin y Page (1998)</td></tr>
+      <tr><td>Diseño de la red</td><td class="f"><i>F</i><sub>r</sub> = <i>k</i><sub>r</sub> (grado<sub>1</sub> + 1)(grado<sub>2</sub> + 1) / <i>d</i>, <i>F</i><sub>a</sub> = <i>w</i> · <i>d</i></td><td>Jacomy y colaboradores (2014)</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla B.4.</b> Estructuras conceptual, intelectual y social.</caption>
+    <thead><tr><th style="width:25%">Indicador</th><th style="width:47%">Fórmula</th><th>Referencia</th></tr></thead>
+    <tbody>
+      <tr><td>Centralidad y densidad de Callon</td><td class="f"><i>C</i> = 10 · Σ<sub><i>i</i> ∈ tema, <i>j</i> ∉ tema</sub> <i>s</i><sub><i>ij</i></sub>, <i>D</i> = 100 · Σ<sub><i>i</i>, <i>j</i> ∈ tema</sub> <i>s</i><sub><i>ij</i></sub> / <i>w</i>, con <i>w</i> palabras del tema</td><td>Callon y colaboradores (1991); Cobo y colaboradores (2011)</td></tr>
+      <tr><td>Cuadrantes del mapa temático</td><td class="f">motores: <i>C</i> ≥ med(<i>C</i>), <i>D</i> ≥ med(<i>D</i>); nicho: <i>C</i> &lt; med, <i>D</i> ≥ med; emergentes: los dos &lt; med; básicos: <i>C</i> ≥ med, <i>D</i> &lt; med</td><td>Cobo y colaboradores (2011)</td></tr>
+      <tr><td>Índice de inclusión</td><td class="f"><i>I</i>(<i>A</i>, <i>B</i>) = |<i>A</i> ∩ <i>B</i>| / min(|<i>A</i>|, |<i>B</i>|)</td><td>Cobo y colaboradores (2011)</td></tr>
+      <tr><td>Análisis de correspondencias</td><td class="f"><i>Z</i> = <i>D</i><sub><i>r</i></sub><sup>−1/2</sup>(<i>P</i> − <i>rc</i><sup>T</sup>)<i>D</i><sub><i>c</i></sub><sup>−1/2</sup> = <i>U</i>Σ<i>V</i><sup>T</sup></td><td>Greenacre (2007)</td></tr>
+      <tr><td>Corrección de Benzécri</td><td class="f">λ′ = [<i>Q</i>/(<i>Q</i> − 1)]<sup>2</sup> (λ − 1/<i>Q</i>)<sup>2</sup> para λ &gt; 1/<i>Q</i></td><td>Benzécri (1979)</td></tr>
+      <tr><td>k-means</td><td class="f">min Σ<sub><i>g</i></sub> Σ<sub><i>i</i> ∈ <i>g</i></sub> ‖<i>x</i><sub><i>i</i></sub> − μ<sub><i>g</i></sub>‖<sup>2</sup></td><td>Lloyd (1982); Hartigan y Wong (1979); Arthur y Vassilvitskii (2007)</td></tr>
+      <tr><td>Silueta</td><td class="f"><i>s</i>(<i>i</i>) = [<i>b</i>(<i>i</i>) − <i>a</i>(<i>i</i>)] / max(<i>a</i>(<i>i</i>), <i>b</i>(<i>i</i>))</td><td>Rousseeuw (1987)</td></tr>
+      <tr><td>Altura de Ward</td><td class="f">√[2<i>n</i><sub><i>a</i></sub><i>n</i><sub><i>b</i></sub> / (<i>n</i><sub><i>a</i></sub> + <i>n</i><sub><i>b</i></sub>)] ‖<i>c</i><sub><i>a</i></sub> − <i>c</i><sub><i>b</i></sub>‖</td><td>Ward (1963)</td></tr>
+      <tr><td>Cocitación</td><td class="f"><i>c</i><sub><i>ij</i></sub> = |{ <i>d</i> : <i>d</i> cita a <i>i</i> y a <i>j</i> }|</td><td>Small (1973); White y Griffith (1981); McCain (1991)</td></tr>
+      <tr><td>Acoplamiento bibliográfico</td><td class="f"><i>b</i><sub><i>uv</i></sub> = |<i>R</i><sub><i>u</i></sub> ∩ <i>R</i><sub><i>v</i></sub>|, peso <i>b</i><sub><i>uv</i></sub> / √(|<i>R</i><sub><i>u</i></sub>| |<i>R</i><sub><i>v</i></sub>|)</td><td>Kessler (1963); Zhao y Strotmann (2008)</td></tr>
+      <tr><td>Impacto del mapa de acoplamiento</td><td class="f"><i>I</i> = media<sub><i>d</i> ∈ <i>g</i></sub> <i>c</i><sub><i>d</i></sub> / <i>c̄</i><sub><i>y</i>(<i>d</i>)</sub></td><td>Aria y colaboradores (2020); Waltman y colaboradores (2011)</td></tr>
+      <tr><td>Historiografía</td><td class="f">flecha <i>d</i> → <i>e</i> si <i>e</i> cita a <i>d</i> y año(<i>d</i>) ≤ año(<i>e</i>)</td><td>Garfield (2004); Sugiyama y colaboradores (1981)</td></tr>
+      <tr><td>Colaboración</td><td class="f"><i>c</i><sub><i>ij</i></sub> = documentos firmados por <i>i</i> y <i>j</i></td><td>Newman (2001)</td></tr>
+      <tr><td>Colaboración internacional</td><td class="f">% = 100 · |{ <i>d</i> : |países(<i>d</i>)| ≥ 2 }| / |{ <i>d</i> : |países(<i>d</i>)| ≥ 1 }|</td><td>Glänzel y Schubert (2004); Katz y Martin (1997)</td></tr>
+      <tr><td>Mapa mundial</td><td class="f">proyección de igual área</td><td>Šavrič y colaboradores (2019)</td></tr>
+      <tr><td>Diagrama PRISMA</td><td class="f">evaluadas − excluidas con motivo = incluidos + pendientes</td><td>Page y colaboradores (2021)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ====================================================================== C -->
+  <h2 id="ap-c" data-nueva-hoja><span class="num">C</span>Glosario español–inglés</h2>
+  <p class="lead">Los términos del manual con el nombre que usa la interfaz en inglés (capítulo 2) y en la literatura. Entre paréntesis, el capítulo donde se explican.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla C.1.</b> Glosario.</caption>
+    <thead><tr><th style="width:24%">Término</th><th style="width:22%">En inglés</th><th>Qué es</th></tr></thead>
+    <tbody>
+      <tr class="letra"><td colspan="3">A</td></tr>
+      <tr><td class="termino"><b>Acoplamiento bibliográfico</b></td><td class="en">Bibliographic coupling</td><td>Relación entre dos documentos que citan referencias en común (10).</td></tr>
+      <tr><td class="termino"><b>Afiliación</b></td><td class="en">Affiliation</td><td>Dirección institucional de un autor en el registro; de ella salen la institución y el país (4, 7).</td></tr>
+      <tr><td class="termino"><b>Año de referencia</b></td><td class="en">Reference year</td><td>Año con que se calculan la edad de los documentos, las citas por año citable y el índice m (5).</td></tr>
+      <tr><td class="termino"><b>Años citables</b></td><td class="en">Citable years</td><td>Años desde la publicación hasta el año de referencia, contando el de publicación (5).</td></tr>
+      <tr><td class="termino"><b>Arista</b></td><td class="en">Edge</td><td>Línea que une dos nodos de una red; su peso mide la fuerza de la relación (9).</td></tr>
+      <tr><td class="termino"><b>Autor de correspondencia</b></td><td class="en">Corresponding author</td><td>Autor de contacto del documento; su país define SCP y MCP (7).</td></tr>
+      <tr class="letra"><td colspan="3">C</td></tr>
+      <tr><td class="termino"><b>Cadena de búsqueda</b></td><td class="en">Search string</td><td>Términos combinados con OR y AND que se pegan en un buscador (3).</td></tr>
+      <tr><td class="termino"><b>Campo de términos</b></td><td class="en">Term field</td><td>De dónde salen los términos de los análisis de contenido: palabras clave de autor o de índice, título o resumen (4).</td></tr>
+      <tr><td class="termino"><b>Centralidad de Callon</b></td><td class="en">Callon centrality</td><td>Fuerza de los enlaces de un tema con los demás: su relevancia (9).</td></tr>
+      <tr><td class="termino"><b>Cercanía</b></td><td class="en">Closeness</td><td>Qué tan cerca está un nodo de todos los que puede alcanzar (9).</td></tr>
+      <tr><td class="termino"><b>Citas locales</b></td><td class="en">Local citations</td><td>Veces que un documento es citado por otros del mismo conjunto (8).</td></tr>
+      <tr><td class="termino"><b>Citas normalizadas</b></td><td class="en">Normalised citations</td><td>Citas de un documento divididas entre el promedio de los de su año (8).</td></tr>
+      <tr><td class="termino"><b>Citas totales</b></td><td class="en">Total citations</td><td>Citas que la base de datos atribuye al documento; también llamadas globales (8).</td></tr>
+      <tr><td class="termino"><b>Cocitación</b></td><td class="en">Co-citation</td><td>Relación entre dos referencias que un mismo documento cita juntas (10).</td></tr>
+      <tr><td class="termino"><b>Colaboración internacional</b></td><td class="en">International collaboration</td><td>Documento con autores de dos o más países (7, 11).</td></tr>
+      <tr><td class="termino"><b>Comunidad</b></td><td class="en">Community</td><td>Grupo de nodos más conectados entre sí que con el resto de la red (9).</td></tr>
+      <tr><td class="termino"><b>Conteo completo y fraccionado</b></td><td class="en">Full and fractional counting</td><td>Un documento cuenta 1 para cada autor, o reparte 1 entre sus autores (7).</td></tr>
+      <tr><td class="termino"><b>Coocurrencia</b></td><td class="en">Co-occurrence</td><td>Aparición de dos términos en un mismo documento (9).</td></tr>
+      <tr><td class="termino"><b>Coseno de Salton</b></td><td class="en">Salton cosine</td><td>Normalización de pesos entre 0 y 1 (9, 10).</td></tr>
+      <tr><td class="termino"><b>Cribado</b></td><td class="en">Screening</td><td>Decidir documento por documento qué entra a una revisión sistemática (12).</td></tr>
+      <tr class="letra"><td colspan="3">D</td></tr>
+      <tr><td class="termino"><b>Densidad de Callon</b></td><td class="en">Callon density</td><td>Fuerza de los enlaces internos de un tema: su desarrollo (9).</td></tr>
+      <tr><td class="termino"><b>Densidad de una red</b></td><td class="en">Density</td><td>Proporción de aristas presentes entre todas las posibles (9).</td></tr>
+      <tr><td class="termino"><b>Diagrama de flujo PRISMA</b></td><td class="en">PRISMA flow diagram</td><td>Cajas con los registros de cada etapa de una revisión sistemática (12).</td></tr>
+      <tr><td class="termino"><b>Duplicado</b></td><td class="en">Duplicate</td><td>Registro del mismo documento que llega en más de un archivo (4).</td></tr>
+      <tr class="letra"><td colspan="3">E – F</td></tr>
+      <tr><td class="termino"><b>Espectroscopía de años de referencia</b></td><td class="en">Reference publication year spectroscopy (RPYS)</td><td>Referencias citadas por año de publicación y su desviación de la mediana de cinco años (8).</td></tr>
+      <tr><td class="termino"><b>Evolución temática</b></td><td class="en">Thematic evolution</td><td>Temas de periodos consecutivos unidos por las palabras que comparten (9).</td></tr>
+      <tr><td class="termino"><b>Fuente</b></td><td class="en">Source</td><td>Revista, libro o actas donde se publicó el documento (6).</td></tr>
+      <tr><td class="termino"><b>Fuerza de asociación</b></td><td class="en">Association strength</td><td>Normalización que compara lo observado con lo esperado al azar (9).</td></tr>
+      <tr class="letra"><td colspan="3">G – I</td></tr>
+      <tr><td class="termino"><b>Grado</b></td><td class="en">Degree</td><td>Número de vecinos de un nodo (9).</td></tr>
+      <tr><td class="termino"><b>Historiografía</b></td><td class="en">Historiograph</td><td>Red de citas directas entre los documentos más citados localmente, ordenada por año (10).</td></tr>
+      <tr><td class="termino"><b>Índice g</b></td><td class="en">g-index</td><td>Mayor <i>g</i> tal que los <i>g</i> documentos más citados suman al menos <i>g</i><sup>2</sup> citas (6).</td></tr>
+      <tr><td class="termino"><b>Índice h</b></td><td class="en">h-index</td><td>Mayor <i>h</i> tal que <i>h</i> documentos tienen al menos <i>h</i> citas cada uno (6).</td></tr>
+      <tr><td class="termino"><b>Índice m</b></td><td class="en">m-index</td><td>Índice h dividido entre los años desde el primer documento (6).</td></tr>
+      <tr><td class="termino"><b>Índice de inclusión</b></td><td class="en">Inclusion index</td><td>Palabras compartidas entre el tamaño del tema menor (9).</td></tr>
+      <tr><td class="termino"><b>Intermediación</b></td><td class="en">Betweenness</td><td>Proporción de caminos más cortos que pasan por un nodo (9).</td></tr>
+      <tr class="letra"><td colspan="3">L – M</td></tr>
+      <tr><td class="termino"><b>Ley de Bradford</b></td><td class="en">Bradford’s law</td><td>Pocas fuentes reúnen un tercio de los documentos y cada vez más fuentes reúnen los otros dos tercios (6).</td></tr>
+      <tr><td class="termino"><b>Ley de Lotka</b></td><td class="en">Lotka’s law</td><td>El número de autores con <i>x</i> documentos baja como 1/<i>x</i><sup>β</sup> (7).</td></tr>
+      <tr><td class="termino"><b>Mapa temático</b></td><td class="en">Thematic map</td><td>Temas ubicados por su centralidad y su densidad en cuatro cuadrantes (9).</td></tr>
+      <tr><td class="termino"><b>MCP y SCP</b></td><td class="en">Multiple / Single country</td><td>Documento del autor de correspondencia con coautores de otros países, o solo de su país (7).</td></tr>
+      <tr><td class="termino"><b>Modularidad</b></td><td class="en">Modularity</td><td>Qué tanto más densas son las comunidades que lo esperado al azar (9).</td></tr>
+      <tr class="letra"><td colspan="3">N – P</td></tr>
+      <tr><td class="termino"><b>Nodo</b></td><td class="en">Node</td><td>Cada término, referencia, documento, autor, institución o país de una red (9).</td></tr>
+      <tr><td class="termino"><b>Normalización</b></td><td class="en">Normalisation</td><td>Corrección de los pesos para que el tamaño de las unidades no domine la red (9).</td></tr>
+      <tr><td class="termino"><b>PageRank</b></td><td class="en">PageRank</td><td>Importancia de un nodo según la importancia de sus vecinos (9).</td></tr>
+      <tr><td class="termino"><b>Palabras clave de autor</b></td><td class="en">Author keywords</td><td>Las que escriben los autores en el artículo (8).</td></tr>
+      <tr><td class="termino"><b>Palabras clave de índice</b></td><td class="en">Index keywords</td><td>Las que asigna la base de datos: descriptores, conceptos o temas (8).</td></tr>
+      <tr><td class="termino"><b>Palabras vacías</b></td><td class="en">Stop words</td><td>Términos que se quitan de los análisis por ser demasiado generales (4).</td></tr>
+      <tr><td class="termino"><b>Panorama general</b></td><td class="en">Overview</td><td>La pantalla con los indicadores principales del conjunto (5).</td></tr>
+      <tr><td class="termino"><b>Proyecto</b></td><td class="en">Project</td><td>Archivo <code>.smp.json</code> con los datos, la limpieza, las decisiones y los parámetros (2).</td></tr>
+      <tr class="letra"><td colspan="3">R – S</td></tr>
+      <tr><td class="termino"><b>Referencias citadas</b></td><td class="en">Cited references</td><td>La bibliografía de cada documento; base de la cocitación, el acoplamiento y la historiografía (8, 10).</td></tr>
+      <tr><td class="termino"><b>Registro</b></td><td class="en">Record</td><td>Una entrada de un archivo exportado; varios registros pueden ser el mismo documento (3, 4).</td></tr>
+      <tr><td class="termino"><b>Resolución</b></td><td class="en">Resolution (γ)</td><td>Parámetro de la modularidad: con valores altos salen más comunidades y más pequeñas (9).</td></tr>
+      <tr><td class="termino"><b>Revisión sistemática</b></td><td class="en">Systematic review</td><td>Selección de estudios con criterios explícitos para responder una pregunta (12).</td></tr>
+      <tr><td class="termino"><b>Silueta</b></td><td class="en">Silhouette</td><td>Qué tan bien queda cada punto en su grupo, de −1 a 1 (9).</td></tr>
+      <tr><td class="termino"><b>Sinónimo</b></td><td class="en">Synonym</td><td>Término que se reemplaza por su término preferido antes de contar (4).</td></tr>
+      <tr class="letra"><td colspan="3">T – Z</td></tr>
+      <tr><td class="termino"><b>Tasa de crecimiento anual</b></td><td class="en">Annual growth rate</td><td>Crecimiento compuesto entre el primer y el último año del periodo (5).</td></tr>
+      <tr><td class="termino"><b>Temas en tendencia</b></td><td class="en">Trend topics</td><td>Términos ubicados por los cuartiles de los años de sus documentos (8).</td></tr>
+      <tr><td class="termino"><b>Temas motores, nicho, emergentes o en declive, básicos</b></td><td class="en">Motor, niche, emerging or declining, basic themes</td><td>Los cuatro cuadrantes del mapa temático (9).</td></tr>
+      <tr><td class="termino"><b>Transitividad</b></td><td class="en">Transitivity</td><td>Proporción de tripletas conectadas que cierran un triángulo (9).</td></tr>
+      <tr><td class="termino"><b>Zona núcleo</b></td><td class="en">Zone 1 (core)</td><td>Las fuentes más productivas que reúnen el primer tercio de los documentos (6).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ====================================================================== D -->
+  <h2 id="ap-d" data-nueva-hoja><span class="num">D</span>Solución de problemas</h2>
+  <p class="lead">Los mensajes de la app, tal como aparecen, con su causa y qué hacer. Los de la búsqueda en el catálogo abierto están en la tabla 3.6, y los avisos de un panorama sospechoso, en la tabla 5.2.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla D.1.</b> Abrir, guardar y datos de ejemplo.</caption>
+    <thead><tr><th style="width:38%">Mensaje o síntoma</th><th style="width:28%">Causa</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">El archivo no es un proyecto de SciMetricsPro.</span></td><td>Se eligió una exportación, un informe o un archivo dañado.</td><td>Los proyectos terminan en <code>.smp.json</code>; las exportaciones se cargan en Importar (capítulo 2).</td></tr>
+      <tr><td><span class="ui">El proyecto se guardó con una versión más reciente (…).</span></td><td>El proyecto viene de una versión nueva de la app.</td><td>Actualiza SciMetricsPro.</td></tr>
+      <tr><td><span class="ui">No se pudo abrir el proyecto: …</span></td><td>El archivo está incompleto o dañado.</td><td>Abre otra copia; el mensaje dice la causa técnica.</td></tr>
+      <tr><td><span class="ui">¿Recuperar la sesión anterior?</span> al abrir la app</td><td>Quedó una copia automática de la última sesión en el navegador.</td><td><span class="ui">Recuperar</span> la carga; <span class="ui">Descartar</span> la borra (capítulo 2).</td></tr>
+      <tr><td><span class="ui">No se pudieron cargar los datos de ejemplo.</span></td><td>Falta la carpeta <code>data</code> de la app.</td><td>Descarga la app completa y ábrela desde su carpeta.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla D.2.</b> Importar.</caption>
+    <thead><tr><th style="width:38%">Mensaje o síntoma</th><th style="width:28%">Causa</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">No se reconoció el formato del archivo.</span></td><td>No es una exportación en un formato de la tabla A.1.</td><td>Exporta de nuevo en RIS, BibTeX, CSV o texto etiquetado.</td></tr>
+      <tr><td><span class="ui">No se encontraron registros en el archivo.</span></td><td>El archivo está vacío o ningún registro trae título.</td><td>Revisa la exportación en un editor de texto.</td></tr>
+      <tr><td><span class="ui">Se omitieron … registros sin título.</span></td><td>Registros incompletos en el archivo.</td><td>Nada, si son pocos.</td></tr>
+      <tr><td><span class="ui">El archivo no estaba en UTF-8 y se leyó como Latin-1: revisa acentos y eñes.</span></td><td>Archivo en otra codificación.</td><td>Revisa la vista previa; si hay caracteres raros, guárdalo en UTF-8.</td></tr>
+      <tr><td><span class="ui">Tabla de origen no reconocido: …</span></td><td>Tabla sin los encabezados de una base.</td><td>Usa los encabezados de la tabla A.3.</td></tr>
+      <tr><td><span class="ui">No trae referencias citadas: …</span> o <span class="ui">Solo el … % de los registros trae referencias citadas.</span> (menos de la mitad)</td><td>Se exportó sin la opción de referencias.</td><td>Exporta de nuevo con las referencias (tabla 3.4).</td></tr>
+      <tr><td><span class="ui">No trae resúmenes…</span>, <span class="ui">No trae palabras clave…</span>, <span class="ui">No trae afiliaciones…</span>, <span class="ui">No trae número de citas…</span></td><td>El formato o las opciones de exportación no los incluyen (tabla A.2).</td><td>Exporta el registro completo, o acepta que esos análisis no estarán.</td></tr>
+      <tr><td><span class="ui">Solo se reconoció el país en el … % de los registros.</span> / <span class="ui">Solo el … % de los registros trae DOI…</span> (menos de la mitad)</td><td>Afiliaciones sin país o registros sin DOI.</td><td>Revisa países en Limpieza (capítulo 4); sin DOI, los duplicados se buscan por título.</td></tr>
+      <tr><td><span class="ui">… ya estaba importado y se omitió.</span></td><td>Mismo nombre y tamaño que un archivo cargado.</td><td>Nada: evita cargarlo dos veces.</td></tr>
+      <tr><td><span class="ui">No se pudo leer el archivo: …</span></td><td>El navegador no pudo abrirlo.</td><td>Cópialo a una carpeta local y vuelve a intentarlo.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla D.3.</b> Limpieza y análisis.</caption>
+    <thead><tr><th style="width:38%">Mensaje o síntoma</th><th style="width:28%">Causa</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">El archivo no tiene pares «término, término preferido».</span></td><td>El CSV de sinónimos no tiene dos columnas con datos.</td><td>Usa el formato de la tabla A.4.</td></tr>
+      <tr><td><span class="ui">Primero importa datos</span></td><td>No hay registros cargados.</td><td>Importa tus archivos o carga los datos de ejemplo.</td></tr>
+      <tr><td><span class="ui">Ningún documento cumple los filtros</span></td><td>Los filtros globales dejaron el conjunto vacío.</td><td><span class="ui">Revisar los filtros</span> (capítulo 4).</td></tr>
+      <tr><td><span class="ui">No hay datos para dibujar esta figura.</span></td><td>El conjunto no trae el campo que usa la figura.</td><td>Revisa la tabla de campos de Importar (capítulo 3).</td></tr>
+      <tr><td><span class="ui">Los documentos no traen referencias citadas</span></td><td>Sin referencias no hay estructura intelectual.</td><td>Sigue los pasos del aviso para exportar con referencias.</td></tr>
+      <tr><td><span class="ui">Con estos parámetros no hay suficientes …</span> (redes, mapa temático, acoplamiento, historiografía)</td><td>Los mínimos dejan muy pocos elementos o enlaces.</td><td>Baja la frecuencia mínima o los mínimos por enlace, o aumenta el número de nodos, como sugiere el aviso.</td></tr>
+      <tr><td><span class="ui">Se necesitan al menos 3 palabras presentes en varios documentos y dos dimensiones.</span></td><td>El análisis factorial no tiene datos suficientes.</td><td>Baja la frecuencia mínima o cambia el campo de términos.</td></tr>
+      <tr><td><span class="ui">Se canceló el cálculo de la red.</span> / <span class="ui">No se pudo calcular la red: …</span></td><td>Se pulsó <span class="ui">Cancelar</span> o el cálculo falló.</td><td>Pulsa <span class="ui">Calcular de nuevo</span>; con redes grandes, baja el número de nodos.</td></tr>
+      <tr><td>Una red dominada por términos genéricos</td><td>Palabras clave de índice muy amplias.</td><td>Agrégalas a las palabras vacías (capítulos 4 y 9).</td></tr>
+      <tr><td><span class="ui">Los registros cribados según los números escritos (…) no coinciden…</span></td><td>Los números escritos en el panel PRISMA no cuadran con los documentos cribados.</td><td>Revisa los eliminados antes del cribado (capítulo 12).</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla D.4.</b> Exportar.</caption>
+    <thead><tr><th style="width:38%">Mensaje o síntoma</th><th style="width:28%">Causa</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Las etiquetas no caben en este ancho: la letra se imprime a … pt.</span></td><td>Nombres o leyenda demasiado largos para el ancho elegido.</td><td>Acorta los nombres en <span class="ui">Editar figura</span>, mueve la leyenda o usa dos columnas (sección 13.1).</td></tr>
+      <tr><td>La línea de información en color sin ese aviso</td><td>La imagen pasaría de 16,000 píxeles por lado o de 120 millones de píxeles.</td><td>Se descarga con la mayor resolución que cabe, al mismo ancho; para más, usa SVG o PDF.</td></tr>
+      <tr><td><span class="ui">El navegador no pudo crear una imagen tan grande. …</span></td><td>El navegador rechazó la imagen.</td><td>Elige una resolución menor o exporta en SVG.</td></tr>
+      <tr><td><span class="ui">Los documentos cambiaron después de la búsqueda: …</span> / <span class="ui">… después de generar el informe: …</span></td><td>Cambiaste datos, filtros o parámetros.</td><td>Busca de nuevo o genera de nuevo el informe.</td></tr>
+      <tr><td><span class="ui">No se pudo preparar el ZIP: …</span> / <span class="ui">No se pudo preparar el informe: …</span></td><td>Falló una figura o falta memoria.</td><td>Desmarca figuras muy grandes o baja la resolución.</td></tr>
+      <tr><td>El PDF de la revista pide tipografías incrustadas</td><td>El PDF de las figuras usa las tipografías estándar sin incrustar.</td><td>Envía TIFF o PNG.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ====================================================================== E -->
+  <h2 id="ap-e" data-nueva-hoja><span class="num">E</span>Referencias</h2>
+  <p class="lead">Las referencias de los métodos que usa la app y que cita el manual. Son las mismas que aparecen en la ayuda de cada indicador y en el informe.</p>
+
+  <ul class="refs">
+    <li>Aria, M., &amp; Cuccurullo, C. (2017). <i>Journal of Informetrics, 11</i>(4), 959–975. <span class="doi">https://doi.org/10.1016/j.joi.2017.08.007</span></li>
+    <li>Aria, M., Misuraca, M., &amp; Spano, M. (2020). Mapping the evolution of social research and data science on 30 years of Social Indicators Research. <i>Social Indicators Research, 149</i>(3), 803–831.</li>
+    <li>Arthur, D., &amp; Vassilvitskii, S. (2007). k-means++: The advantages of careful seeding. En <i>Proceedings of the Eighteenth Annual ACM-SIAM Symposium on Discrete Algorithms</i> (pp. 1027–1035).</li>
+    <li>Benzécri, J.-P. (1979). Sur le calcul des taux d’inertie dans l’analyse d’un questionnaire. <i>Les Cahiers de l’Analyse des Données, 4</i>(3), 377–378.</li>
+    <li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <i>Journal of Statistical Mechanics: Theory and Experiment, 2008</i>(10), P10008. <span class="doi">https://doi.org/10.1088/1742-5468/2008/10/P10008</span></li>
+    <li>Bradford, S. C. (1934). Sources of information on specific subjects. <i>Engineering, 137</i>, 85–86.</li>
+    <li>Brandes, U. (2001). A faster algorithm for betweenness centrality. <i>Journal of Mathematical Sociology, 25</i>(2), 163–177. <span class="doi">https://doi.org/10.1080/0022250X.2001.9990249</span></li>
+    <li>Brandes, U., Eiglsperger, M., Herman, I., Himsolt, M., &amp; Marshall, M. S. (2002). GraphML progress report: Structural layer proposal. En P. Mutzel, M. Jünger &amp; S. Leipert (Eds.), <i>Graph Drawing 2001</i> (Lecture Notes in Computer Science, vol. 2265, pp. 501–512). Springer.</li>
+    <li>Brin, S., &amp; Page, L. (1998). The anatomy of a large-scale hypertextual Web search engine. <i>Computer Networks and ISDN Systems, 30</i>(1–7), 107–117. <span class="doi">https://doi.org/10.1016/S0169-7552(98)00110-X</span></li>
+    <li>Bruls, M., Huizing, K., &amp; van Wijk, J. J. (2000). Squarified treemaps. En W. C. de Leeuw &amp; R. van Liere (Eds.), <i>Data Visualization 2000</i> (pp. 33–42). Springer. <span class="doi">https://doi.org/10.1007/978-3-7091-6783-0_4</span></li>
+    <li>Callon, M., Courtial, J. P., &amp; Laville, F. (1991). Co-word analysis as a tool for describing the network of interactions between basic and technological research: The case of polymer chemistry. <i>Scientometrics, 22</i>(1), 155–205. <span class="doi">https://doi.org/10.1007/BF02019280</span></li>
+    <li>Clauset, A., Newman, M. E. J., &amp; Moore, C. (2004). Finding community structure in very large networks. <i>Physical Review E, 70</i>(6), 066111. <span class="doi">https://doi.org/10.1103/PhysRevE.70.066111</span></li>
+    <li>Clauset, A., Shalizi, C. R., &amp; Newman, M. E. J. (2009). Power-law distributions in empirical data. <i>SIAM Review, 51</i>(4), 661–703. <span class="doi">https://doi.org/10.1137/070710111</span></li>
+    <li>Cobo, M. J., López-Herrera, A. G., Herrera-Viedma, E., &amp; Herrera, F. (2011). An approach for detecting, quantifying, and visualizing the evolution of a research field: A practical application to the Fuzzy Sets Theory field. <i>Journal of Informetrics, 5</i>(1), 146–166. <span class="doi">https://doi.org/10.1016/j.joi.2010.10.002</span></li>
+    <li>Egghe, L. (2006). Theory and practise of the g-index. <i>Scientometrics, 69</i>(1), 131–152. <span class="doi">https://doi.org/10.1007/s11192-006-0144-7</span></li>
+    <li>Freeman, L. C. (1979). Centrality in social networks conceptual clarification. <i>Social Networks, 1</i>(3), 215–239. <span class="doi">https://doi.org/10.1016/0378-8733(78)90021-7</span></li>
+    <li>Garfield, E. (2004). Historiographic mapping of knowledge domains literature. <i>Journal of Information Science, 30</i>(2), 119–145. <span class="doi">https://doi.org/10.1177/0165551504042802</span></li>
+    <li>Garfield, E., Pudovkin, A. I., &amp; Istomin, V. S. (2003). Why do we need algorithmic historiography? <i>Journal of the American Society for Information Science and Technology, 54</i>(5), 400–412. <span class="doi">https://doi.org/10.1002/asi.10226</span></li>
+    <li>Glänzel, W., &amp; Schubert, A. (2004). Analysing scientific networks through co-authorship. En H. F. Moed, W. Glänzel &amp; U. Schmoch (Eds.), <i>Handbook of quantitative science and technology research</i> (pp. 257–276). Kluwer Academic Publishers.</li>
+    <li>Greenacre, M. (2007). <i>Correspondence analysis in practice</i> (2.ª ed.). Chapman &amp; Hall/CRC.</li>
+    <li>Hartigan, J. A., &amp; Wong, M. A. (1979). Algorithm AS 136: A k-means clustering algorithm. <i>Journal of the Royal Statistical Society. Series C (Applied Statistics), 28</i>(1), 100–108. <span class="doi">https://doi.org/10.2307/2346830</span></li>
+    <li>Hernández, M. A., &amp; Stolfo, S. J. (1995). The merge/purge problem for large databases. En <i>Proceedings of the 1995 ACM SIGMOD International Conference on Management of Data</i> (pp. 127–138). <span class="doi">https://doi.org/10.1145/223784.223807</span></li>
+    <li>Hirsch, J. E. (2005). An index to quantify an individual’s scientific research output. <i>Proceedings of the National Academy of Sciences, 102</i>(46), 16569–16572. <span class="doi">https://doi.org/10.1073/pnas.0507655102</span></li>
+    <li>Hyndman, R. J., &amp; Fan, Y. (1996). Sample quantiles in statistical packages. <i>The American Statistician, 50</i>(4), 361–365. <span class="doi">https://doi.org/10.2307/2684934</span></li>
+    <li>Jaccard, P. (1901). Étude comparative de la distribution florale dans une portion des Alpes et du Jura. <i>Bulletin de la Société Vaudoise des Sciences Naturelles, 37</i>(142), 547–579.</li>
+    <li>Jacomy, M., Venturini, T., Heymann, S., &amp; Bastian, M. (2014). <i>PLoS ONE, 9</i>(6), e98679. <span class="doi">https://doi.org/10.1371/journal.pone.0098679</span></li>
+    <li>Katz, J. S., &amp; Martin, B. R. (1997). What is research collaboration? <i>Research Policy, 26</i>(1), 1–18. <span class="doi">https://doi.org/10.1016/S0048-7333(96)00917-1</span></li>
+    <li>Kessler, M. M. (1963). Bibliographic coupling between scientific papers. <i>American Documentation, 14</i>(1), 10–25. <span class="doi">https://doi.org/10.1002/asi.5090140103</span></li>
+    <li>Levenshtein, V. I. (1966). Binary codes capable of correcting deletions, insertions, and reversals. <i>Soviet Physics Doklady, 10</i>(8), 707–710.</li>
+    <li>Lloyd, S. P. (1982). Least squares quantization in PCM. <i>IEEE Transactions on Information Theory, 28</i>(2), 129–137. <span class="doi">https://doi.org/10.1109/TIT.1982.1056489</span></li>
+    <li>Lotka, A. J. (1926). The frequency distribution of scientific productivity. <i>Journal of the Washington Academy of Sciences, 16</i>(12), 317–323.</li>
+    <li>Marshakova, I. V. (1973). System of document connections based on references. <i>Nauchno-Tekhnicheskaya Informatsiya, Seriya 2, 6</i>, 3–8.</li>
+    <li>Marx, W., Bornmann, L., Barth, A., &amp; Leydesdorff, L. (2014). Detecting the historical roots of research fields by reference publication year spectroscopy (RPYS). <i>Journal of the Association for Information Science and Technology, 65</i>(4), 751–764. <span class="doi">https://doi.org/10.1002/asi.23089</span></li>
+    <li>McCain, K. W. (1991). Mapping economics through the journal literature: An experiment in journal cocitation analysis. <i>Journal of the American Society for Information Science, 42</i>(4), 290–296.</li>
+    <li>Newman, M. E. J. (2001). The structure of scientific collaboration networks. <i>Proceedings of the National Academy of Sciences, 98</i>(2), 404–409. <span class="doi">https://doi.org/10.1073/pnas.98.2.404</span></li>
+    <li>Newman, M. E. J. (2003). The structure and function of complex networks. <i>SIAM Review, 45</i>(2), 167–256. <span class="doi">https://doi.org/10.1137/S003614450342480</span></li>
+    <li>Newman, M. E. J., &amp; Girvan, M. (2004). Finding and evaluating community structure in networks. <i>Physical Review E, 69</i>(2), 026113. <span class="doi">https://doi.org/10.1103/PhysRevE.69.026113</span></li>
+    <li>Page, M. J., McKenzie, J. E., Bossuyt, P. M., Boutron, I., Hoffmann, T. C., Mulrow, C. D., Shamseer, L., Tetzlaff, J. M., Akl, E. A., Brennan, S. E., Chou, R., Glanville, J., Grimshaw, J. M., Hróbjartsson, A., Lalu, M. M., Li, T., Loder, E. W., Mayo-Wilson, E., McDonald, S., … Moher, D. (2021). The PRISMA 2020 statement: An updated guideline for reporting systematic reviews. <i>BMJ, 372</i>, n71. <span class="doi">https://doi.org/10.1136/bmj.n71</span></li>
+    <li>Pao, M. L. (1985). Lotka’s law: A testing procedure. <i>Information Processing &amp; Management, 21</i>(4), 305–320. <span class="doi">https://doi.org/10.1016/0306-4573(85)90055-X</span></li>
+    <li>Reichardt, J., &amp; Bornholdt, S. (2006). Statistical mechanics of community detection. <i>Physical Review E, 74</i>(1), 016110. <span class="doi">https://doi.org/10.1103/PhysRevE.74.016110</span></li>
+    <li>Rousseeuw, P. J. (1987). Silhouettes: A graphical aid to the interpretation and validation of cluster analysis. <i>Journal of Computational and Applied Mathematics, 20</i>, 53–65. <span class="doi">https://doi.org/10.1016/0377-0427(87)90125-7</span></li>
+    <li>Salton, G., &amp; McGill, M. J. (1983). <i>Introduction to modern information retrieval</i>. McGraw-Hill.</li>
+    <li>Šavrič, B., Patterson, T., &amp; Jenny, B. (2019). The Equal Earth map projection. <i>International Journal of Geographical Information Science, 33</i>(3), 454–465. <span class="doi">https://doi.org/10.1080/13658816.2018.1504949</span></li>
+    <li>Small, H. (1973). Co-citation in the scientific literature: A new measure of the relationship between two documents. <i>Journal of the American Society for Information Science, 24</i>(4), 265–269. <span class="doi">https://doi.org/10.1002/asi.4630240406</span></li>
+    <li>Stephens, M. A. (1970). Use of the Kolmogorov-Smirnov, Cramér-Von Mises and related statistics without extensive tables. <i>Journal of the Royal Statistical Society: Series B, 32</i>(1), 115–122.</li>
+    <li>Sugiyama, K., Tagawa, S., &amp; Toda, M. (1981). Methods for visual understanding of hierarchical system structures. <i>IEEE Transactions on Systems, Man, and Cybernetics, 11</i>(2), 109–125. <span class="doi">https://doi.org/10.1109/TSMC.1981.4308636</span></li>
+    <li>van Eck, N. J., &amp; Waltman, L. (2009). How to normalize cooccurrence data? An analysis of some well-known similarity measures. <i>Journal of the American Society for Information Science and Technology, 60</i>(8), 1635–1651. <span class="doi">https://doi.org/10.1002/asi.21075</span></li>
+    <li>Waltman, L., van Eck, N. J., van Leeuwen, T. N., Visser, M. S., &amp; van Raan, A. F. J. (2011). Towards a new crown indicator: Some theoretical considerations. <i>Journal of Informetrics, 5</i>(1), 37–47.</li>
+    <li>Ward, J. H. (1963). Hierarchical grouping to optimize an objective function. <i>Journal of the American Statistical Association, 58</i>(301), 236–244. <span class="doi">https://doi.org/10.1080/01621459.1963.10500845</span></li>
+    <li>Wasserman, S., &amp; Faust, K. (1994). <i>Social network analysis: Methods and applications</i>. Cambridge University Press.</li>
+    <li>White, H. D., &amp; Griffith, B. C. (1981). Author cocitation: A literature measure of intellectual structure. <i>Journal of the American Society for Information Science, 32</i>(3), 163–171. <span class="doi">https://doi.org/10.1002/asi.4630320302</span></li>
+    <li>Zhao, D., &amp; Strotmann, A. (2008). Evolution of research activities and intellectual influences in information science 1996–2005: Introducing author bibliographic-coupling analysis. <i>Journal of the American Society for Information Science and Technology, 59</i>(13), 2070–2086.</li>
+  </ul>
+
+  <!-- ====================================================================== F -->
+  <h2 id="ap-f" data-nueva-hoja><span class="num">F</span>Componentes de terceros</h2>
+  <p class="lead">SciMetricsPro no usa servicios externos ni programas de terceros durante el análisis: todo se calcula en el navegador con código propio. Incluye estos componentes y datos, cada uno con su licencia; los avisos completos están en <code>vendor/THIRD-PARTY-NOTICES.txt</code> y en la pantalla <span class="ui">Acerca de</span> (capítulo 2).</p>
+
+  <table class="compacta">
+    <caption><b>Tabla F.1.</b> Componentes y datos de terceros.</caption>
+    <thead><tr><th style="width:27%">Archivo</th><th style="width:47%">Uso</th><th>Licencia</th></tr></thead>
+    <tbody>
+      <tr><td><code>vendor/xlsx.full.min.js</code></td><td>Lectura de hojas de cálculo (<code>.xlsx</code>, <code>.xls</code>, <code>.ods</code>) al importar. Las hojas de cálculo que la app escribe salen de código propio.</td><td>Apache License 2.0</td></tr>
+      <tr><td><code>data/world.js</code></td><td>Contornos de los países del mapa mundial (datos cartográficos simplificados).</td><td>Dominio público</td></tr>
+      <tr><td><code>data/example.js</code></td><td>Datos de ejemplo: metadatos de 300 obras de un catálogo bibliográfico abierto, sin resúmenes.</td><td>CC0 1.0 (dominio público)</td></tr>
+    </tbody>
+  </table>
+
+  <table class="compacta">
+    <caption><b>Tabla F.2.</b> La app y este manual.</caption>
+    <thead><tr><th style="width:27%">Obra</th><th style="width:47%">Detalle</th><th>Licencia</th></tr></thead>
+    <tbody>
+      <tr><td>SciMetricsPro</td><td>El programa y su código fuente.</td><td>GNU General Public License, versión 3 o posterior (GPL-3.0-or-later)</td></tr>
+      <tr><td>Manual de usuario</td><td>Texto, capturas y figuras.</td><td>© 2026 Luis Ángel Barrera-Guzmán y Gabriela Ramírez-Ojeda. Todos los derechos reservados.</td></tr>
+      <tr><td>Tipografías del manual</td><td>Cormorant, Crimson Pro y Jost.</td><td>SIL Open Font License 1.1</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+</body>
+</html>

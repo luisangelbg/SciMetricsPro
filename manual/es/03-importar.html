@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 3 · Importar datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  /* capturas, cadenas y diagramas de este capítulo */
+  .cap3 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap3 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+  .cap3 .cadena { font-family: var(--mono); font-size: 8.2pt; line-height: 1.45; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.1in; margin: 0.06in 0 0.1in; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--negro); }
+  .cap3 td code { white-space: normal; overflow-wrap: anywhere; }
+  .cap3 .cap3-svg text { font-family: Jost, sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 3 -->
+<section class="capitulo cap3" id="cap-importar" data-pestana="3" data-orden="3" style="--acento: var(--b2)">
+  <div class="cap-apertura">
+    <div class="cap-num">3</div>
+    <div class="cap-etiqueta">Capítulo tres</div>
+    <h1>Importar datos</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Cómo convertir un título tentativo en una cadena de búsqueda para cada buscador académico, qué exportar de cada base de datos, cómo reunir varios archivos en un solo conjunto, cómo leer la tabla de campos disponibles y los avisos, y cómo descargar registros directamente del catálogo bibliográfico abierto.</p>
+    <div class="cap-franja"><span class="k2"></span><span class="k2"></span><span class="k2"></span><span class="k2"></span><span class="k2"></span><span class="k2"></span></div>
+    <ul class="cap-contenido">
+      <li><b>3.1</b>De la idea a la cadena de búsqueda</li>
+      <li><b>3.2</b>Los conceptos y sus términos</li>
+      <li><b>3.3</b>Una cadena para cada buscador</li>
+      <li><b>3.4</b>Qué exportar de cada base</li>
+      <li><b>3.5</b>Cargar archivos y combinar bases</li>
+      <li><b>3.6</b>Campos, avisos y vista previa</li>
+      <li><b>3.7</b>Buscar en el catálogo abierto</li>
+    </ul>
+  </div>
+
+  <p class="lead">La pantalla <span class="ui">Importar</span> tiene tres pestañas que corresponden a tres momentos del trabajo. La primera, <span class="ui">Palabras clave</span>, prepara la búsqueda antes de tener datos. La segunda, <span class="ui">Archivos</span>, recibe las exportaciones de las bases de datos. La tercera descarga registros del catálogo bibliográfico abierto sin exportar archivos. La pantalla abre en <span class="ui">Archivos</span>; con el foco en las pestañas, las flechas <kbd style="font-family:var(--sans);font-size:0.8em">←</kbd> <kbd style="font-family:var(--sans);font-size:0.8em">→</kbd> cambian de una a otra.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los nombres de las bases en este capítulo</div>
+    <p>Para que reconozcas cada exportación, la pantalla Importar muestra los nombres comerciales de las bases de datos, y así aparecen en las capturas. En el texto del manual se usan descripciones genéricas: <b>índice de citas multidisciplinario A</b> y <b>B</b>, <b>índice biomédico público</b>, <b>buscador académico abierto</b>, <b>base de datos de investigación enlazada</b>, <b>índice regional de revistas</b> y <b>catálogo bibliográfico abierto</b>. Las tarjetas de la app y las filas de las tablas de este capítulo siguen el mismo orden.</p>
+  </div>
+
+  <!-- 3.1 -->
+  <h2 id="s3-1"><span class="num">3.1</span>De la idea a la cadena de búsqueda</h2>
+  <p>Una búsqueda bibliográfica sistemática no se hace con una frase suelta en un buscador: se descompone la pregunta en conceptos, cada concepto se escribe con todas sus formas (sinónimos, variantes, nombres científicos) y se combinan con operadores lógicos. La pestaña <span class="ui">Palabras clave</span> hace ese trabajo a partir de tu título tentativo o tu idea de investigación. <b>La app no busca</b>: propone los conceptos, escribe la cadena con la sintaxis de cada buscador y tú la copias, la pegas en el buscador que elijas y exportas los resultados. Todo ocurre en tu computadora; el título no se envía a ningún servicio.</p>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · bloques de búsqueda</div>
+    <p>Cada concepto de la pregunta es un <b>bloque</b>. Dentro de un bloque, los términos se unen con <b>OR</b>: basta que un documento use cualquiera de ellos. Entre bloques se usa <b>AND</b>: el documento debe tocar todos los conceptos. Así, más términos dentro de un bloque amplían la búsqueda (encuentran documentos que dicen lo mismo con otras palabras) y más bloques la estrechan. Las comillas buscan una frase exacta y el asterisco trunca una palabra: <code>fertiliz*</code> encuentra <i>fertilizer</i>, <i>fertilizers</i> y <i>fertilization</i>.</p>
+  </div>
+
+  <figure class="cap3-diagrama">
+    <svg class="cap3-svg" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tres bloques de términos unidos con OR dentro y con AND entre ellos">
+      <g font-size="10.5">
+        <rect x="14" y="30" width="196" height="92" rx="7" fill="#e9f4f2" stroke="#0f766e" stroke-width="1.4"/>
+        <text x="112" y="22" text-anchor="middle" font-weight="600" fill="#0f766e">Concepto 1 · tema</text>
+        <text x="30" y="54" fill="#22252c">"nitrogen fertilization"</text>
+        <text x="30" y="72" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="54" y="72" fill="#22252c">"nitrogen fertilizer"</text>
+        <text x="30" y="90" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="54" y="90" fill="#22252c">"fertilización nitrogenada"</text>
+        <text x="30" y="110" fill="#5d6472" font-size="9.5">…</text>
+        <rect x="252" y="30" width="196" height="92" rx="7" fill="#e9f4f2" stroke="#0f766e" stroke-width="1.4"/>
+        <text x="350" y="22" text-anchor="middle" font-weight="600" fill="#0f766e">Concepto 2 · tema</text>
+        <text x="268" y="54" fill="#22252c">yield</text>
+        <text x="268" y="72" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="292" y="72" fill="#22252c">"crop yield"</text>
+        <text x="268" y="90" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="292" y="90" fill="#22252c">rendimiento</text>
+        <rect x="490" y="30" width="196" height="92" rx="7" fill="#e9f4f2" stroke="#0f766e" stroke-width="1.4"/>
+        <text x="588" y="22" text-anchor="middle" font-weight="600" fill="#0f766e">Concepto 3 · organismo</text>
+        <text x="506" y="54" fill="#22252c">"passion fruit"</text>
+        <text x="506" y="72" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="530" y="72" fill="#22252c">"Passiflora edulis"</text>
+        <text x="506" y="90" fill="#0f766e" font-size="9.5" font-weight="600">OR</text>
+        <text x="530" y="90" fill="#22252c">maracuyá</text>
+        <text x="506" y="110" fill="#5d6472" font-size="9.5">…</text>
+      </g>
+      <g font-size="12" font-weight="700" fill="#b4234a" text-anchor="middle"><text x="231" y="80">AND</text><text x="469" y="80">AND</text></g>
+      <text x="350" y="143" font-size="10" fill="#22252c" text-anchor="middle">OR dentro de cada bloque amplía la búsqueda · AND entre bloques la estrecha</text>
+    </svg>
+    <figcaption><b>Figura 3.1.</b> La estructura de toda cadena que escribe la app, con parte de los términos del ejemplo de este capítulo.</figcaption>
+  </figure>
+
+  <h3>Escribir la idea</h3>
+  <ol class="pasos">
+    <li><b>Abre</b> <span class="ruta">Importar<span class="sep">›</span>Palabras clave</span>. Si todavía no hay datos, también llegas con el enlace <span class="ui">Prepara las palabras clave de tu búsqueda</span> de la pestaña <span class="ui">Archivos</span>.</li>
+    <li><b>Escribe tu título tentativo o tu idea</b>, en español o en inglés. Menciona el organismo o la población, la variable o el tratamiento y el resultado que te interesa.</li>
+    <li><b>Elige dónde buscar</b>: <span class="ui">Título, resumen y palabras clave</span> (lo habitual) o <span class="ui">Solo el título</span> (más preciso, pero pierde documentos). Escribe los <span class="ui">Años de publicación</span> si quieres acotar el periodo.</li>
+    <li><b>Pulsa</b> <span class="ui">Proponer palabras clave</span>. Aparecen los conceptos y, debajo, las cadenas de cada buscador. El botón cambia a <span class="ui">Volver a proponer</span>; si ya editaste los conceptos, la app pide confirmación antes de reemplazarlos.</li>
+  </ol>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-conceptos.png" alt="Pestaña Palabras clave con el título del ejemplo y sus cuatro conceptos">
+      <span class="marca" style="left:28%;top:13.3%">1</span>
+      <span class="marca" style="left:10.8%;top:24.8%">2</span>
+      <span class="marca" style="left:71.3%;top:24.8%">3</span>
+      <span class="marca" style="left:19.8%;top:31.8%">4</span>
+      <span class="marca" style="left:73.5%;top:44.1%">5</span>
+      <span class="marca" style="left:34.8%;top:47.6%">6</span>
+      <span class="marca" style="left:69.5%;top:47.6%">7</span>
+      <span class="marca" style="left:40%;top:53.3%">8</span>
+      <span class="marca" style="left:26.4%;top:85.5%">9</span>
+      <span class="marca" style="left:19.8%;top:97%">10</span>
+    </div>
+    <figcaption><b>Figura 3.2.</b> La pestaña <span class="ui">Palabras clave</span> con el título <i>Efecto de la fertilización nitrogenada en el rendimiento del maracuyá en Veracruz</i> y el periodo 2000–2026.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>El título tentativo o la idea de investigación.</li>
+    <li><span class="n">2</span>Campos donde se busca: título, resumen y palabras clave, o solo el título.</li>
+    <li><span class="n">3</span>Años de publicación, opcionales.</li>
+    <li><span class="n">4</span>Proponer los conceptos, o volver a proponerlos.</li>
+    <li><span class="n">5</span>Idioma reconocido del título y qué hizo la app con él.</li>
+    <li><span class="n">6</span>Número y tipo del concepto (tema, organismo o lugar) y de qué parte del título salió.</li>
+    <li><span class="n">7</span><span class="ui">Separar</span>, <span class="ui">Unir</span> con el anterior y <span class="ui">Quitar</span>.</li>
+    <li><span class="n">8</span>Los términos del concepto, uno por línea; se pueden editar.</li>
+    <li><span class="n">9</span>Un lugar empieza desmarcado: la casilla lo incluye en la búsqueda.</li>
+    <li><span class="n">10</span><span class="ui">Agregar concepto</span> crea un bloque vacío.</li>
+  </ul>
+
+  <h3>Qué hace la app con el título</h3>
+  <p>La app corta el título en frases por las preposiciones, los artículos y la puntuación, descarta las palabras genéricas de investigación (<i>efecto</i>, <i>análisis</i>, <i>estudio</i>, <i>evaluación</i>) y busca cada frase en un <b>glosario bilingüe incluido</b>, que prefiere siempre la frase más larga que conoce: <i>calidad del fruto</i> es un solo concepto, no dos. El glosario tiene 587 entradas: 323 conceptos, 106 organismos con su nombre común y su nombre científico, 67 modificadores (como <i>orgánico</i> o <i>nitrogenado</i>), 62 lugares y 29 palabras genéricas que se descartan. En un título en español, los términos se escriben en inglés, el idioma de la mayoría de los resúmenes, y se conserva al final el término en español.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 3.1.</b> Los conceptos del título del ejemplo, tal como los propone la app.</caption>
+    <thead><tr><th style="width:23%">Parte del título</th><th style="width:13%">Tipo</th><th>Términos propuestos</th><th style="width:15%">En la búsqueda</th></tr></thead>
+    <tbody>
+      <tr><td>Efecto de…</td><td>—</td><td>Palabra genérica: se descarta.</td><td class="c"><span class="no">—</span></td></tr>
+      <tr><td>la fertilización nitrogenada</td><td>Tema</td><td>nitrogen fertilization · nitrogen fertilisation · nitrogen fertilizer · fertilización nitrogenada</td><td class="c"><span class="si">●</span></td></tr>
+      <tr><td>el rendimiento</td><td>Tema</td><td>yield · crop yield · rendimiento</td><td class="c"><span class="si">●</span></td></tr>
+      <tr><td>del maracuyá</td><td>Organismo</td><td>passion fruit · passionfruit · <i>Passiflora edulis</i> · maracuyá</td><td class="c"><span class="si">●</span></td></tr>
+      <tr><td>en Veracruz</td><td>Lugar</td><td>Veracruz</td><td class="c"><span class="parcial">◐</span> desmarcado</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Reglas que aplica la app al separar conceptos</div>
+    <ul style="margin:0">
+      <li><b>Sustantivo y modificador</b> se unen en el orden del inglés: <i>fertilización orgánica</i> da <i>organic fertilization</i>.</li>
+      <li><b>«y» y «o»</b> forman alternativas del mismo concepto, y un modificador suelto toma el sustantivo anterior: <i>fertilización nitrogenada y potásica</i> da un bloque con los términos de <i>nitrogen fertilization</i> y de <i>potassium fertilization</i>. En inglés, <i>nitrogen and potassium fertilization</i> comparte el sustantivo de la misma manera.</li>
+      <li><b>Un organismo</b> junto a otros sustantivos se separa en su propio bloque: <i>common bean landraces</i> da el organismo <i>common bean</i> (<i>Phaseolus vulgaris</i>) y el tema <i>landraces</i> (<i>local varieties</i>).</li>
+      <li><b>Lo que va entre paréntesis</b> se une al concepto anterior como sinónimo.</li>
+      <li><b>Los lugares</b> empiezan desmarcados, y en los títulos con Mayúsculas En Cada Palabra las mayúsculas no se toman como nombres de lugar.</li>
+      <li><b>Las palabras que el glosario no conoce</b> se conservan en su propio concepto con el aviso <span class="ui">Sin traducción en el glosario</span>, salvo los nombres científicos y los nombres propios, que se usan tal cual.</li>
+    </ul>
+  </div>
+
+  <!-- 3.2 -->
+  <h2 id="s3-2"><span class="num">3.2</span>Los conceptos y sus términos</h2>
+  <p>Los conceptos propuestos son un punto de partida. Tú conoces tu tema mejor que cualquier glosario: agrega los sinónimos que usa tu disciplina, las variantes regionales y los nombres científicos de otras especies que te interesen. Cada cambio actualiza al momento las cadenas de todos los buscadores.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 3.2.</b> Cómo se editan los conceptos.</caption>
+    <thead><tr><th style="width:28%">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td>Casilla <span class="ui">Concepto n</span></td><td>Incluye o deja fuera el concepto sin borrarlo. Un concepto desmarcado se ve atenuado.</td></tr>
+      <tr><td>Cuadro de términos</td><td>Un término por línea. Las frases se escriben sin comillas: la app las pone según el buscador. El asterisco trunca: <code>fertiliz*</code>.</td></tr>
+      <tr><td><span class="ui">Separar</span></td><td>Divide en conceptos distintos (unidos con AND) un concepto que reunió alternativas, como <i>nitrogenada y potásica</i>. Solo está activo en esos conceptos y mientras no edites sus términos.</td></tr>
+      <tr><td><span class="ui">Unir</span></td><td>Une el concepto con el anterior: sus términos quedan en un solo bloque con OR.</td></tr>
+      <tr><td><span class="ui">Quitar</span></td><td>Borra el concepto.</td></tr>
+      <tr><td><span class="ui">Agregar concepto</span></td><td>Crea un bloque vacío para escribir sus términos.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · un título en inglés con cuatro conceptos</div>
+    <p>Con <i>Nitrogen and potassium fertilization of common bean landraces under drought</i>, la app reconoce el inglés y propone cuatro conceptos: la fertilización con nitrógeno y potasio (8 términos, con las escrituras <i>fertilization</i> y <i>fertilisation</i>, <i>fertilizer</i> y <i>fertiliser</i>), el organismo <i>common bean</i> con <i>Phaseolus vulgaris</i>, <i>landraces</i> con <i>local varieties</i> y <i>drought</i>. Si solo te interesa el potasio, pulsa <span class="ui">Separar</span> en el primer concepto y quita el del nitrógeno; si la sequía no es parte de tu pregunta, desmarca ese concepto.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · ajustar la búsqueda por el número de resultados</div>
+    <table class="compacta">
+      <thead><tr><th style="width:38%">Si el buscador da…</th><th>entonces…</th></tr></thead>
+      <tbody>
+        <tr><td>demasiados resultados, muchos ajenos al tema</td><td>busca solo en el título, agrega un concepto que delimite (el organismo, el tipo de estudio) o quita términos demasiado generales.</td></tr>
+        <tr><td>muy pocos resultados</td><td>desmarca el lugar y los conceptos secundarios, agrega sinónimos y variantes, trunca con * las palabras con varias terminaciones y amplía el periodo.</td></tr>
+        <tr><td>resultados razonables, pero faltan trabajos que conoces</td><td>revisa cómo titulan esos trabajos su tema y agrega esos términos al concepto que corresponda.</td></tr>
+        <tr><td>más de cuatro conceptos marcados</td><td>la app avisa que la búsqueda puede quedar demasiado estrecha: desmarca los menos importantes.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Dos o tres conceptos suelen bastar. Un buen indicio de una búsqueda sensible es que encuentre los trabajos clave que ya conoces.</p>
+  </div>
+
+  <!-- 3.3 -->
+  <h2 id="s3-3"><span class="num">3.3</span>Una cadena para cada buscador</h2>
+  <p>La misma estrategia se escribe de forma distinta en cada buscador: cambian los nombres de los campos, las reglas del truncamiento y la forma de pedir los años. La tarjeta <span class="ui">Cadenas para copiar y pegar</span> tiene ocho recuadros, uno por buscador, cada uno con su cadena lista, un botón <span class="ui">Copiar</span>, el número de caracteres, dónde pegarla y qué exportar después para SciMetricsPro.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-cadenas-a.png" alt="Tarjeta Cadenas para copiar y pegar: los cuatro primeros buscadores">
+      <span class="marca" style="left:38.5%;top:15.2%">1</span>
+      <span class="marca" style="left:46.6%;top:22%">2</span>
+      <span class="marca" style="left:48%;top:31.5%">3</span>
+      <span class="marca" style="left:48%;top:39.4%">4</span>
+      <span class="marca" style="left:48%;top:47.5%">5</span>
+      <span class="marca" style="left:97.6%;top:72.1%">6</span>
+    </div>
+    <div class="marco" style="position:relative;margin-top:0.08in">
+      <img src="../img/importar-cadenas-b.png" alt="Los dos últimos buscadores y el recordatorio de subir varios archivos">
+      <span class="marca" style="left:22.6%;top:53%">7</span>
+      <span class="marca" style="left:30.3%;top:66.5%">8</span>
+      <span class="marca" style="left:17.2%;top:93.2%">9</span>
+    </div>
+    <figcaption><b>Figura 3.3.</b> Las cadenas del ejemplo: arriba, los cuatro primeros buscadores; abajo, el catálogo abierto, otros buscadores y el recordatorio de los formatos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span><span class="ui">Copiar</span> pone la cadena en el portapapeles y lo confirma con un aviso.</li>
+    <li><span class="n">2</span>La cadena, con la sintaxis de ese buscador.</li>
+    <li><span class="n">3</span>Su longitud en caracteres y, si aplica, cuántos términos se quitaron.</li>
+    <li><span class="n">4</span>Dónde pegarla y qué significan sus campos.</li>
+    <li><span class="n">5</span>Qué exportar de esa base para SciMetricsPro.</li>
+    <li><span class="n">6</span>Las cadenas largas se desplazan dentro de su recuadro.</li>
+    <li><span class="n">7</span>Pasa la cadena y los años a la pestaña de búsqueda del catálogo abierto (sección 3.7).</li>
+    <li><span class="n">8</span>Recordatorio: se pueden subir varios archivos, de buscadores y formatos distintos.</li>
+    <li><span class="n">9</span>Lleva a la pestaña <span class="ui">Archivos</span>.</li>
+  </ul>
+
+  <p>La tabla 3.3 resume las reglas de sintaxis que aplica la app. Las columnas de truncamiento muestran qué pasa con tres términos de prueba: <code>fertiliz*</code>, <code>nit*</code> y la frase truncada <code>nitrogen fertiliz*</code>.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 3.3.</b> Sintaxis de cada buscador, en el orden de las tarjetas de la app.</caption>
+    <thead><tr><th style="width:17%">Buscador</th><th style="width:21%">Campos</th><th style="width:21%">Años</th><th>Truncamiento</th></tr></thead>
+    <tbody>
+      <tr><td>Índice de citas multidisciplinario A</td><td><code>TITLE-ABS-KEY(…)</code> o <code>TITLE(…)</code> para toda la cadena</td><td><code>PUBYEAR &gt; 1999 AND PUBYEAR &lt; 2027</code></td><td>Sin restricciones: <code>fertiliz*</code>, <code>nit*</code> y <code>"nitrogen fertiliz*"</code> se conservan.</td></tr>
+      <tr><td>Índice de citas multidisciplinario B</td><td><code>TS=(…)</code> o <code>TI=(…)</code></td><td><code>PY=(2000-2026)</code></td><td>Al menos 3 letras antes de *: <code>nit*</code> sí; <code>ni*</code> se quita.</td></tr>
+      <tr><td>Índice biomédico público</td><td><code>[tiab]</code> o <code>[ti]</code> después de cada término</td><td><code>2000:2026[dp]</code></td><td>Al menos 4 letras antes de *: <code>nitr*</code> sí; <code>nit*</code> se quita.</td></tr>
+      <tr><td>Buscador académico abierto</td><td><code>title:</code>, <code>abstract:</code> y <code>keyword:</code> por cada concepto</td><td><code>year_published:[2000 TO 2026]</code></td><td>No admite * dentro de frases: <code>nitrogen fertiliz*</code> se escribe <code>(nitrogen AND fertiliz*)</code>.</td></tr>
+      <tr><td>Base de datos de investigación enlazada</td><td>Sin campos: se elige título y resumen en la página</td><td>Con el filtro de años de la página</td><td>Igual que el anterior.</td></tr>
+      <tr><td>Índice regional de revistas</td><td>Sin campos</td><td>Con el filtro de años de la página</td><td>Trunca con <code>$</code>: <code>fertiliz$</code>.</td></tr>
+      <tr><td>Catálogo bibliográfico abierto</td><td>Sin campos: la pestaña de búsqueda busca en título y resumen</td><td>Pasan a la pestaña de búsqueda</td><td>No admite truncamiento: los términos con * se quitan.</td></tr>
+      <tr><td>Otros buscadores</td><td>Sin campos</td><td>No se escriben</td><td>Sin truncamiento, para que la cadena sirva en la mayoría.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Con el título del ejemplo y el periodo 2000–2026, la cadena del índice de citas multidisciplinario A tiene 279 caracteres:</p>
+  <div class="cadena">TITLE-ABS-KEY(("nitrogen fertilization" OR "nitrogen fertilisation" OR "nitrogen fertilizer" OR "fertilización nitrogenada") AND (yield OR "crop yield" OR rendimiento) AND ("passion fruit" OR passionfruit OR "Passiflora edulis" OR maracuyá)) AND PUBYEAR &gt; 1999 AND PUBYEAR &lt; 2027</div>
+  <p>y la del índice biomédico público marca el campo en cada término:</p>
+  <div class="cadena">("nitrogen fertilization"[tiab] OR "nitrogen fertilisation"[tiab] OR "nitrogen fertilizer"[tiab] OR "fertilización nitrogenada"[tiab]) AND (yield[tiab] OR "crop yield"[tiab] OR rendimiento[tiab]) AND ("passion fruit"[tiab] OR passionfruit[tiab] OR "Passiflora edulis"[tiab] OR maracuyá[tiab]) AND 2000:2026[dp]</div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · términos truncados en un buscador que no los admite</div>
+    <p>Si el primer concepto tiene <code>fertiliz*</code>, <code>nitrogen fertiliz*</code> y <code>manure</code>, y el tercero solo <code>yield*</code>, la cadena para el catálogo bibliográfico abierto queda <code>manure AND ("passion fruit" OR "Passiflora edulis") AND yield</code> con la nota <span class="ui">Se quitaron 2 términos truncados: este buscador no admite *.</span> Del primer concepto se quitan los dos términos truncados porque queda <code>manure</code>. Del tercero no se puede quitar el único término, así que se conserva su raíz, <code>yield</code>. Revisa estas notas: un concepto que se queda con términos pobres conviene completarlo con las palabras enteras.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · por qué los términos en español siguen en la cadena</div>
+    <p>El término en tu idioma (<i>fertilización nitrogenada</i>, <i>maracuyá</i>) se conserva al final de cada concepto porque muchas revistas latinoamericanas publican títulos, resúmenes o palabras clave también en español o portugués. No estorba en los índices en inglés y recupera documentos en las bases regionales. Si no te interesan, bórralos del cuadro de términos.</p>
+  </div>
+
+  <!-- 3.4 -->
+  <h2 id="s3-4"><span class="num">3.4</span>Qué exportar de cada base</h2>
+  <p>Una vez que la búsqueda da resultados razonables, exporta <b>todos</b> los registros con <b>todos</b> sus campos. Lo que no venga en la exportación no se podrá analizar (tabla 1.3), y las referencias citadas son lo que más a menudo se queda fuera porque suele ser una opción aparte. La pestaña <span class="ui">Archivos</span> tiene la lista <span class="ui">Formatos compatibles</span> con las opciones de exportación de cada base, con sus nombres; la tabla 3.4 las resume.</p>
+
+  <table>
+    <caption><b>Tabla 3.4.</b> Qué exportar de cada tipo de base para aprovechar todos los análisis.</caption>
+    <thead><tr><th style="width:24%">Base</th><th style="width:36%">Formato recomendado</th><th>Cuidado con</th></tr></thead>
+    <tbody>
+      <tr><td><b>Índice de citas multidisciplinario A</b></td><td>CSV con todos los grupos de campos y la opción que incluye las referencias citadas. También BibTeX o RIS con las mismas opciones.</td><td>Sin la opción de referencias no habrá cocitación, acoplamiento, historiografía ni RPYS.</td></tr>
+      <tr><td><b>Índice de citas multidisciplinario B</b></td><td>Texto plano (o delimitado por tabuladores) con el registro completo y las referencias citadas. También BibTeX con el mismo contenido.</td><td>Exporta en tandas de 500 registros si son más y sube todas las tandas juntas.</td></tr>
+      <tr><td><b>Índice biomédico público</b></td><td>Formato propio del índice, en texto etiquetado (<code>.txt</code> o <code>.nbib</code>).</td><td>Su CSV resumido no trae resúmenes, palabras clave ni afiliaciones. Ninguno de sus formatos trae referencias ni citas.</td></tr>
+      <tr><td><b>Buscador académico abierto</b> y <b>base de investigación enlazada</b></td><td>RIS o BibTeX.</td><td>Revisa en la tabla de campos si trajeron afiliaciones y citas.</td></tr>
+      <tr><td><b>Índice regional de revistas</b></td><td>RIS.</td><td>Suele traer resúmenes y DOI, pero no afiliaciones ni citas.</td></tr>
+      <tr><td><b>Catálogo bibliográfico abierto</b></td><td>Descarga dentro de la app (sección 3.7).</td><td>Sus referencias son identificadores del catálogo, sin autor ni año.</td></tr>
+      <tr><td><b>Gestores de referencias y otras fuentes</b></td><td>RIS o BibTeX; o una tabla CSV o una hoja de cálculo con encabezados reconocibles.</td><td>Los campos dependen de lo que guardó el gestor.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · anota la cadena y la fecha</div>
+    <p>El mismo día que exportes, anota para cada base la cadena exacta que usaste, los filtros que aplicaste en la página del buscador, el número de resultados y la fecha. Las bases se actualizan a diario y una búsqueda repetida semanas después no da lo mismo. El informe del capítulo 13 pide esos datos para cada archivo y los redacta en la metodología; las búsquedas en el catálogo abierto los guardan solas.</p>
+  </div>
+
+  <!-- 3.5 -->
+  <h2 id="s3-5"><span class="num">3.5</span>Cargar archivos y combinar bases</h2>
+  <p>La pestaña <span class="ui">Archivos</span> recibe todas las exportaciones. Puedes cargar varios archivos a la vez, de bases distintas y en formatos distintos: cada uno se lee en segundo plano, se reconoce su formato por el contenido y sus registros se agregan al conjunto. Los registros repetidos entre archivos no se tocan aquí: se unen en Limpieza y filtros (capítulo 4).</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-archivos-vacio.png" alt="Zona para arrastrar archivos y lista de formatos compatibles">
+      <span class="marca" style="left:66%;top:23.5%">1</span>
+      <span class="marca" style="left:58%;top:34.6%">2</span>
+      <span class="marca" style="left:72.3%;top:39.4%">3</span>
+      <span class="marca" style="left:20.2%;top:51.1%">4</span>
+      <span class="marca" style="left:20%;top:76.3%">5</span>
+    </div>
+    <figcaption><b>Figura 3.4.</b> La pestaña <span class="ui">Archivos</span> antes de cargar datos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Zona para soltar archivos arrastrados desde tu carpeta.</li>
+    <li><span class="n">2</span><span class="ui">Elegir archivos</span> abre el selector; con datos cargados dice <span class="ui">Agregar más archivos</span>.</li>
+    <li><span class="n">3</span>Enlace a la pestaña <span class="ui">Palabras clave</span>, solo mientras no hay datos.</li>
+    <li><span class="n">4</span><span class="ui">Formatos compatibles</span>: abierta sin datos; se pliega al cargar.</li>
+    <li><span class="n">5</span>Tarjeta de hojas de cálculo y tablas con encabezados reconocibles.</li>
+  </ul>
+
+  <ol class="pasos">
+    <li><b>Reúne en una carpeta</b> las exportaciones de todas las bases. Los nombres de archivo aparecen en la tabla, en PRISMA y en el informe: si son descriptivos (<code>maracuya_indice_a.csv</code>) te ahorran confusiones.</li>
+    <li><b>Arrástralos juntos</b> a la zona punteada, o pulsa <span class="ui">Elegir archivos</span> y selecciónalos todos con <kbd style="font-family:var(--sans);font-size:0.8em">Ctrl</kbd>.</li>
+    <li><b>Espera la lectura.</b> Con archivos grandes aparece una ventana de progreso con <span class="ui">Cancelar</span>; si cancelas, no se agrega nada. Al terminar, un aviso dice cuántos registros se agregaron.</li>
+    <li><b>Revisa la tabla de archivos</b>, los campos disponibles y la vista previa (sección 3.6), y sigue con <span class="ui">Ir a Limpieza y filtros</span>.</li>
+  </ol>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-archivos.png" alt="Tabla de archivos importados con seis archivos, su formato detectado, registros, tamaño y avisos">
+      <span class="marca" style="left:17%;top:7.3%">1</span>
+      <span class="marca" style="left:86.6%;top:4.8%">2</span>
+      <span class="marca" style="left:56.9%;top:12.8%">3</span>
+      <span class="marca" style="left:32.1%;top:24.6%">4</span>
+      <span class="marca" style="left:37.5%;top:31.6%">5</span>
+      <span class="marca" style="left:94%;top:57.9%">6</span>
+      <span class="marca" style="left:89.5%;top:25.2%">7</span>
+    </div>
+    <figcaption><b>Figura 3.5.</b> Seis exportaciones reales de cuatro bases distintas, cargadas juntas.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Total de registros y de archivos importados.</li>
+    <li><span class="n">2</span><span class="ui">Quitar todos</span>, con confirmación; borra también la copia automática.</li>
+    <li><span class="n">3</span>Aviso de que combinaste bases distintas.</li>
+    <li><span class="n">4</span>Base y formato detectados. Un RIS o BibTeX de origen no reconocido muestra solo el formato.</li>
+    <li><span class="n">5</span>Registros leídos y tamaño de cada archivo.</li>
+    <li><span class="n">6</span>Avisos en lenguaje llano sobre lo que le falta al archivo (tabla 3.5).</li>
+    <li><span class="n">7</span>Quita ese archivo y sus registros.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · seis archivos, 402 registros, 328 documentos</div>
+    <p>La figura 3.5 muestra seis exportaciones reales: el índice de citas multidisciplinario A en CSV (24 registros) y en RIS (277), el índice biomédico público en su formato propio (20) y en su CSV resumido (20), el índice regional de revistas (45) y la plataforma de una editorial (16), estos dos en RIS. Cinco vienen de búsquedas sobre el maracuyá; el CSV del índice A viene de una búsqueda sobre otro tema. En total, 402 registros. En el encabezado, el contador ya dice <span class="ui">328 de 328 documentos</span>: al cargar, la limpieza unió los 74 registros que se repiten entre archivos (capítulo 4). Los conteos de cada archivo se comprobaron leyendo los archivos fuera de la app.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · archivos repetidos, codificación y hojas de cálculo</div>
+    <ul style="margin:0">
+      <li>Un archivo con el mismo nombre y el mismo tamaño que uno ya cargado se omite, con el aviso <span class="ui">… ya estaba importado y se omitió.</span></li>
+      <li>Los archivos se leen en UTF-8. Si un archivo viene en otra codificación, la app lo lee como Latin-1 y avisa: revisa acentos y eñes en la vista previa.</li>
+      <li>De una hoja de cálculo (<code>.xlsx</code>, <code>.xls</code>, <code>.ods</code>) se lee la primera hoja con datos. Si la hoja o un CSV empiezan con una nota de una sola celda encima de los encabezados, esa nota se salta.</li>
+    </ul>
+  </div>
+
+  <!-- 3.6 -->
+  <h2 id="s3-6"><span class="num">3.6</span>Campos disponibles, avisos y vista previa</h2>
+  <h3>La tabla de campos disponibles</h3>
+  <p>Debajo de la tabla de archivos, <span class="ui">Campos disponibles</span> muestra qué porcentaje de registros trae cada campo, primero en el total y después en cada archivo. La barra es verde desde 80&nbsp;%, ámbar entre 30 y 80&nbsp;% y roja por debajo; un campo vacío queda en gris.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-campos.png" alt="Tabla Campos disponibles con el total y los seis archivos">
+      <span class="marca" style="left:13%;top:17.2%">1</span>
+      <span class="marca" style="left:7.5%;top:51.8%">2</span>
+      <span class="marca" style="left:15%;top:72.5%">3</span>
+      <span class="marca" style="left:97%;top:30%">4</span>
+    </div>
+    <figcaption><b>Figura 3.6.</b> Los campos disponibles de las seis exportaciones.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>La columna <span class="ui">Total</span> va primero, junto al nombre del campo.</li>
+    <li><span class="n">2</span>El DOI llega al 93&nbsp;%: la detección de duplicados será precisa.</li>
+    <li><span class="n">3</span>Solo el 6&nbsp;% trae referencias citadas: es el único campo en rojo.</li>
+    <li><span class="n">4</span>Con muchos archivos, la tabla se desplaza hacia la derecha.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · leer la tabla antes de analizar</div>
+    <p>En la figura 3.6, 375 de los 402 registros traen DOI (93&nbsp;%), pero solo 24 traen referencias citadas (6&nbsp;%): las del CSV del índice A, que además viene de otra búsqueda. La exportación en RIS del mismo índice, con los 277 registros del maracuyá, se hizo sin la opción de referencias. Con estos archivos, la estructura intelectual y la RPYS descansarían en 24 documentos que ni siquiera son del tema. La solución es volver a exportar la búsqueda del maracuyá con las referencias antes de seguir. Las citas (75&nbsp;%, 301 registros) y las afiliaciones (80&nbsp;%) vienen solo de las exportaciones de los índices, así que los indicadores de impacto y de países describirán sobre todo esos registros.</p>
+  </div>
+
+  <h3>Los avisos de cada archivo</h3>
+  <table class="compacta">
+    <caption><b>Tabla 3.5.</b> Avisos de la tabla de archivos y qué hacer con ellos.</caption>
+    <thead><tr><th style="width:36%">Aviso</th><th style="width:26%">Cuándo aparece</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">No trae referencias citadas…</span> · <span class="ui">Solo el N % … trae referencias citadas.</span></td><td>Ningún registro, o menos de la mitad, con referencias.</td><td>Volver a exportar con la opción de referencias, o combinar con un índice de citas.</td></tr>
+      <tr><td><span class="ui">No trae resúmenes…</span></td><td>Ningún registro con resumen.</td><td>Usar palabras clave o títulos como campo de términos.</td></tr>
+      <tr><td><span class="ui">No trae palabras clave…</span></td><td>Ningún registro con palabras clave de autor ni de índice.</td><td>Usar pares de palabras de títulos o resúmenes.</td></tr>
+      <tr><td><span class="ui">No trae afiliaciones…</span> · <span class="ui">Solo se reconoció el país en el N %…</span></td><td>Sin afiliaciones, o país en menos de la mitad.</td><td>Combinar con otra base; en Limpieza, agregar alias de países.</td></tr>
+      <tr><td><span class="ui">No trae número de citas…</span></td><td>Ningún registro con conteo de citas.</td><td>Normal en el índice biomédico y en muchos RIS; el impacto se calculará con los demás.</td></tr>
+      <tr><td><span class="ui">Solo el N % … trae DOI…</span></td><td>DOI en menos de la mitad.</td><td>Revisar los duplicados con más cuidado (capítulo 4).</td></tr>
+      <tr><td><span class="ui">Hay N registros sin año…</span> · <span class="ui">Se omitieron N registros sin título.</span></td><td>Registros incompletos.</td><td>Los sin título no se importan; los sin año quedan fuera de los análisis por año.</td></tr>
+      <tr><td><span class="ui">Tabla de origen no reconocido…</span></td><td>Una tabla o hoja de cálculo que no es de un índice conocido.</td><td>Revisar en la vista previa que título, autores y año se leyeron.</td></tr>
+      <tr><td><span class="ui">El archivo no estaba en UTF-8…</span></td><td>Otra codificación de caracteres.</td><td>Revisar acentos en la vista previa.</td></tr>
+      <tr><td><span class="ui">No se reconoció el formato…</span> · <span class="ui">No se encontraron registros…</span> · <span class="ui">No se pudo leer el archivo…</span></td><td>El archivo no es una exportación bibliográfica, está vacío o dañado.</td><td>Exportar de nuevo en uno de los formatos de la tabla 3.4.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>La vista previa</h3>
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-vista-previa.png" alt="Vista previa de los registros importados con búsqueda, paginación y descargas">
+      <span class="marca" style="left:28%;top:19.1%">1</span>
+      <span class="marca" style="left:42.9%;top:19%">2</span>
+      <span class="marca" style="left:82.6%;top:19.1%">3</span>
+      <span class="marca" style="left:64%;top:27.6%">4</span>
+      <span class="marca" style="left:55%;top:43.5%">5</span>
+    </div>
+    <figcaption><b>Figura 3.7.</b> La vista previa con los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Búsqueda dentro de la tabla.</li>
+    <li><span class="n">2</span>Filas mostradas y páginas.</li>
+    <li><span class="n">3</span>Descarga de la tabla en hoja de cálculo o CSV.</li>
+    <li><span class="n">4</span>Un clic en el encabezado ordena por esa columna.</li>
+    <li><span class="n">5</span>Los textos largos se recortan con puntos suspensivos.</li>
+  </ul>
+  <p>La vista previa muestra los primeros 100 registros tal como los leyó la app: autores, año, título, fuente, citas, palabras clave, número de referencias, países y archivo de origen. Sirve para comprobar que cada campo cayó en su lugar, sobre todo con tablas de origen no reconocido y con archivos en otra codificación. Los cambios de nombres y los duplicados se ven después, en Limpieza y filtros.</p>
+
+  <!-- 3.7 -->
+  <h2 id="s3-7"><span class="num">3.7</span>Buscar en el catálogo bibliográfico abierto</h2>
+  <p class="lead">La tercera pestaña descarga registros directamente de un catálogo bibliográfico abierto, con licencia de dominio público, sin exportar archivos. Es la única función de la app que usa internet, y solo se conecta cuando pulsas los botones de contar o descargar.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-busqueda.png" alt="Formulario de búsqueda en el catálogo bibliográfico abierto">
+      <span class="marca" style="left:18.5%;top:14.8%">1</span>
+      <span class="marca" style="left:17.1%;top:26.3%">2</span>
+      <span class="marca" style="left:65.9%;top:26.3%">3</span>
+      <span class="marca" style="left:16.8%;top:37.7%">4</span>
+      <span class="marca" style="left:9.3%;top:48.3%">5</span>
+      <span class="marca" style="left:30.9%;top:62.5%">6</span>
+      <span class="marca" style="left:30%;top:67%">7</span>
+      <span class="marca" style="left:19.8%;top:84.8%">8</span>
+      <span class="marca" style="left:23.6%;top:92.9%">9</span>
+    </div>
+    <figcaption><b>Figura 3.8.</b> El formulario de búsqueda después de pasarle la cadena del ejemplo desde la pestaña <span class="ui">Palabras clave</span>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Términos, que se buscan en título y resumen; admiten comillas, AND, OR y NOT.</li>
+    <li><span class="n">2</span>Periodo de publicación.</li>
+    <li><span class="n">3</span>Máximo de registros: 5,000 por omisión; se descargan los más citados primero.</li>
+    <li><span class="n">4</span>Tipos de documento; sin marcar ninguno se incluyen todos.</li>
+    <li><span class="n">5</span>Idiomas; igual que los tipos.</li>
+    <li><span class="n">6</span>Todos, solo de acceso abierto o solo cerrados.</li>
+    <li><span class="n">7</span>Llave de acceso gratuita, opcional, y casilla para recordarla.</li>
+    <li><span class="n">8</span>Primero se cuentan los resultados.</li>
+    <li><span class="n">9</span>Advertencia sobre la cobertura del catálogo.</li>
+  </ul>
+
+  <ol class="pasos">
+    <li><b>Escribe los términos</b> o pásalos desde <span class="ui">Palabras clave</span> con el botón de la tarjeta del catálogo abierto, que también copia los años.</li>
+    <li><b>Ajusta los filtros</b> y el máximo de registros.</li>
+    <li><b>Pulsa</b> <span class="ui">Contar resultados</span>. La app hace una sola consulta y dice cuántos registros encontró y en cuántas páginas se descargarían.</li>
+    <li><b>Confirma con</b> <span class="ui">Descargar</span>, o vuelve con <span class="ui">Cambiar la búsqueda</span>. La descarga corre en segundo plano con una barra de progreso por páginas y un botón para cancelar; si cancelas, no se agrega nada.</li>
+    <li><b>Revisa la fila nueva</b> en <span class="ui">Archivos</span>: lleva la cadena de búsqueda como nombre y la fecha y hora de la consulta.</li>
+  </ol>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/importar-conteo.png" alt="Resultado del conteo: se encontraron 8 registros, con los botones Descargar y Cambiar la búsqueda">
+      <span class="marca" style="left:58.5%;top:25.2%">1</span>
+      <span class="marca" style="left:59.1%;top:46.3%">2</span>
+      <span class="marca" style="left:65.6%;top:69.7%">3</span>
+    </div>
+    <figcaption><b>Figura 3.9.</b> El conteo de la cadena del ejemplo con los años 2000–2026, el 17 de septiembre de 2026.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Registros que encontró la búsqueda.</li>
+    <li><span class="n">2</span>Cuántos se descargarán y en cuántas páginas; si superan el máximo, se avisa que se tomarán los más citados.</li>
+    <li><span class="n">3</span><span class="ui">Descargar</span> inicia la descarga; <span class="ui">Cambiar la búsqueda</span> vuelve al formulario.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · una cadena muy estrecha</div>
+    <p>La cadena de tres conceptos del ejemplo encontró solo 8 registros en el catálogo abierto al preparar este manual. Buscar a la vez la fertilización nitrogenada, el rendimiento y el maracuyá en el título o el resumen es demasiado estricto para un tema con poca literatura. Al quitar el concepto del rendimiento o ampliar el primero a la nutrición mineral y la fertilización en general, la búsqueda crece: así se armó la búsqueda de los datos de ejemplo, que encontró 501 obras. El número cambia con el tiempo, a medida que el catálogo se actualiza.</p>
+  </div>
+
+  <h3>La llave de acceso y los límites de uso</h3>
+  <p>El catálogo abierto entrega los registros en páginas de hasta 200 y limita cuántas páginas se pueden pedir al día. Sin llave, el límite gratuito ronda las 100 páginas diarias, unos 20,000 registros. Con una <b>llave de acceso gratuita</b>, que se obtiene al registrarse en el catálogo, el límite es mayor. La llave es opcional: se envía solo al catálogo y se guarda en tu navegador únicamente si marcas <span class="ui">Recordar la llave en esta computadora</span>. No viaja en los proyectos.</p>
+  <p>Si el catálogo pide esperar o no responde, la app reintenta sola hasta cinco veces, con esperas de 1, 2, 4, 8 y 16 segundos, y muestra el reintento en la barra de progreso.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 3.6.</b> Mensajes de la búsqueda en el catálogo abierto.</caption>
+    <thead><tr><th style="width:44%">Mensaje</th><th>Qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">No hubo respuesta… Revisa tu conexión a internet…</span></td><td>Comprueba la conexión y vuelve a contar.</td></tr>
+      <tr><td><span class="ui">… no acepta más solicitudes por ahora (límite de uso diario)…</span></td><td>Espera al día siguiente o escribe una llave de acceso gratuita.</td></tr>
+      <tr><td><span class="ui">… rechazó la llave de acceso…</span></td><td>Revisa la llave o deja el campo vacío.</td></tr>
+      <tr><td><span class="ui">… no aceptó la búsqueda: …</span></td><td>Revisa comillas y paréntesis de los términos; el texto después de los dos puntos da el detalle.</td></tr>
+      <tr><td><span class="ui">Sin llave de acceso es probable que el límite diario gratuito no alcance…</span></td><td>Aparece antes de descargar muchas páginas: baja el máximo de registros o usa una llave.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · cobertura del catálogo y metodología</div>
+    <p>La cobertura del catálogo abierto no es la misma que la de los índices de citas: puede incluir documentos que esos índices no tienen y omitir otros, y cuenta las citas a su manera. Sus referencias llegan como identificadores del catálogo, útiles para la cocitación, el acoplamiento y la historiografía, pero sin autor ni año, así que no sirven para la RPYS. La app guarda la cadena, los filtros, el número de resultados, los registros descargados y la fecha de cada búsqueda, y el informe los redacta en la metodología. Si combinas el catálogo con otras bases, los duplicados se unen en el capítulo 4.</p>
+  </div>
+
+  <p style="margin-top:0.3in">Con los datos importados y revisados, el siguiente capítulo explica cómo convertir los registros de varias bases en un conjunto limpio: duplicados, variantes de autores, instituciones y países, sinónimos y filtros.</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 10 · Estructura intelectual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap10 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+  /* el mapa de acoplamiento es más alto que ancho: se muestra más pequeño */
+  .cap10 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap10 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 10 -->
+<section class="capitulo cap10" id="cap-intelectual" data-pestana="10" data-orden="10" style="--acento: var(--b9)">
+  <div class="cap-apertura">
+    <div class="cap-num">10</div>
+    <div class="cap-etiqueta">Capítulo diez</div>
+    <h1>Estructura intelectual</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Sobre qué se apoya el campo: las obras, los autores y las revistas que se citan juntos, los documentos que comparten bibliografía, los grupos que forman según su centralidad y su impacto, y la cadena de citas directas entre los documentos del conjunto.</p>
+    <div class="cap-franja"><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span></div>
+    <ul class="cap-contenido">
+      <li><b>10.1</b>La pantalla y sus cuatro pestañas</li>
+      <li><b>10.2</b>Cocitación</li>
+      <li><b>10.3</b>Acoplamiento bibliográfico</li>
+      <li><b>10.4</b>Mapa de acoplamiento</li>
+      <li><b>10.5</b>Historiografía</li>
+    </ul>
+  </div>
+
+  <p class="lead">La estructura conceptual del capítulo 9 mira las palabras; la <b>estructura intelectual</b> mira las referencias. Lo que un documento cita dice en qué trabajos se apoya, y cuando muchos documentos citan las mismas obras aparece la base común del campo: sus clásicos, sus escuelas y sus frentes de investigación. La pantalla <span class="ui">Intelectual</span>, en el grupo <span class="ui">Estructuras</span>, reúne cuatro análisis de citas.</p>
+
+  <!-- 10.1 -->
+  <h2 id="s10-1"><span class="num">10.1</span>La pantalla y sus cuatro pestañas</h2>
+  <p>Los cuatro análisis parten de las referencias de cada documento, unificadas como en <span class="ruta">Documentos › Referencias citadas</span> (capítulo 8): las apariciones de una misma obra con el mismo DOI, el mismo autor, año, volumen y página, o el mismo texto cuentan como una sola obra. Las pestañas de red usan el panel de parámetros del capítulo 9, con las unidades y los mínimos propios de cada análisis.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.1.</b> Las cuatro pestañas de la estructura intelectual.</caption>
+    <thead><tr><th style="width:24%">Pestaña</th><th>Qué une</th><th style="width:30%">Pregunta que responde</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Cocitación</span></td><td>Dos obras, autores o fuentes citados por un mismo documento del conjunto.</td><td>¿Qué trabajos forman la base del campo?</td></tr>
+      <tr><td><span class="ui">Acoplamiento bibliográfico</span></td><td>Dos documentos, autores o fuentes del conjunto que citan las mismas obras.</td><td>¿Qué documentos trabajan en lo mismo?</td></tr>
+      <tr><td><span class="ui">Mapa de acoplamiento</span></td><td>Los grupos del acoplamiento, ubicados por su centralidad y su impacto.</td><td>¿Qué líneas de trabajo son centrales y cuáles se citan más?</td></tr>
+      <tr><td><span class="ui">Historiografía</span></td><td>Las citas directas entre los documentos del conjunto, ordenadas por año.</td><td>¿Cómo se encadenan los trabajos en el tiempo?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los datos de este capítulo</div>
+    <p>Las referencias del catálogo abierto llegan como identificadores de obras, sin autor, año ni revista. Sirven para el acoplamiento, el mapa de acoplamiento y la historiografía, que solo necesitan saber qué obras cita cada documento, y para la cocitación de referencias, aunque con nombres como «W2996734229» cuando la obra citada no es un documento del conjunto. Por eso las secciones 10.3 a 10.5 usan los <b>datos de ejemplo</b> del maracuyá, con las 14 palabras vacías del capítulo 9, y la sección 10.2 usa el conjunto público de 147 artículos sobre análisis de cocitación y acoplamiento que se presentó en el capítulo 8, con sus referencias completas. Todas las cifras que se citan se comprobaron leyendo los archivos fuera de la app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · sin referencias no hay estructura intelectual</div>
+    <p>Si ningún documento trae referencias —por ejemplo, con una exportación del índice biomédico—, la pantalla muestra en lugar de las pestañas el aviso <span class="ui">Los documentos no traen referencias citadas</span>, explica cómo volver a exportar cada tipo de archivo con sus referencias y ofrece el botón <span class="ui">Ver en Importar cómo exportar cada base</span>, que abre las instrucciones de la pantalla de importación. Mientras las referencias de un conjunto grande se calculan en segundo plano, la pantalla lo indica y espera.</p>
+  </div>
+
+  <!-- 10.2 -->
+  <h2 id="s10-2"><span class="num">10.2</span>Cocitación</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · dos obras citadas juntas</div>
+    <p>Dos obras están <b>cocitadas</b> cuando un mismo documento las cita a las dos (Small, 1973; Marshakova, 1973). Cuantos más documentos las citan juntas, más relacionadas las perciben los autores del campo, aunque ellas mismas no se citen entre sí. La cocitación mira hacia atrás: une lo que el campo considera su fundamento, y cambia con el tiempo, a medida que se publican documentos nuevos que citan. La misma idea se aplica a los <b>autores citados</b> (White y Griffith, 1981) y a las <b>fuentes citadas</b> (McCain, 1991). La red se construye como la de coocurrencia del capítulo 9: las obras más citadas son los nodos, el conteo de cocitaciones es el peso de cada arista y la normalización por omisión es la fuerza de asociación.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/intelectual-cocitacion.png" alt="Panel de parámetros, tarjetas y red de cocitación de las 50 referencias más citadas del conjunto de cienciometría">
+      <span class="marca" style="left:18.2%;top:15.1%">1</span>
+      <span class="marca" style="left:38.6%;top:15.5%">2</span>
+      <span class="marca" style="left:57.2%;top:42%">3</span>
+      <span class="marca" style="left:35.5%;top:84.5%">4</span>
+      <span class="marca" style="left:93.6%;top:88.8%">5</span>
+    </div>
+    <figcaption><b>Figura 10.1.</b> La red de cocitación de las 50 referencias más citadas del conjunto de cienciometría.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unidad: referencias, autores o fuentes citadas.</li>
+    <li><span class="n">2</span>Las tarjetas de la red (tabla 9.3).</li>
+    <li><span class="n">3</span>Buscar una referencia.</li>
+    <li><span class="n">4</span>Dos obras de Small (1985): con volumen y página.</li>
+    <li><span class="n">5</span>La más citada: Small 1973 (63 documentos).</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.2.</b> Las tres unidades de la cocitación y las más citadas del conjunto de cienciometría.</caption>
+    <thead><tr><th style="width:18%">Unidad</th><th>Qué es un nodo</th><th style="width:36%">Las más citadas</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Referencias</span></td><td>Una obra citada, con sus apariciones unificadas. Si la obra es un documento del conjunto, se nombra como ese documento.</td><td>Small 1973 (63), Kessler 1963 (35), White y Griffith 1981 (27), Small 1974 (25)</td></tr>
+      <tr><td><span class="ui">Autores citados</span></td><td>El primer autor de las obras citadas, por apellido e inicial. Cuenta los documentos que citan alguna de sus obras.</td><td>Small H (95), Leydesdorff L (46), White HD (46), Garfield E (41)</td></tr>
+      <tr><td><span class="ui">Fuentes citadas</span></td><td>La revista o el libro de las obras citadas. Las abreviaturas se unen al título completo cuando no hay ambigüedad.</td><td>Scientometrics (131), la revista de la sociedad estadounidense de ciencias de la información (112)</td></tr>
+    </tbody>
+  </table>
+
+  <p>El panel cambia dos nombres respecto a la red de palabras: <span class="ui">Citas mínimas (documentos que la citan)</span>, en lugar de la frecuencia mínima, y <span class="ui">Cocitaciones mínimas por arista</span>. Al elegir un nodo, la ficha muestra la referencia completa con su enlace DOI, las obras cocitadas con más frecuencia y los documentos del conjunto que la citan, empezando por los más citados.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/intelectual-autores.png" alt="Red de cocitación de los 50 autores más citados en tres comunidades">
+      <span class="marca" style="left:79.8%;top:19.8%">1</span>
+      <span class="marca" style="left:73%;top:36.8%">2</span>
+      <span class="marca" style="left:81%;top:57.3%">3</span>
+      <span class="marca" style="left:33%;top:92.1%">4</span>
+    </div>
+    <figcaption><b>Figura 10.2.</b> La red de cocitación de autores citados, lista para publicar, del conjunto de cienciometría.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Cada comunidad, con su autor más citado.</li>
+    <li><span class="n">2</span>Leydesdorff: redes e indicadores.</li>
+    <li><span class="n">3</span>White: la cocitación de autores.</li>
+    <li><span class="n">4</span>Small (95 documentos): los fundadores.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · los clásicos del análisis de citas</div>
+    <p>En los 147 artículos sobre análisis de cocitación y acoplamiento, la obra más citada es el artículo con que Small propuso la cocitación en 1973 (63 documentos), seguida del de Kessler que propuso el acoplamiento en 1963 (35) y del de White y Griffith que llevó la cocitación a los autores en 1981 (27): el conjunto cita a sus propios fundadores. Con autores, la red separa tres comunidades: la de Small, con Garfield, Kessler y Glänzel; la de White, con McCain y Chen; y la de Leydesdorff, con Newman y Boyack. Las citas de las 50 referencias y de los 30 autores más citados, y las cocitaciones de 598 de las 610 aristas, se reprodujeron leyendo el campo de referencias del archivo sin la app. Las demás diferencias vienen de dos referencias que la app une con razón («SMALL HG» y «SMALL H», con el mismo volumen y página) o porque apuntan al mismo documento del conjunto.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · nombres que se parecen</div>
+    <p>Una obra se nombra con su primer autor, año y fuente. Cuando dos obras distintas tendrían el mismo nombre —dos artículos del mismo autor en la misma revista y el mismo año—, la app añade su volumen y su primera página («SMALL H, 1985, SCIENTOMETRICS, 7:391» y «…, 8:321»), o su DOI si no los tiene. Lo mismo vale en <span class="ruta">Documentos › Referencias citadas</span> y en los picos de la RPYS.</p>
+  </div>
+
+  <!-- 10.3 -->
+  <h2 id="s10-3"><span class="num">10.3</span>Acoplamiento bibliográfico</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · dos documentos con bibliografía común</div>
+    <p>Dos documentos están <b>acoplados</b> cuando citan las mismas obras (Kessler, 1963); la fuerza del acoplamiento es el número de referencias que comparten. A diferencia de la cocitación, el acoplamiento une los documentos que citan y queda fijo en cuanto se publican: dos artículos recientes que comparten bibliografía trabajan en el mismo frente de investigación, aunque todavía nadie los cite. Como un documento con muchas referencias comparte más por simple tamaño, la app normaliza por omisión con el coseno de Salton:</p>
+    <p class="formula-linea">cos<sub><i>ij</i></sub> = <i>c<sub>ij</sub></i> / √(<i>n<sub>i</sub></i> · <i>n<sub>j</sub></i>)</p>
+    <p>donde <i>c<sub>ij</sub></i> son las referencias compartidas y <i>n<sub>i</sub></i>, <i>n<sub>j</sub></i> las referencias distintas de cada documento. Vale 1 si las dos bibliografías son iguales. El acoplamiento de <b>autores</b> y de <b>fuentes</b> une todas las referencias de los documentos de cada autor o revista (Zhao y Strotmann, 2008).</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/intelectual-acoplamiento.png" alt="Panel de parámetros, tarjetas y red de acoplamiento de los 50 documentos más citados del ejemplo">
+      <span class="marca" style="left:18.2%;top:15.1%">1</span>
+      <span class="marca" style="left:38.6%;top:15.5%">2</span>
+      <span class="marca" style="left:45.8%;top:38.8%">3</span>
+      <span class="marca" style="left:50.8%;top:53%">4</span>
+      <span class="marca" style="left:18.2%;top:72.5%">5</span>
+      <span class="marca" style="left:43.4%;top:84%">6</span>
+    </div>
+    <figcaption><b>Figura 10.3.</b> La red de acoplamiento de los 50 documentos más citados del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unidad: documentos, autores o fuentes.</li>
+    <li><span class="n">2</span>45 de los 50 documentos tienen aristas.</li>
+    <li><span class="n">3</span>Pesos con el coseno de Salton.</li>
+    <li><span class="n">4</span>Naranja: riego con agua salina.</li>
+    <li><span class="n">5</span>Tamaño de los nodos: citas totales.</li>
+    <li><span class="n">6</span>Azul: composición del fruto y nutrición.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.3.</b> Los parámetros propios del acoplamiento y sus valores por omisión. Los demás son los de la tabla 9.2, con el coseno de Salton y el tamaño por citas totales.</caption>
+    <thead><tr><th style="width:36%">Parámetro</th><th>Qué hace</th><th style="width:16%">Por omisión</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Documentos mínimos por unidad</span></td><td>Solo autores y fuentes: documentos que deben tener.</td><td>1</td></tr>
+      <tr><td><span class="ui">Número máximo de unidades (las más citadas)</span></td><td>Cuántas unidades entran, de la más citada hacia abajo.</td><td>50</td></tr>
+      <tr><td><span class="ui">Referencias compartidas mínimas por arista</span></td><td>Obras en común necesarias para unir dos unidades.</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · dos artículos gemelos y cuatro frentes</div>
+    <p>De los 50 documentos más citados del ejemplo, 45 comparten alguna referencia; los otros cinco —entre ellos un estudio de botánica de 1988 y otro de una revista de farmacia de 1992— quedan fuera como nodos aislados. El par más fuerte son dos artículos de 2012 sobre biofertilizantes en maracuyá amarillo, con primer autor del mismo apellido y publicados en revistas distintas, que comparten 29 referencias (coseno 0.744). Louvain distingue cuatro comunidades: la naranja, con el riego con agua salina y el estrés salino; la azul, con la composición del fruto, las revisiones del género y la nutrición mineral; la verde, con los biofertilizantes, los abonos orgánicos y los sustratos; y la roja, con los estudios clásicos de Menzel sobre agua, temperatura y nutrición, y los trabajos que los siguen. Los 50 documentos, las 208 aristas, las referencias compartidas de cada una y su coseno se reprodujeron fuera de la app, sin ninguna diferencia.</p>
+  </div>
+
+  <!-- 10.4 -->
+  <h2 id="s10-4"><span class="num">10.4</span>Mapa de acoplamiento</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · centralidad e impacto de cada grupo</div>
+    <p>El mapa de acoplamiento (Aria, Misuraca y Spano, 2020) hace con los documentos lo que el mapa temático hace con las palabras. Parte de una red de acoplamiento más grande —hasta 250 documentos, con coseno de Salton—, toma cada comunidad de Louvain como un grupo y lo ubica con dos medidas: la <b>centralidad de Callon</b>, 10 × la suma de los pesos de las aristas que salen del grupo (qué tan conectado está con los demás), y el <b>impacto</b>, el promedio de las citas normalizadas de sus documentos. La cita normalizada de un documento es su número de citas entre el promedio de citas de los documentos del conjunto publicados el mismo año, así que 1 es el promedio de su año. Los ejes pasan por las medianas.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.4.</b> Los cuatro cuadrantes del mapa de acoplamiento.</caption>
+    <thead><tr><th style="width:30%">Cuadrante</th><th style="width:28%">Posición</th><th>Lectura</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Centrales y de alto impacto</span></td><td>Arriba a la derecha.</td><td>Líneas conectadas con el resto y muy citadas: el núcleo del campo.</td></tr>
+      <tr><td><span class="ui">Periféricos de alto impacto</span></td><td>Arriba a la izquierda.</td><td>Líneas aisladas pero muy citadas: especialidades influyentes.</td></tr>
+      <tr><td><span class="ui">Periféricos de bajo impacto</span></td><td>Abajo a la izquierda.</td><td>Líneas marginales y poco citadas: nacientes o en retirada.</td></tr>
+      <tr><td><span class="ui">Centrales de bajo impacto</span></td><td>Abajo a la derecha.</td><td>Líneas conectadas pero poco citadas: temas de apoyo.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Cada grupo se nombra con los términos más propios de sus documentos, del campo de términos elegido: los que combinan frecuencia en el grupo y exclusividad (frecuencia × documentos del grupo que lo usan ÷ documentos del conjunto que lo usan). El panel <span class="ui">Parámetros del mapa</span> tiene la unidad, el número de unidades (250) y las referencias compartidas mínimas; en <span class="ui">Grupos</span>, la <span class="ui">Medida de impacto</span> (citas totales o citas locales normalizadas), la resolución y las <span class="ui">Unidades mínimas por grupo</span> (2); y en <span class="ui">Etiquetas</span>, el campo de términos y los <span class="ui">Términos en la etiqueta</span> (3). Debajo del mapa, la tabla <span class="ui">Grupos del mapa de acoplamiento</span> da las medianas, los documentos, la centralidad, el impacto y los términos de cada grupo, y la tabla <span class="ui">Documentos de cada grupo</span> da la cita normalizada de cada documento.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.5.</b> Los ocho grupos del ejemplo. Medianas: centralidad 127.30 e impacto 0.921.</caption>
+    <thead><tr><th style="width:17%">Cuadrante</th><th>Términos del grupo</th><th style="width:11%">Documentos</th><th style="width:13%">Centralidad</th><th style="width:10%">Impacto</th></tr></thead>
+    <tbody>
+      <tr><td>Central, alto</td><td><i>Salinity, Irrigation, Photosynthesis</i></td><td>65</td><td>251.33</td><td>1.110</td></tr>
+      <tr><td>Central, alto</td><td><i>Medicinal Plant Extracts Effects, Passiflora, Botany</i></td><td>49</td><td>185.32</td><td>1.465</td></tr>
+      <tr><td>Central, alto</td><td><i>Horticulture, Growth and nutrition in plants, Passion fruit</i></td><td>42</td><td>270.63</td><td>1.262</td></tr>
+      <tr><td>Central, alto</td><td><i>Horticulture, Passion fruit, Pineapple and bromelain studies</i></td><td>37</td><td>259.55</td><td>0.947</td></tr>
+      <tr><td>Periférico, bajo</td><td><i>Nitrogen fertilizer, Plant Physiology and Cultivation Studies, Cutting</i></td><td>17</td><td>69.28</td><td>0.720</td></tr>
+      <tr><td>Periférico, bajo</td><td><i>Biofertilizer, Soil salinity, Saline water</i></td><td>4</td><td>26.65</td><td>0.894</td></tr>
+      <tr><td>Periférico, bajo</td><td><i>Economic growth, Agricultural economics, Economic and Environmental Valuation</i></td><td>4</td><td>1.32</td><td>0.329</td></tr>
+      <tr><td>Periférico, bajo</td><td><i>Biofertilizer, Nutrient, Agronomy</i></td><td>3</td><td>3.75</td><td>0.868</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el centro y la orilla del maracuyá</div>
+    <p>De los 250 documentos más citados, 236 tienen referencias y 221 comparten alguna con otro; forman 8 grupos. En este conjunto la centralidad y el impacto van juntos: los cuatro grupos grandes (193 documentos) son centrales y de alto impacto, y los cuatro pequeños son periféricos y poco citados; los otros dos cuadrantes quedan vacíos. El grupo de mayor impacto reúne los extractos de plantas medicinales y la botánica del género (1.47 veces el promedio de su año); el más apartado, la economía agrícola, con centralidad 1.3 y un tercio del impacto promedio. La centralidad, el impacto, las medianas y los cuadrantes de los 8 grupos se recalcularon fuera de la app y coinciden en todos sus dígitos.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/intelectual-mapa.png" alt="Tarjetas de los cuadrantes y mapa de acoplamiento con ocho grupos de documentos">
+      <span class="marca" style="left:23.4%;top:14%">1</span>
+      <span class="marca" style="left:55.9%;top:14.7%">2</span>
+      <span class="marca" style="left:50%;top:42.1%">3</span>
+      <span class="marca" style="left:58.8%;top:53.75%">4</span>
+      <span class="marca" style="left:51.4%;top:60%">5</span>
+      <span class="marca" style="left:19.9%;top:86%">6</span>
+    </div>
+    <figcaption><b>Figura 10.4.</b> El mapa de acoplamiento de los documentos del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Grupos y documentos en la red.</li>
+    <li><span class="n">2</span>Una tarjeta por cuadrante.</li>
+    <li><span class="n">3</span>Subtítulo: grupos y medida de impacto.</li>
+    <li><span class="n">4</span>Mayor impacto: extractos medicinales.</li>
+    <li><span class="n">5</span>Los ejes pasan por las medianas.</li>
+    <li><span class="n">6</span>Menor impacto: economía agrícola.</li>
+  </ul>
+
+  <!-- 10.5 -->
+  <h2 id="s10-5"><span class="num">10.5</span>Historiografía</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · el árbol genealógico de un tema</div>
+    <p>La historiografía (Garfield, 2004) dibuja las <b>citas directas</b> entre los documentos del conjunto con más citas locales, las que reciben de otros documentos del conjunto (Garfield, Pudovkin e Istomin, 2003). Cada columna es un año con documentos —los años sin documentos no ocupan lugar— y cada flecha va del documento citado, más antiguo, al que lo cita. Las cadenas de flechas muestran cómo un trabajo inspiró al siguiente; los grupos de documentos unidos por citas son <b>familias</b>, cada una con su color. Dentro de cada año los documentos se ordenan para reducir los cruces (Sugiyama, Tagawa y Toda, 1981).</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Tabla 10.6.</b> Los parámetros de la historiografía.</caption>
+    <thead><tr><th style="width:38%">Parámetro</th><th>Qué hace</th><th style="width:14%">Por omisión</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Número de documentos (los más citados localmente)</span></td><td>Cuántos documentos entran (hasta 200); en empate, los que citan a otros del conjunto y luego los de más citas totales.</td><td>30</td></tr>
+      <tr><td><span class="ui">Citas locales mínimas</span></td><td>Con 0 entran también los documentos que solo citan, útil en conjuntos pequeños.</td><td>1</td></tr>
+      <tr><td><span class="ui">Quitar documentos sin citas dibujadas</span></td><td>Deja solo los documentos unidos por alguna flecha.</td><td>No</td></tr>
+      <tr><td><span class="ui">Nombre de los documentos</span></td><td>Primer autor y año, o el inicio del título.</td><td>Primer autor y año</td></tr>
+    </tbody>
+  </table>
+
+  <p>Al hacer clic en un documento, o al elegirlo con el teclado y <kbd>Enter</kbd>, aparece su ficha: título, autores, fuente, DOI con enlace, citas locales y totales, y dos listas, <span class="ui">Cita a</span> y <span class="ui">Citado por</span>, cuyos elementos llevan a la ficha de cada documento. Debajo están las tablas <span class="ui">Documentos de la historiografía</span> y <span class="ui">Citas entre los documentos de la historiografía</span>; esta última dice, para cada cita, si se dibujó o por qué no.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · dos genealogías del maracuyá</div>
+    <p>Los 30 documentos con más citas locales van de 1986 a 2023 y se unen por 33 citas en tres familias. La naranja es la línea de Menzel: sus estudios de 1986 y 1987 sobre agua y temperatura llevan a su propuesta de concentraciones foliares de 1993, el documento más citado dentro del conjunto (12 citas locales), que después citan trabajos de 2011 y 2018. La azul, la más grande (20 documentos, de 2002 a 2023), es la línea de la fertilización y el riego con agua salina: pasa por dos artículos de 2020 del mismo primer autor y llega a un artículo de 2023 sobre el estrés salino que cita a ocho documentos de la figura. La tercera, en verde, une dos artículos de 2012 y 2016 sobre abonos orgánicos. Tres documentos quedan en gris: tienen citas locales, pero de documentos que no entraron entre los 30. Los 30 documentos, su orden y las 33 citas entre ellos se reprodujeron fuera de la app.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/intelectual-historiografia.png" alt="Tarjetas y diagrama de citas directas entre los 30 documentos con más citas locales del ejemplo">
+      <span class="marca" style="left:16.7%;top:13.6%">1</span>
+      <span class="marca" style="left:42%;top:13.6%">2</span>
+      <span class="marca" style="left:64.8%;top:13.6%">3</span>
+      <span class="marca" style="left:37.7%;top:32.4%">4</span>
+      <span class="marca" style="left:20.2%;top:71.6%">5</span>
+      <span class="marca" style="left:29.1%;top:71.6%">6</span>
+      <span class="marca" style="left:95.6%;top:85.1%">7</span>
+      <span class="marca" style="left:39.6%;top:97.3%">8</span>
+    </div>
+    <figcaption><b>Figura 10.5.</b> La historiografía de los 30 documentos con más citas locales del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Documentos elegidos (de 150 citados).</li>
+    <li><span class="n">2</span>Citas dibujadas (de 396 locales).</li>
+    <li><span class="n">3</span>Familias de citas.</li>
+    <li><span class="n">4</span>Citas no dibujadas (aquí, ninguna).</li>
+    <li><span class="n">5</span>Menzel 1993: el más citado localmente.</li>
+    <li><span class="n">6</span>En gris: sin citas dibujadas.</li>
+    <li><span class="n">7</span>Un artículo de 2023 que cita a ocho.</li>
+    <li><span class="n">8</span>Una columna por año con documentos.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · citas que no se dibujan</div>
+    <p>Una cita a un documento con año posterior al del que cita no se dibuja: pasa cuando una base usa el año de la versión en línea y otra el de la versión impresa, o cuando un capítulo o una tesis tienen una fecha tardía. Tampoco se dibujan las citas entre documentos del mismo año que cerrarían un ciclo. La tarjeta <span class="ui">Citas no dibujadas</span> y un aviso encima de la figura las cuentan, y la tabla de citas dice cuáles son. Recuerda también que la historiografía solo ve las citas dentro del conjunto: un clásico que no está entre tus documentos no aparece, aunque todos lo citen (para eso está la cocitación).</p>
+  </div>
+
+  <p style="margin-top:0.12in">Las palabras y las referencias describen de qué trata el campo y en qué se apoya. El capítulo 11 pasa a las personas: quién escribe con quién, qué instituciones y países colaboran y cómo cambia la colaboración con los años.</p>
+</section>
+
+</body>
+</html>

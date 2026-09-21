@@ -1,0 +1,19 @@
+# Archivos de prueba del usuario: exportaciones con resúmenes protegidos por derechos de autor
+samples/
+
+# Sistema y editores
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+*.tmp
+
+# Herramientas locales de desarrollo y configuracion del editor
+tools/local/
+.claude/
+
+# Comparacion local con otro paquete bibliometrico (usa los archivos de samples/)
+validation/
+
+# Guia interna de desarrollo: no se publica
+CLAUDE.md

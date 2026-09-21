@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 7 · Autores</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap7 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 7 -->
+<section class="capitulo cap7" id="cap-autores" data-pestana="7" data-orden="7" style="--acento: var(--b6)">
+  <div class="cap-apertura">
+    <div class="cap-num">7</div>
+    <div class="cap-etiqueta">Capítulo siete</div>
+    <h1>Autores</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Quién produce la literatura: los autores más productivos con conteo completo y fraccionado, su trayectoria en el tiempo, la ley de Lotka con su prueba de bondad de ajuste, el impacto de cada autor dentro del conjunto y las instituciones y países desde donde se publica, con su colaboración internacional y su mapa.</p>
+    <div class="cap-franja"><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span></div>
+    <ul class="cap-contenido">
+      <li><b>7.1</b>La pantalla Autores y sus tarjetas</li>
+      <li><b>7.2</b>Los autores más productivos</li>
+      <li><b>7.3</b>Producción en el tiempo</li>
+      <li><b>7.4</b>La ley de Lotka</li>
+      <li><b>7.5</b>Impacto por autor</li>
+      <li><b>7.6</b>Instituciones</li>
+      <li><b>7.7</b>Países y colaboración internacional</li>
+    </ul>
+  </div>
+
+  <p class="lead">La pantalla <span class="ui">Autores</span> pasa de las revistas a las personas. Sus seis pestañas responden a preguntas que cualquier estudio bibliométrico acaba haciendo: quién publica más, desde cuándo, si la productividad se reparte como en otros campos, quién tiene más impacto y desde qué instituciones y países se hace la investigación.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los datos de este capítulo</div>
+    <p>Las figuras de este capítulo se tomaron con los <b>datos de ejemplo</b>: 300 documentos sobre la nutrición mineral del maracuyá, del catálogo bibliográfico abierto, que traen autores con afiliación y conteo de citas. Puedes cargarlos con un clic desde la portada (<span class="ruta">Inicio<span class="sep">›</span>Cargar datos de ejemplo</span>) y reproducir cada pantalla. Todas las cifras que se citan se comprobaron leyendo ese archivo fuera de la app.</p>
+  </div>
+
+  <!-- 7.1 -->
+  <h2 id="s7-1"><span class="num">7.1</span>La pantalla Autores y sus tarjetas</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-tarjetas.png" alt="Las seis tarjetas de la pantalla Autores, el aviso de afiliaciones y las seis pestañas">
+      <span class="marca" style="left:16%;top:15%">1</span>
+      <span class="marca" style="left:32.6%;top:22%">2</span>
+      <span class="marca" style="left:54.5%;top:18%">3</span>
+      <span class="marca" style="left:73%;top:18%">4</span>
+      <span class="marca" style="left:57%;top:78.4%">5</span>
+      <span class="marca" style="left:64.2%;top:92.1%">6</span>
+    </div>
+    <figcaption><b>Figura 7.1.</b> Las tarjetas de <span class="ui">Autores</span> con los datos de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Autores distintos, identificados por apellido e iniciales.</li>
+    <li><span class="n">2</span>Proporción de autores que firman un solo documento.</li>
+    <li><span class="n">3</span>Exponente de Lotka estimado, con su ajuste (sección 7.4).</li>
+    <li><span class="n">4</span>El autor con mayor índice h dentro del conjunto.</li>
+    <li><span class="n">5</span>Aviso cuando una parte de los documentos no trae afiliaciones.</li>
+    <li><span class="n">6</span>Las seis pestañas de la pantalla.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 7.1.</b> Las seis tarjetas de <span class="ui">Autores</span>.</caption>
+    <thead><tr><th style="width:28%">Tarjeta</th><th>Qué mide</th><th style="width:24%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Autores</span></td><td>Autores distintos en los documentos que traen autores.</td><td>932 en 300 documentos</td></tr>
+      <tr><td><span class="ui">Autores con un solo documento</span></td><td>Qué parte de los autores aparece una sola vez; la base de la ley de Lotka.</td><td>78.6 % (733 autores)</td></tr>
+      <tr><td><span class="ui">Exponente de Lotka (β)</span></td><td>Qué tan rápido cae la proporción de autores al aumentar su número de documentos.</td><td>2.64 · R² = 0.969</td></tr>
+      <tr><td><span class="ui">Mayor índice h</span></td><td>El autor con más impacto dentro del conjunto.</td><td>12 · Cavalcante, L.F.</td></tr>
+      <tr><td><span class="ui">Instituciones</span></td><td>Instituciones distintas en las afiliaciones.</td><td>379 en 238 documentos</td></tr>
+      <tr><td><span class="ui">Países</span></td><td>Países distintos de autores y afiliaciones.</td><td>31 en 236 documentos</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · el aviso de afiliaciones</div>
+    <p>Cuando al menos una quinta parte de los documentos no trae afiliaciones, la pantalla lo dice arriba de las pestañas: en el ejemplo, <b>62 de 300 documentos (21 %)</b>. Las pestañas de autores, Lotka e impacto no se ven afectadas, pero las de instituciones y países se calculan sin esos documentos. Si tu estudio compara países, completa las afiliaciones con otra exportación antes de sacar conclusiones (capítulo 3).</p>
+  </div>
+
+  <!-- 7.2 -->
+  <h2 id="s7-2"><span class="num">7.2</span>Los autores más productivos</h2>
+  <p>La primera pestaña ordena a los autores por número de documentos y dibuja los primeros. El selector <span class="ui">Conteo</span> cambia entre dos maneras de contar, y cambia la lista.</p>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · conteo completo y conteo fraccionado</div>
+    <p>En el <b>conteo completo</b>, cada autor suma 1 por cada documento que firma, sin importar cuántos coautores tenga. Es el más intuitivo y el más usado, pero premia a quien firma en equipos grandes: un artículo de diez autores reparte diez documentos. En el <b>conteo fraccionado</b>, cada documento reparte exactamente 1 entre sus autores: con tres autores, cada uno suma 1/3. La suma de todos los autores da el número de documentos, y la lista favorece a quien publica con pocos coautores.</p>
+    <p class="formula-linea">conteo fraccionado del autor <i>a</i> = Σ<sub><i>d</i></sub> 1 ⁄ <i>n</i><sub><i>d</i></sub></p>
+    <p>donde la suma recorre los documentos <i>d</i> que firma el autor y <i>n</i><sub><i>d</i></sub> es el número de autores de cada uno.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-productivos.png" alt="Barras de los diez autores más productivos con conteo completo">
+      <span class="marca" style="left:50%;top:5.2%">1</span>
+      <span class="marca" style="left:26.3%;top:22.8%">2</span>
+      <span class="marca" style="left:86%;top:39%">3</span>
+    </div>
+    <figcaption><b>Figura 7.2.</b> Los diez autores más productivos del ejemplo, con conteo completo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Tipo de conteo y cuántos autores entran en la figura.</li>
+    <li><span class="n">2</span>Subtítulo: indica el conteo en uso.</li>
+    <li><span class="n">3</span>El autor más productivo firma 46 de los 300 documentos.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-fraccional.png" alt="Barras de los diez autores más productivos con conteo fraccionado">
+      <span class="marca" style="left:38.6%;top:11.1%">1</span>
+      <span class="marca" style="left:49%;top:40.7%">2</span>
+    </div>
+    <figcaption><b>Figura 7.3.</b> La misma figura con conteo fraccionado: la lista cambia.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtítulo: cada documento reparte 1 entre sus autores.</li>
+    <li><span class="n">2</span>Un autor con solo 8 documentos sube al tercer lugar porque publica con pocos coautores.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · dos listas, dos lecturas</div>
+    <p>Con conteo completo, la lista la encabeza <span class="ui">Cavalcante, L.F.</span> con 46 documentos, seguido de <span class="ui">de Lima, G.S.</span> (31), <span class="ui">Soares, L.A.A.</span> (27), <span class="ui">Gheyi, H.R.</span> (24) y <span class="ui">Pereira, W.E.</span> (19): un grupo brasileño que publica en equipos grandes. Con conteo fraccionado, el primero sigue siéndolo (8.28), pero en tercer lugar aparece <span class="ui">Kondo, T.</span>, que con solo 8 documentos suma 3.67 porque firma con uno o dos coautores. Ninguna de las dos listas es «la correcta»: la primera mide participación y la segunda, aporte individual. Las dos se reprodujeron fuera de la app con los mismos valores.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · un autor es su apellido y sus iniciales</div>
+    <p>La app identifica a cada autor por su apellido y sus iniciales, con las variantes que uniste en <span class="ui">Limpieza y filtros</span> (sección 4.4). Es la única regla que funciona con todas las bases, porque la mayoría no trae identificadores de autor. Tiene dos consecuencias: dos personas con el mismo apellido e iniciales cuentan como una, y una persona escrita de dos formas cuenta como dos hasta que las unes. En el ejemplo, el catálogo abierto reparte a <span class="ui">Cavalcante, L.F.</span> entre tres identificadores propios: uno con 45 documentos, otro con 1 y un tercero con 3 en el que el nombre viene invertido, «Ferreira Cavalcante Lourival». Por nombre, la app reúne los dos primeros en 46 documentos; el tercero queda aparte como <span class="ui">Lourival, F.C.</span>, porque ningún programa puede saber que ese «apellido» es un nombre de pila. Si un autor clave parece tener menos documentos de los esperados, busca sus variantes en la tabla de abajo. Debajo de la figura, la tabla <span class="ui">Todos los autores</span> lista a cada autor con sus documentos, su conteo fraccionado, sus citas, su primer y su último año, y su institución y su país más frecuentes.</p>
+  </div>
+
+  <!-- 7.3 -->
+  <h2 id="s7-3"><span class="num">7.3</span>Producción en el tiempo</h2>
+  <p>La segunda pestaña dibuja la trayectoria de los autores más productivos: una fila por autor y una burbuja por cada año en que publicó. El <b>tamaño</b> de la burbuja es el número de documentos de ese año y el <b>color</b>, las citas por año que recibieron esos documentos hasta el año de referencia; una línea gris une el primer y el último año de cada autor.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-tiempo.png" alt="Burbujas de producción por año de los diez autores más productivos">
+      <span class="marca" style="left:23.5%;top:4.7%">1</span>
+      <span class="marca" style="left:45%;top:21%">2</span>
+      <span class="marca" style="left:66%;top:88%">3</span>
+    </div>
+    <figcaption><b>Figura 7.4.</b> Trayectorias de los diez autores más productivos del ejemplo entre 2007 y 2025.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Cuántos autores entran en la figura.</li>
+    <li><span class="n">2</span>Subtítulo: el tamaño son documentos y el color, citas por año.</li>
+    <li><span class="n">3</span>Escalas de tamaño y de color; los colores claros son los años más citados.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · un veterano y un grupo que llegó en 2019</div>
+    <p>La figura separa dos generaciones. <span class="ui">Cavalcante, L.F.</span> publica sin interrupción desde 2007: su fila es larga y de colores oscuros, porque la mayoría de sus documentos lleva años acumulando citas a un ritmo moderado. <span class="ui">de Lima, G.S.</span>, <span class="ui">Soares, L.A.A.</span> y <span class="ui">Gheyi, H.R.</span> aparecen juntos a partir de 2019, casi siempre en los mismos años, y sus burbujas de 2020 a 2023 son las más claras de la figura: en poco tiempo sus documentos se citan más por año que los del autor más veterano. Esa lectura se confirma en la sección 7.5 con el índice m.</p>
+  </div>
+
+  <!-- 7.4 -->
+  <h2 id="s7-4"><span class="num">7.4</span>La ley de Lotka</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · muchos publican una vez, pocos publican mucho</div>
+    <p>Lotka (1926) observó que la proporción de autores con <i>x</i> documentos cae como una potencia de <i>x</i>:</p>
+    <p class="formula-linea"><i>f</i>(<i>x</i>) = <i>C</i> ⁄ <i>x</i><sup>β</sup></p>
+    <p>En su forma clásica, β = 2 y <i>C</i> = 6/π² ≈ 0.6079: alrededor del 61 % de los autores publica un solo documento, la cuarta parte de esa cifra publica dos, la novena parte publica tres, y así. La app estima β y <i>C</i> por mínimos cuadrados sobre los logaritmos, usando <i>x</i> = 1, 2, 3… hasta el primer valor sin autores, porque más allá de ese punto los pocos autores muy productivos aparecen de uno en uno y aplanan la recta (Clauset, Shalizi y Newman, 2009). Después compara la distribución observada con la ley clásica mediante la prueba de <b>Kolmogorov-Smirnov</b>: si la diferencia máxima entre las proporciones acumuladas, <i>D</i>, supera el valor crítico 1.36/√<i>N</i>, la colección no sigue la ley con β = 2 al 5 %. La constante del ajuste se calcula como propone Pao (1985).</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-lotka.png" alt="Tarjetas de la ley de Lotka y curvas observada, teórica y ajustada">
+      <span class="marca" style="left:56.2%;top:31.3%">1</span>
+      <span class="marca" style="left:70%;top:45%">2</span>
+      <span class="marca" style="left:21.5%;top:46%">3</span>
+    </div>
+    <figcaption><b>Figura 7.5.</b> La ley de Lotka en los datos de ejemplo: 932 autores. Las cinco tarjetas de arriba se describen en la tabla 7.2.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Las tres curvas: observada, teórica con β = 2 y ajustada.</li>
+    <li><span class="n">2</span>La ajustada se superpone casi por completo a la observada.</li>
+    <li><span class="n">3</span>El 78.6 % de los autores firma un solo documento; la ley clásica esperaba el 60.8 %.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Tabla 7.2.</b> Las cinco tarjetas de la ley de Lotka.</caption>
+    <thead><tr><th style="width:26%">Tarjeta</th><th>Qué es</th><th style="width:18%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Exponente β</span></td><td>Pendiente del ajuste; mayor que 2 indica todavía más autores ocasionales que en la ley clásica.</td><td>2.638</td></tr>
+      <tr><td><span class="ui">Constante C</span></td><td>Proporción ajustada de autores con un documento; la clásica es 0.6079.</td><td>0.782</td></tr>
+      <tr><td><span class="ui">R² del ajuste</span></td><td>Qué tan bien se alinean los puntos en escala logarítmica, y con cuántos.</td><td>0.969 con 11</td></tr>
+      <tr><td><span class="ui">Kolmogorov-Smirnov (D)</span></td><td>Diferencia máxima entre las acumuladas observada y teórica, con sus valores críticos.</td><td>0.1786 (crítico 0.0445)</td></tr>
+      <tr><td><span class="ui">Valor p</span></td><td>Probabilidad de una diferencia así si la ley clásica fuera cierta, con su veredicto.</td><td>&lt; 0.001</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · una literatura con más autores ocasionales de lo esperado</div>
+    <p>De los 932 autores del ejemplo, <b>733 firman un solo documento (78.6 %)</b>, 96 firman dos y 42 firman tres; la ley clásica esperaba el 60.8 %, el 15.2 % y el 6.8 %. El ajuste da β = 2.638 con R² = 0.969 sobre los once primeros valores, y la prueba de Kolmogorov-Smirnov rechaza la ley clásica: <i>D</i> = 0.1786, cuatro veces el valor crítico al 5 % (0.0445). En cambio, la ley con el exponente ajustado describe muy bien los datos: en la figura, su curva se confunde con la observada. La lectura es que el tema atrae a muchos participantes que publican una vez —estudiantes, colaboradores de un solo proyecto— alrededor de un núcleo pequeño muy productivo. El número de autores por documento, β, <i>C</i>, R² y <i>D</i> se reprodujeron fuera de la app con el mismo resultado.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · cómo informar la ley de Lotka</div>
+    <table class="compacta">
+      <thead><tr><th style="width:44%">Si el resultado es…</th><th>escribe…</th></tr></thead>
+      <tbody>
+        <tr><td><i>D</i> menor que el crítico (no se rechaza β = 2)</td><td>«La productividad de los autores se ajusta a la ley de Lotka (D = …, p = …)».</td></tr>
+        <tr><td><i>D</i> mayor que el crítico, pero R² alto</td><td>«La distribución sigue una ley de potencia con β = … (R² = …), más pronunciada que la de Lotka (D = …, p &lt; …)».</td></tr>
+        <tr><td>R² bajo o menos de cuatro puntos en el ajuste</td><td>No informes β como resultado: la colección es pequeña o irregular para estimarlo.</td></tr>
+        <tr><td>35 autores o menos</td><td>La app avisa que los valores críticos no son confiables; describe la distribución sin la prueba.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Con muchos autores la prueba rechaza casi siempre la forma clásica: β = 2 es una referencia, no una ley física. Lo informativo es el valor de β y su comparación con otros campos.</p>
+  </div>
+
+  <!-- 7.5 -->
+  <h2 id="s7-5"><span class="num">7.5</span>Impacto por autor</h2>
+  <p>La pestaña <span class="ui">Impacto</span> funciona igual que la de fuentes (sección 6.4): los índices h, g y m y las citas totales de cada autor, calculados <b>solo con sus documentos del conjunto</b>, con un selector de medida, el número de autores y el año de referencia del índice m. Debajo, la tabla trae los cuatro valores de todos los autores.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-impacto.png" alt="Índice h de los diez autores con mayor valor, con el selector de medida">
+      <span class="marca" style="left:70%;top:6.2%">1</span>
+      <span class="marca" style="left:44.2%;top:24%">2</span>
+      <span class="marca" style="left:81%;top:40.2%">3</span>
+    </div>
+    <figcaption><b>Figura 7.6.</b> Índice h de los diez autores con mayor valor en el conjunto de ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Medida de impacto, número de autores y año de referencia del índice m.</li>
+    <li><span class="n">2</span>Los índices se calculan con los documentos del conjunto.</li>
+    <li><span class="n">3</span>El autor más productivo tiene también el mayor índice h: 12.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el índice m separa a las generaciones</div>
+    <p><span class="ui">Cavalcante, L.F.</span> tiene el mayor índice h (12, con 402 citas), pero lo construyó desde 2007: su índice m es 12 ÷ 20 años = <b>0.600</b>. <span class="ui">de Lima, G.S.</span> tiene un h de 11 conseguido desde 2019, y su índice m es 11 ÷ 8 = <b>1.375</b>, más del doble. <span class="ui">Soares, L.A.A.</span>, con h de 10 desde 2019, llega a 1.250. Es lo que anticipaban las burbujas claras de la figura 7.4. Los índices h, g y m de los diez autores más productivos se recalcularon fuera de la app y coinciden.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · el índice h de un autor aquí no es su índice h</div>
+    <p>El índice que calcula esta pestaña usa solo los documentos del autor que están en tu conjunto, con las citas que informan tus archivos. Un investigador con un índice h de 40 en toda su carrera puede tener aquí 3, si solo tres de sus artículos tratan tu tema. Informa estos valores como «índice h dentro de la colección» y no los compares con los de los perfiles públicos de los autores.</p>
+  </div>
+
+  <!-- 7.6 -->
+  <h2 id="s7-6"><span class="num">7.6</span>Instituciones</h2>
+  <p>La pestaña <span class="ui">Instituciones</span> cuenta las organizaciones de las afiliaciones, ya unificadas en <span class="ui">Limpieza y filtros</span> (sección 4.5), con el mismo criterio y los mismos números que la tabla de esa pantalla. El selector <span class="ui">Conteo</span> elige entre dos medidas: <b>documentos</b> en los que aparece la institución, o <b>apariciones</b>, que cuentan cada autor de esa institución en cada documento.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-instituciones.png" alt="Barras de las quince instituciones más productivas por documentos">
+      <span class="marca" style="left:43%;top:4.9%">1</span>
+      <span class="marca" style="left:39.3%;top:18.9%">2</span>
+      <span class="marca" style="left:56%;top:43.5%">3</span>
+    </div>
+    <figcaption><b>Figura 7.7.</b> Las quince instituciones más productivas del ejemplo, por número de documentos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Conteo por documentos o por apariciones, y cuántas instituciones entran.</li>
+    <li><span class="n">2</span>Subtítulo: qué se está contando.</li>
+    <li><span class="n">3</span>La misma universidad escrita en inglés sigue aparte hasta que se une con un alias (sección 4.5).</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · documentos frente a apariciones</div>
+    <p><i>Universidade Federal de Campina Grande</i> y <i>Universidade Federal da Paraíba</i> aparecen en 29 documentos cada una: empatadas. Por apariciones, la primera suma 149 y la segunda 84, porque sus artículos llevan más autores de la misma universidad. La primera medida dice en cuántos trabajos participa una institución; la segunda, cuánta gente suya firma. Para un ranking, usa documentos; para medir el tamaño de un grupo de investigación, apariciones.</p>
+  </div>
+
+  <!-- 7.7 -->
+  <h2 id="s7-7"><span class="num">7.7</span>Países y colaboración internacional</h2>
+  <p>Contar países tiene una dificultad: un documento con autores de tres países, ¿de qué país es? La pestaña <span class="ui">Países</span> responde de dos maneras, con dos figuras distintas.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 7.3.</b> Cómo se asigna un país a cada documento, en este orden.</caption>
+    <thead><tr><th style="width:8%">Orden</th><th>Criterio</th><th style="width:22%">Documentos del ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>El país del autor de correspondencia, si la base lo indica.</td><td>68</td></tr>
+      <tr><td>2</td><td>Si no, el del primer autor que tenga país.</td><td>168</td></tr>
+      <tr><td>3</td><td>Si no, el de la primera afiliación con país reconocido.</td><td>0</td></tr>
+      <tr><td>—</td><td>Sin país: ningún autor ni afiliación permite saberlo.</td><td>64</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · SCP y MCP</div>
+    <p>Con el país asignado, cada documento se clasifica en <b>SCP</b> (<i>single country publication</i>, publicación de un solo país) si todos sus autores son del mismo país, o <b>MCP</b> (<i>multiple country publication</i>) si hay autores de más de uno. La proporción MCP de un país mide su colaboración internacional: un país con MCP alto publica sobre todo con socios extranjeros; uno con MCP bajo, con sus propios grupos. El mapa, en cambio, no asigna un país por documento: cuenta cada firma de cada autor en su país, o cada documento en todos sus países.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-paises.png" alt="Barras de documentos por país divididas en un solo país y varios países">
+      <span class="marca" style="left:80.1%;top:3%">1</span>
+      <span class="marca" style="left:22%;top:13.2%">2</span>
+      <span class="marca" style="left:45.8%;top:26.1%">3</span>
+      <span class="marca" style="left:92%;top:38%">4</span>
+    </div>
+    <figcaption><b>Figura 7.8.</b> Los quince países con más documentos del ejemplo, divididos en SCP y MCP.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Cuántos documentos obtuvieron su país por cada criterio de la tabla 7.3.</li>
+    <li><span class="n">2</span>Cuántos países entran en las figuras.</li>
+    <li><span class="n">3</span>Subtítulo: el país es el del autor de correspondencia (o el siguiente criterio).</li>
+    <li><span class="n">4</span>Un solo país (SCP) y varios países (MCP); la etiqueta de cada barra da el porcentaje MCP.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/autores-mapa.png" alt="Mapa mundial coloreado por número de firmas de autores de cada país">
+      <span class="marca" style="left:26.8%;top:6.7%">1</span>
+      <span class="marca" style="left:37.8%;top:12.2%">2</span>
+      <span class="marca" style="left:42%;top:72%">3</span>
+      <span class="marca" style="left:70%;top:93%">4</span>
+    </div>
+    <figcaption><b>Figura 7.9.</b> Producción científica por país en el ejemplo, contando cada firma de autor.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtítulo: qué mide el color.</li>
+    <li><span class="n">2</span>Medida del mapa: firmas de autores o documentos.</li>
+    <li><span class="n">3</span>Brasil concentra 990 firmas de autores.</li>
+    <li><span class="n">4</span>Escala de color; los países sin datos quedan en gris.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · un tema brasileño con poca colaboración internacional</div>
+    <p>Brasil tiene 169 de los 236 documentos con país, y solo el 8 % de ellos es MCP: la investigación sobre la nutrición del maracuyá se hace sobre todo en grupos brasileños. En el mapa, Brasil suma 990 firmas de autores, más de veinte veces las de Colombia y China (47 cada una). Los países pequeños en número tienen porcentajes MCP extremos —Portugal y el Reino Unido, 2 documentos y 50 %—, que no conviene leer como tendencia. La tabla de la pestaña agrega las citas por país: los dos documentos de Portugal promedian 80 citas, un recordatorio de que con pocos documentos un solo artículo muy citado lo cambia todo.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · el país sale de la afiliación, y la afiliación puede fallar</div>
+    <p>El país de un autor sale del código que trae la base o, si no lo trae, del final del texto de su afiliación. Las dos fuentes pueden fallar. En el ejemplo, el catálogo enlazó a un autor de un instituto de Sri Lanka con un instituto chino de nombre parecido; el resto de sus coautores no trae código, pero su afiliación termina en «Sri Lanka», y la app asigna el documento a Sri Lanka por su primer autor. Son casos raros, pero existen en cualquier base: si un país pequeño aparece donde no lo esperas, búscalo en la tabla y revisa sus documentos, y corrige con un alias de país en <span class="ui">Limpieza y filtros</span> (sección 4.5).</p>
+  </div>
+
+  <p style="margin-top:0.12in">Con las fuentes y los autores ya sabes dónde y quién. El capítulo siguiente pasa a <b>qué</b>: los documentos más citados, las citas locales dentro del conjunto, las referencias más citadas, la espectroscopía de años de referencia y los temas en tendencia.</p>
+</section>
+
+</body>
+</html>

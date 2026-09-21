@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>captura</title>
+<!-- Herramienta interna del manual: abre la app en un marco, ejecuta una receta de pasos
+     y deja la vista lista para una captura de pantalla con el navegador sin ventana.
+     Uso: con el servidor local de la app en el puerto 9100, herramientas/capturar.ps1 abre esta página con la receta
+     (p. ej. ?w=1400&h=900&do=ex;go:sources;tab:stab-bradford), espera a que el título diga «ready» y toma la captura.
+     Parámetros: w, h (tamaño de la ventana de la app) · theme=light|dark · lang=es|en · toasts=1 (deja visibles los avisos).
+     Pasos: ex (carga los datos de ejemplo del inicio) · files:ruta|ruta (importa archivos servidos desde la carpeta de la app) ·
+            stop:en=palabra|palabra (agrega palabras vacías a la lista de ese idioma, como «Guardar listas» en Limpieza) ·
+            go:ruta (abre un módulo desde la barra lateral) ·
+            tab:id (pulsa una pestaña y espera los cálculos) · click:selector · help:selector (abre la ayuda (?)) ·
+            open:selector (abre un <details>) · select:selector=valor · set:selector=valor · check:selector=true|false ·
+            key:tecla (la pulsa sobre la página) · wait:ms · settle (espera los cálculos pendientes) · reload (vuelve a abrir la app) ·
+            scroll:selector[,desfase] · hide:selector · style:selector=css · top.
+     marcas=sel1|sel2… (opcional): guarda en window.__rects la caja de cada elemento, para colocar las marcas numeradas.
+     En la dirección, # se escribe %23, la coma dentro de un valor %2C y los espacios %20.
+     Antes de abrir la app se marca el recorrido guiado como visto y se borra la sesión guardada,
+     para que ninguna ventana emergente tape la captura. -->
+<style>html,body{margin:0;overflow:hidden;background:#fff}iframe{border:0;display:block;position:absolute;left:0;top:0}</style>
+</head>
+<body>
+<iframe id="app"></iframe>
+<script>
+(async function () {
+  const p = new URLSearchParams(location.search);
+  const f = document.getElementById('app');
+  const W = +(p.get('w') || 1400), H = +(p.get('h') || 900);
+  f.style.width = W + 'px';
+  f.style.height = H + 'px';
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  try {
+    localStorage.setItem('scimetricspro:tourDone', 'true');
+    localStorage.setItem('scimetricspro:theme', JSON.stringify(p.get('theme') || 'light'));
+    localStorage.setItem('scimetricspro:lang', JSON.stringify(p.get('lang') || 'es'));
+    await new Promise(r => { const q = indexedDB.deleteDatabase('scimetricspro:project'); q.onsuccess = q.onerror = q.onblocked = r; });
+  } catch (e) { /* a private window: the capture still works */ }
+  f.src = '../../index.html';
+  await new Promise(r => f.addEventListener('load', r, { once: true }));
+  let w = f.contentWindow, d = f.contentDocument;
+  const q = s => d.querySelector(decodeURIComponent(s));
+  const settle = async () => {
+    for (let i = 0; i < 120; i++) {
+      const waits = w.ExportCollector ? w.ExportCollector.waits() : [];
+      if (!waits.length) break;
+      await Promise.all(waits.map(x => x.catch(() => null)));
+      await sleep(30);
+    }
+    /* networks run in a worker behind the progress window */
+    for (let k = 0; k < 1200 && d.querySelector('.progress-overlay'); k++) await sleep(50);
+    /* the search of figures and tables and the report draw every module out of sight */
+    for (let k = 0; k < 2400 && w.ExportModule && (w.ExportModule.busy || w.ExportModule.report.busy); k++) await sleep(50);
+    await sleep(500);
+  };
+  const tall = async () => { f.style.height = Math.max(H, d.documentElement.scrollHeight + 50) + 'px'; await sleep(300); };
+  await sleep(700);
+  for (const raw of (p.get('do') || '').split(';').filter(Boolean)) {
+    const i = raw.indexOf(':');
+    const cmd = i < 0 ? raw : raw.slice(0, i), arg = i < 0 ? '' : raw.slice(i + 1);
+    if (cmd === 'ex') { await w.Home.loadExample(); await w.Pipeline.pending; await settle(); }
+    else if (cmd === 'files') {
+      /* files served next to the app (paths from the app folder, separated by |), imported as if chosen in Importar */
+      const list = [];
+      for (const path of arg.split('|').filter(Boolean)) {
+        const blob = await (await fetch('../../' + decodeURIComponent(path))).blob();
+        list.push(new w.File([blob], path.split('/').pop(), { type: blob.type }));
+      }
+      await w.ImportModule.addFiles(list, { quiet: true });
+      await w.Pipeline.pending; await settle();
+    }
+    else if (cmd === 'stop') {
+      /* stop:en=Biology|Human fertilization — adds words to a stop-word list, as «Guardar listas» in Limpieza does */
+      const [lang, words] = arg.split('=');
+      const s = w.Pipeline.init();
+      const lists = { es: s.stopwords.es.slice(), en: s.stopwords.en.slice() };
+      lists[lang] = lists[lang].concat(decodeURIComponent(words).split('|').filter(Boolean));
+      await w.Pipeline.update({ stopwords: lists });
+      await w.Pipeline.pending; await settle();
+    }
+    else if (cmd === 'go') {
+      const link = d.querySelector('.nav-link[data-route="' + arg + '"]');
+      if (link) link.click(); else w.App.go(arg);
+      for (let k = 0; k < 200 && w.state.route !== arg; k++) await sleep(25);
+      await settle();
+    }
+    else if (cmd === 'tab' || cmd === 'click') { q(arg.startsWith('#') || arg.startsWith('%23') || cmd === 'click' ? arg : '#' + arg).click(); await settle(); }
+    else if (cmd === 'help') { q(arg).click(); await sleep(600); }
+    else if (cmd === 'open') { q(arg).open = true; await sleep(500); }
+    else if (cmd === 'select') { const [sel, val] = arg.split('='); const n = q(sel); n.value = decodeURIComponent(val); n.dispatchEvent(new Event('change', { bubbles: true })); await settle(); }
+    else if (cmd === 'set') { const [sel, val] = arg.split('='); const n = q(sel); n.value = decodeURIComponent(val); n.dispatchEvent(new Event('input', { bubbles: true })); n.dispatchEvent(new Event('change', { bubbles: true })); await settle(); }
+    else if (cmd === 'check') { const [sel, val] = arg.split('='); const n = q(sel); n.checked = val !== 'false'; n.dispatchEvent(new Event('change', { bubbles: true })); await settle(); }
+    else if (cmd === 'key') { d.dispatchEvent(new w.KeyboardEvent('keydown', { key: decodeURIComponent(arg), bubbles: true })); await settle(); }
+    else if (cmd === 'wait') await sleep(+arg);
+    else if (cmd === 'settle') await settle();
+    else if (cmd === 'scroll') {
+      /* screenshots without a window do not follow scrolling inside a frame: the frame is
+         made as tall as the page and slid up behind the visible area instead */
+      const [sel, off] = arg.split(',');
+      await tall();
+      const y = q(sel).getBoundingClientRect().top + w.scrollY - (+off || 12);
+      f.style.top = -Math.max(0, y) + 'px'; await sleep(500);
+    }
+    else if (cmd === 'hide') { d.querySelectorAll(decodeURIComponent(arg)).forEach(n => { n.style.display = 'none'; }); await sleep(300); }
+    else if (cmd === 'style') { const [sel, css] = arg.split('='); d.querySelectorAll(decodeURIComponent(sel)).forEach(n => { n.style.cssText += ';' + decodeURIComponent(css); }); await sleep(300); }
+    else if (cmd === 'top') { w.scrollTo(0, 0); f.style.top = '0px'; await sleep(300); }
+    else if (cmd === 'reload') {
+      /* the app opens again with what the browser kept (the automatic copy of the session) */
+      const loaded = new Promise(r => f.addEventListener('load', r, { once: true }));
+      w.location.reload();
+      await loaded;
+      w = f.contentWindow; d = f.contentDocument;
+      await sleep(1500);
+    }
+  }
+  if (p.get('toasts') !== '1') d.querySelectorAll('.toasts, #toasts').forEach(n => { n.style.display = 'none'; });
+  /* where the elements for the numbered marks are, in page pixels (capturar.ps1 turns them into percentages of the crop) */
+  if (p.get('marcas')) {
+    await sleep(200);
+    const fr = f.getBoundingClientRect();
+    window.__rects = p.get('marcas').split('|').map(sel => {
+      const n = d.querySelector(sel);
+      if (!n) return null;
+      let r = n.getBoundingClientRect();
+      /* a label or paragraph spans its whole column: use the box of its text when it has one (clipped to the element) */
+      const range = d.createRange();
+      range.selectNodeContents(n);
+      const t = range.getBoundingClientRect();
+      if (t.width > 0 && t.height > 0) {
+        const x0 = Math.max(r.left, t.left), y0 = Math.max(r.top, t.top), x1 = Math.min(r.right, t.right), y1 = Math.min(r.bottom, t.bottom);
+        if (x1 > x0 && y1 > y0) r = { left: x0, top: y0, width: x1 - x0, height: y1 - y0 };
+      }
+      return [fr.left + r.left, fr.top + r.top, r.width, r.height];
+    });
+  }
+  document.title = 'ready';
+})();
+</script>
+</body>
+</html>

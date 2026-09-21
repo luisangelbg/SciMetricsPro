@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Capítulo 9 · Estructura conceptual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  .cap9 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+  /* la ficha del nodo es alta y angosta: se muestra más pequeña */
+  .cap9 figure.angosta .marco { width: 58%; margin: 0 auto; }
+  .cap9 figure.angosta figcaption { margin-left: 21%; margin-right: 21%; }
+  /* las dos tablas del análisis factorial caben con su leyenda en la misma hoja */
+  .cap9 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap9 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CAPÍTULO 9 -->
+<section class="capitulo cap9" id="cap-conceptual" data-pestana="9" data-orden="9" style="--acento: var(--b8)">
+  <div class="cap-apertura">
+    <div class="cap-num">9</div>
+    <div class="cap-etiqueta">Capítulo nueve</div>
+    <h1>Estructura conceptual</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">De qué habla el campo: la red de palabras que aparecen juntas en los mismos documentos, los temas que forman y su lugar en el mapa temático, cómo cambian esos temas de un periodo a otro y el mapa factorial que ordena las palabras en un plano.</p>
+    <div class="cap-franja"><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span></div>
+    <ul class="cap-contenido">
+      <li><b>9.1</b>La pantalla y sus cuatro pestañas</li>
+      <li><b>9.2</b>Red de coocurrencia</li>
+      <li><b>9.3</b>La ficha de un término</li>
+      <li><b>9.4</b>Mapa temático</li>
+      <li><b>9.5</b>Evolución temática</li>
+      <li><b>9.6</b>Análisis factorial</li>
+    </ul>
+  </div>
+
+  <p class="lead">Con este capítulo empiezan las redes. La <b>estructura conceptual</b> estudia las palabras: dos términos están relacionados cuando aparecen en los mismos documentos, y los grupos de términos muy relacionados entre sí son los <b>temas</b> del campo. La pantalla <span class="ui">Conceptual</span>, en el grupo <span class="ui">Estructuras</span> de la barra lateral, ofrece cuatro maneras de verlos.</p>
+
+  <!-- 9.1 -->
+  <h2 id="s9-1"><span class="num">9.1</span>La pantalla y sus cuatro pestañas</h2>
+  <p>Las cuatro pestañas trabajan con el mismo <b>campo de términos</b>: el que elegiste en <span class="ui">Limpieza y filtros</span> (capítulo 4), con sus sinónimos y palabras vacías. Cada pestaña tiene a la izquierda un panel de parámetros; al cambiar un valor, la pestaña se vuelve a calcular. El selector <span class="ui">Campo de términos</span> del panel es el mismo de Limpieza: si lo cambias aquí, cambia en toda la app.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.1.</b> Las cuatro pestañas de la estructura conceptual.</caption>
+    <thead><tr><th style="width:24%">Pestaña</th><th>Qué muestra</th><th style="width:28%">Pregunta que responde</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Red de coocurrencia</span></td><td>Los términos más frecuentes unidos cuando aparecen en los mismos documentos, coloreados por comunidad.</td><td>¿Qué palabras van juntas?</td></tr>
+      <tr><td><span class="ui">Mapa temático</span></td><td>Los temas (grupos de palabras) ubicados según su centralidad y su densidad, en cuatro cuadrantes.</td><td>¿Qué temas son centrales y cuáles están maduros?</td></tr>
+      <tr><td><span class="ui">Evolución temática</span></td><td>Un mapa temático por periodo y las bandas que unen los temas que comparten palabras.</td><td>¿De dónde viene cada tema y hacia dónde va?</td></tr>
+      <tr><td><span class="ui">Análisis factorial</span></td><td>Las palabras en un plano por análisis de correspondencias, agrupadas con k-means.</td><td>¿Qué palabras se parecen por los documentos en que aparecen?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · los datos de este capítulo</div>
+    <p>Las figuras usan los <b>datos de ejemplo</b> del maracuyá (300 documentos del catálogo abierto) con el campo <span class="ui">Palabras clave de índice</span>, el único que trae ese catálogo. El catálogo asigna a casi todos los documentos áreas generales de la ciencia —<i>Biology</i> aparece en 288 de los 300, <i>Chemistry</i> en 170, <i>Mathematics</i> en 60— y algunas asignaciones erróneas por palabras parecidas: <i>Human fertilization</i> en 68 documentos que hablan de fertilización del cultivo, <i>Pulp (tooth)</i> en 8 que hablan de la pulpa del fruto. Esos términos ocuparían el centro de todas las redes sin decir nada del tema, así que para este capítulo se agregaron 14 palabras vacías a la lista en inglés: <i>Biology, Chemistry, Mathematics, Physics, Psychology, Medicine, Economics, Business, Geography, Art, Materials science, Human fertilization, Pulp (tooth)</i> y <i>Composition (language)</i>. Para reproducir las figuras, escríbelas en <span class="ruta">Limpieza y filtros › Palabras clave</span>, en la lista de palabras vacías en inglés, y pulsa <span class="ui">Guardar listas</span> (sección 4.6). Con ellas quedan 604 términos distintos, 258 de ellos en dos documentos o más. Todas las cifras que se citan se comprobaron fuera de la app.</p>
+  </div>
+
+  <!-- 9.2 -->
+  <h2 id="s9-2"><span class="num">9.2</span>Red de coocurrencia</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · coocurrencia y fuerza de asociación</div>
+    <p>Dos términos <b>coocurren</b> cuando aparecen en el mismo documento; el conteo <i>c<sub>ij</sub></i> es el número de documentos que los tienen a los dos. Los conteos favorecen a los términos frecuentes, que coocurren con casi todo solo por ser frecuentes. Por eso la app normaliza por omisión con la <b>fuerza de asociación</b> (van Eck y Waltman, 2009), que divide el conteo entre lo que se esperaría por azar dada la frecuencia de cada término:</p>
+    <p class="formula-linea"><i>AS<sub>ij</sub></i> = <i>c<sub>ij</sub></i> / (<i>c<sub>i</sub></i> · <i>c<sub>j</sub></i>)</p>
+    <p>donde <i>c<sub>i</sub></i> y <i>c<sub>j</sub></i> son los documentos de cada término. Sobre esa red, el algoritmo de Louvain (Blondel y colaboradores, 2008) forma <b>comunidades</b>: grupos de términos más unidos entre sí que con el resto, medidos por la <b>modularidad</b> <i>Q</i>. La resolución γ regula su tamaño: con γ mayor que 1 salen más comunidades y más pequeñas.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.2.</b> Parámetros de la red de coocurrencia y sus valores por omisión.</caption>
+    <thead><tr><th style="width:30%">Parámetro</th><th>Qué hace</th><th style="width:20%">Por omisión</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Frecuencia mínima (documentos)</span></td><td>Deja fuera los términos que aparecen en menos documentos.</td><td>2</td></tr>
+      <tr><td><span class="ui">Número máximo de nodos</span></td><td>Cuántos términos entran, del más frecuente hacia abajo (hasta 500).</td><td>50</td></tr>
+      <tr><td><span class="ui">Coocurrencias mínimas por arista</span></td><td>Une dos términos solo si comparten al menos ese número de documentos. Se aplica al conteo, antes de normalizar.</td><td>1</td></tr>
+      <tr><td><span class="ui">Quitar nodos aislados</span></td><td>Oculta los términos que se quedan sin aristas.</td><td>Sí</td></tr>
+      <tr><td><span class="ui">Normalización</span></td><td>Ninguna (conteos), fuerza de asociación, coseno de Salton, Jaccard, índice de inclusión o índice de equivalencia.</td><td>Fuerza de asociación</td></tr>
+      <tr><td><span class="ui">Algoritmo</span></td><td>Louvain o fast greedy (Clauset, Newman y Moore, 2004).</td><td>Louvain</td></tr>
+      <tr><td><span class="ui">Resolución (γ)</span></td><td>Tamaño de las comunidades: mayor γ, más comunidades.</td><td>1</td></tr>
+      <tr><td><span class="ui">Diseño</span></td><td>ForceAtlas2 (los términos unidos se atraen) o circular.</td><td>ForceAtlas2</td></tr>
+      <tr><td><span class="ui">Tamaño de los nodos</span></td><td>Frecuencia, grado, fuerza, intermediación o PageRank.</td><td>Frecuencia</td></tr>
+      <tr><td><span class="ui">Etiquetas visibles</span></td><td>Cuántos nombres se escriben, de los nodos mayores; al acercar aparecen más.</td><td>20</td></tr>
+    </tbody>
+  </table>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-red.png" alt="Panel de parámetros, seis tarjetas de la red y red interactiva de 50 términos en tres comunidades">
+      <span class="marca" style="left:16.8%;top:10.7%">1</span>
+      <span class="marca" style="left:19.2%;top:40.1%">2</span>
+      <span class="marca" style="left:16.8%;top:49.9%">3</span>
+      <span class="marca" style="left:16.2%;top:64.3%">4</span>
+      <span class="marca" style="left:77.3%;top:11.9%">5</span>
+      <span class="marca" style="left:29.2%;top:23.8%">6</span>
+      <span class="marca" style="left:73.1%;top:37.8%">7</span>
+      <span class="marca" style="left:82.1%;top:42.2%">8</span>
+      <span class="marca" style="left:41.2%;top:66.5%">9</span>
+    </div>
+    <figcaption><b>Figura 9.1.</b> La red de coocurrencia de los 50 términos más frecuentes del ejemplo, con los parámetros por omisión.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Selección: campo de términos, frecuencia mínima, número de nodos y coocurrencias mínimas.</li>
+    <li><span class="n">2</span>Pesos de las aristas: la normalización.</li>
+    <li><span class="n">3</span>Comunidades: algoritmo y resolución γ.</li>
+    <li><span class="n">4</span>Presentación: diseño, tamaño de los nodos y etiquetas visibles.</li>
+    <li><span class="n">5</span>Modularidad de la partición en comunidades.</li>
+    <li><span class="n">6</span>Densidad: proporción de las aristas posibles que existen.</li>
+    <li><span class="n">7</span>Subtítulo: campo, normalización y significado del color.</li>
+    <li><span class="n">8</span>Buscar un término, acercar, alejar y encuadrar la red.</li>
+    <li><span class="n">9</span>La comunidad naranja: salinidad, riego, agua salina y ecología.</li>
+  </ul>
+
+  <p>Las seis tarjetas resumen la red. La red se calcula en segundo plano; si tarda más de un instante aparece una ventana de progreso (<span class="ui">Midiendo la red</span>, <span class="ui">Acomodando los nodos</span>) y un botón <span class="ui">Cancelar</span>; cambiar el algoritmo, la resolución o la presentación vuelve a colorear el mismo dibujo sin repetir el cálculo.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.3.</b> Las tarjetas de la red y sus valores en el ejemplo.</caption>
+    <thead><tr><th style="width:20%">Tarjeta</th><th>Qué mide</th><th style="width:26%">Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Nodos</span></td><td>Términos en la red y aristas entre ellos.</td><td>50 · 944 aristas</td></tr>
+      <tr><td><span class="ui">Comunidades</span></td><td>Grupos que formó el algoritmo.</td><td>3 · Louvain</td></tr>
+      <tr><td><span class="ui">Modularidad (Q)</span></td><td>Qué tan separadas están las comunidades: de 0 (nada) a cerca de 1. Con γ distinto de 1 se informa también Q<sub>γ</sub>.</td><td>0.215</td></tr>
+      <tr><td><span class="ui">Densidad</span></td><td>Aristas que existen ÷ aristas posibles, <i>n</i>(<i>n</i> − 1)/2.</td><td>0.771 (944 de 1,225)</td></tr>
+      <tr><td><span class="ui">Transitividad</span></td><td>Probabilidad de que dos vecinos de un término también estén unidos (3 × triángulos ÷ tripletas).</td><td>0.84 · 10,191 triángulos</td></tr>
+      <tr><td><span class="ui">Diámetro</span></td><td>El mayor número de pasos entre dos términos, y cuántas piezas tiene la red.</td><td>2 · 1 componente conexo</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · una red muy densa con tres comunidades</div>
+    <p>Los 50 términos más frecuentes del ejemplo forman una red casi completa: existen 944 de las 1,225 aristas posibles (densidad 0.771) y cualquier término llega a cualquier otro en dos pasos como máximo. Es lo esperable en un conjunto de un solo tema, donde los términos principales aparecen juntos una y otra vez. Aun así, Louvain distingue tres comunidades: la <b>azul</b>, la mayor, con el núcleo agronómico (<i>Horticulture</i>, <i>Growth and nutrition in plants</i>, <i>Passion fruit</i>, <i>Agronomy</i>, <i>Fertilizer</i>); la <b>naranja</b>, con el estrés salino y el riego (<i>Salinity</i>, <i>Saline water</i>, <i>Irrigation</i>, <i>Ecology</i>); y la <b>verde</b>, con la botánica del género (<i>Botany</i>, <i>Passiflora</i>). La modularidad baja (0.215) advierte que las fronteras entre ellas son tenues. Los conteos de las 944 aristas, la densidad y los vecinos de cada término se reprodujeron fuera de la app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · las comunidades dependen de los parámetros</div>
+    <p>La partición en comunidades no es un hecho de los datos: cambia con la normalización, la resolución y el número de términos. Antes de nombrar las comunidades en un artículo, prueba dos o tres resoluciones (por ejemplo 0.8, 1 y 1.2) y quédate con los grupos que se mantienen. Si la red es muy densa, sube las <span class="ui">Coocurrencias mínimas por arista</span> a 2 o 3 para ver solo los vínculos repetidos. Y recuerda que, con fuerza de asociación, los términos más frecuentes quedan en la periferia del dibujo: coocurren con todo, pero con pesos bajos.</p>
+  </div>
+
+  <p>Debajo de la red interactiva están la <span class="ui">Red de coocurrencia de términos</span> lista para publicar (con su barra de edición y exportación, como todas las figuras) y tres tablas: nodos con sus métricas, comunidades con sus términos y aristas con su conteo y su peso. La tarjeta de exportación descarga la red en los formatos de los programas de análisis de redes (capítulo 13).</p>
+
+  <!-- 9.3 -->
+  <h2 id="s9-3"><span class="num">9.3</span>La ficha de un término</h2>
+  <p>Al hacer clic en un nodo, o al buscarlo, la red resalta sus aristas y aparece debajo una ficha con sus métricas, sus vecinos y los documentos donde aparece.</p>
+
+  <ol class="pasos">
+    <li>Escribe el término en <span class="ui">Buscar un término…</span> y elígelo de la lista, o haz clic en su nodo.</li>
+    <li>Lee la ficha debajo de la red. Cada vecino de la lista es un botón: al pulsarlo, la ficha pasa a ese término.</li>
+    <li>Pulsa <span class="ui">Quitar selección</span> o la tecla <kbd>Esc</kbd> para volver a la red completa.</li>
+  </ol>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.4.</b> Las métricas de un nodo.</caption>
+    <thead><tr><th style="width:20%">Métrica</th><th>Qué mide</th><th style="width:22%"><i>Salinity</i></th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Frecuencia</span></td><td>Documentos en que aparece el término.</td><td>58</td></tr>
+      <tr><td><span class="ui">Grado</span></td><td>Términos con los que coocurre.</td><td>45 de 49 posibles</td></tr>
+      <tr><td><span class="ui">Fuerza</span></td><td>Suma de los pesos de sus aristas.</td><td>0.2147</td></tr>
+      <tr><td><span class="ui">Intermediación</span></td><td>Fracción de los caminos más cortos entre otros dos términos que pasan por él (Brandes, 2001), de 0 a 1.</td><td>0.0066</td></tr>
+      <tr><td><span class="ui">Cercanía</span></td><td>Inverso de la distancia media a los demás términos (Freeman, 1979), de 0 a 1.</td><td>0.9245</td></tr>
+      <tr><td><span class="ui">PageRank</span></td><td>Importancia heredada de la de sus vecinos (Brin y Page, 1998); suma 1 en toda la red.</td><td>0.0242</td></tr>
+    </tbody>
+  </table>
+
+  <p>La intermediación y la cercanía cuentan pasos, no pesos: en una red tan densa como la del ejemplo casi todos los términos están a uno o dos pasos, así que la intermediación es pequeña y la cercanía alta para todos. Para comparar términos en redes densas, la fuerza y el PageRank discriminan mejor.</p>
+
+  <figure class="angosta">
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-nodo.png" alt="Red con el término Salinity seleccionado y su ficha con métricas, vecinos y documentos">
+      <span class="marca" style="left:17.6%;top:2.7%">1</span>
+      <span class="marca" style="left:41.3%;top:26.3%">2</span>
+      <span class="marca" style="left:78.8%;top:54.2%">3</span>
+      <span class="marca" style="left:38.7%;top:57.4%">4</span>
+      <span class="marca" style="left:38.8%;top:63.4%">5</span>
+      <span class="marca" style="left:14.5%;top:86%">6</span>
+      <span class="marca" style="left:29.6%;top:91.6%">7</span>
+    </div>
+    <figcaption><b>Figura 9.2.</b> La ficha del término <i>Salinity</i>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Búsqueda del término.</li>
+    <li><span class="n">2</span>El nodo elegido lleva un borde y sus aristas se resaltan.</li>
+    <li><span class="n">3</span><span class="ui">Quitar selección</span>.</li>
+    <li><span class="n">4</span>La comunidad, con el nombre de su término más frecuente.</li>
+    <li><span class="n">5</span>Las métricas del nodo (tabla 9.4).</li>
+    <li><span class="n">6</span>Los ocho vecinos con más coocurrencias; cada uno abre su ficha.</li>
+    <li><span class="n">7</span>Documentos donde aparece, los ocho más citados.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · la salinidad</div>
+    <p><i>Salinity</i> aparece en 58 documentos y coocurre con 45 de los otros 49 términos. Su vecino más fuerte es <i>Horticulture</i>, en 57 de sus 58 documentos: el catálogo asigna esa área a casi todo el conjunto. Los vecinos que dicen algo del tema vienen después: <i>Irrigation</i> (43), <i>Saline water</i> (39). Entre sus documentos más citados están un estudio de 2019 sobre las respuestas de dos especies de maracuyá y su híbrido a la salinidad (77 citas) y uno de 2020 sobre agua salina y fertilización potásica (61 citas). La ficha es un buen punto de partida para leer: lleva de un término a los trabajos más influyentes que lo usan.</p>
+  </div>
+
+  <!-- 9.4 -->
+  <h2 id="s9-4"><span class="num">9.4</span>Mapa temático</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · centralidad y densidad de Callon</div>
+    <p>El mapa temático (Cobo y colaboradores, 2011) parte de una red de coocurrencia más grande —250 palabras por omisión, con fuerza de asociación— y toma cada comunidad de Louvain como un <b>tema</b>. Cada tema se mide con dos números de Callon, Courtial y Laville (1991):</p>
+    <p class="formula-linea">centralidad = 10 × Σ pesos de las aristas que salen del tema &nbsp;&nbsp;·&nbsp;&nbsp; densidad = 100 × Σ pesos de las aristas internas / palabras del tema</p>
+    <p>La <b>centralidad</b> mide cuánto se relaciona el tema con los demás (su relevancia para el campo); la <b>densidad</b>, qué tan unidas están sus palabras (su grado de desarrollo). Los ejes del mapa pasan por las <b>medianas</b> de las dos medidas y lo dividen en cuatro cuadrantes.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.5.</b> Cómo leer los cuatro cuadrantes.</caption>
+    <thead><tr><th style="width:26%">Cuadrante</th><th style="width:26%">Posición</th><th>Lectura</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Temas motores</span></td><td>Arriba a la derecha: centralidad y densidad altas.</td><td>Desarrollados e importantes; mueven el campo.</td></tr>
+      <tr><td><span class="ui">Temas nicho</span></td><td>Arriba a la izquierda: densidad alta, centralidad baja.</td><td>Muy desarrollados pero aislados; especializados.</td></tr>
+      <tr><td><span class="ui">Temas emergentes o en declive</span></td><td>Abajo a la izquierda: las dos bajas.</td><td>Poco desarrollados y marginales; la evolución temática dice si nacen o se apagan.</td></tr>
+      <tr><td><span class="ui">Temas básicos</span></td><td>Abajo a la derecha: centralidad alta, densidad baja.</td><td>Transversales y generales; la base común del campo.</td></tr>
+    </tbody>
+  </table>
+
+  <p>El panel <span class="ui">Parámetros del mapa</span> tiene la selección de palabras (campo, frecuencia mínima 2, <span class="ui">Número de palabras</span> 250 y coocurrencias mínimas 1) y los parámetros de los temas: resolución 1, <span class="ui">Palabras mínimas por tema</span> 2 (los grupos más pequeños no se dibujan, aunque sus aristas cuentan para la centralidad de los demás) y <span class="ui">Palabras en la etiqueta</span> 3. Debajo del mapa, la tabla <span class="ui">Temas</span> trae todas las palabras, la frecuencia, la centralidad y la densidad de cada tema, con las dos medianas, y la tabla <span class="ui">Documentos de cada tema</span> asigna cada documento al tema con más palabras suyas.</p>
+
+  <table class="compacta">
+    <caption><b>Tabla 9.6.</b> Los nueve temas del ejemplo, de mayor a menor centralidad. Medianas: centralidad 76.99 y densidad 38.58.</caption>
+    <thead><tr><th style="width:18%">Cuadrante</th><th>Palabras principales</th><th style="width:10%">Palabras</th><th style="width:13%">Centralidad</th><th style="width:11%">Densidad</th></tr></thead>
+    <tbody>
+      <tr><td>Básico</td><td><i>Horticulture, Growth and nutrition in plants, Passion fruit</i></td><td>76</td><td>209.39</td><td>20.13</td></tr>
+      <tr><td>Motor</td><td><i>Food science, Titratable acid, Botanical Research and Applications</i></td><td>33</td><td>154.44</td><td>45.47</td></tr>
+      <tr><td>Motor</td><td><i>Plant Stress Responses and Tolerance, Biochemistry, Plant Micronutrient…</i></td><td>22</td><td>102.15</td><td>38.58</td></tr>
+      <tr><td>Motor</td><td><i>Medicinal Plant Extracts Effects, Plant and soil sciences, Inoculation</i></td><td>17</td><td>85.63</td><td>82.36</td></tr>
+      <tr><td>Básico</td><td><i>Botany, Passiflora, Plant tissue culture and regeneration</i></td><td>27</td><td>76.99</td><td>38.01</td></tr>
+      <tr><td>Nicho</td><td><i>Passion, Saline, Silicon Effects in Agriculture</i></td><td>18</td><td>74.46</td><td>45.90</td></tr>
+      <tr><td>Emergente o en declive</td><td><i>Nutrient, Nitrogen, Phosphorus</i></td><td>16</td><td>68.40</td><td>35.62</td></tr>
+      <tr><td>Nicho</td><td><i>Agricultural and Food Sciences, Production (economics), Agriculture</i></td><td>29</td><td>58.00</td><td>42.05</td></tr>
+      <tr><td>Emergente o en declive</td><td><i>Cultivar, Composting and Vermicomposting Techniques, Leaf Properties…</i></td><td>12</td><td>46.74</td><td>29.18</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla · un tema sobre el eje</div>
+    <p>Con un número impar de temas, la mediana es el valor de uno de ellos, y ese tema queda exactamente sobre un eje. La app lo pone del lado alto: un tema con centralidad igual o mayor que la mediana es central, y uno con densidad igual o mayor que la mediana es denso. En el ejemplo pasa dos veces: el tema de botánica y <i>Passiflora</i> está sobre el eje vertical (centralidad 76.99, la mediana) y cuenta como básico; el de estrés y micronutrientes está sobre el eje horizontal (densidad 38.58, la mediana) y cuenta como motor. Al comentar estos temas en un artículo, conviene decir que están en la frontera.</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · qué dice el mapa del maracuyá</div>
+    <p>Los 300 documentos quedan en 9 temas. El tema <b>básico</b> dominante es el general —horticultura, crecimiento y nutrición del maracuyá, 76 palabras—: está unido a todo, pero es poco cohesivo. Los <b>motores</b> son la calidad del fruto (ciencia de los alimentos, acidez titulable), la respuesta al estrés con los micronutrientes, y los extractos de plantas medicinales con la inoculación, el tema más denso de todos. En los <b>nichos</b> están el estrés salino con el silicio y la economía de la producción. Los <b>emergentes o en declive</b> son la nutrición con nitrógeno y fósforo, y los cultivares con el composteo: la evolución temática de la sección siguiente dice cuál de las dos cosas son. La centralidad y la densidad de los nueve temas, las medianas y los cuadrantes se recalcularon fuera de la app y coinciden.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-mapa.png" alt="Tarjetas de los cuadrantes y mapa temático con nueve temas en los cuatro cuadrantes">
+      <span class="marca" style="left:4.3%;top:9.2%">1</span>
+      <span class="marca" style="left:37.5%;top:9.2%">2</span>
+      <span class="marca" style="left:70.8%;top:9.2%">3</span>
+      <span class="marca" style="left:54.4%;top:42.2%">4</span>
+      <span class="marca" style="left:68.7%;top:52.8%">5</span>
+      <span class="marca" style="left:32.5%;top:65%">6</span>
+      <span class="marca" style="left:87%;top:84%">7</span>
+    </div>
+    <figcaption><b>Figura 9.3.</b> El mapa temático del ejemplo, con los parámetros por omisión.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Temas y palabras de la red.</li>
+    <li><span class="n">2</span>Documentos que quedan en algún tema.</li>
+    <li><span class="n">3</span>Una tarjeta por cuadrante, con las palabras del tema más frecuente.</li>
+    <li><span class="n">4</span>Subtítulo: el tamaño de la burbuja es la frecuencia del tema.</li>
+    <li><span class="n">5</span>El tema más denso: extractos de plantas medicinales.</li>
+    <li><span class="n">6</span>El eje vertical pasa por la mediana de la centralidad; el horizontal, por la de la densidad.</li>
+    <li><span class="n">7</span>El tema básico mayor: horticultura, nutrición y maracuyá.</li>
+  </ul>
+
+  <!-- 9.5 -->
+  <h2 id="s9-5"><span class="num">9.5</span>Evolución temática</h2>
+  <p>La evolución temática divide los documentos en periodos, calcula un mapa temático en cada uno con los mismos parámetros y une los temas de periodos consecutivos que comparten palabras. En el grupo <span class="ui">Periodos</span> del panel <span class="ui">Parámetros de la evolución</span> escribe hasta cuatro años de corte, de <span class="ui">Año de corte 1</span> a <span class="ui">Año de corte 4</span>: cada periodo termina en un año de corte y el último llega al año más reciente. Sin años de corte, la app usa el <b>año mediano</b>, así que los dos periodos tienen casi los mismos documentos.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-evolucion.png" alt="Aviso con los dos periodos y diagrama de bandas entre los temas de 1956–2017 y 2018–2026">
+      <span class="marca" style="left:3.25%;top:14.2%">1</span>
+      <span class="marca" style="left:57.6%;top:34.3%">2</span>
+      <span class="marca" style="left:13.8%;top:46.3%">3</span>
+      <span class="marca" style="left:77.5%;top:79%">4</span>
+      <span class="marca" style="left:77.5%;top:92.1%">5</span>
+    </div>
+    <figcaption><b>Figura 9.4.</b> La evolución temática del ejemplo, con el corte por omisión en el año mediano.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Los periodos, con sus documentos y sus temas.</li>
+    <li><span class="n">2</span>Subtítulo: el grosor es el índice de inclusión y el color, el cuadrante.</li>
+    <li><span class="n">3</span>Una columna por periodo; la altura de cada bloque es la frecuencia del tema.</li>
+    <li><span class="n">4</span>El tema básico del segundo periodo recibe bandas de casi todos los temas anteriores.</li>
+    <li><span class="n">5</span>La biología floral: motor antes de 2018, emergente o en declive después.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · el índice de inclusión</div>
+    <p>Dos temas de periodos consecutivos se unen cuando comparten al menos una palabra. El grosor de la banda es el <b>índice de inclusión</b> (Cobo y colaboradores, 2011):</p>
+    <p class="formula-linea">inclusión = palabras compartidas / palabras del tema más pequeño</p>
+    <p>Vale 1 cuando el tema pequeño está contenido por completo en el otro. Un tema que recibe bandas de varios temas anteriores es una <b>fusión</b>; uno que reparte sus palabras entre varios temas posteriores es una <b>división</b>; uno sin bandas nace o desaparece en ese periodo.</p>
+  </div>
+
+  <p>Al pasar el ratón sobre una banda aparecen su índice de inclusión y las palabras compartidas. Debajo del diagrama están el <span class="ui">Mapa temático de cada periodo</span> (un mapa pequeño por periodo, con la misma escala de burbujas para poder compararlos) y las tablas <span class="ui">Enlaces entre temas</span> y <span class="ui">Temas de cada periodo</span>. El control <span class="ui">Índice de inclusión mínimo</span> oculta las bandas débiles, útil cuando hay muchas.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · la biología floral se apaga y la nutrición se concentra</div>
+    <p>El año mediano del ejemplo es 2017: 151 documentos de 1956 a 2017 forman 6 temas y 149 de 2018 a 2026 forman 8, unidos por 31 bandas. La más gruesa (inclusión 0.75) une el tema <b>motor</b> de biología floral del primer periodo —botánica, polinización, polen, 20 palabras— con un tema <b>emergente o en declive</b> del segundo que conserva 6 de sus 8 palabras: el tema no nace, se apaga. La economía de la producción sigue como nicho en los dos periodos (inclusión 0.50). La nutrición, en cambio, se concentra: el tema <b>motor</b> del segundo periodo (<i>Nutrient, Seedling, Nitrogen</i>) reúne nitrógeno, fósforo y brotes del tema básico anterior y el término <i>Nutrient</i> del tema emergente anterior. Los documentos y palabras de cada periodo, la centralidad, la densidad y el cuadrante de los 14 temas y el índice de inclusión de las 31 bandas se reprodujeron fuera de la app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · periodos con sentido</div>
+    <p>El corte en el año mediano sirve para empezar, pero los periodos de un artículo deben responder a la historia del campo: un cambio de política, la aparición de una técnica, una década. Cuida también que cada periodo tenga suficientes documentos; con pocos, los temas salen de unas cuantas palabras y cambian mucho con cualquier parámetro. El índice de inclusión cuenta palabras, no apariciones: una banda gruesa entre dos temas pequeños puede venir de dos o tres palabras compartidas, que conviene revisar en la tabla de enlaces.</p>
+  </div>
+
+  <!-- 9.6 -->
+  <h2 id="s9-6"><span class="num">9.6</span>Análisis factorial</h2>
+  <p>El análisis factorial acomoda las palabras en un plano de modo que las palabras que aparecen en los mismos documentos queden cerca. Por omisión usa el <b>análisis de correspondencias múltiples</b> (ACM) de la tabla documentos × palabras, con cada palabra como una variable de dos categorías, presente o ausente; la otra opción, <span class="ui">Análisis de correspondencias</span>, trabaja con la tabla de presencias directamente. Después agrupa las palabras con <b>k-means</b> sobre las dos primeras dimensiones; con <span class="ui">Automático (silueta)</span> prueba de 2 a 8 grupos y se queda con el de mayor silueta media (Rousseeuw, 1987).</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-factorial.png" alt="Panel de parámetros del análisis, cinco tarjetas y mapa factorial de 50 palabras en dos grupos">
+      <span class="marca" style="left:11.6%;top:18%">1</span>
+      <span class="marca" style="left:18.4%;top:45.5%">2</span>
+      <span class="marca" style="left:21.5%;top:65.8%">3</span>
+      <span class="marca" style="left:53.9%;top:10.4%">4</span>
+      <span class="marca" style="left:53.9%;top:25.8%">5</span>
+      <span class="marca" style="left:71.5%;top:44.9%">6</span>
+      <span class="marca" style="left:71.3%;top:58.8%">7</span>
+      <span class="marca" style="left:57.5%;top:60.4%">8</span>
+    </div>
+    <figcaption><b>Figura 9.5.</b> El mapa factorial de las 50 palabras más frecuentes del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Método: correspondencias múltiples o simples.</li>
+    <li><span class="n">2</span>Número de grupos: por la silueta o de 2 a 8.</li>
+    <li><span class="n">3</span>Muestra el dendrograma de Ward debajo del mapa.</li>
+    <li><span class="n">4</span>Dimensión 1: inercia ajustada de Benzécri.</li>
+    <li><span class="n">5</span>El número de grupos que sugiere la silueta.</li>
+    <li><span class="n">6</span>Subtítulo: palabras y grupos.</li>
+    <li><span class="n">7</span>Leyenda de los grupos, con sus tres primeras palabras.</li>
+    <li><span class="n">8</span>Grupo 2: la biología floral, lejos del resto.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · por qué la inercia del ACM se ajusta</div>
+    <p>En el ACM, cada dimensión explica una parte de la <b>inercia</b> total, la variación de la tabla. Con muchas variables de dos categorías esos porcentajes salen siempre pequeños —en el ejemplo, 9.81 % la primera dimensión—, porque la tabla de presencias y ausencias infla la inercia con variación que no es asociación entre palabras. La corrección de Benzécri (1979) quita esa parte: solo cuentan los valores propios λ mayores que 1/<i>Q</i>, con <i>Q</i> el número de palabras, y cada uno se transforma así:</p>
+    <p class="formula-linea">λ<sub>ajustado</sub> = [ <i>Q</i> / (<i>Q</i> − 1) · (λ − 1/<i>Q</i>) ]²</p>
+    <p>Los porcentajes ajustados se calculan sobre la suma de los λ ajustados. Son los que conviene informar para el ACM (Greenacre, 2007); la tabla de valores propios trae los dos.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-valores.png" alt="Tabla de valores propios con porcentajes ajustados y tabla de silueta por número de grupos">
+      <span class="marca" style="left:18%;top:16.5%">1</span>
+      <span class="marca" style="left:62.6%;top:16.5%">2</span>
+      <span class="marca" style="left:50.1%;top:68.9%">3</span>
+      <span class="marca" style="left:65.1%;top:89.9%">4</span>
+    </div>
+    <figcaption><b>Figura 9.6.</b> Valores propios y silueta por número de grupos del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>La dimensión 1 explica 9.81 % de la inercia sin ajustar…</li>
+    <li><span class="n">2</span>… y 51.53 % con el ajuste de Benzécri; las dos primeras suman 73.3 %.</li>
+    <li><span class="n">3</span>Dos grupos tienen la silueta media más alta (0.623): es el k sugerido.</li>
+    <li><span class="n">4</span>La suma de cuadrados siempre baja al subir k; por sí sola no sirve para elegirlo.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · la biología floral aparte</div>
+    <p>Las 50 palabras aparecen en 299 de los 300 documentos. La primera dimensión (51.5 % ajustada) separa un grupo pequeño —polinización, polen, <i>Passifloraceae</i>, biología floral, extractos medicinales— del resto del vocabulario; la segunda (21.8 %) ordena ese resto: la fotosíntesis, la salinidad y el estrés arriba; el rendimiento, el peso seco y los fertilizantes abajo. La silueta sugiere dos grupos, de 6 y 44 palabras. Valores propios, porcentajes, coordenadas, grupos, siluetas y alturas de Ward se reprodujeron con otro programa estadístico.</p>
+  </div>
+
+  <p>Si marcas <span class="ui">Mostrar el dendrograma</span>, debajo del mapa aparece el agrupamiento jerárquico de Ward (1963) sobre las mismas coordenadas, con las hojas coloreadas por el grupo de k-means. La tabla <span class="ui">Coordenadas de las palabras</span> trae, para cada palabra, su frecuencia, su grupo, sus dos coordenadas, su contribución a cada dimensión y su calidad de representación en el plano (cos²).</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/conceptual-dendrograma.png" alt="Dendrograma de Ward de las 50 palabras con las hojas coloreadas por grupo de k-means">
+      <span class="marca" style="left:68.6%;top:14.2%">1</span>
+      <span class="marca" style="left:92.3%;top:31.6%">2</span>
+      <span class="marca" style="left:40%;top:38.5%">3</span>
+      <span class="marca" style="left:69.7%;top:97.2%">4</span>
+    </div>
+    <figcaption><b>Figura 9.7.</b> El dendrograma de las palabras del ejemplo.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>La figura para publicar: Ward sobre las coordenadas del mapa; el color es el grupo de k-means.</li>
+    <li><span class="n">2</span>La primera división separa cuatro palabras de la polinización (altura 8.61).</li>
+    <li><span class="n">3</span>Dos palabras del grupo 2 de k-means quedan en otra rama del árbol.</li>
+    <li><span class="n">4</span>Altura de Ward: cuánto crece la variación dentro de los grupos al unir dos ramas.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · k-means y Ward no tienen por qué coincidir</div>
+    <p>Los dos métodos agrupan las mismas coordenadas con criterios distintos: k-means busca la partición con menor suma de cuadrados para un k dado; Ward une paso a paso los grupos más parecidos y no puede deshacer una unión. En el ejemplo coinciden en lo esencial —la polinización queda aparte—, pero las dos palabras del grupo 2 más cercanas al centro del mapa (<i>Medicinal Plant Extracts Effects</i> y <i>Flowering Plant Growth and Cultivation</i>) se unen en el árbol a la rama de la botánica. Las palabras que los dos métodos ponen juntas forman un grupo sólido; las que cambian de grupo están en la frontera y conviene no darles mucho peso al interpretar. Recuerda además que el plano muestra solo dos dimensiones: dos palabras cercanas en el mapa pueden estar lejos en la tercera.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · para ir más lejos</div>
+    <p>El análisis factorial de SciMetricsPro es una vista exploratoria de las palabras, como en la literatura bibliométrica. Para un análisis multivariado completo —más dimensiones, variables suplementarias, otros métodos de agrupamiento y su validación—, la app lo indica en su aviso: exporta la tabla de coordenadas o el conjunto limpio y analízalo con las apps de análisis factorial y de agrupamientos de la misma familia.</p>
+  </div>
+
+  <p style="margin-top:0.12in">La estructura conceptual mira las palabras de los documentos. El capítulo 10 mira sus referencias: qué obras se citan juntas, qué documentos comparten bibliografía y cómo se encadenan las citas dentro del conjunto.</p>
+</section>
+
+</body>
+</html>

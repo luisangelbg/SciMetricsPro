@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · Manual de usuario · Preliminares e introducción</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  /* figuras y tablas de este capítulo */
+  .cap1-svg text { font-family: Jost, sans-serif; }
+  figure.chica .marco { width: 62%; margin: 0 auto; }
+  figure.chica figcaption { margin-left: 19%; margin-right: 19%; }
+  /* trece capítulos: el índice se compacta para caber en dos hojas */
+  .indice h1 { margin-top: 0.1in; }
+  .indice .indice-sub { margin-bottom: 0.16in; }
+  .indice .toc > li { margin-bottom: 0.03in; }
+  .indice .toc ul { margin-top: 0.02in; }
+  .indice .toc ul li { margin-bottom: 0.005in; line-height: 1.25; }
+  /* catorce partes con los apéndices A–F: títulos y renglones un poco más chicos */
+  .indice .toc .toc-cap { padding: 0.02in 0; }
+  .indice .toc .toc-cap a { font-size: 14pt; }
+  .indice .toc ul li { font-size: 9.6pt; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CRÉDITOS -->
+<section class="preliminares creditos" id="creditos">
+  <div class="cred-titulo">SciMetricsPro</div>
+  <div class="cred-sub">Manual de usuario · Análisis bibliométrico y cienciométrico</div>
+
+  <dl>
+    <dt>Autores</dt><dd><b>Luis Ángel Barrera-Guzmán</b><br><span class="small">ORCID 0000-0001-8057-2583</span><br><b>Gabriela Ramírez-Ojeda</b><br><span class="small">ORCID 0000-0001-9679-6514</span></dd>
+    <dt>Programa</dt><dd>SciMetricsPro, versión 1.0.0 (2026)</dd>
+    <dt>Manual</dt><dd>Primera edición en español, 2026. Describe la versión 1.0.0 del programa.</dd>
+    <dt>Licencia del programa</dt><dd>Licencia Pública General de GNU, versión 3 o posterior (GPL-3.0-or-later).</dd>
+    <dt>Derechos del manual</dt><dd>© 2026 Luis Ángel Barrera-Guzmán y Gabriela Ramírez-Ojeda. Todos los derechos reservados.</dd>
+    <dt>Idioma de la interfaz</dt><dd>Español (predeterminado) e inglés. En este manual los nombres de botones, pestañas y menús se escriben tal como aparecen en la interfaz en español, por ejemplo <span class="ui">Cargar datos de ejemplo</span>.</dd>
+  </dl>
+
+  <h4>Cómo citar el programa</h4>
+  <div class="cita">Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. (2026). <i>SciMetricsPro: análisis bibliométrico y cienciométrico</i> (versión 1.0.0) [Software].</div>
+  <h4>Cómo citar este manual</h4>
+  <div class="cita">Barrera-Guzmán, L. Á., y Ramírez-Ojeda, G. (2026). <i>SciMetricsPro. Manual de usuario</i> (1.ª ed.). Distribuido con SciMetricsPro, versión 1.0.0.</div>
+  <!-- al publicar: agregar el DOI de Zenodo y la dirección del código fuente a las dos citas -->
+  <p class="small">La página <span class="ui">Acerca de</span> de la app muestra la misma cita en texto y en formato BibTeX, con un botón para copiarla.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Privacidad</div>
+    <p>SciMetricsPro funciona por completo dentro de tu navegador. Los archivos que importas se leen y se analizan en tu computadora y <b>nunca se envían a ningún servidor</b>. Lo único que sale a internet son las búsquedas que tú decidas hacer en el catálogo bibliográfico abierto desde la pantalla Importar. Puedes trabajar con exportaciones de bases con suscripción, con decisiones de cribado de una revisión en curso o con datos de una tesis sin que salgan de tu equipo.</p>
+  </div>
+
+  <p class="small" style="margin-top:0.4in;color:#5d6472">Las ilustraciones, los diagramas y las capturas de pantalla de este manual son originales y se generaron con el propio programa o con código escrito para el manual. Los datos de ejemplo, descritos en la sección 1.7, son metadatos reales de 300 obras de un catálogo bibliográfico abierto, publicados con licencia de dominio público (CC0 1.0) y consultados el 16 de septiembre de 2026; no incluyen resúmenes.</p>
+</section>
+
+<!-- ====================================================================== ÍNDICE -->
+<section class="preliminares indice" id="indice" data-nueva-hoja>
+  <h1>Índice</h1>
+  <div class="indice-sub">Contenido general del manual</div>
+
+  <ol class="toc">
+    <li>
+      <div class="toc-cap"><span class="chip k0">P</span><a href="#como-leer">Cómo leer este manual</a><a class="pag" href="#como-leer"></a></div>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k0">1</span><a href="#cap-intro">Introducción a SciMetricsPro</a><a class="pag" href="#cap-intro"></a></div>
+      <ul>
+        <li><span class="n">1.1</span><a href="#s1-1"><span class="t">¿Qué es SciMetricsPro?</span></a></li>
+        <li><span class="n">1.2</span><a href="#s1-2"><span class="t">Preguntas que responde</span></a></li>
+        <li><span class="n">1.3</span><a href="#s1-3"><span class="t">Cinco ideas clave de la bibliometría</span></a></li>
+        <li><span class="n">1.4</span><a href="#s1-4"><span class="t">Bases de datos y formatos que acepta</span></a></li>
+        <li><span class="n">1.5</span><a href="#s1-5"><span class="t">Qué necesitas y cómo abrir el programa</span></a></li>
+        <li><span class="n">1.6</span><a href="#s1-6"><span class="t">Recorrido por la interfaz</span></a></li>
+        <li><span class="n">1.7</span><a href="#s1-7"><span class="t">Los datos de ejemplo</span></a></li>
+        <li><span class="n">1.8</span><a href="#s1-8"><span class="t">Flujo de trabajo recomendado</span></a></li>
+        <li><span class="n">1.9</span><a href="#s1-9"><span class="t">Cómo leer indicadores, leyes y redes</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k1">2</span><a href="#cap-inicio">Inicio, proyecto y ayudas</a><a class="pag" href="#cap-inicio"></a></div>
+      <ul>
+        <li><span class="n">2.1</span><a href="#s2-1"><span class="t">La portada y la ruta de trabajo</span></a></li>
+        <li><span class="n">2.2</span><a href="#s2-2"><span class="t">Idioma y tema</span></a></li>
+        <li><span class="n">2.3</span><a href="#s2-3"><span class="t">Guardar y abrir un proyecto</span></a></li>
+        <li><span class="n">2.4</span><a href="#s2-4"><span class="t">Autoguardado y recuperación de la sesión</span></a></li>
+        <li><span class="n">2.5</span><a href="#s2-5"><span class="t">El recorrido guiado y las ayudas</span></a></li>
+        <li><span class="n">2.6</span><a href="#s2-6"><span class="t">Acerca de: licencia y cómo citar</span></a></li>
+        <li><span class="n">2.7</span><a href="#s2-7"><span class="t">Teclado y accesibilidad</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k2">3</span><a href="#cap-importar">Importar datos</a><a class="pag" href="#cap-importar"></a></div>
+      <ul>
+        <li><span class="n">3.1</span><a href="#s3-1"><span class="t">De la idea a la cadena de búsqueda</span></a></li>
+        <li><span class="n">3.2</span><a href="#s3-2"><span class="t">Los conceptos y sus términos</span></a></li>
+        <li><span class="n">3.3</span><a href="#s3-3"><span class="t">Una cadena para cada buscador</span></a></li>
+        <li><span class="n">3.4</span><a href="#s3-4"><span class="t">Qué exportar de cada base</span></a></li>
+        <li><span class="n">3.5</span><a href="#s3-5"><span class="t">Cargar archivos y combinar bases</span></a></li>
+        <li><span class="n">3.6</span><a href="#s3-6"><span class="t">Campos disponibles, avisos y vista previa</span></a></li>
+        <li><span class="n">3.7</span><a href="#s3-7"><span class="t">Buscar en el catálogo bibliográfico abierto</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k3">4</span><a href="#cap-limpieza">Limpieza y filtros</a><a class="pag" href="#cap-limpieza"></a></div>
+      <ul>
+        <li><span class="n">4.1</span><a href="#s4-1"><span class="t">Por qué limpiar antes de analizar</span></a></li>
+        <li><span class="n">4.2</span><a href="#s4-2"><span class="t">El resumen y el campo de términos</span></a></li>
+        <li><span class="n">4.3</span><a href="#s4-3"><span class="t">Duplicados</span></a></li>
+        <li><span class="n">4.4</span><a href="#s4-4"><span class="t">Variantes de nombres de autor</span></a></li>
+        <li><span class="n">4.5</span><a href="#s4-5"><span class="t">Instituciones y países</span></a></li>
+        <li><span class="n">4.6</span><a href="#s4-6"><span class="t">Palabras clave: sinónimos y palabras vacías</span></a></li>
+        <li><span class="n">4.7</span><a href="#s4-7"><span class="t">Filtros</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k4">5</span><a href="#cap-panorama">Panorama general</a><a class="pag" href="#cap-panorama"></a></div>
+      <ul>
+        <li><span class="n">5.1</span><a href="#s5-1"><span class="t">Qué responde el panorama general</span></a></li>
+        <li><span class="n">5.2</span><a href="#s5-2"><span class="t">Las trece tarjetas</span></a></li>
+        <li><span class="n">5.3</span><a href="#s5-3"><span class="t">Producción científica anual</span></a></li>
+        <li><span class="n">5.4</span><a href="#s5-4"><span class="t">Citas promedio por año</span></a></li>
+        <li><span class="n">5.5</span><a href="#s5-5"><span class="t">Tipos de documento</span></a></li>
+        <li><span class="n">5.6</span><a href="#s5-6"><span class="t">Cuando hay filtros o faltan datos</span></a></li>
+        <li><span class="n">5.7</span><a href="#s5-7"><span class="t">Llevarse la figura y los datos</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k5">6</span><a href="#cap-fuentes">Fuentes</a><a class="pag" href="#cap-fuentes"></a></div>
+      <ul>
+        <li><span class="n">6.1</span><a href="#s6-1"><span class="t">La pantalla Fuentes y sus tarjetas</span></a></li>
+        <li><span class="n">6.2</span><a href="#s6-2"><span class="t">Las fuentes más productivas</span></a></li>
+        <li><span class="n">6.3</span><a href="#s6-3"><span class="t">La ley de Bradford</span></a></li>
+        <li><span class="n">6.4</span><a href="#s6-4"><span class="t">Impacto por fuente</span></a></li>
+        <li><span class="n">6.5</span><a href="#s6-5"><span class="t">Dinámica de producción</span></a></li>
+        <li><span class="n">6.6</span><a href="#s6-6"><span class="t">La tabla completa</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k6">7</span><a href="#cap-autores">Autores</a><a class="pag" href="#cap-autores"></a></div>
+      <ul>
+        <li><span class="n">7.1</span><a href="#s7-1"><span class="t">La pantalla Autores y sus tarjetas</span></a></li>
+        <li><span class="n">7.2</span><a href="#s7-2"><span class="t">Los autores más productivos</span></a></li>
+        <li><span class="n">7.3</span><a href="#s7-3"><span class="t">Producción en el tiempo</span></a></li>
+        <li><span class="n">7.4</span><a href="#s7-4"><span class="t">La ley de Lotka</span></a></li>
+        <li><span class="n">7.5</span><a href="#s7-5"><span class="t">Impacto por autor</span></a></li>
+        <li><span class="n">7.6</span><a href="#s7-6"><span class="t">Instituciones</span></a></li>
+        <li><span class="n">7.7</span><a href="#s7-7"><span class="t">Países y colaboración internacional</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k7">8</span><a href="#cap-documentos">Documentos</a><a class="pag" href="#cap-documentos"></a></div>
+      <ul>
+        <li><span class="n">8.1</span><a href="#s8-1"><span class="t">La pantalla Documentos y sus tarjetas</span></a></li>
+        <li><span class="n">8.2</span><a href="#s8-2"><span class="t">Documentos más citados</span></a></li>
+        <li><span class="n">8.3</span><a href="#s8-3"><span class="t">Citas locales</span></a></li>
+        <li><span class="n">8.4</span><a href="#s8-4"><span class="t">Referencias más citadas</span></a></li>
+        <li><span class="n">8.5</span><a href="#s8-5"><span class="t">Espectroscopía de años de referencia (RPYS)</span></a></li>
+        <li><span class="n">8.6</span><a href="#s8-6"><span class="t">Palabras</span></a></li>
+        <li><span class="n">8.7</span><a href="#s8-7"><span class="t">Crecimiento y temas en tendencia</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k8">9</span><a href="#cap-conceptual">Estructura conceptual</a><a class="pag" href="#cap-conceptual"></a></div>
+      <ul>
+        <li><span class="n">9.1</span><a href="#s9-1"><span class="t">La pantalla y sus cuatro pestañas</span></a></li>
+        <li><span class="n">9.2</span><a href="#s9-2"><span class="t">Red de coocurrencia</span></a></li>
+        <li><span class="n">9.3</span><a href="#s9-3"><span class="t">La ficha de un término</span></a></li>
+        <li><span class="n">9.4</span><a href="#s9-4"><span class="t">Mapa temático</span></a></li>
+        <li><span class="n">9.5</span><a href="#s9-5"><span class="t">Evolución temática</span></a></li>
+        <li><span class="n">9.6</span><a href="#s9-6"><span class="t">Análisis factorial</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k9">10</span><a href="#cap-intelectual">Estructura intelectual</a><a class="pag" href="#cap-intelectual"></a></div>
+      <ul>
+        <li><span class="n">10.1</span><a href="#s10-1"><span class="t">La pantalla y sus cuatro pestañas</span></a></li>
+        <li><span class="n">10.2</span><a href="#s10-2"><span class="t">Cocitación</span></a></li>
+        <li><span class="n">10.3</span><a href="#s10-3"><span class="t">Acoplamiento bibliográfico</span></a></li>
+        <li><span class="n">10.4</span><a href="#s10-4"><span class="t">Mapa de acoplamiento</span></a></li>
+        <li><span class="n">10.5</span><a href="#s10-5"><span class="t">Historiografía</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k10">11</span><a href="#cap-social">Estructura social</a><a class="pag" href="#cap-social"></a></div>
+      <ul>
+        <li><span class="n">11.1</span><a href="#s11-1"><span class="t">La pantalla y sus tres pestañas</span></a></li>
+        <li><span class="n">11.2</span><a href="#s11-2"><span class="t">Red de colaboración</span></a></li>
+        <li><span class="n">11.3</span><a href="#s11-3"><span class="t">Mapa mundial de colaboración</span></a></li>
+        <li><span class="n">11.4</span><a href="#s11-4"><span class="t">Cronología de la colaboración</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k11">12</span><a href="#cap-prisma">Revisión sistemática PRISMA 2020</a><a class="pag" href="#cap-prisma"></a></div>
+      <ul>
+        <li><span class="n">12.1</span><a href="#s12-1"><span class="t">La revisión sistemática en la app</span></a></li>
+        <li><span class="n">12.2</span><a href="#s12-2"><span class="t">Cribado</span></a></li>
+        <li><span class="n">12.3</span><a href="#s12-3"><span class="t">Diagrama de flujo</span></a></li>
+        <li><span class="n">12.4</span><a href="#s12-4"><span class="t">Motivos de exclusión</span></a></li>
+        <li><span class="n">12.5</span><a href="#s12-5"><span class="t">Analizar solo los incluidos</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k12">13</span><a href="#cap-exportar">Exportar y reporte</a><a class="pag" href="#cap-exportar"></a></div>
+      <ul>
+        <li><span class="n">13.1</span><a href="#s13-1"><span class="t">Figuras a tamaño de revista</span></a></li>
+        <li><span class="n">13.2</span><a href="#s13-2"><span class="t">Tablas, redes y datos</span></a></li>
+        <li><span class="n">13.3</span><a href="#s13-3"><span class="t">El paquete ZIP</span></a></li>
+        <li><span class="n">13.4</span><a href="#s13-4"><span class="t">El informe con el texto metodológico</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip kx">A</span><a href="#apendices">Apéndices</a><a class="pag" href="#apendices"></a></div>
+      <ul>
+        <li><span class="n">A</span><a href="#ap-a"><span class="t">Formatos de archivo</span></a></li>
+        <li><span class="n">B</span><a href="#ap-b"><span class="t">Indicadores, fórmulas y referencias</span></a></li>
+        <li><span class="n">C</span><a href="#ap-c"><span class="t">Glosario español–inglés</span></a></li>
+        <li><span class="n">D</span><a href="#ap-d"><span class="t">Solución de problemas</span></a></li>
+        <li><span class="n">E</span><a href="#ap-e"><span class="t">Referencias</span></a></li>
+        <li><span class="n">F</span><a href="#ap-f"><span class="t">Componentes de terceros</span></a></li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<!-- ====================================================================== CÓMO LEER ESTE MANUAL -->
+<section class="preliminares" id="como-leer" data-nueva-hoja style="--acento: var(--b0)">
+  <h2 style="margin-top:0.2in">Cómo leer este manual</h2>
+  <p class="lead">El manual sigue el mismo orden que la barra lateral de la app: primero los datos, luego los análisis descriptivos, las estructuras, la revisión sistemática y, al final, los resultados. Cada capítulo explica un módulo, empieza con la teoría que hace falta para leer sus resultados, describe cada pestaña y la recorre con los datos de ejemplo que vienen dentro del programa.</p>
+
+  <h3>Un color para cada capítulo</h3>
+  <p>El color del capítulo aparece en su apertura, en los números de sección, en los recuadros de teoría, en la pestaña del borde de la hoja y en el índice. Así sabes de un vistazo en qué parte de la app estás.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:0.7in">Capítulo</th><th style="width:30%">Nombre en la app</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip k1">2</span></td><td><span class="ui">Inicio</span></td><td>Portada, datos de ejemplo, proyecto, idioma, recorrido guiado y Acerca de</td></tr>
+      <tr><td><span class="chip k2">3</span></td><td><span class="ui">Importar</span></td><td>Palabras clave para la búsqueda, carga de archivos de varias bases y búsqueda en el catálogo abierto</td></tr>
+      <tr><td><span class="chip k3">4</span></td><td><span class="ui">Limpieza y filtros</span></td><td>Duplicados, variantes de autores, instituciones y países, sinónimos y filtros</td></tr>
+      <tr><td><span class="chip k4">5</span></td><td><span class="ui">Panorama general</span></td><td>Información principal de la colección, producción anual y citas</td></tr>
+      <tr><td><span class="chip k5">6</span></td><td><span class="ui">Fuentes</span></td><td>Revistas más productivas, ley de Bradford e impacto por fuente</td></tr>
+      <tr><td><span class="chip k6">7</span></td><td><span class="ui">Autores</span></td><td>Productividad, ley de Lotka, impacto, instituciones y países</td></tr>
+      <tr><td><span class="chip k7">8</span></td><td><span class="ui">Documentos</span></td><td>Documentos y referencias más citados, RPYS, palabras y temas en tendencia</td></tr>
+      <tr><td><span class="chip k8">9</span></td><td><span class="ui">Conceptual</span></td><td>Red de coocurrencia, mapa temático, evolución temática y análisis factorial</td></tr>
+      <tr><td><span class="chip k9">10</span></td><td><span class="ui">Intelectual</span></td><td>Cocitación, acoplamiento bibliográfico e historiografía</td></tr>
+      <tr><td><span class="chip k10">11</span></td><td><span class="ui">Social</span></td><td>Redes de colaboración entre autores, instituciones y países</td></tr>
+      <tr><td><span class="chip k11">12</span></td><td><span class="ui">PRISMA</span></td><td>Cribado de documentos y diagrama de flujo PRISMA 2020</td></tr>
+      <tr><td><span class="chip k12">13</span></td><td><span class="ui">Exportar y reporte</span></td><td>Figuras, tablas, redes, paquete ZIP e informe con texto metodológico</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tipos de recuadros</h3>
+  <div class="dos">
+    <div class="caja nota" style="margin:0"><div class="caja-t"><span class="ico">i</span>Nota</div><p>Aclaraciones y consejos prácticos que ahorran tiempo.</p></div>
+    <div class="caja importante" style="margin:0"><div class="caja-t"><span class="ico">!</span>Importante</div><p>Lo que puede cambiar tus conclusiones si se pasa por alto.</p></div>
+    <div class="caja teoria" style="margin:0"><div class="caja-t"><span class="ico">θ</span>Teoría en breve</div><p>La idea detrás de un indicador o de una red, con la fórmula justa.</p></div>
+    <div class="caja ejemplo" style="margin:0"><div class="caja-t"><span class="ico">▸</span>Ejemplo</div><p>Un caso completo con los datos de ejemplo incluidos en el programa.</p></div>
+  </div>
+  <div class="caja regla" style="margin-top:0.18in">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:40%"><b>Si</b> tus datos o tus resultados se ven así…</td><td><b>entonces</b> esto es lo que conviene hacer o leer.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">Son guías para decidir, no leyes: la pregunta de tu investigación y la cobertura de tu búsqueda siempre mandan.</p>
+  </div>
+  <div class="caja dato">
+    <div class="dato-cifra">300 dpi</div>
+    <div class="dato-txt"><div class="caja-t">Dato clave</div>Una cifra o hecho que conviene recordar; por ejemplo, la resolución con la que se descargan las figuras si no eliges otra.</div>
+  </div>
+
+  <h3>Convenciones de escritura</h3>
+  <table class="compacta">
+    <thead><tr><th style="width:38%">Así se escribe</th><th>Significa</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Cargar datos de ejemplo</span></td><td>Un botón, pestaña, casilla o menú de la app, con su texto tal como aparece en pantalla.</td></tr>
+      <tr><td><span class="ruta">Fuentes<span class="sep">›</span>Ley de Bradford</span></td><td>Una ruta: abre el primer elemento y luego el segundo.</td></tr>
+      <tr><td><code>data/example.js</code></td><td>Un nombre de archivo, carpeta, campo o valor que se escribe tal cual.</td></tr>
+      <tr><td>h, g, m, β, <i>Q</i></td><td>Indicadores y estadísticos; su significado se explica la primera vez que aparecen y sus fórmulas están en el apéndice B.</td></tr>
+      <tr><td>Bradford (1934)</td><td>Una referencia al artículo original del método; la referencia completa está en el apéndice B.</td></tr>
+      <tr><td>índice de citas multidisciplinario</td><td>Las bases de datos se nombran por su tipo. La pantalla Importar de la app muestra sus nombres para que reconozcas cada exportación.</td></tr>
+      <tr><td><span class="si">●</span> <span class="parcial">◐</span> <span class="no">—</span></td><td>Disponible · disponible en parte o con condiciones · no aplica.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====================================================================== CAPÍTULO 1 -->
+<section class="capitulo" id="cap-intro" data-pestana="1" data-orden="1" style="--acento: var(--b0)">
+  <div class="cap-apertura">
+    <div class="cap-num">1</div>
+    <div class="cap-etiqueta">Capítulo uno</div>
+    <h1>Introducción a SciMetricsPro</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Qué es el programa, qué preguntas responde, qué bases de datos y formatos acepta y cómo se recorre de principio a fin. Incluye las ideas básicas de la bibliometría que necesitas para leer indicadores, leyes y redes en el resto del manual.</p>
+    <div class="cap-franja"><span class="k1"></span><span class="k2"></span><span class="k3"></span><span class="k4"></span><span class="k5"></span><span class="k6"></span><span class="k7"></span><span class="k8"></span><span class="k9"></span><span class="k10"></span><span class="k11"></span><span class="k12"></span></div>
+    <ul class="cap-contenido">
+      <li><b>1.1</b>¿Qué es SciMetricsPro?</li>
+      <li><b>1.2</b>Preguntas que responde</li>
+      <li><b>1.3</b>Cinco ideas clave</li>
+      <li><b>1.4</b>Bases de datos y formatos</li>
+      <li><b>1.5</b>Qué necesitas y cómo abrirlo</li>
+      <li><b>1.6</b>Recorrido por la interfaz</li>
+      <li><b>1.7</b>Los datos de ejemplo</li>
+      <li><b>1.8</b>Flujo de trabajo recomendado</li>
+      <li><b>1.9</b>Indicadores, leyes y redes</li>
+    </ul>
+  </div>
+
+  <!-- 1.1 -->
+  <h2 id="s1-1"><span class="num">1.1</span>¿Qué es SciMetricsPro?</h2>
+  <p class="lead">SciMetricsPro es una plataforma de análisis bibliométrico y cienciométrico que lleva <b>de la búsqueda bibliográfica al artículo</b>: ayuda a escribir la cadena de búsqueda, reúne las exportaciones de varias bases de datos, quita duplicados y unifica nombres, calcula los indicadores de producción e impacto, dibuja las redes de palabras, citas y colaboración, registra el cribado de una revisión sistemática con su diagrama PRISMA 2020 y entrega figuras, tablas y un informe con el texto metodológico listo para adaptar.</p>
+  <p>Todo ocurre dentro del navegador de internet. No hay que instalar nada, no se necesita saber programar y los datos no salen de la computadora. Los mismos pasos sirven para una revisión de la literatura de una tesis, un artículo bibliométrico sobre un cultivo, un diagnóstico de la producción científica de un grupo de trabajo o un estado del arte para un proyecto: la ruta es la misma porque los registros bibliográficos tienen la misma estructura, vengan de donde vengan.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/app-inicio.png" alt="Portada de la aplicación SciMetricsPro">
+      <span class="marca" style="left:12.5%;top:15.2%">1</span>
+      <span class="marca" style="left:14.2%;top:36%">2</span>
+      <span class="marca" style="left:15.5%;top:85.9%">3</span>
+      <span class="marca" style="left:80.6%;top:8.8%">4</span>
+      <span class="marca" style="left:94.5%;top:8.8%">5</span>
+      <span class="marca" style="left:23.8%;top:46.4%">6</span>
+      <span class="marca" style="left:39.7%;top:46.4%">7</span>
+      <span class="marca" style="left:62.5%;top:55.8%">8</span>
+    </div>
+    <figcaption><b>Figura 1.1.</b> Portada de la app (<span class="ui">Inicio</span>), antes de cargar datos.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Barra lateral con los once módulos en cinco grupos: Datos, Descriptivos, Estructuras, Revisión sistemática y Resultados.</li>
+    <li><span class="n">2</span>El punto gris junto a un módulo indica que necesita datos importados; desaparece al cargarlos.</li>
+    <li><span class="n">3</span>Estado de los datos: cuántos registros y de cuántos archivos. Debajo, <span class="ui">Acerca de</span>.</li>
+    <li><span class="n">4</span><span class="ui">Abrir</span> y <span class="ui">Guardar</span> un proyecto completo (capítulo 2).</li>
+    <li><span class="n">5</span>Idioma de la interfaz (<span class="ui">ES</span> · <span class="ui">EN</span>) y cambio entre modo claro y oscuro.</li>
+    <li><span class="n">6</span><span class="ui">Importar mis datos</span> lleva a la pantalla Importar.</li>
+    <li><span class="n">7</span><span class="ui">Cargar datos de ejemplo</span> carga las 300 obras del ejemplo y abre el Panorama general.</li>
+    <li><span class="n">8</span><span class="ui">Hacer el recorrido guiado</span>: siete pasos por las partes de la app.</li>
+  </ul>
+
+  <div class="dos">
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">0</div>
+      <div class="dato-txt"><div class="caja-t">Instalaciones</div>Se abre con doble clic en <code style="background:#14213d;color:#fff">index.html</code>. No requiere permisos de administrador ni conexión a internet.</div>
+    </div>
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">11</div>
+      <div class="dato-txt"><div class="caja-t">Módulos</div>De la cadena de búsqueda al informe, pasando por limpieza, indicadores, redes y revisión sistemática.</div>
+    </div>
+  </div>
+
+  <h3>Qué hace, en una tabla</h3>
+  <table>
+    <thead><tr><th style="width:22%">Etapa</th><th>Lo que obtienes</th><th class="c" style="width:12%">Capítulo</th></tr></thead>
+    <tbody>
+      <tr><td><b>Búsqueda</b></td><td>A partir de un título tentativo o una idea, los conceptos con sus términos en inglés y la cadena de búsqueda escrita con la sintaxis de cada buscador, lista para copiar y pegar.</td><td class="c"><span class="chip k2">3</span></td></tr>
+      <tr><td><b>Importación</b></td><td>Lectura de varias exportaciones a la vez, de bases distintas y en formatos distintos (CSV, texto etiquetado, RIS, BibTeX y hojas de cálculo); búsqueda directa en un catálogo bibliográfico abierto; tabla de campos disponibles y avisos de lo que falta.</td><td class="c"><span class="chip k2">3</span></td></tr>
+      <tr><td><b>Limpieza</b></td><td>Duplicados entre bases unidos con el campo más completo de cada uno, variantes de autores, instituciones y países, sinónimos y palabras vacías, filtros por año, tipo, idioma, fuente, área y citas.</td><td class="c"><span class="chip k3">4</span></td></tr>
+      <tr><td><b>Descripción</b></td><td>Información principal de la colección, producción anual, citas por año, fuentes y zonas de Bradford, autores y ley de Lotka, índices h, g y m, instituciones, países, documentos y referencias más citados, citas locales, RPYS, palabras y temas en tendencia.</td><td class="c"><span class="chip k4">5</span> <span class="chip k5">6</span> <span class="chip k6">7</span> <span class="chip k7">8</span></td></tr>
+      <tr><td><b>Estructuras</b></td><td>Red de coocurrencia de palabras, mapa y evolución temática, análisis factorial, cocitación, acoplamiento bibliográfico, historiografía y redes y mapa mundial de colaboración.</td><td class="c"><span class="chip k8">9</span> <span class="chip k9">10</span> <span class="chip k10">11</span></td></tr>
+      <tr><td><b>Revisión sistemática</b></td><td>Cribado documento por documento con atajos de teclado, motivos de exclusión editables y diagrama de flujo PRISMA 2020; los análisis pueden usar solo los documentos incluidos.</td><td class="c"><span class="chip k11">12</span></td></tr>
+      <tr><td><b>Publicación</b></td><td>Figuras editables a 8.5 o 17 cm y 300, 600 o 1200 dpi, en PNG, TIFF, SVG o PDF; tablas en hoja de cálculo; redes para otros programas; paquete ZIP e informe en documento de texto con la metodología redactada con tus datos.</td><td class="c"><span class="chip k12">13</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>¿Para quién es?</h3>
+  <p>Para quien necesita conocer a fondo la literatura de un tema y mostrarlo con números: estudiantes de posgrado que preparan el marco teórico o el estado del arte de su tesis, investigadores que escriben un artículo bibliométrico o una revisión sistemática, grupos que quieren saber dónde y con quién publican, bibliotecarios que apoyan evaluaciones y docentes de metodología de la investigación. Cada indicador y cada figura tiene un botón de ayuda con su definición, su fórmula, cómo interpretarlo y la referencia original, lo que convierte a la app también en una herramienta de enseñanza.</p>
+
+  <!-- 1.2 -->
+  <h2 id="s1-2"><span class="num">1.2</span>Preguntas que responde</h2>
+  <p>Un buen análisis empieza con una pregunta. La tabla siguiente traduce las preguntas más frecuentes de un estudio bibliométrico al análisis que las responde y al capítulo donde se explica.</p>
+  <table>
+    <caption><b>Tabla 1.1.</b> De la pregunta al análisis.</caption>
+    <thead><tr><th style="width:36%">Pregunta</th><th>Análisis que la responde</th><th class="c" style="width:11%">Capítulo</th></tr></thead>
+    <tbody>
+      <tr><td>¿Qué palabras escribo en cada buscador para encontrar lo que busco?</td><td>Conceptos del título tentativo con sus términos en inglés y cadena de búsqueda con la sintaxis de cada buscador.</td><td class="c"><span class="chip k2">3</span></td></tr>
+      <tr><td>Tengo resultados de tres bases. ¿Cuántos documentos distintos son?</td><td>Duplicados por DOI y por títulos muy parecidos, con el mismo año y un primer autor compatible; conjunto unido y limpio.</td><td class="c"><span class="chip k3">4</span></td></tr>
+      <tr><td>¿Crece la investigación sobre mi tema? ¿Desde cuándo?</td><td>Producción científica anual, tasa de crecimiento anual compuesta y citas promedio por año.</td><td class="c"><span class="chip k4">5</span></td></tr>
+      <tr><td>¿En qué revistas conviene buscar y publicar?</td><td>Fuentes más productivas, núcleo de Bradford e impacto de cada fuente (h, g, m y citas).</td><td class="c"><span class="chip k5">6</span></td></tr>
+      <tr><td>¿Quiénes son los autores de referencia? ¿De qué países e instituciones?</td><td>Autores más productivos y más citados, ley de Lotka, instituciones, países y mapa de producción.</td><td class="c"><span class="chip k6">7</span></td></tr>
+      <tr><td>¿Cuáles son las obras clásicas que todos citan?</td><td>Documentos más citados, citas locales dentro del conjunto, referencias más citadas y picos de la RPYS.</td><td class="c"><span class="chip k7">8</span></td></tr>
+      <tr><td>¿De qué temas se habla y cuáles están creciendo?</td><td>Palabras más frecuentes, temas en tendencia, red de coocurrencia, mapa temático y evolución temática.</td><td class="c"><span class="chip k7">8</span> <span class="chip k8">9</span></td></tr>
+      <tr><td>¿Qué escuelas de pensamiento hay y cómo se conectan?</td><td>Cocitación de referencias, autores y fuentes; acoplamiento bibliográfico e historiografía de citas.</td><td class="c"><span class="chip k9">10</span></td></tr>
+      <tr><td>¿Quién colabora con quién? ¿Qué tan internacional es el tema?</td><td>Redes de coautoría entre autores, instituciones y países, mapa mundial de colaboración y cronología.</td><td class="c"><span class="chip k10">11</span></td></tr>
+      <tr><td>¿Cómo documento la selección de estudios de mi revisión?</td><td>Cribado con motivos de exclusión y diagrama de flujo PRISMA 2020.</td><td class="c"><span class="chip k11">12</span></td></tr>
+      <tr><td>¿Cómo presento todo esto en el artículo?</td><td>Figuras a tamaño de revista, tablas, paquete ZIP e informe con el texto metodológico.</td><td class="c"><span class="chip k12">13</span></td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1.3 -->
+  <h2 id="s1-3"><span class="num">1.3</span>Cinco ideas clave de la bibliometría</h2>
+  <p>Toda la app descansa en cinco ideas. Si las tienes claras, cada capítulo se explica solo.</p>
+
+  <figure>
+    <svg class="cap1-svg" viewBox="0 0 700 282" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Los campos de un registro bibliográfico y las unidades de análisis que alimentan">
+      <!-- registro -->
+      <rect x="18" y="14" width="234" height="252" rx="8" fill="#f6f8fc" stroke="#14213d" stroke-width="1.4"/>
+      <rect x="18" y="14" width="234" height="30" rx="8" fill="#14213d"/>
+      <rect x="18" y="34" width="234" height="10" fill="#14213d"/>
+      <text x="135" y="34" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Un registro bibliográfico</text>
+      <g font-size="10.5" fill="#22252c">
+        <text x="34" y="64">Título</text>
+        <text x="34" y="87">Autores y afiliaciones</text>
+        <text x="34" y="110">Año</text>
+        <text x="34" y="133">Fuente (revista, libro, congreso)</text>
+        <text x="34" y="156">Palabras clave</text>
+        <text x="34" y="179">Referencias citadas</text>
+        <text x="34" y="202">Número de citas</text>
+        <text x="34" y="225">DOI</text>
+      </g>
+      <g fill="#14213d"><circle cx="244" cy="60" r="3"/><circle cx="244" cy="83" r="3"/><circle cx="244" cy="106" r="3"/><circle cx="244" cy="129" r="3"/><circle cx="244" cy="152" r="3"/><circle cx="244" cy="175" r="3"/><circle cx="244" cy="198" r="3"/></g>
+      <text x="34" y="252" font-size="9" fill="#5d6472">El DOI y el título unen duplicados (capítulo 4).</text>
+      <!-- enlaces -->
+      <g fill="none" stroke-width="1.5" opacity="0.85">
+        <path d="M247 60 C 320 60, 330 48, 396 48" stroke="#8a5a2b"/>
+        <path d="M247 106 C 320 106, 330 52, 396 52" stroke="#8a5a2b"/>
+        <path d="M247 198 C 320 198, 330 56, 396 56" stroke="#8a5a2b"/>
+        <path d="M247 129 C 320 129, 330 90, 396 90" stroke="#d9701f"/>
+        <path d="M247 83 C 320 83, 330 128, 396 128" stroke="#b4234a"/>
+        <path d="M247 83 C 320 83, 330 166, 396 166" stroke="#7e3fb0"/>
+        <path d="M247 152 C 320 152, 330 204, 396 204" stroke="#2b8fb3"/>
+        <path d="M247 60 C 300 60, 340 196, 396 198" stroke="#2b8fb3" stroke-dasharray="4 3"/>
+        <path d="M247 175 C 320 175, 330 242, 396 242" stroke="#4f46a5"/>
+      </g>
+      <!-- unidades -->
+      <g font-size="11" font-weight="600" fill="#fff" text-anchor="middle">
+        <rect x="398" y="37" width="160" height="30" rx="5" fill="#8a5a2b"/><text x="478" y="56">Documentos</text>
+        <rect x="398" y="75" width="160" height="30" rx="5" fill="#d9701f"/><text x="478" y="94">Fuentes</text>
+        <rect x="398" y="113" width="160" height="30" rx="5" fill="#b4234a"/><text x="478" y="132">Autores</text>
+        <rect x="398" y="151" width="160" height="30" rx="5" fill="#7e3fb0"/><text x="478" y="170">Instituciones y países</text>
+        <rect x="398" y="189" width="160" height="30" rx="5" fill="#2b8fb3"/><text x="478" y="208">Palabras</text>
+        <rect x="398" y="227" width="160" height="30" rx="5" fill="#4f46a5"/><text x="478" y="246">Referencias</text>
+      </g>
+      <g font-size="9.5" fill="#5d6472">
+        <text x="568" y="56">capítulos 5 y 8</text>
+        <text x="568" y="94">capítulo 6</text>
+        <text x="568" y="132">capítulos 7 y 11</text>
+        <text x="568" y="170">capítulos 7 y 11</text>
+        <text x="568" y="208">capítulos 8 y 9</text>
+        <text x="568" y="246">capítulos 8 y 10</text>
+      </g>
+      <text x="327" y="277" font-size="9" fill="#2b8fb3" text-anchor="middle">- - -  pares de palabras del título, si faltan palabras clave</text>
+    </svg>
+    <figcaption><b>Figura 1.2.</b> Un registro bibliográfico y las unidades de análisis que salen de sus campos. Cada módulo cuenta, relaciona o mide una o varias de estas unidades; si un campo falta en la exportación, los análisis que dependen de él no se pueden hacer (tabla 1.3).</figcaption>
+  </figure>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">1</span>El registro bibliográfico es el dato</div>
+    <p>Cada documento encontrado en una base de datos llega como un <b>registro</b>: título, autores con sus afiliaciones, año, fuente, palabras clave, resumen, referencias citadas, número de citas y DOI, entre otros campos. SciMetricsPro lleva los registros de todas las bases a un mismo modelo, así que un artículo exportado de un índice de citas y otro exportado de un catálogo abierto se analizan juntos. Lo que no está en el registro no se puede analizar: por eso la pantalla Importar muestra, archivo por archivo, qué porcentaje de registros trae cada campo.</p>
+  </div>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">2</span>Unidades de análisis y formas de contar</div>
+    <p>De los registros salen varias <b>unidades</b>: documentos, fuentes, autores, instituciones, países, palabras y referencias (figura 1.2). Cada una se puede contar de dos maneras. En el <b>conteo completo</b>, un artículo con cuatro autores suma un documento a cada uno; en el <b>conteo fraccionado</b>, suma un cuarto a cada uno, y la suma de todos los autores vuelve a dar el número de documentos. El primero mide participación; el segundo, contribución. La app indica cuál usa cada tabla y, donde tiene sentido, te deja elegir.</p>
+  </div>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">3</span>Producción, impacto y tiempo</div>
+    <p>La <b>producción</b> cuenta documentos; el <b>impacto</b> cuenta las citas que esos documentos recibieron. Las citas dependen de la base que las cuenta, de la fecha de la exportación y de la edad del documento: un artículo de 2010 lleva dieciséis años acumulando citas y uno de 2024, apenas dos. Por eso la app ofrece citas por año citable, citas normalizadas por el promedio de su año y un <b>año de referencia</b> común para todos los cálculos que dependen del tiempo. Índices como el h (Hirsch, 2005) resumen producción e impacto en una sola cifra: una fuente o un autor tiene índice h si h de sus documentos tienen al menos h citas cada uno.</p>
+  </div>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">4</span>Las leyes clásicas: concentración y dispersión</div>
+    <p>La literatura científica está muy concentrada. La <b>ley de Bradford</b> (1934) dice que, al ordenar las fuentes de la más a la menos productiva y partir los documentos en tres tercios, el primer tercio sale de un núcleo pequeño de fuentes y cada tercio siguiente necesita multiplicar el número de fuentes por un factor casi constante. La <b>ley de Lotka</b> (1926) describe lo mismo para las personas: la proporción de autores con <i>x</i> documentos cae como 1/<i>x</i><sup>β</sup>, con β cercano a 2, así que la mayoría publica una sola vez y muy pocos publican mucho. Las dos leyes ayudan a decidir dónde buscar y a reconocer a los autores centrales.</p>
+  </div>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">5</span>Relaciones que forman estructuras</div>
+    <p>Más allá de contar, la bibliometría relaciona. Dos <b>palabras</b> se relacionan si aparecen en el mismo documento (coocurrencia; Callon et al., 1991): con ellas se ve la <b>estructura conceptual</b>, es decir, de qué temas se habla. Dos <b>referencias</b> se relacionan si un mismo documento las cita juntas (cocitación; Small, 1973), y dos <b>documentos</b> se relacionan si citan obras en común (acoplamiento bibliográfico; Kessler, 1963): con ellas se ve la <b>estructura intelectual</b>, las bases sobre las que se construye un campo. Dos <b>autores</b>, instituciones o países se relacionan si firman juntos: con ellos se ve la <b>estructura social</b>. La figura 1.3 resume las tres.</p>
+  </div>
+
+  <figure>
+    <svg class="cap1-svg" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coocurrencia de palabras, cocitación y acoplamiento de documentos, y coautoría">
+      <defs><marker id="f13" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#5d6472"/></marker></defs>
+      <!-- panel 1: coocurrencia -->
+      <text x="115" y="18" font-size="11.5" font-weight="600" fill="#2b8fb3" text-anchor="middle">Coocurrencia</text>
+      <text x="115" y="32" font-size="9.5" fill="#5d6472" text-anchor="middle">estructura conceptual</text>
+      <rect x="20" y="48" width="92" height="104" rx="5" fill="#fff" stroke="#9aa5b8"/>
+      <text x="30" y="66" font-size="9" fill="#5d6472">Documento 1</text>
+      <g font-size="9.5" fill="#22252c"><text x="30" y="88">nitrógeno</text><text x="30" y="108">riego</text><text x="30" y="128">rendimiento</text></g>
+      <g stroke="#2b8fb3" stroke-width="2.2" opacity="0.8"><line x1="160" y1="70" x2="200" y2="138"/><line x1="160" y1="70" x2="126" y2="138"/><line x1="126" y1="138" x2="200" y2="138"/></g>
+      <g fill="#2b8fb3"><circle cx="160" cy="70" r="9"/><circle cx="126" cy="138" r="7"/><circle cx="200" cy="138" r="11"/></g>
+      <g font-size="9" fill="#22252c" text-anchor="middle"><text x="160" y="55">nitrógeno</text><text x="126" y="160">riego</text><text x="200" y="164">rendimiento</text></g>
+      <text x="115" y="196" font-size="9.5" fill="#22252c" text-anchor="middle">Dos palabras se unen si aparecen</text>
+      <text x="115" y="209" font-size="9.5" fill="#22252c" text-anchor="middle">en el mismo documento; el grosor</text>
+      <text x="115" y="222" font-size="9.5" fill="#22252c" text-anchor="middle">crece con los documentos que comparten.</text>
+      <line x1="233" y1="14" x2="233" y2="236" stroke="#d7dde6"/>
+      <!-- panel 2: cocitación y acoplamiento -->
+      <text x="350" y="18" font-size="11.5" font-weight="600" fill="#4f46a5" text-anchor="middle">Cocitación y acoplamiento</text>
+      <text x="350" y="32" font-size="9.5" fill="#5d6472" text-anchor="middle">estructura intelectual</text>
+      <g font-size="10" font-weight="600" fill="#fff" text-anchor="middle">
+        <rect x="282" y="58" width="44" height="26" rx="4" fill="#8a5a2b"/><text x="304" y="75">A</text>
+        <rect x="374" y="58" width="44" height="26" rx="4" fill="#8a5a2b"/><text x="396" y="75">B</text>
+        <rect x="252" y="140" width="40" height="24" rx="4" fill="#4f46a5"/><text x="272" y="156">R1</text>
+        <rect x="330" y="140" width="40" height="24" rx="4" fill="#4f46a5"/><text x="350" y="156">R2</text>
+        <rect x="408" y="140" width="40" height="24" rx="4" fill="#4f46a5"/><text x="428" y="156">R3</text>
+      </g>
+      <g stroke="#5d6472" stroke-width="1.3" fill="none" marker-end="url(#f13)">
+        <line x1="298" y1="84" x2="276" y2="137"/><line x1="312" y1="84" x2="344" y2="137"/>
+        <line x1="388" y1="84" x2="356" y2="137"/><line x1="404" y1="84" x2="424" y2="137"/>
+      </g>
+      <path d="M329 71 L371 71" fill="none" stroke="#8a5a2b" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="350" y="62" font-size="8.5" fill="#8a5a2b" text-anchor="middle">acopladas</text>
+      <path d="M272 166 C 290 190, 332 190, 350 166" fill="none" stroke="#4f46a5" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="311" y="198" font-size="8.5" fill="#4f46a5" text-anchor="middle">cocitadas por A</text>
+      <text x="350" y="216" font-size="9.5" fill="#22252c" text-anchor="middle">A y B citan a R2: están acopladas.</text>
+      <text x="350" y="229" font-size="9.5" fill="#22252c" text-anchor="middle">A cita a R1 y a R2: R1 y R2 están cocitadas.</text>
+      <line x1="467" y1="14" x2="467" y2="236" stroke="#d7dde6"/>
+      <!-- panel 3: coautoría -->
+      <text x="585" y="18" font-size="11.5" font-weight="600" fill="#7e3fb0" text-anchor="middle">Coautoría</text>
+      <text x="585" y="32" font-size="9.5" fill="#5d6472" text-anchor="middle">estructura social</text>
+      <rect x="484" y="48" width="92" height="104" rx="5" fill="#fff" stroke="#9aa5b8"/>
+      <text x="494" y="66" font-size="9" fill="#5d6472">Documento 2</text>
+      <g font-size="9.5" fill="#22252c"><text x="494" y="88">Autora 1 · MX</text><text x="494" y="108">Autor 2 · MX</text><text x="494" y="128">Autora 3 · BR</text></g>
+      <g stroke="#7e3fb0" stroke-width="2" opacity="0.8"><line x1="632" y1="68" x2="604" y2="118"/><line x1="632" y1="68" x2="664" y2="118"/><line x1="604" y1="118" x2="664" y2="118"/></g>
+      <g fill="#7e3fb0"><circle cx="632" cy="68" r="8"/><circle cx="604" cy="118" r="8"/><circle cx="664" cy="118" r="8"/></g>
+      <g font-size="8.5" fill="#22252c" text-anchor="middle"><text x="632" y="53">1</text><text x="604" y="138">2</text><text x="664" y="138">3</text></g>
+      <path d="M612 162 L656 162" stroke="#7e3fb0" stroke-width="3"/>
+      <g font-size="9" font-weight="600" fill="#7e3fb0" text-anchor="middle"><text x="598" y="166">MX</text><text x="670" y="166">BR</text></g>
+      <text x="585" y="196" font-size="9.5" fill="#22252c" text-anchor="middle">Quienes firman juntos se unen;</text>
+      <text x="585" y="209" font-size="9.5" fill="#22252c" text-anchor="middle">con afiliaciones, también sus</text>
+      <text x="585" y="222" font-size="9.5" fill="#22252c" text-anchor="middle">instituciones y sus países.</text>
+    </svg>
+    <figcaption><b>Figura 1.3.</b> Tres formas de relacionar los registros y la estructura que revela cada una. Las redes de los capítulos 9, 10 y 11 se construyen repitiendo estas uniones en todos los documentos del conjunto.</figcaption>
+  </figure>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · los números dependen de la búsqueda</div>
+    <p>Un estudio bibliométrico describe <b>el conjunto de documentos que encontraste</b>, no toda la ciencia sobre el tema. La cadena de búsqueda, las bases consultadas, su cobertura de revistas e idiomas, la fecha de la exportación y las decisiones de limpieza cambian los resultados. Anota siempre la cadena, la base y la fecha de cada exportación: el informe del capítulo 13 las pide para redactar la metodología, y sin ellas otra persona no puede repetir tu estudio. Las citas miden atención recibida, no calidad; úsalas para describir, no para juzgar trabajos.</p>
+  </div>
+
+  <!-- 1.4 -->
+  <h2 id="s1-4"><span class="num">1.4</span>Bases de datos y formatos que acepta</h2>
+  <p>SciMetricsPro reconoce el formato de cada archivo de texto por su contenido, no por su extensión (las hojas de cálculo, por su extensión), y lo lleva al modelo común. Puedes cargar varios archivos a la vez aunque vengan de bases distintas: los registros repetidos se unen en Limpieza y filtros. La tabla 1.2 resume qué acepta; el capítulo 3 explica qué opciones marcar al exportar de cada base y el apéndice A describe cada formato.</p>
+  <table>
+    <caption><b>Tabla 1.2.</b> Tipos de bases de datos y formatos que lee la app.</caption>
+    <thead><tr><th style="width:24%">Tipo de base</th><th style="width:34%">Formatos</th><th>Qué suele traer</th></tr></thead>
+    <tbody>
+      <tr><td><b>Índices de citas multidisciplinarios</b></td><td>CSV con todos los campos y referencias; texto etiquetado de dos letras o delimitado por tabuladores con el registro completo y las referencias citadas; RIS; BibTeX.</td><td>Resúmenes, afiliaciones, palabras clave de autor y de índice, referencias citadas y número de citas.</td></tr>
+      <tr><td><b>Índice biomédico público</b></td><td>Texto etiquetado de cuatro caracteres (<code>.txt</code> o <code>.nbib</code>). Su CSV resumido trae solo campos básicos.</td><td>Resúmenes, afiliaciones, palabras clave de autor y descriptores del índice; no trae referencias citadas ni número de citas.</td></tr>
+      <tr><td><b>Catálogo bibliográfico abierto</b></td><td>Búsqueda desde la pestaña correspondiente de Importar; no hace falta exportar archivos.</td><td>Afiliaciones y países, palabras de índice, número de citas y referencias como identificadores del catálogo.</td></tr>
+      <tr><td><b>Otros buscadores y gestores de referencias</b></td><td>RIS o BibTeX de cualquier origen; tablas CSV, delimitadas por tabuladores o en hoja de cálculo (<code>.xlsx</code>, <code>.xls</code>, <code>.ods</code>) con encabezados reconocibles (título, autores, año, DOI…).</td><td>Depende del origen; la app indica qué campos encontró.</td></tr>
+      <tr><td><b>Proyecto de SciMetricsPro</b></td><td>Archivo <code>.smp.json</code> guardado con el botón <span class="ui">Guardar</span>.</td><td>Todo el trabajo: registros, limpieza, decisiones, parámetros y ajustes de figuras.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Cada análisis necesita ciertos campos. La tabla 1.3 dice qué se pierde cuando falta uno; la pantalla Importar avisa de lo mismo en cuanto lees el archivo, antes de que avances.</p>
+  <table>
+    <caption><b>Tabla 1.3.</b> Qué análisis dependen de cada campo.</caption>
+    <thead><tr><th style="width:22%">Si falta…</th><th>no podrás hacer, o harás con menos información…</th><th class="c" style="width:16%">Capítulos</th></tr></thead>
+    <tbody>
+      <tr><td><b>Referencias citadas</b></td><td>Citas locales, referencias más citadas, RPYS, cocitación, acoplamiento bibliográfico, mapa de acoplamiento e historiografía.</td><td class="c"><span class="chip k7">8</span> <span class="chip k9">10</span></td></tr>
+      <tr><td><b>Palabras clave</b></td><td>La estructura conceptual tendrá que usar pares de palabras de los títulos o de los resúmenes.</td><td class="c"><span class="chip k7">8</span> <span class="chip k8">9</span></td></tr>
+      <tr><td><b>Afiliaciones</b></td><td>Instituciones, países, mapa de producción y colaboración entre instituciones y países.</td><td class="c"><span class="chip k6">7</span> <span class="chip k10">11</span></td></tr>
+      <tr><td><b>Número de citas</b></td><td>Indicadores de impacto: citas por documento y por año, índices h, g y m, documentos más citados y mapa de acoplamiento por impacto global.</td><td class="c"><span class="chip k4">5</span> <span class="chip k5">6</span> <span class="chip k6">7</span> <span class="chip k7">8</span></td></tr>
+      <tr><td><b>Año</b></td><td>Producción anual, crecimiento, edad, índice m, evolución temática, temas en tendencia e historiografía para ese registro.</td><td class="c"><span class="chip k4">5</span> <span class="chip k7">8</span> <span class="chip k8">9</span></td></tr>
+      <tr><td><b>DOI</b></td><td>La detección de duplicados dependerá solo de títulos, años y autores, y será menos precisa.</td><td class="c"><span class="chip k3">4</span></td></tr>
+      <tr><td><b>Resumen</b></td><td>El análisis de texto usará títulos y palabras clave; el cribado de PRISMA mostrará solo el título.</td><td class="c"><span class="chip k8">9</span> <span class="chip k11">12</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué hacer cuando un campo falta</div>
+    <table class="compacta">
+      <thead><tr><th style="width:40%">Si tus registros…</th><th>entonces…</th></tr></thead>
+      <tbody>
+        <tr><td>no traen referencias citadas</td><td>vuelve a exportar con la opción que incluye las referencias o combina con una exportación de un índice de citas que sí las traiga; los duplicados se unen en Limpieza.</td></tr>
+        <tr><td>no traen palabras clave de autor</td><td>la app elige sola el primer campo que sí traen (palabras clave de índice o pares de palabras de los títulos) y te avisa; puedes cambiarlo en Limpieza y filtros.</td></tr>
+        <tr><td>vienen de bases que cuentan citas distinto</td><td>al unirlos se conserva el mayor número de citas de cada documento; menciónalo en la metodología.</td></tr>
+        <tr><td>incluyen el año en curso</td><td>recuerda que ese año está incompleto: fíltralo antes de leer la tasa de crecimiento y las tendencias.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Si un análisis no aparece o sale vacío, la app te dice qué campo le falta. El apéndice D reúne esos mensajes.</p>
+  </div>
+
+  <!-- 1.5 -->
+  <h2 id="s1-5"><span class="num">1.5</span>Qué necesitas y cómo abrir el programa</h2>
+  <div class="dos">
+    <div>
+      <h4>Requisitos</h4>
+      <ul>
+        <li>Una computadora de escritorio o portátil con un <b>navegador de internet moderno y actualizado</b>.</li>
+        <li>Pantalla de al menos 1280 píxeles de ancho. Por debajo de 900 píxeles la barra lateral se vuelve un menú, pero las redes y las tablas se aprovechan mejor en una pantalla grande.</li>
+        <li>La app se probó con 10,000 registros y más de 200,000 referencias; los cálculos largos corren en segundo plano con una barra de progreso y un botón para cancelar.</li>
+        <li><b>No</b> se necesita instalación ni permisos de administrador. Internet solo hace falta para buscar en el catálogo bibliográfico abierto.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contenido de la carpeta</h4>
+      <table class="compacta" style="margin-top:0.04in">
+        <tbody>
+          <tr><td><code>index.html</code></td><td>La app. Ábrela con doble clic.</td></tr>
+          <tr><td><code>Open SciMetricsPro.bat</code></td><td>Arranque opcional con servidor local.</td></tr>
+          <tr><td><code>js/</code>, <code>css/</code>, <code>img/</code></td><td>El código y el logotipo del programa.</td></tr>
+          <tr><td><code>data/</code></td><td>Los datos de ejemplo y el mapa mundial.</td></tr>
+          <tr><td><code>vendor/</code></td><td>Componente de terceros y sus avisos de licencia.</td></tr>
+          <tr><td><code>LICENSE</code></td><td>Texto de la licencia GPL.</td></tr>
+          <tr><td><code>manual/</code></td><td>Este manual.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>Abrir SciMetricsPro en tres pasos</h3>
+  <ol class="pasos">
+    <li><b>Copia la carpeta</b> <code>SciMetricsPro</code> completa a tu computadora, por ejemplo a Documentos. No separes <code>index.html</code> del resto de las carpetas.</li>
+    <li><b>Haz doble clic en</b> <code>index.html</code>. Se abrirá en tu navegador predeterminado con la portada. La primera vez empieza solo el recorrido guiado; puedes seguirlo u omitirlo.</li>
+    <li><b>Pulsa</b> <span class="ui">Cargar datos de ejemplo</span> para practicar, o <span class="ui">Importar mis datos</span> para cargar tus exportaciones.</li>
+  </ol>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · abrir con servidor local</div>
+    <p>Con doble clic todo funciona. Si prefieres abrir la app desde una dirección, usa <code>Open SciMetricsPro.bat</code>: inicia un pequeño servidor en tu propia computadora (dirección <code>http://localhost:9100</code>) y abre la app en el navegador. Sigue sin enviarse nada a internet. Si lo ejecutas como administrador, también puedes abrir la app desde un celular o una tableta conectados a la misma red inalámbrica.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · tu trabajo se recuerda</div>
+    <p>La app guarda sola una copia de tu sesión en el navegador (datos, limpieza, decisiones y parámetros) y, al volver a abrirla, te pregunta si quieres recuperarla. Esa copia vive en el navegador y la computadora donde trabajaste: para llevar tu trabajo a otro equipo o compartirlo, guárdalo como proyecto con el botón <span class="ui">Guardar</span> del encabezado. Tus archivos originales no se modifican nunca. El capítulo 2 lo explica con detalle.</p>
+  </div>
+
+  <!-- 1.6 -->
+  <h2 id="s1-6"><span class="num">1.6</span>Recorrido por la interfaz</h2>
+  <p>Todos los módulos de análisis comparten la misma organización, así que basta aprenderla una vez. De arriba abajo, cada pantalla tiene un encabezado con la ruta y el nombre del módulo, tarjetas con los indicadores principales, pestañas con los análisis y, dentro de cada pestaña, figuras y tablas con sus controles.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/app-fuentes.png" alt="Pantalla Fuentes con la pestaña Ley de Bradford abierta">
+      <span class="marca" style="left:15%;top:43.9%">1</span>
+      <span class="marca" style="left:69.7%;top:11.1%">2</span>
+      <span class="marca" style="left:36%;top:12.8%">3</span>
+      <span class="marca" style="left:31.9%;top:36.3%">4</span>
+      <span class="marca" style="left:65.5%;top:76.5%">5</span>
+      <span class="marca" style="left:36%;top:83.9%">6</span>
+      <span class="marca" style="left:74%;top:85.8%">7</span>
+    </div>
+    <figcaption><b>Figura 1.4.</b> La pantalla <span class="ui">Fuentes</span> con los datos de ejemplo y la pestaña <span class="ui">Ley de Bradford</span> abierta.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>El módulo abierto aparece resaltado en la barra lateral.</li>
+    <li><span class="n">2</span>Contador de documentos: cuántos usan los análisis de los importados. Con filtros se resalta; un clic lleva a los filtros.</li>
+    <li><span class="n">3</span>Ruta (grupo › módulo), nombre y descripción del módulo.</li>
+    <li><span class="n">4</span>Tarjetas de indicadores; el botón <span class="ui">?</span> abre su ayuda (figura 1.6).</li>
+    <li><span class="n">5</span>Pestañas del módulo. También se recorren con las flechas del teclado.</li>
+    <li><span class="n">6</span>Título de la figura con su propia ayuda.</li>
+    <li><span class="n">7</span>Descargas rápidas: <span class="ui">PNG</span>, <span class="ui">SVG</span>, <span class="ui">PDF</span> y <span class="ui">Datos</span> de la figura en hoja de cálculo.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/app-figura.png" alt="Tarjeta de la figura Producción científica anual con sus controles de exportación">
+      <span class="marca" style="left:26.8%;top:3.8%">1</span>
+      <span class="marca" style="left:65.7%;top:4.9%">2</span>
+      <span class="marca" style="left:34.5%;top:81.5%">3</span>
+      <span class="marca" style="left:95.7%;top:89.2%">4</span>
+      <span class="marca" style="left:52%;top:95%">5</span>
+    </div>
+    <figcaption><b>Figura 1.5.</b> La figura <span class="ui">Producción científica anual</span> del Panorama general con sus controles.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Título, botón de ayuda y subtítulo que dice qué se dibuja.</li>
+    <li><span class="n">2</span>Descargas rápidas con los ajustes elegidos abajo.</li>
+    <li><span class="n">3</span><span class="ui">Editar figura: títulos, colores, fuentes y tamaños</span> abre el editor.</li>
+    <li><span class="n">4</span>Formato, ancho de impresión, tamaño de letra en puntos, resolución y fondo.</li>
+    <li><span class="n">5</span><span class="ui">Escala de grises</span>, <span class="ui">Descargar figura</span> y el tamaño resultante en píxeles y centímetros.</li>
+  </ul>
+
+  <p>Las tablas funcionan igual en toda la app: se ordenan con un clic en el encabezado, tienen un cuadro <span class="ui">Buscar…</span>, se dividen en páginas y se descargan en hoja de cálculo (<span class="ui">.xlsx</span>) o en <span class="ui">CSV</span>. Las redes, además, se exploran con el ratón: la rueda acerca, arrastrar mueve el dibujo, un clic en un nodo resalta a sus vecinos y abre su ficha, y el cuadro de búsqueda encuentra un término.</p>
+
+  <div class="dos">
+    <figure class="media" style="margin:0">
+      <div class="marco"><img src="../img/app-ayuda.png" alt="Ayuda de la tasa de crecimiento anual con fórmula, símbolos, interpretación y referencia"></div>
+      <figcaption><b>Figura 1.6.</b> La ayuda (<span class="ui">?</span>) de la tarjeta <span class="ui">Tasa de crecimiento anual</span>.</figcaption>
+    </figure>
+    <div>
+      <h4 style="margin-top:0">La ayuda de cada indicador</h4>
+      <p>Cada tarjeta, figura y tabla tiene un botón <span class="ui">?</span>. Su ventana trae cuatro partes:</p>
+      <ul>
+        <li><b>Definición</b>: qué mide, en una o dos frases.</li>
+        <li><b>Fórmula</b> y <b>Donde</b>: la ecuación y el significado de cada símbolo.</li>
+        <li><b>Cómo interpretarlo</b>: qué valores esperar y cuándo desconfiar.</li>
+        <li><b>Referencia</b>: el artículo original del método.</li>
+      </ul>
+      <p>Se cierra con la <span class="ui">×</span>, con la tecla Esc o con un clic fuera de ella. Las fórmulas de todos los indicadores están reunidas también en el apéndice B.</p>
+    </div>
+  </div>
+
+  <h3>Elementos que verás en todos los módulos</h3>
+  <table class="compacta">
+    <caption><b>Tabla 1.4.</b> Controles comunes de la interfaz.</caption>
+    <thead><tr><th style="width:30%">En la app</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">300 de 300 documentos</span></td><td>Contador del encabezado: documentos que usan los análisis después de limpieza y filtros, de todos los importados.</td></tr>
+      <tr><td><span class="ui">Año de referencia</span></td><td>Año contra el que se calculan edades, citas por año e índice m; por omisión, el año en curso.</td></tr>
+      <tr><td><span class="ui">Parámetros de la red</span></td><td>Panel lateral de las redes: selección de nodos, pesos de las aristas, comunidades y presentación.</td></tr>
+      <tr><td><span class="ui">Calculando la red</span></td><td>Ventana de progreso de un cálculo largo, con <span class="ui">Cancelar</span>.</td></tr>
+      <tr><td><span class="ui">Editar figura…</span></td><td>Títulos, ejes, colores, paleta, tamaños, leyenda y etiquetas de la figura.</td></tr>
+      <tr><td><span class="ui">Datos</span></td><td>Descarga los números con los que se dibujó la figura, en hoja de cálculo.</td></tr>
+      <tr><td><span class="ui">Abrir</span> · <span class="ui">Guardar</span></td><td>Proyecto completo en un archivo <code>.smp.json</code>.</td></tr>
+      <tr><td><span class="ui">ES</span> · <span class="ui">EN</span></td><td>Idioma de la interfaz y de las figuras; no se pierde nada al cambiarlo.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · una decisión de Limpieza vale para toda la app</div>
+    <p>La limpieza y los filtros no son un paso aparte que se olvida: todos los módulos leen el mismo conjunto limpio. Si unes dos variantes de un autor, quitas un año con un filtro o cambias el campo de términos, el Panorama, las Fuentes, las redes y el informe se recalculan con ese cambio. El contador del encabezado te recuerda siempre cuántos documentos entran en los análisis.</p>
+  </div>
+
+  <!-- 1.7 -->
+  <h2 id="s1-7"><span class="num">1.7</span>Los datos de ejemplo</h2>
+  <p>El programa incluye un conjunto de datos listo para usar: <b>las 300 obras más citadas sobre nutrición mineral y fertilización del maracuyá</b> (<i>Passiflora edulis</i>) en un catálogo bibliográfico abierto. La búsqueda, hecha el 16 de septiembre de 2026, pidió el cultivo en el título y términos de fertilización o nutrición de la planta en el título o el resumen; encontró 501 obras y se conservaron las 300 más citadas. Son metadatos reales con licencia de dominio público: títulos, autores con afiliaciones y países, fuentes, palabras de índice, referencias y número de citas. No incluyen resúmenes. Están en <code>data/example.js</code> y se cargan con el botón <span class="ui">Cargar datos de ejemplo</span> de la portada.</p>
+
+  <ol class="pasos">
+    <li><b>Abre la portada</b> con <span class="ui">Inicio</span> en la barra lateral.</li>
+    <li><b>Pulsa</b> <span class="ui">Cargar datos de ejemplo</span>. Si ya tenías datos, la app pide confirmación porque el ejemplo los reemplaza.</li>
+    <li><b>Lee el Panorama general</b>, que se abre solo. El contador del encabezado dice <span class="ui">300 de 300 documentos</span> y la barra lateral, <span class="ui">300 registros de 1 archivo</span>.</li>
+  </ol>
+
+  <table>
+    <caption><b>Tabla 1.5.</b> Los datos de ejemplo en cifras, según la <span class="ui">Información principal</span> del Panorama general (año de referencia 2026).</caption>
+    <thead><tr><th style="width:34%">Indicador</th><th style="width:20%" class="c">Valor</th><th>Lectura</th></tr></thead>
+    <tbody>
+      <tr><td>Periodo</td><td class="c">1956–2026</td><td>71 años; 283 de las 300 obras son de 2000 en adelante y el año con más obras es 2020, con 30.</td></tr>
+      <tr><td>Documentos</td><td class="c">300</td><td>282 artículos; el resto, actas de congresos, tesis, capítulos y una revisión.</td></tr>
+      <tr><td>Fuentes</td><td class="c">141</td><td>Revistas, libros y actas; 18 obras no traen fuente.</td></tr>
+      <tr><td>Autores</td><td class="c">932</td><td>1,551 apariciones en total; 11 documentos tienen un solo autor.</td></tr>
+      <tr><td>Coautores por documento</td><td class="c">5.17</td><td>Casi todo el trabajo sobre el tema es en equipo.</td></tr>
+      <tr><td>Citas promedio por documento</td><td class="c">9.93</td><td>2,978 citas en total.</td></tr>
+      <tr><td>Edad promedio</td><td class="c">10.98 años</td><td>Respecto de 2026.</td></tr>
+      <tr><td>Coautoría internacional</td><td class="c">8.67&nbsp;%</td><td>26 documentos con autores de más de un país; el país se reconoció en 236.</td></tr>
+      <tr><td>Referencias citadas</td><td class="c">6,141</td><td>4,546 obras distintas, en 236 documentos.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>El ejemplo guía</div>
+    <p>El maracuyá acompaña todo el manual. Con él verás, en los capítulos que siguen, que la literatura sobre su nutrición se publica sobre todo en revistas brasileñas (en la figura 1.4, el núcleo de Bradford son 9 fuentes que reúnen 91 documentos), que el trabajo en equipo es la norma, qué temas forman el núcleo del campo y cómo documentar un cribado PRISMA sobre estas mismas obras. Todas las cifras de este capítulo se comprobaron con un cálculo independiente sobre el archivo de datos, fuera de la app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · un ejemplo para practicar, no una revisión completa</div>
+    <p>El ejemplo reúne las obras más citadas de una sola base, así que exagera el peso de los documentos antiguos y muy citados y deja fuera los recientes que aún no acumulan citas. Tampoco trae palabras clave de autor ni resúmenes, y sus referencias son identificadores del catálogo, sin autor ni año: por eso, al cargarlo la app elige sola <span class="ui">Palabras clave de índice</span> como campo de términos, y la RPYS queda vacía. Para un estudio real, combina exportaciones de varias bases con todos sus campos.</p>
+  </div>
+
+  <!-- 1.8 -->
+  <h2 id="s1-8"><span class="num">1.8</span>Flujo de trabajo recomendado</h2>
+  <p>La barra lateral marca el orden natural. El diagrama resume el recorrido, desde la idea de investigación hasta el informe, con el desvío de la revisión sistemática y el proyecto que guarda todo en cualquier momento.</p>
+
+  <figure>
+    <svg class="cap1-svg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flujo de trabajo de SciMetricsPro por capítulos">
+      <defs><marker id="f18" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#5d6472"/></marker></defs>
+      <!-- fila 1 -->
+      <g font-size="10.5" text-anchor="middle">
+        <rect x="14" y="20" width="150" height="58" rx="6" fill="#0f766e"/><text x="89" y="43" fill="#fff" font-weight="600">3 · Palabras clave</text><text x="89" y="59" fill="#fff" font-size="9.5">de la idea a la cadena</text>
+        <rect x="190" y="20" width="150" height="58" rx="6" fill="#fff" stroke="#5d6472" stroke-width="1.4" stroke-dasharray="5 3"/><text x="265" y="43" fill="#22252c" font-weight="600">Buscadores</text><text x="265" y="59" fill="#5d6472" font-size="9.5">fuera de la app: buscar y exportar</text>
+        <rect x="366" y="20" width="150" height="58" rx="6" fill="#0f766e"/><text x="441" y="43" fill="#fff" font-weight="600">3 · Importar</text><text x="441" y="59" fill="#fff" font-size="9.5">varios archivos y bases</text>
+        <rect x="542" y="20" width="144" height="58" rx="6" fill="#2f7d4f"/><text x="614" y="43" fill="#fff" font-weight="600">4 · Limpieza</text><text x="614" y="59" fill="#fff" font-size="9.5">duplicados, nombres, filtros</text>
+      </g>
+      <g stroke="#5d6472" stroke-width="1.6" fill="none" marker-end="url(#f18)">
+        <path d="M164 49 L186 49"/><path d="M340 49 L362 49"/><path d="M516 49 L538 49"/>
+      </g>
+      <!-- canal hacia la fila 2 -->
+      <path d="M614 78 L614 104 L265 104 L265 130" stroke="#5d6472" stroke-width="1.6" fill="none" marker-end="url(#f18)"/>
+      <path d="M265 104 L89 104 L89 130" stroke="#c8416a" stroke-width="1.6" fill="none" stroke-dasharray="5 3" marker-end="url(#f18)"/>
+      <text x="177" y="98" font-size="9.5" fill="#c8416a" text-anchor="middle">si es una revisión sistemática</text>
+      <!-- fila 2 -->
+      <g font-size="10.5" text-anchor="middle">
+        <rect x="14" y="134" width="150" height="58" rx="6" fill="#fff" stroke="#c8416a" stroke-width="1.6" stroke-dasharray="5 3"/><text x="89" y="157" fill="#c8416a" font-weight="600">12 · PRISMA</text><text x="89" y="173" fill="#5d6472" font-size="9.5">cribar y dibujar el diagrama</text>
+        <rect x="190" y="134" width="150" height="58" rx="6" fill="#b7791f"/><text x="265" y="157" fill="#fff" font-weight="600">5–8 · Descriptivos</text><text x="265" y="173" fill="#fff" font-size="9.5">producción, fuentes, autores</text>
+        <rect x="366" y="134" width="150" height="58" rx="6" fill="#4f46a5"/><text x="441" y="157" fill="#fff" font-weight="600">9–11 · Estructuras</text><text x="441" y="173" fill="#fff" font-size="9.5">conceptual, intelectual, social</text>
+        <rect x="542" y="134" width="144" height="58" rx="6" fill="#334155"/><text x="614" y="157" fill="#fff" font-weight="600">13 · Exportar</text><text x="614" y="173" fill="#fff" font-size="9.5">figuras, ZIP, informe</text>
+      </g>
+      <g stroke="#5d6472" stroke-width="1.6" fill="none" marker-end="url(#f18)">
+        <path d="M340 163 L362 163"/><path d="M516 163 L538 163"/>
+      </g>
+      <path d="M164 163 L186 163" stroke="#c8416a" stroke-width="1.6" fill="none" stroke-dasharray="5 3" marker-end="url(#f18)"/>
+      <text x="176" y="210" font-size="9.5" fill="#c8416a" text-anchor="middle">solo los incluidos</text>
+      <!-- vuelta a la búsqueda -->
+      <path d="M441 192 L441 214 L694 214 L694 8 L89 8 L89 16" stroke="#0f766e" stroke-width="1.3" fill="none" stroke-dasharray="2 3" marker-end="url(#f18)"/>
+      <text x="552" y="228" font-size="9.5" fill="#0f766e" text-anchor="middle">los temas encontrados sugieren términos nuevos</text>
+      <!-- proyecto -->
+      <rect x="14" y="246" width="672" height="34" rx="6" fill="#e8eef7" stroke="#1d5bb0" stroke-width="1.2"/>
+      <text x="350" y="267" font-size="10.5" fill="#1b3f7a" text-anchor="middle"><tspan font-weight="600">2 · Proyecto y autoguardado:</tspan> guarda en cualquier paso todo el trabajo (datos, limpieza, decisiones y parámetros)</text>
+    </svg>
+    <figcaption><b>Figura 1.7.</b> Recorrido por la app. La fila superior prepara los datos; la inferior los analiza y los publica. El desvío de PRISMA se usa en las revisiones sistemáticas, y la línea punteada recuerda que los temas encontrados a menudo sugieren términos para afinar la búsqueda.</figcaption>
+  </figure>
+
+  <ol class="pasos">
+    <li><b>Prepara la búsqueda</b> en <span class="ruta">Importar<span class="sep">›</span>Palabras clave</span>: escribe tu título tentativo, revisa los conceptos y copia la cadena de cada buscador. Anota la cadena y la fecha.</li>
+    <li><b>Busca y exporta</b> en cada base con todos los campos y las referencias citadas. Del catálogo abierto puedes descargar directamente desde la app.</li>
+    <li><b>Importa todos los archivos juntos</b> y lee la tabla de campos disponibles y los avisos: te dicen qué análisis podrás hacer.</li>
+    <li><b>Limpia</b>: revisa los duplicados, une variantes de autores e instituciones, agrega sinónimos, elige el campo de términos y aplica los filtros de tu diseño (años, tipos de documento, idiomas).</li>
+    <li><b>Si es una revisión sistemática</b>, criba en PRISMA y activa <span class="ui">Analizar solo los incluidos</span>.</li>
+    <li><b>Analiza</b> de lo general a lo particular: Panorama, Fuentes, Autores y Documentos; después, las tres estructuras. Lee siempre la ayuda (<span class="ui">?</span>) antes de interpretar una cifra nueva.</li>
+    <li><b>Exporta</b> las figuras y tablas que usarás, genera el informe con la metodología y guarda el proyecto para volver a él.</li>
+  </ol>
+
+  <!-- 1.9 -->
+  <h2 id="s1-9"><span class="num">1.9</span>Cómo leer indicadores, leyes y redes</h2>
+  <p>Casi todo lo que produce la app se resume en tres tipos de resultados: indicadores (cifras sueltas como el índice h), distribuciones que se comparan con una ley (Bradford y Lotka) y redes o mapas que muestran relaciones. Leerlos bien evita las equivocaciones más comunes: comparar citas de documentos de edades distintas, leer una ley como si fuera una prueba de calidad y dar significado a la posición exacta de un nodo en un dibujo.</p>
+
+  <div class="dos">
+    <div class="caja teoria" style="margin:0">
+      <div class="caja-t"><span class="ico">h</span>El índice h</div>
+      <p>Se ordenan los documentos de una fuente o un autor de más a menos citado; h es el mayor número tal que h documentos tienen al menos h citas cada uno. En el ejemplo, la fuente con mayor índice h tiene h = 8: ocho de sus documentos tienen 8 citas o más. Premia la constancia más que un solo éxito, y crece con los años de actividad; el índice m lo divide entre esos años.</p>
+    </div>
+    <div class="caja teoria" style="margin:0">
+      <div class="caja-t"><span class="ico">B</span>Las zonas de Bradford</div>
+      <p>En el ejemplo, las 141 fuentes se reparten en zonas de 9, 38 y 94 fuentes, con 91, 97 y 94 documentos. El multiplicador, el promedio de 38/9 y 94/38, es 3.35: para reunir cada tercio adicional de documentos hay que consultar unas tres veces más fuentes. Las 9 fuentes del núcleo son las primeras que conviene revisar a mano.</p>
+    </div>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Importante · la tasa de crecimiento solo mira dos años</div>
+    <p>La tasa de crecimiento anual compuesta usa únicamente el primer y el último año del periodo (figura 1.6). En el ejemplo vale <b>0&nbsp;%</b> porque 1956 y 2026 tienen un documento cada uno, aunque la figura 1.5 muestra un crecimiento evidente desde 2005. Antes de citar esta cifra, filtra un periodo con años completos y representativos; si no, describe el crecimiento con la producción anual.</p>
+  </div>
+
+  <h3>Leer una red</h3>
+  <p>Las redes de coocurrencia, cocitación, acoplamiento y colaboración se dibujan con las mismas reglas. La figura 1.8 las resume con una red de palabras inventada para el ejemplo.</p>
+
+  <figure>
+    <svg class="cap1-svg" viewBox="0 0 700 262" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cómo leer una red: tamaño, grosor, color, distancia y nodos puente">
+      <!-- aristas -->
+      <g stroke-linecap="round">
+        <g stroke="#1d5bb0" opacity="0.75"><line x1="92" y1="84" x2="150" y2="62" stroke-width="4.5"/><line x1="92" y1="84" x2="118" y2="150" stroke-width="3"/><line x1="150" y1="62" x2="118" y2="150" stroke-width="2"/><line x1="150" y1="62" x2="190" y2="120" stroke-width="2.5"/><line x1="118" y1="150" x2="190" y2="120" stroke-width="1.6"/></g>
+        <g stroke="#e39b2d" opacity="0.8"><line x1="300" y1="80" x2="336" y2="150" stroke-width="4"/><line x1="300" y1="80" x2="360" y2="96" stroke-width="2"/><line x1="336" y1="150" x2="360" y2="96" stroke-width="2.5"/><line x1="336" y1="150" x2="270" y2="190" stroke-width="1.6"/><line x1="300" y1="80" x2="270" y2="190" stroke-width="1.4"/></g>
+        <g stroke="#a9b1c0"><line x1="190" y1="120" x2="238" y2="130" stroke-width="2"/><line x1="238" y1="130" x2="300" y2="80" stroke-width="2"/><line x1="238" y1="130" x2="270" y2="190" stroke-width="1.4"/><line x1="118" y1="150" x2="238" y2="130" stroke-width="1.2"/></g>
+      </g>
+      <!-- nodos -->
+      <g stroke="#fff" stroke-width="1.5">
+        <circle cx="92" cy="84" r="17" fill="#1d5bb0"/><circle cx="150" cy="62" r="12" fill="#1d5bb0"/><circle cx="118" cy="150" r="10" fill="#1d5bb0"/><circle cx="190" cy="120" r="8" fill="#1d5bb0"/>
+        <circle cx="300" cy="80" r="14" fill="#e39b2d"/><circle cx="336" cy="150" r="16" fill="#e39b2d"/><circle cx="360" cy="96" r="8" fill="#e39b2d"/><circle cx="270" cy="190" r="9" fill="#e39b2d"/>
+        <circle cx="238" cy="130" r="10" fill="#1f9e8f"/>
+      </g>
+      <g font-size="10" fill="#22252c" text-anchor="middle">
+        <text x="92" y="58">nitrógeno</text><text x="150" y="42">potasio</text><text x="96" y="175">fertilización</text><text x="200" y="100">suelo</text>
+        <text x="300" y="56">riego</text><text x="352" y="180">salinidad</text><text x="384" y="84">calidad</text><text x="262" y="214">estrés hídrico</text>
+        <text x="238" y="158">rendimiento</text>
+      </g>
+      <!-- marcas -->
+      <g font-size="9" font-weight="600" fill="#fff" text-anchor="middle">
+        <circle cx="64" cy="98" r="9" fill="#111"/><text x="64" y="101.5">1</text>
+        <circle cx="124" cy="94" r="9" fill="#111"/><text x="124" y="97.5">2</text>
+        <circle cx="374" cy="140" r="9" fill="#111"/><text x="374" y="143.5">3</text>
+        <circle cx="178" cy="178" r="9" fill="#111"/><text x="178" y="181.5">4</text>
+        <circle cx="238" cy="104" r="9" fill="#111"/><text x="238" y="107.5">5</text>
+      </g>
+      <!-- leyenda -->
+      <g font-size="10" fill="#22252c">
+        <circle cx="428" cy="30" r="9" fill="#111"/><text x="428" y="33.5" fill="#fff" font-size="9" font-weight="600" text-anchor="middle">1</text>
+        <text x="444" y="27" font-weight="600">Tamaño del nodo</text><text x="444" y="41">documentos con el término (u otra medida elegida)</text>
+        <circle cx="428" cy="76" r="9" fill="#111"/><text x="428" y="79.5" fill="#fff" font-size="9" font-weight="600" text-anchor="middle">2</text>
+        <text x="444" y="73" font-weight="600">Grosor de la línea</text><text x="444" y="87">fuerza de la relación entre los dos nodos</text>
+        <circle cx="428" cy="122" r="9" fill="#111"/><text x="428" y="125.5" fill="#fff" font-size="9" font-weight="600" text-anchor="middle">3</text>
+        <text x="444" y="119" font-weight="600">Color</text><text x="444" y="133">comunidad: nodos más unidos entre sí que con el resto</text>
+        <circle cx="428" cy="168" r="9" fill="#111"/><text x="428" y="171.5" fill="#fff" font-size="9" font-weight="600" text-anchor="middle">4</text>
+        <text x="444" y="165" font-weight="600">Distancia</text><text x="444" y="179">los nodos muy relacionados quedan cerca; arriba o abajo</text><text x="444" y="192">e izquierda o derecha no significan nada</text>
+        <circle cx="428" cy="227" r="9" fill="#111"/><text x="428" y="230.5" fill="#fff" font-size="9" font-weight="600" text-anchor="middle">5</text>
+        <text x="444" y="224" font-weight="600">Nodo puente</text><text x="444" y="238">une comunidades: alta intermediación; líneas grises</text><text x="444" y="251">entre comunidades distintas</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 1.8.</b> Las cinco claves para leer una red. En las redes de la app los nodos, los grosores y los colores se calculan con los parámetros del panel lateral; la ficha de cada nodo da sus números exactos.</figcaption>
+  </figure>
+
+  <h3>Leer un mapa temático</h3>
+  <p>El mapa temático (Callon et al., 1991) coloca cada comunidad de palabras según dos medidas: la <b>centralidad</b>, qué tan unido está el tema con los demás, y la <b>densidad</b>, qué tan unidas están sus palabras entre sí. Las medianas de los temas parten el mapa en cuatro cuadrantes. El mapa de acoplamiento del capítulo 10 usa la misma idea con el impacto en lugar de la densidad.</p>
+
+  <figure>
+    <svg class="cap1-svg" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Los cuatro cuadrantes del mapa temático">
+      <g>
+        <rect x="60" y="14" width="160" height="100" fill="#4f46a5" opacity="0.08"/>
+        <rect x="220" y="14" width="160" height="100" fill="#b4234a" opacity="0.08"/>
+        <rect x="60" y="114" width="160" height="100" fill="#b7791f" opacity="0.08"/>
+        <rect x="220" y="114" width="160" height="100" fill="#0f766e" opacity="0.08"/>
+      </g>
+      <path d="M220 14 L220 214 M60 114 L380 114" stroke="#9aa5b8" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <path d="M60 214 L380 214 M60 214 L60 14" stroke="#5d6472" stroke-width="1.2"/>
+      <g font-size="10.5" font-weight="600" text-anchor="middle">
+        <text x="140" y="32" fill="#4f46a5">Temas nicho</text>
+        <text x="300" y="32" fill="#b4234a">Temas motores</text>
+        <text x="140" y="206" fill="#b7791f">o en declive</text>
+        <text x="140" y="194" fill="#b7791f">Temas emergentes</text>
+        <text x="300" y="206" fill="#0f766e">Temas básicos</text>
+      </g>
+      <g opacity="0.85"><circle cx="118" cy="70" r="10" fill="#4f46a5"/><circle cx="170" cy="86" r="7" fill="#4f46a5"/><circle cx="296" cy="66" r="16" fill="#b4234a"/><circle cx="348" cy="90" r="9" fill="#b4234a"/><circle cx="110" cy="150" r="8" fill="#b7791f"/><circle cx="166" cy="170" r="6" fill="#b7791f"/><circle cx="282" cy="158" r="13" fill="#0f766e"/><circle cx="340" cy="140" r="10" fill="#0f766e"/></g>
+      <text x="220" y="236" font-size="10" fill="#22252c" text-anchor="middle">Centralidad (relación con los otros temas) →</text>
+      <text x="36" y="114" font-size="10" fill="#22252c" text-anchor="middle" transform="rotate(-90 36 114)">Densidad (desarrollo interno) →</text>
+      <g font-size="10" fill="#22252c">
+        <text x="410" y="30" font-weight="600" fill="#b4234a">Motores</text><text x="410" y="44">centrales y desarrollados: estructuran el campo.</text>
+        <text x="410" y="78" font-weight="600" fill="#4f46a5">Nicho</text><text x="410" y="92">muy desarrollados pero aislados: especializados.</text>
+        <text x="410" y="126" font-weight="600" fill="#0f766e">Básicos</text><text x="410" y="140">centrales pero poco desarrollados: transversales,</text><text x="410" y="153">la base común de muchos trabajos.</text>
+        <text x="410" y="187" font-weight="600" fill="#b7791f">Emergentes o en declive</text><text x="410" y="201">periféricos y poco desarrollados: nuevos o que</text><text x="410" y="214">se abandonan; la evolución temática lo aclara.</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 1.9.</b> Los cuatro cuadrantes del mapa temático. El tamaño de cada burbuja es la frecuencia del tema. Un tema en el cuadrante emergente o en declive se distingue con la evolución temática (capítulo 9), que muestra si aparece recientemente o si viene de periodos anteriores.</figcaption>
+  </figure>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · antes de interpretar una red</div>
+    <table class="compacta">
+      <thead><tr><th style="width:40%">Si la red…</th><th>entonces…</th></tr></thead>
+      <tbody>
+        <tr><td>es una maraña en la que todo se une con todo</td><td>sube las coocurrencias mínimas por arista o baja el número de nodos: la estructura aparece cuando se quitan las uniones débiles.</td></tr>
+        <tr><td>tiene muchos nodos sueltos o comunidades de una o dos palabras</td><td>baja la frecuencia mínima o revisa sinónimos: la misma idea escrita de varias maneras se reparte en nodos distintos.</td></tr>
+        <tr><td>cambia de comunidades al mover la resolución</td><td>es normal: describe los grupos que se mantienen con varias resoluciones y reporta la que usaste.</td></tr>
+        <tr><td>tiene palabras muy generales en el centro</td><td>agrégalas a las palabras vacías o usa una normalización (fuerza de asociación, Salton) que no premie la frecuencia.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">Reporta siempre los parámetros: campo de términos, frecuencia mínima, número de nodos, normalización, algoritmo de comunidades y resolución. El informe del capítulo 13 los escribe por ti.</p>
+  </div>
+
+  <div class="caja dato">
+    <div class="dato-cifra">1 de 3</div>
+    <div class="dato-txt"><div class="caja-t">Por qué el núcleo de Bradford importa al buscar</div>En el ejemplo, <b>un tercio de los documentos con fuente sale de 9 de las 141 fuentes</b>. Revisar a mano los índices de esas revistas es la forma más rápida de encontrar documentos que tu cadena de búsqueda no atrapó; el tercio restante, en cambio, está disperso en 94 fuentes con un documento cada una y es donde las búsquedas en varias bases rinden más.</div>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Nota · describir no es evaluar</div>
+    <p>Que una revista esté en el núcleo de Bradford o que un autor tenga el mayor índice h en tu conjunto dice que concentran la literatura <b>de tu búsqueda</b>, no que sean mejores. Con otra cadena, otra base u otro periodo el orden cambia. Presenta los indicadores como una descripción del conjunto, junto con la cadena, la base y la fecha, y deja los juicios de calidad a la lectura de los trabajos.</p>
+  </div>
+
+  <p style="margin-top:0.3in">Con estas bases estás listo para recorrer los módulos. El siguiente capítulo presenta la portada de la app, cómo guardar y recuperar tu trabajo, el recorrido guiado y las ayudas que acompañan a cada indicador.</p>
+</section>
+
+</body>
+</html>
