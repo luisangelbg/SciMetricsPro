@@ -1,0 +1,33 @@
+{
+  "title": "SciMetricsPro: a browser-based platform for bibliometric and scientometric analysis",
+  "description": "<p>SciMetricsPro is a self-contained web application for bibliometric and scientometric analysis that runs entirely in the browser, with no installation and no server-side computation. It takes a set of bibliographic records from the search to the paper: it helps write the search string for each academic database, reads their exports (CSV, RIS, BibTeX, tagged text and spreadsheets) and downloads records from an open bibliographic catalogue; merges duplicates and normalises authors, institutions and countries; computes the classical indicators (annual growth, document age, Bradford's law, Lotka's law with a Kolmogorov-Smirnov test, h, g and m indices, local citations and reference publication year spectroscopy); and maps the conceptual structure (keyword co-occurrence networks, Callon's thematic map, thematic evolution, correspondence analysis with k-means and silhouette), the intellectual structure (co-citation of references, authors and sources, bibliographic coupling, coupling map and direct-citation historiograph) and the social structure (collaboration networks of authors, institutions and countries, world collaboration map and collaboration over time). It also records a PRISMA 2020 systematic review with screening and flow diagram, and exports journal-ready figures (8.5 or 17 cm, 300 to 1200 dpi, PNG, TIFF, SVG or PDF), tables, network files (GraphML, GEXF, .net, CSV), the clean data set (CSV, BibTeX) and an automatic report with a methods section written from the data.</p><p>Every indicator is computed with its published formula and was validated against independent implementations. The interface is available in Spanish and English. The archive includes the example data set (300 works from an open bibliographic catalogue, CC0) and the user manual in Spanish (HTML and PDF, 195 pages).</p>",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Barrera-Guzmán, Luis Ángel",
+      "orcid": "0000-0001-8057-2583"
+    },
+    {
+      "name": "Ramírez-Ojeda, Gabriela",
+      "orcid": "0000-0001-9679-6514"
+    }
+  ],
+  "license": "gpl-3.0-or-later",
+  "access_right": "open",
+  "language": "spa",
+  "keywords": [
+    "bibliometrics",
+    "scientometrics",
+    "science mapping",
+    "co-citation analysis",
+    "bibliographic coupling",
+    "co-word analysis",
+    "thematic map",
+    "Bradford's law",
+    "Lotka's law",
+    "h-index",
+    "PRISMA 2020",
+    "systematic review",
+    "research evaluation"
+  ]
+}
