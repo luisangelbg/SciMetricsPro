@@ -28,12 +28,24 @@ const App = {
       App.render(state.route, { keepScroll: true, keepFocus: true });
     });
     on('themechange', () => Layout.syncTheme());
-    on('datachange', () => { Layout.buildNav(); Layout.setActive(state.route); });
+    on('datachange', () => { Layout.visited.clear(); if (hasData() && Modules.get(state.route)) Layout.visited.add(state.route); Layout.buildNav(); Layout.setActive(state.route); });
     on('cleanchange', () => Layout.syncCounter());
 
     App.render(App.routeFromHash());
     Project.init();
     Tour.maybeStart();
+    App.bindSuite();
+  },
+
+  /* Behaviour shared by the LABG Suite: Alt+← / Alt+→ between blocks, the «?»
+     list of shortcuts and the question before closing with data loaded. Only
+     in the app: the tests page may run without js/core/labg-core.js. */
+  bindSuite() {
+    if (!window.LABG) return;
+    LABG.bindStepKeys(route => App.go(route));
+    LABG.shortcuts([]);
+    /* the tests page loads data on purpose: no question when it is closed */
+    if (!window.SMP_TEST) LABG.guardUnload(() => hasData());
   },
 
   go(route) {
@@ -53,6 +65,7 @@ const App = {
     if (route === 'home') Home.render(view);
     else if (route === 'about') About.render(view);
     else Modules.render(route, view);
+    if (hasData() && Modules.get(route)) Layout.visited.add(route);
     Layout.setActive(route);
     document.body.dataset.route = route;
     if (!opts.keepScroll) window.scrollTo(0, 0);
@@ -60,6 +73,7 @@ const App = {
       const h = view.querySelector('h1');
       if (h && document.activeElement && document.activeElement !== document.body) h.focus({ preventScroll: true });
     }
+    if (window.LABG && App.booted && prev && prev !== route) LABG.announce(t('nav.announce', { name: route === 'home' ? t('nav.home') : route === 'about' ? t('nav.about') : t('mod.' + route + '.title') }));
     emit('routechange', { route, prev });
   },
 };

@@ -14,20 +14,27 @@ const Layout = {
     root.appendChild(mk('a', { class: 'skip-link', href: '#main', 'data-i18n': 'a11y.skip',
       onclick: e => { e.preventDefault(); el('main').focus(); } }));
 
-    /* ---------- header ---------- */
-    const bar = mk('header', { class: 'appbar' });
+    /* ---------- header ----------
+       Common LABG Suite bar, in its fixed order: brand · (this app's own tools)
+       · LABG Suite · ES | EN · theme · keyboard shortcuts (?). */
+    const bar = mk('header', { class: 'appbar topbar' });
+    const barInner = mk('div', { class: 'topbar-inner' });
+    const row = mk('div', { class: 'topbar-row' });
+    barInner.appendChild(row);
+    bar.appendChild(barInner);
     const menuBtn = mk('button', { type: 'button', class: 'icon-btn menu-btn', id: 'menuBtn', 'aria-controls': 'sidebar', 'aria-expanded': 'false' },
       icon('menu') + '<span class="menu-label" data-i18n="header.menu"></span>');
     menuBtn.addEventListener('click', () => Layout.toggleMenu());
-    bar.appendChild(menuBtn);
+    row.appendChild(menuBtn);
 
     const brand = mk('a', { class: 'brand', href: '#/home', 'data-i18n-attr': 'aria-label:header.home' });
     brand.appendChild(Layout.logo('brand-logo'));
     brand.appendChild(mk('span', { class: 'brand-text' },
-      '<span class="brand-name">SciMetrics<span class="pro">Pro</span></span><span class="brand-tag" data-i18n="app.tagline"></span>'));
-    bar.appendChild(brand);
+      '<span class="brand-name">SciMetrics<span class="brand-pro">Pro</span></span>' +
+      '<span class="brand-sub brand-tag"><span aria-hidden="true">· </span><span data-i18n="app.tagline"></span></span>'));
+    row.appendChild(brand);
 
-    const tools = mk('div', { class: 'appbar-tools' });
+    const tools = mk('div', { class: 'top-tools appbar-tools' });
     /* "N of M documents": what the analyses use; a click opens the filters */
     const counter = mk('button', { type: 'button', class: 'doc-counter', id: 'docCounter', hidden: true });
     counter.addEventListener('click', () => { if (Pipeline.onlyIncluded()) { App.go('prisma'); return; } if (window.CleaningModule) CleaningModule.tab = 'filters'; App.go('cleaning'); });
@@ -42,7 +49,12 @@ const Layout = {
     saveBtn.addEventListener('click', () => Project.save());
     proj.appendChild(fileInput); proj.appendChild(openBtn); proj.appendChild(saveBtn);
     tools.appendChild(proj);
-    const lang = mk('div', { class: 'lang-switch', role: 'group', 'data-i18n-attr': 'aria-label:header.language' });
+    /* back to the portal of the suite */
+    const suite = mk('a', { class: 'suite-link', href: window.LABG ? LABG.SUITE_URL : 'https://luisangelbg.github.io/',
+      'data-i18n-attr': 'title:header.suiteTitle;aria-label:header.suiteTitle' },
+      icon('grid') + '<span class="suite-text" data-i18n="header.suite"></span>');
+    tools.appendChild(suite);
+    const lang = mk('div', { class: 'seg lang-seg lang-switch', role: 'group', 'data-i18n-attr': 'aria-label:header.language' });
     [['es', 'ES', 'header.langEs'], ['en', 'EN', 'header.langEn']].forEach(([code, label, key]) => {
       const b = mk('button', { type: 'button', lang: code, 'data-lang': code, 'data-i18n-attr': 'title:' + key, 'aria-pressed': 'false' }, label);
       b.addEventListener('click', () => I18N.setLang(code));
@@ -52,12 +64,21 @@ const Layout = {
     const themeBtn = mk('button', { type: 'button', class: 'icon-btn theme-btn', id: 'themeBtn' });
     themeBtn.addEventListener('click', () => Theme.toggle());
     tools.appendChild(themeBtn);
-    bar.appendChild(tools);
+    const helpBtn = mk('button', { type: 'button', class: 'icon-btn help-keys-btn', id: 'helpBtn',
+      'data-i18n-attr': 'title:header.shortcutsTitle;aria-label:header.shortcuts' }, icon('help'));
+    helpBtn.addEventListener('click', () => { if (window.LABG) LABG.showShortcuts(); });
+    if (!window.LABG) helpBtn.hidden = true;
+    tools.appendChild(helpBtn);
+    row.appendChild(tools);
     root.appendChild(bar);
 
-    /* ---------- sidebar + main ---------- */
+    /* ---------- sidebar + main ----------
+       The modules stay in the grouped side menu (a drop-down below 900 px): it is
+       the structure the tests, the guided tour and the manual describe. It takes
+       the states of the suite's block bar: current (aria-current), reviewed (✓),
+       needs data (dashed circle), Alt+← / Alt+→ and a Previous / Next footer. */
     const shell = mk('div', { class: 'shell' });
-    const side = mk('nav', { class: 'sidebar', id: 'sidebar', 'data-i18n-attr': 'aria-label:nav.label' });
+    const side = mk('nav', { class: 'sidebar stepper', id: 'sidebar', 'data-i18n-attr': 'aria-label:nav.label' });
     side.appendChild(mk('div', { class: 'sidebar-inner', id: 'sidebarInner' }));
     shell.appendChild(side);
     const scrim = mk('div', { class: 'nav-scrim', 'aria-hidden': 'true' });
@@ -66,6 +87,11 @@ const Layout = {
     const main = mk('main', { id: 'main', tabindex: '-1' });
     const view = mk('div', { class: 'view', id: 'view' });
     main.appendChild(view);
+    /* Previous / Next at the end of every section (outside #view, so a module
+       that redraws its page does not remove it) */
+    const pager = mk('nav', { class: 'step-footer view-pager no-print', id: 'stepFooter', 'data-i18n-attr': 'aria-label:nav.pager', hidden: true });
+    pager.addEventListener('click', e => { const b = e.target.closest('button[data-go]'); if (b && !b.disabled) App.go(b.dataset.go); });
+    main.appendChild(pager);
     shell.appendChild(main);
     root.appendChild(shell);
     Layout.view = view;
@@ -131,7 +157,11 @@ const Layout = {
 
   navItem(route, ico, label, needsData) {
     const li = mk('li');
-    const a = mk('a', { class: 'nav-link', href: '#/' + route, 'data-route': route }, icon(ico) + '<span>' + esc(label) + '</span>');
+    /* home and the modules are the "blocks" of the suite (class step-btn,
+       data-step = route): LABG.markStep and Alt+← / Alt+→ find them */
+    const block = route !== 'about';
+    const a = mk('a', { class: 'nav-link' + (block ? ' step-btn' : '') + (needsData ? ' locked' : ''), href: '#/' + route, 'data-route': route, 'data-step': block ? route : null },
+      icon(ico) + '<span>' + esc(label) + '</span>');
     if (needsData) {
       a.appendChild(mk('span', { class: 'nav-dot', title: t('nav.needsData') }));
       a.appendChild(mk('span', { class: 'sr-only' }, esc(t('nav.needsData'))));
@@ -141,11 +171,67 @@ const Layout = {
     return li;
   },
 
+  /* reading order of the blocks for Previous / Next (About stays out) */
+  order() { return ['home'].concat(Modules.ids()); },
+
+  /* modules visited with data in this session; cleared when new data arrive */
+  visited: new Set(),
+
   setActive(route) {
     els('.nav-link', Layout.root).forEach(a => {
-      if (a.dataset.route === route) a.setAttribute('aria-current', 'page');
+      const on = a.dataset.route === route;
+      if (on) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
+      a.classList.toggle('active', on);
     });
+    Layout.revealActive();
+    Layout.syncMarks();
+    Layout.syncFooter(route);
+  },
+
+  /* keep the current module in view inside the side menu (without moving the page) */
+  revealActive() {
+    const inner = el('sidebarInner'), a = inner && inner.querySelector('.nav-link.active');
+    if (!a || Layout.isNarrow() || inner.scrollHeight <= inner.clientHeight) return;
+    const top = a.offsetTop - inner.offsetTop, bottom = top + a.offsetHeight;
+    if (top < inner.scrollTop) inner.scrollTop = top - 8;
+    else if (bottom > inner.scrollTop + inner.clientHeight) inner.scrollTop = bottom - inner.clientHeight + 8;
+  },
+
+  /* reviewed (✓): Import once there are data; any other module once it was
+     opened with data. The state is also said to screen readers. */
+  syncMarks() {
+    const data = hasData();
+    Modules.ids().forEach(id => {
+      const done = data && (id === 'import' || Layout.visited.has(id));
+      if (window.LABG) LABG.markStep(id, done ? 'done' : null);
+      const a = Layout.root && Layout.root.querySelector('.nav-link[data-route="' + id + '"]');
+      if (!a) return;
+      a.classList.toggle('done', done);
+      let s = a.querySelector('.step-state');
+      if (!s) { s = mk('span', { class: 'sr-only step-state' }); a.appendChild(s); }
+      s.textContent = done ? ' ' + t('nav.stateDone') : '';
+    });
+  },
+
+  /* Previous / Next under the current section, named after the block */
+  syncFooter(route) {
+    const f = el('stepFooter');
+    if (!f) return;
+    const order = Layout.order(), i = order.indexOf(route);
+    if (i < 0) { f.hidden = true; f.innerHTML = ''; return; }
+    const name = id => id === 'home' ? t('nav.home') : t('mod.' + id + '.title');
+    const prev = order[i - 1], next = order[i + 1];
+    let html = '';
+    if (prev) html += '<button type="button" class="btn btn-secondary prev" data-go="' + prev + '">' + icon('back') +
+      '<span><small>' + esc(t('nav.prev')) + '</small>' + esc(name(prev)) + '</span></button>';
+    if (next) {
+      const m = Modules.get(next), locked = !!(m && m.needsData && !hasData());
+      html += '<button type="button" class="btn btn-primary next" data-go="' + next + '"' + (locked ? ' disabled' : '') + '>' +
+        '<span><small>' + esc(t('nav.next')) + '</small>' + esc(name(next)) + '</span>' + icon('chevron') + '</button>';
+    }
+    f.innerHTML = html;
+    f.hidden = !html;
   },
 
   syncLang() {
