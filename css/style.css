@@ -862,3 +862,5 @@ tr.file-error td { background: var(--rose-soft); }
   .appbar .seg button { min-height: 28px; padding: 0 8px; }
   .appbar .suite-link { padding: 5px 8px; }
 }
+/* barra común a 420 px o menos: solo el logo, para que quepan Abrir, Guardar, LABG Suite, ES | EN y tema */
+@media (max-width: 420px) { .appbar .brand-text { display: none; } }
