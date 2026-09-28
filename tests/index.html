@@ -22,6 +22,8 @@
   #resultJson { display: none; }
   .sandbox-note { max-width: 980px; margin: 30px auto 6px; padding: 0 20px; color: #5a6a81; font: 12px system-ui, sans-serif; }
   #app { min-height: auto; border-top: 3px dashed #b9c7da; }
+  /* las pruebas miden el estado final: sin transiciones (la base funde colores 120 ms al cambiar de tema) */
+  #app, #app *, #app *::before, #app *::after { transition: none !important; animation: none !important; }
 </style>
 </head>
 <body>
