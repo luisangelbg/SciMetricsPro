@@ -42,6 +42,13 @@ const App = {
      in the app: the tests page may run without js/core/labg-core.js. */
   bindSuite() {
     if (!window.LABG) return;
+    /* the animated wait of the suite (behind ProgressOverlay): points that gather in groups, as the
+       communities of a network, and advice of this app in both languages next to the common ones */
+    if (LABG.work) {
+      LABG.work.scene = 'cluster';
+      const tips = k => [I18N_DICT.es.progress.tips[k], I18N_DICT.en.progress.tips[k]];
+      LABG.work.tips = ['prisma', 'zip', 'report'].map(tips);
+    }
     LABG.bindStepKeys(route => App.go(route));
     LABG.shortcuts([]);
     /* the tests page loads data on purpose: no question when it is closed */

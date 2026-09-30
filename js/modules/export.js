@@ -96,6 +96,30 @@ const ExportModule = {
     App.render('export', { keepScroll: true, keepFocus: true });
   },
 
+  /* progress of a long export inside the page, in the element with this id: with the LABG core, a bar
+     that ends in a check mark (LABG.progressBar); without it, the plain text of always. The element is
+     looked up at every call, because the screen may be redrawn meanwhile: a new one gets a new bar. */
+  liveBar(id, label) {
+    const useBar = !!(window.LABG && typeof LABG.progressBar === 'function');
+    const t0 = performance.now();
+    let host = null, bar = null, last = null;
+    const find = () => {
+      const h = el(id);
+      if (h && useBar && (h !== host || !bar || !h.contains(bar.el))) {
+        host = h; bar = LABG.progressBar(h, { label });
+        if (last) bar.update(last[0], last[1]);
+      }
+      return h;
+    };
+    return {
+      update(f, text) { last = [f, text]; const h = find(); if (!h) return; if (bar) bar.update(f, text); else h.textContent = text; },
+      done(text) { const h = find(); if (!h) return; if (bar) bar.done(text); else h.textContent = text; },
+      clear() { const h = el(id); if (h) h.textContent = ''; bar = null; host = null; },
+      get isBar() { return useBar; },
+      seconds() { return fmtNum((performance.now() - t0) / 1000, 1); },
+    };
+  },
+
   help(key, title) {
     const base = 'export.help.' + key;
     return { title, text: t(base + '.text'), formula: I18N.has(base + '.formula') ? t(base + '.formula') : '', where: [], interpretation: I18N.has(base + '.interpretation') ? t(base + '.interpretation') : '', refs: (I18N.has(base + '.refs') ? t(base + '.refs').split('|') : []).map(r => t('refs.' + r)) };
@@ -227,7 +251,7 @@ const ExportModule = {
     bb.addEventListener('click', () => M.buildReport());
     bar.appendChild(bb);
     build.appendChild(bar);
-    build.appendChild(mk('p', { class: 'hint', id: 'rpStatus', 'aria-live': 'polite' }, esc(R.busy ? t('export.report.building') : '')));
+    build.appendChild(mk('div', { class: 'hint', id: 'rpStatus', 'aria-live': 'polite' }, esc(R.busy ? t('export.report.building') : '')));
     if (!o.sections.length) build.appendChild(mk('p', { class: 'note-warn', id: 'rpNoSections' }, icon('help') + '<span>' + esc(t('export.report.noSections')) + '</span>'));
     if (!R.model) build.appendChild(mk('p', { class: 'hint', id: 'rpEmpty' }, esc(t('export.report.empty'))));
     else if (R.model.records !== Pipeline.records()) build.appendChild(mk('p', { class: 'note-warn', id: 'rpStale' }, icon('help') + '<span>' + esc(t('export.report.stale')) + '</span>'));
@@ -245,7 +269,7 @@ const ExportModule = {
       actions.appendChild(b);
     });
     prev.appendChild(actions);
-    prev.appendChild(mk('p', { class: 'hint', id: 'rpFileStatus', 'aria-live': 'polite' }));
+    prev.appendChild(mk('div', { class: 'hint', id: 'rpFileStatus', 'aria-live': 'polite' }));
     const paper = mk('div', { class: 'report-preview' });
     paper.appendChild(mk('style', null, Report.CSS));
     const doc = mk('article', { class: 'report-doc', id: 'rpDoc', lang: model.lang });
@@ -261,15 +285,19 @@ const ExportModule = {
     if (!o.sections.length) return null;
     R.busy = true;
     M.rerender();
-    const status = () => el('rpStatus');
+    const bar = M.liveBar('rpStatus', t('export.report.building'));
+    let built = false;
     try {
-      R.model = await Report.build(o, (f, label) => { const s = status(); if (s) s.textContent = t('export.report.buildingModule', { module: label, pct: fmtPct(f, 0) }); });
+      R.model = await Report.build(o, (f, label) => bar.update(f, t('export.report.buildingModule', { module: label, pct: fmtPct(f, 0) })));
+      built = true;
     } catch (e) {
       toast(t('export.report.failed', { msg: e.message }), 'error');
     } finally {
       R.busy = false;
       M.rerender();
     }
+    /* the redrawn screen gets the bar again, now finished */
+    if (built && bar.isBar) bar.done(t('export.report.built', { time: bar.seconds() }));
     return R.model;
   },
 
@@ -281,16 +309,16 @@ const ExportModule = {
     R.busy = true;
     const buttons = ['rpDocx', 'rpPrint', 'rpHtml', 'rpBuild'].map(el).filter(Boolean);
     buttons.forEach(b => { b.disabled = true; });
-    const status = el('rpFileStatus');
+    const bar = M.liveBar('rpFileStatus', t('export.report.docx'));
     try {
-      const blob = await Report.docx(R.model, (f, title) => { if (status) status.textContent = t('export.report.preparing', { pct: fmtPct(f, 0), title }); });
+      const blob = await Report.docx(R.model, (f, title) => bar.update(f, t('export.report.preparing', { pct: fmtPct(f, 0), title })));
       const name = M.reportFileName('docx');
       download(blob, name);
-      if (status) status.textContent = t('export.report.done', { file: name });
+      bar.done(t('export.report.done', { file: name }));
       return { blob, name };
     } catch (e) {
       toast(t('export.report.failed', { msg: e.message }), 'error');
-      if (status) status.textContent = '';
+      bar.clear();
       return null;
     } finally {
       R.busy = false;
@@ -395,7 +423,7 @@ const ExportModule = {
     const zb = mk('button', { type: 'button', class: 'btn btn-primary', id: 'exZip', disabled: M.busy }, icon('download') + '<span>' + esc(t('export.zip.button')) + '</span>');
     zb.addEventListener('click', () => M.downloadZip());
     zip.appendChild(zb);
-    zip.appendChild(mk('p', { class: 'hint', id: 'exZipStatus', 'aria-live': 'polite' }));
+    zip.appendChild(mk('div', { class: 'hint', id: 'exZipStatus', 'aria-live': 'polite' }));
   },
 
   renderCatalog(host) {
@@ -444,15 +472,24 @@ const ExportModule = {
     M.busy = true;
     M.rerender();
     const status = el('exList');
-    const note = status ? mk('p', { class: 'note-info', id: 'exCollecting' }, icon('clock') + '<span>' + esc(t('export.list.collecting')) + '</span>') : null;
+    const note = status ? mk('div', { class: 'note-info', id: 'exCollecting' }, icon('clock') + '<div class="ex-progress" id="exCollectingBar">' + esc(t('export.list.collecting')) + '</div>') : null;
     if (note) status.appendChild(note);
+    const bar = M.liveBar('exCollectingBar', t('export.list.collecting'));
+    let found = false;
     try {
-      const items = await ExportCollector.collect((f, label) => { if (note) note.querySelector('span').textContent = t('export.list.collectingModule', { module: label, pct: fmtPct(f, 0) }); });
+      const items = await ExportCollector.collect((f, label) => bar.update(f, t('export.list.collectingModule', { module: label, pct: fmtPct(f, 0) })));
       M.catalog = { items, records: Pipeline.records() };
       M.selected = new Set(items.map(it => it.uid));
+      found = true;
     } finally {
       M.busy = false;
       M.rerender();
+    }
+    /* the finished bar above the list, until the screen is drawn again */
+    const list = el('exList'), foundNote = el('exFound');
+    if (found && bar.isBar && list && foundNote && foundNote.parentNode === list) {
+      list.insertBefore(mk('div', { class: 'ex-progress ex-progress-done', id: 'exCollectingBar' }), foundNote);
+      bar.done(t('export.list.collected', { time: bar.seconds() }));
     }
     return M.catalog;
   },
@@ -507,20 +544,20 @@ const ExportModule = {
   async downloadZip() {
     const M = ExportModule;
     if (M.busy) return null;
-    const status = el('exZipStatus');
+    const bar = M.liveBar('exZipStatus', t('export.zip.button'));
     M.busy = true;
     const btn = el('exZip');
     if (btn) btn.disabled = true;
     try {
-      const files = await M.buildFiles((f, title) => { if (status) status.textContent = t('export.zip.progress', { pct: fmtPct(f, 0), title }); });
+      const files = await M.buildFiles((f, title) => bar.update(f, t('export.zip.progress', { pct: fmtPct(f, 0), title })));
       const blob = await Zip.build(files);
       const name = 'scimetricspro_' + slug(t('export.zip.file')) + '_' + new Date().toISOString().slice(0, 10) + '.zip';
       download(blob, name);
-      if (status) status.textContent = tp('export.zip.done', files.length, { size: (blob.size / 1048576).toFixed(1) });
+      bar.done(tp('export.zip.done', files.length, { size: (blob.size / 1048576).toFixed(1) }));
       return { blob, files, name };
     } catch (e) {
       toast(t('export.zip.failed', { msg: e.message }), 'error');
-      if (status) status.textContent = '';
+      bar.clear();
       return null;
     } finally {
       M.busy = false;

@@ -227,16 +227,17 @@ main:focus { outline: none; }
 .help-refs { margin: 6px 0 0; padding-left: 18px; color: var(--text-muted); font-size: 0.82rem; }
 .help-refs li + li { margin-top: 4px; }
 
-/* ================= ProgressOverlay ================= */
-.progress-overlay { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8, 20, 40, 0.45); backdrop-filter: blur(2px); animation: fadeIn .15s ease-out; }
+/* ================= ProgressOverlay (own overlay, used without the LABG core; with it the window is LABG.work,
+   whose parts carry some of these class names as hooks, hence the scoping below) ================= */
+.progress-overlay:not(.lw-backdrop) { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8, 20, 40, 0.45); backdrop-filter: blur(2px); animation: fadeIn .15s ease-out; }
 .progress-box { width: min(440px, 100%); background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 20px 22px; border: 1px solid var(--border); }
 .progress-title { margin: 0 0 14px; font-size: 1.02rem; }
 .progress-bar { height: 10px; border-radius: 999px; background: var(--bg-soft); overflow: hidden; position: relative; }
 .progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), var(--teal)); border-radius: 999px; transition: width .2s; }
 .progress-bar.indeterminate .progress-fill { width: 35%; position: absolute; animation: slide 1.1s ease-in-out infinite; }
 .progress-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 0.82rem; color: var(--text-muted); min-height: 1.3em; }
-.progress-pct { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--text); }
-.progress-cancel { margin-top: 14px; }
+.progress-box .progress-pct { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--text); }
+.progress-box .progress-cancel { margin-top: 14px; }
 @keyframes slide { 0% { left: -35%; } 100% { left: 100%; } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -766,6 +767,9 @@ tr.file-error td { background: var(--rose-soft); }
 /* export (Paso 14) */
 .net-export-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .ex-card { gap: 10px; }
+/* progress of a long export inside the page (LABG.progressBar in the host) */
+.ex-progress { flex: 1; min-width: 0; }
+.ex-progress-done { margin: 0 0 10px; }
 .ex-format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
 .ex-checks { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 12px; margin: 0; display: flex; flex-direction: column; gap: 4px; }
 .ex-checks legend { font-weight: 700; font-size: 0.86rem; padding: 0 4px; }

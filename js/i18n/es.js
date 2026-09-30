@@ -3157,6 +3157,7 @@ window.I18N_DICT.es = {
       again: 'Generar de nuevo',
       building: 'Preparando el informe…',
       buildingModule: 'Dibujando {module} ({pct})…',
+      built: 'Vista previa lista en {time} s.',
       empty: 'Elige las secciones y genera la vista previa. El informe se escribe con tus datos y con los parámetros que dejaste en cada módulo.',
       stale: 'Los documentos cambiaron después de generar el informe: genera de nuevo la vista previa.',
       noSections: 'Elige al menos una sección.',
@@ -3238,6 +3239,7 @@ window.I18N_DICT.es = {
       empty: 'Cada pestaña de los módulos de análisis se dibuja fuera de la vista con los parámetros que elegiste, para listar sus figuras, tablas y redes.',
       collecting: 'Buscando figuras y tablas…',
       collectingModule: 'Buscando en {module} ({pct})…',
+      collected: 'Búsqueda terminada en {time} s.',
       found: '{figures}, {tables} y {networks}.',
       foundFigures: {
         one: '1 figura',
@@ -4326,6 +4328,12 @@ window.I18N_DICT.es = {
     cancelled: 'Proceso cancelado.',
     failed: 'El proceso falló: {msg}',
     percent: '{p} %',
+    /* advice shown while the animated window of the LABG core waits (js/app/app.js) */
+    tips: {
+      prisma: 'En PRISMA puedes cribar con el teclado: I incluye, E excluye, D deja en duda y U deshace.',
+      zip: 'Exportar y reporte reúne las figuras, tablas y redes en un solo archivo .zip, con las figuras a 300 dpi por omisión.',
+      report: 'La pestaña Informe de Exportar y reporte escribe la metodología con los parámetros que usaste y la guarda en .docx.',
+    },
   },
   errors: {
     generic: 'Algo salió mal: {msg}',

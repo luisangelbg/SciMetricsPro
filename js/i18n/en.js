@@ -3157,6 +3157,7 @@ window.I18N_DICT.en = {
       again: 'Build again',
       building: 'Preparing the report…',
       buildingModule: 'Drawing {module} ({pct})…',
+      built: 'Preview ready in {time} s.',
       empty: 'Choose the sections and build the preview. The report is written with your data and with the parameters you left in each module.',
       stale: 'The documents changed after the report was built: build the preview again.',
       noSections: 'Choose at least one section.',
@@ -3238,6 +3239,7 @@ window.I18N_DICT.en = {
       empty: 'Each tab of the analysis modules is drawn out of sight with the parameters you chose, to list its figures, tables and networks.',
       collecting: 'Finding figures and tables…',
       collectingModule: 'Looking in {module} ({pct})…',
+      collected: 'Search finished in {time} s.',
       found: '{figures}, {tables} and {networks}.',
       foundFigures: {
         one: '1 figure',
@@ -4326,6 +4328,12 @@ window.I18N_DICT.en = {
     cancelled: 'Process cancelled.',
     failed: 'The process failed: {msg}',
     percent: '{p}%',
+    /* advice shown while the animated window of the LABG core waits (js/app/app.js) */
+    tips: {
+      prisma: 'In PRISMA you can screen with the keyboard: I includes, E excludes, D marks as doubtful and U undoes.',
+      zip: 'Export & report gathers the figures, tables and networks in a single .zip file, with the figures at 300 dpi by default.',
+      report: 'The Report tab of Export & report writes the methods with the parameters you used and saves them as .docx.',
+    },
   },
   errors: {
     generic: 'Something went wrong: {msg}',

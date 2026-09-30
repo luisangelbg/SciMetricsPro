@@ -37,7 +37,11 @@ const ImportModule = {
             try { converted.set(f, await ImportModule.sheetToFile(f)); }
             catch (e) { failed.set(f, { name: f.name, size: f.size, format: null, source: null, records: [], warnings: [{ code: 'readError', msg: String(e && e.message || e) }], error: 'readError' }); }
           }
-        } finally { if (overlay) overlay.close(); }
+        } finally {
+          /* the readers come next, behind their own window: no check mark in between; if every
+             spreadsheet failed and nothing else follows, close quietly (the failures are reported below) */
+          if (overlay) overlay.close(fresh.some(f => !failed.has(f)) ? { quiet: true } : { ok: !failed.size });
+        }
       }
       const toRead = fresh.filter(f => !failed.has(f)).map(f => converted.get(f) || f);
       const read = toRead.length ? await Parsers.read(toRead, { overlay: !opts.inline && !opts.quiet, inline: opts.inline, title: t('import.reading') }) : [];
