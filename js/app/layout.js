@@ -52,7 +52,7 @@ const Layout = {
     /* back to the portal of the suite */
     const suite = mk('a', { class: 'suite-link', href: window.LABG ? LABG.SUITE_URL : 'https://luisangelbg.github.io/',
       'data-i18n-attr': 'title:header.suiteTitle;aria-label:header.suiteTitle' },
-      icon('grid') + '<span class="suite-text" data-i18n="header.suite"></span>');
+      (window.LABG && LABG.isotipo ? LABG.isotipo('labg-iso', 'labgIsoH') : icon('grid')) + '<span class="suite-text" data-i18n="header.suite"></span>');
     tools.appendChild(suite);
     const lang = mk('div', { class: 'seg lang-seg lang-switch', role: 'group', 'data-i18n-attr': 'aria-label:header.language' });
     [['es', 'ES', 'header.langEs'], ['en', 'EN', 'header.langEn']].forEach(([code, label, key]) => {
