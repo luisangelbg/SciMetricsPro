@@ -298,21 +298,23 @@ const Charts = {
       f.g.appendChild(g);
     });
 
-    const swatch = (g, x0, yy, color) => g.appendChild(Fig.el('line', { x1: x0, x2: x0 + fsLeg * 1.6, y1: yy - fsLeg * 0.35, y2: yy - fsLeg * 0.35, stroke: color, 'stroke-width': 2.6 }));
-    const gl = Fig.g({ 'data-legend': '1' });
+    /* the legend for the figure studio: data-role="legend", each entry (swatch and label) with its data-li */
+    const swatch = (g, x0, yy, color, i) => g.appendChild(Fig.el('line', { x1: x0, x2: x0 + fsLeg * 1.6, y1: yy - fsLeg * 0.35, y2: yy - fsLeg * 0.35, stroke: color, 'stroke-width': 2.6, 'data-li': i }));
+    const gl = Fig.g({ 'data-role': 'legend' });
     if (pos === 'bottom') {
       rows.forEach((row, r) => {
         const yy = f.y1 + axisDepth + 4 + fsLeg + r * fsLeg * 1.7;
         row.forEach(({ it, x: dx }) => {
-          swatch(gl, f.x0 + dx, yy, it.color);
-          gl.appendChild(Fig.text(f.x0 + dx + fsLeg * 1.6 + 6, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' }));
+          const i = items.indexOf(it);
+          swatch(gl, f.x0 + dx, yy, it.color, i);
+          gl.appendChild(Fig.text(f.x0 + dx + fsLeg * 1.6 + 6, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' })).setAttribute('data-li', i);
         });
       });
     } else if (pos === 'right') {
       items.forEach((it, i) => {
         const yy = f.y0 + 8 + fsLeg + i * fsLeg * 1.7;
-        swatch(gl, f.x1 + 18, yy, it.color);
-        gl.appendChild(Fig.text(f.x1 + 18 + fsLeg * 1.6 + 6, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' }));
+        swatch(gl, f.x1 + 18, yy, it.color, i);
+        gl.appendChild(Fig.text(f.x1 + 18 + fsLeg * 1.6 + 6, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' })).setAttribute('data-li', i);
       });
     }
     f.g.appendChild(gl);
@@ -427,9 +429,9 @@ const Charts = {
       gb.appendChild(c);
     });
     f.g.appendChild(gb);
-    /* legends: sizes and colour bar */
+    /* legends: sizes and colour bar (keys without entries: data-legend for the figure studio) */
     const ly = (cfg.xlab ? xlabY : f.y1 + 8 + fsTick) + 18 + fsLeg;
-    const gl = Fig.g({ 'data-legend': '1' });
+    const gl = Fig.g({ 'data-legend': 'size' });
     gl.appendChild(Fig.text(f.x0, ly, o.sizeLabel, { size: 11, fill: f.t.fg, font, role: 'legend', weight: 'bold' }));
     let lx = f.x0 + Fig.measure(o.sizeLabel, fsLeg, font, 'bold') + 14;
     [...new Set([1, Math.round(nMax / 2), nMax])].filter(v => v >= 1).forEach(v => {
@@ -577,7 +579,7 @@ const Charts = {
     }
     f.g.appendChild(g);
     /* colour bar */
-    const gl = Fig.g({ 'data-legend': '1' });
+    const gl = Fig.g({ 'data-legend': 'colorbar' });
     const barW = Math.min(360, (f.x1 - f.x0) * 0.5), bx = cx - barW / 2, by = f.y1 + 18 * Fig.fs('legend');
     gl.appendChild(Fig.text(cx, by - 6, o.label, { size: 11, anchor: 'middle', fill: f.t.fg, font, role: 'legend', weight: 'bold' }));
     for (let i = 0; i < 40; i++) gl.appendChild(Fig.el('rect', { x: (bx + i * barW / 40).toFixed(1), y: by.toFixed(1), width: (barW / 40 + 0.5).toFixed(1), height: (fsLeg * 0.9).toFixed(1), fill: cmap(i / 39) }));
@@ -708,7 +710,7 @@ const Charts = {
       { obstacles: linked.map(code => { const [px, py] = toScreen(pts.get(code)); return { x: px, y: py, r: 3 }; }), maxDistance: 40, leaderMin: 10 });
     f.g.appendChild(gt);
     /* legends: colour bar for documents and line widths for co-authorships */
-    const gl = Fig.g({ 'data-legend': '1' });
+    const gl = Fig.g({ 'data-legend': 'colorbar' });
     const barW = Math.min(300, (f.x1 - f.x0) * 0.35), bx = f.x0 + (f.x1 - f.x0) * 0.08, by = f.y1 + 22 * Fig.fs('legend');
     gl.appendChild(Fig.text(bx + barW / 2, by - 6, o.label, { size: 11, anchor: 'middle', fill: f.t.fg, font, role: 'legend', weight: 'bold' }));
     for (let i = 0; i < 40; i++) gl.appendChild(Fig.el('rect', { x: (bx + i * barW / 40).toFixed(1), y: by.toFixed(1), width: (barW / 40 + 0.5).toFixed(1), height: (fsLeg * 0.9).toFixed(1), fill: cmap(i / 39) }));
@@ -1230,7 +1232,7 @@ const Charts = {
     f.g.appendChild(gs); f.g.appendChild(gp);
     /* size legend */
     const ly = (cfg.xlab ? xlabY : f.y1 + 8 + fsTick) + 18 + fsLeg;
-    const gl = Fig.g({ 'data-legend': '1' });
+    const gl = Fig.g({ 'data-legend': 'size' });
     gl.appendChild(Fig.text(f.x0, ly, o.sizeLabel, { size: 11, fill: f.t.fg, font, role: 'legend', weight: 'bold' }));
     let lx = f.x0 + Fig.measure(o.sizeLabel, fsLeg, font, 'bold') + 14;
     [...new Set([Math.max(1, Math.round(nMax / 4)), Math.round(nMax / 2), nMax])].filter(v => v >= 1).forEach(v => {
@@ -1313,13 +1315,14 @@ const Charts = {
       { obstacles: order.map(i => ({ x: X(i), y: Y(i), r: R(i) })), maxDistance: 60, leaderMin: 12 });
     f.g.appendChild(gl);
     if (legend) {
-      const lg = Fig.g({ 'data-legend': '1' });
+      /* data-role="legend" and each entry's data-li for the figure studio; data-legend stays (the tests look the legend up by it) */
+      const lg = Fig.g({ 'data-role': 'legend', 'data-legend': '1' });
       const lx = f.x1 + 22;
       lg.appendChild(Fig.text(lx, f.y0 + fsLeg, cfg.legendTitle || o.legendTitle || '', { size: 11, weight: 'bold', fill: f.t.fg, font, role: 'legend' }));
       legendItems.forEach((it, k) => {
         const yy = f.y0 + fsLeg * (2.9 + 1.7 * k);
-        lg.appendChild(Fig.el('circle', { cx: lx + fsLeg * 0.5, cy: yy - fsLeg * 0.35, r: fsLeg * 0.45, fill: it.color }));
-        lg.appendChild(Fig.text(lx + fsLeg * 1.4, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' }));
+        lg.appendChild(Fig.el('circle', { cx: lx + fsLeg * 0.5, cy: yy - fsLeg * 0.35, r: fsLeg * 0.45, fill: it.color, 'data-li': k }));
+        lg.appendChild(Fig.text(lx + fsLeg * 1.4, yy, it.label, { size: 11, fill: f.t.fg, font, role: 'legend' })).setAttribute('data-li', k);
       });
       f.g.appendChild(lg);
     }
@@ -1607,13 +1610,14 @@ const Charts = {
       { obstacles: o.points.map(p => ({ x: X(p.x), y: Y(p.y), r: 3.6 })), maxDistance: 60 });
     f.g.appendChild(gl);
     if (legend) {
-      const lg = Fig.g({ 'data-legend': '1' });
+      /* data-role="legend" and each entry's data-li for the figure studio; data-legend stays (the tests look the legend up by it) */
+      const lg = Fig.g({ 'data-role': 'legend', 'data-legend': '1' });
       const lx = f.x1 + 20;
       if (o.legendTitle) lg.appendChild(Fig.text(lx, f.y0 + fsLeg, o.legendTitle, { size: 11, weight: 'bold', fill: f.t.fg, font, role: 'legend' }));
       o.clusterNames.forEach((name, c) => {
         const yy = f.y0 + fsLeg * (2.9 + 1.7 * c);
-        lg.appendChild(Fig.el('circle', { cx: lx + fsLeg * 0.5, cy: yy - fsLeg * 0.35, r: fsLeg * 0.45, fill: color(c) }));
-        lg.appendChild(Fig.text(lx + fsLeg * 1.4, yy, name, { size: 11, fill: f.t.fg, font, role: 'legend' }));
+        lg.appendChild(Fig.el('circle', { cx: lx + fsLeg * 0.5, cy: yy - fsLeg * 0.35, r: fsLeg * 0.45, fill: color(c), 'data-li': c }));
+        lg.appendChild(Fig.text(lx + fsLeg * 1.4, yy, name, { size: 11, fill: f.t.fg, font, role: 'legend' })).setAttribute('data-li', c);
       });
       f.g.appendChild(lg);
     }
