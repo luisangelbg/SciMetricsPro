@@ -13,6 +13,38 @@ const App = {
     return m && App.routes().includes(m[1]) ? m[1] : 'home';
   },
 
+  /* a tab of the module in the address (#/sources/bradford), or null when that module has no such tab */
+  tabFromHash(hash) {
+    const m = String(hash == null ? location.hash : hash).match(/^#\/?([\w-]+)\/([\w-]+)/);
+    if (!m || !App.routes().includes(m[1])) return null;
+    return Modules.tabs(m[1]).some(x => x.id === m[2]) ? m[2] : null;
+  },
+  tabHash(route, tab) { return '#/' + route + (tab ? '/' + tab : ''); },
+  /* the tabs of a module, for the LABG navigator ([] when it has none) */
+  tabs(route) { return Modules.tabs(route); },
+  /* open a tab of a module; the address keeps it, so Back returns to the previous place */
+  goTab(route, tab) {
+    if (!App.routes().includes(route)) return;
+    const h = App.tabHash(route, Modules.tabs(route).some(x => x.id === tab) ? tab : null);
+    if (location.hash === h) App.render(route, { tab });
+    else location.hash = h;
+  },
+  /* the address follows the open tab without a new history entry, only while it already
+     points to the module on screen (the start page without # and the tests page stay as they are).
+     It is written a moment later, once per burst of redraws: browsers ignore an address that
+     changes hundreds of times in a few seconds, and then a link would not open. */
+  _tabHashTimer: null,
+  syncTabHash() {
+    clearTimeout(App._tabHashTimer);
+    App._tabHashTimer = setTimeout(() => {
+      const route = state.route, s = Modules.screen(route);
+      if (!s || !Array.isArray(s.TABS) || !s.TABS.includes(s.tab)) return;
+      if (!/^#\//.test(location.hash) || App.routeFromHash() !== route) return;
+      const h = App.tabHash(route, s.tab);
+      if (location.hash !== h) try { history.replaceState(history.state, '', h); } catch (e) { /* some viewers do not allow it */ }
+    }, 120);
+  },
+
   boot(root) {
     if (App.booted) return;
     App.booted = true;
@@ -21,7 +53,12 @@ const App = {
     Layout.build(root);
     document.title = t('app.title');
 
-    window.addEventListener('hashchange', () => App.render(App.routeFromHash()));
+    /* a change that arrives late, when the address has moved on again (another navigation, or the tab
+       written by syncTabHash after the page was already drawn), is skipped: the newer one draws */
+    window.addEventListener('hashchange', e => {
+      if (e && e.newURL && e.newURL !== location.href) return;
+      App.render(App.routeFromHash(), { tab: App.tabFromHash() });
+    });
     on('langchange', () => {
       document.title = t('app.title');
       Layout.refresh();
@@ -31,7 +68,7 @@ const App = {
     on('datachange', () => { Layout.visited.clear(); if (hasData() && Modules.get(state.route)) Layout.visited.add(state.route); Layout.buildNav(); Layout.setActive(state.route); });
     on('cleanchange', () => Layout.syncCounter());
 
-    App.render(App.routeFromHash());
+    App.render(App.routeFromHash(), { tab: App.tabFromHash() });
     Project.init();
     Tour.maybeStart();
     App.bindSuite();
@@ -69,9 +106,13 @@ const App = {
     HelpPopover.close();
     Layout.closeMenu();
     const view = Layout.view;
+    /* a tab asked for in the address (#/sources/bradford) */
+    const scr = opts.tab ? Modules.screen(route) : null;
+    if (scr && Array.isArray(scr.TABS) && scr.TABS.includes(opts.tab)) scr.tab = opts.tab;
     if (route === 'home') Home.render(view);
     else if (route === 'about') About.render(view);
     else Modules.render(route, view);
+    App.syncTabHash();
     if (hasData() && Modules.get(route)) Layout.visited.add(route);
     Layout.setActive(route);
     document.body.dataset.route = route;

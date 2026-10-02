@@ -55,7 +55,7 @@ los indicadores con su referencia, un glosario español–inglés y la solución
 
 ## Pruebas
 
-`tests/index.html` corre la suite completa (325 pruebas) en el navegador, sin instalar nada.
+`tests/index.html` corre la suite completa (328 pruebas) en el navegador, sin instalar nada.
 
 ## Licencia y cómo citar
 

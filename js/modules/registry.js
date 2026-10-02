@@ -29,6 +29,17 @@ const Modules = {
   ids() { return Modules.list.map(m => m.id); },
   define(id, impl) { Modules.impl[id] = impl; },
 
+  /* the screen object of a module (SourcesModule, ImportModule…): its tabs are .TABS and the open one is .tab */
+  screen(id) {
+    const s = window[String(id).charAt(0).toUpperCase() + String(id).slice(1) + 'Module'];
+    return s && typeof s === 'object' ? s : null;
+  },
+  /* the tabs of a module with their names in the active language ([] when it has none) */
+  tabs(id) {
+    const s = Modules.screen(id);
+    return s && Array.isArray(s.TABS) ? s.TABS.map(k => ({ id: k, label: t(id + '.tabs.' + k) })) : [];
+  },
+
   render(id, host) {
     const m = Modules.get(id);
     if (!m) return;

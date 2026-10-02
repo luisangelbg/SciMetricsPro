@@ -120,6 +120,50 @@ describe('app · every section opens', () => {
     eq(App.routeFromHash('#/social'), 'social');
     eq(App.routeFromHash(''), 'home');
   });
+  it('a tab can travel in the address (#/sources/bradford)', () => {
+    eq(App.routeFromHash('#/sources/bradford'), 'sources');
+    eq(App.tabFromHash('#/sources/bradford'), 'bradford');
+    eq(App.tabFromHash('#/social/worldMap'), 'worldMap');
+    eq(App.tabFromHash('#/sources/nope'), null);
+    eq(App.tabFromHash('#/overview/x'), null);
+    eq(App.tabFromHash('#/home'), null);
+    eq(App.tabHash('import', 'keywords'), '#/import/keywords');
+    deepEq(Modules.tabs('overview'), []);
+    deepEq(Modules.tabs('sources').map(x => x.id), SourcesModule.TABS);
+  });
+  it('every tab of every module has its name in both languages', () => {
+    const get = (d, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), d);
+    const bad = [];
+    Modules.ids().forEach(id => {
+      const s = Modules.screen(id);
+      ((s && s.TABS) || []).forEach(k => ['es', 'en'].forEach(L => { if (typeof get(I18N_DICT[L], id + '.tabs.' + k) !== 'string') bad.push(L + ':' + id + '.tabs.' + k); }));
+    });
+    deepEq(bad, []);
+  });
+  it('a tab link opens that tab and the address follows the tab without new history entries', async () => {
+    const tab0 = SourcesModule.tab;
+    try {
+      location.hash = '#/sources/impact';
+      await tick(80);
+      eq(state.route, 'sources');
+      eq(SourcesModule.tab, 'impact');
+      eq(location.hash, '#/sources/impact');
+      const n = history.length;
+      /* a burst of redraws writes the address once, a moment later */
+      SourcesModule.tab = 'bradford';
+      App.render('sources', { keepScroll: true });
+      SourcesModule.tab = 'table';
+      App.render('sources', { keepScroll: true });
+      eq(location.hash, '#/sources/impact', 'not yet');
+      await tick(220);
+      eq(location.hash, '#/sources/table');
+      eq(history.length, n);
+      App.goTab('sources', 'dynamics');
+      await tick(80);
+      eq(SourcesModule.tab, 'dynamics');
+      eq(location.hash, '#/sources/dynamics');
+    } finally { SourcesModule.tab = tab0; location.hash = ''; await tick(220); }
+  });
 });
 
 describe('app · language', () => {
