@@ -230,7 +230,7 @@ main:focus { outline: none; }
 
 /* ================= ProgressOverlay (own overlay, used without the LABG core; with it the window is LABG.work,
    whose parts carry some of these class names as hooks, hence the scoping below) ================= */
-.progress-overlay:not(.lw-backdrop) { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8, 20, 40, 0.45); backdrop-filter: blur(2px); animation: fadeIn .15s ease-out; }
+.progress-overlay:not(.lw-backdrop):not(.lfx-layer) { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8, 20, 40, 0.45); backdrop-filter: blur(2px); animation: fadeIn .15s ease-out; }
 .progress-box { width: min(440px, 100%); background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 20px 22px; border: 1px solid var(--border); }
 .progress-title { margin: 0 0 14px; font-size: 1.02rem; }
 .progress-bar { height: 10px; border-radius: 999px; background: var(--bg-soft); overflow: hidden; position: relative; }

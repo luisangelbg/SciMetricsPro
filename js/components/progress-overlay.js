@@ -10,8 +10,10 @@
 
    With the LABG Suite core loaded (js/core/labg-core.js), the window is LABG.work: the
    animated wait of the suite that ends in a check mark when the work succeeds, closes
-   quietly when it is cancelled and shows a cross when it fails. Without it, the
-   overlay of always. The public API and its behaviour are the same in both. */
+   quietly when it is cancelled and shows a cross when it fails. With Efectos LABG
+   (js/core/labg-fx.js) that same wait is a layer over the results panel instead of a
+   window; showLabg finds either one. Without the core, the overlay of always. The
+   public API and its behaviour are the same in all three. */
 'use strict';
 
 const ProgressOverlay = {
@@ -33,11 +35,12 @@ const ProgressOverlay = {
      (callers and tests find the bar, the percentage, the message and Cancel by them) */
   showLabg(opts) {
     const w = LABG.work({ title: opts.title || t('progress.working'), message: opts.message || '', cancel: opts.onCancel || null });
-    const all = document.querySelectorAll('body > .lw-backdrop');
-    const back = all[all.length - 1];
-    const bar = back.querySelector('.lw-bar');
-    const msgNode = back.querySelector('.lw-msg'), pctNode = back.querySelector('.lw-meta > span');
-    const cancelBtn = back.querySelector('.lw-actions button');
+    /* the suite's window (.lw-backdrop) or, with Efectos LABG (labg-fx.js), its layer over the results panel */
+    let back = w.el && w.el.closest ? w.el.closest('.lfx-layer') : null;
+    if (!back) { const all = document.querySelectorAll('body > .lw-backdrop'); back = all[all.length - 1]; }
+    const bar = back.querySelector('.lw-bar, .lfx-bar');
+    const msgNode = back.querySelector('.lw-msg, .lfx-msg'), pctNode = back.querySelector('.lw-meta > span, .lfx-meta > span');
+    const cancelBtn = back.querySelector('.lw-actions button, .lfx-actions button');
     back.classList.add('progress-overlay');
     bar.classList.add('indeterminate');
     bar.setAttribute('aria-valuemin', '0'); bar.setAttribute('aria-valuemax', '100');
