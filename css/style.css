@@ -84,6 +84,8 @@ select, input[type=text], input[type=search], input[type=number] {
 .appbar .topbar-inner { max-width: none; height: 100%; padding: 0 18px; display: flex; align-items: center; }
 .appbar .topbar-row { flex: 1; min-width: 0; }
 .appbar .top-tools { flex-shrink: 1; min-width: 0; }
+/* labg-base.css sends the tools to a second row at 760 px or less; this bar has a fixed height and trims the name instead */
+@media (max-width: 760px) { .appbar .topbar-row { flex-wrap: nowrap; } .appbar .brand { min-width: 0; } }
 .appbar .theme-btn, .appbar .help-keys-btn { width: 34px; min-width: 34px; padding: 0; border-radius: 50%; }
 .brand { flex-shrink: 1; }
 .brand-logo { border-radius: 9px; flex: none; display: block; }
