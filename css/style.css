@@ -83,7 +83,10 @@ select, input[type=text], input[type=search], input[type=number] {
 .appbar.topbar { z-index: 60; height: var(--header-h); }
 .appbar .topbar-inner { max-width: none; height: 100%; padding: 0 18px; display: flex; align-items: center; }
 .appbar .topbar-row { flex: 1; min-width: 0; }
-.appbar .top-tools { flex-shrink: 1; min-width: 0; }
+/* the tools keep their width (shrinking them pushed the help button off the screen between 601 and 900 px);
+   the brand gives way instead: the tagline while it is shown (over 760 px), then the name with its ellipsis */
+.appbar .top-tools { flex-shrink: 0; }
+@media (min-width: 761px) { .appbar .brand-name { flex-shrink: 0; } }
 /* labg-base.css sends the tools to a second row at 760 px or less; this bar has a fixed height and trims the name instead */
 @media (max-width: 760px) { .appbar .topbar-row { flex-wrap: nowrap; } .appbar .brand { min-width: 0; } }
 .appbar .theme-btn, .appbar .help-keys-btn { width: 34px; min-width: 34px; padding: 0; border-radius: 50%; }
