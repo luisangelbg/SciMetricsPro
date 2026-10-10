@@ -27,10 +27,11 @@ const Layout = {
     menuBtn.addEventListener('click', () => Layout.toggleMenu());
     row.appendChild(menuBtn);
 
-    const brand = mk('a', { class: 'brand', href: '#/home', 'data-i18n-attr': 'aria-label:header.home' });
+    /* named by the text it shows (WCAG 2.5.3); «go to home» is its tooltip, and its name when only the logo is left */
+    const brand = mk('a', { class: 'brand', href: '#/home', 'data-i18n-attr': 'title:header.home' });
     brand.appendChild(Layout.logo('brand-logo'));
     brand.appendChild(mk('span', { class: 'brand-text' },
-      '<span class="brand-name">SciMetrics<span class="brand-pro">Pro</span></span>' +
+      '<span class="brand-name">SciMetrics<span class="brand-pro">Pro</span></span> ' +
       '<span class="brand-sub brand-tag"><span aria-hidden="true">· </span><span data-i18n="app.tagline"></span></span>'));
     row.appendChild(brand);
 
