@@ -482,6 +482,8 @@ const Report = {
     + '.report-doc .rp-table{break-inside:avoid;page-break-inside:avoid;margin:.3cm 0 .45cm}'
     + '.report-doc table{border-collapse:collapse;table-layout:fixed;max-width:100%;font-size:9pt;border-top:1.2pt solid #000;border-bottom:1.2pt solid #000;margin-top:.1cm}'
     + '.report-doc th{text-align:left;border-bottom:.8pt solid #000;padding:2pt 4pt}'
+    /* headers wrap inside their column (the app's th.num rule keeps numbers on one line) */
+    + '.report-doc th,.report-doc th.num{white-space:normal}'
     + '.report-doc td{padding:1.5pt 4pt;vertical-align:top}'
     + '.report-doc th.num,.report-doc td.num{text-align:right}'
     + '.report-doc p.rp-note{font-size:9pt;font-style:italic;margin:.08cm 0 0;text-align:left}'

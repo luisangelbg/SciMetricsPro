@@ -72,6 +72,14 @@ const Layout = {
     tools.appendChild(helpBtn);
     row.appendChild(tools);
     root.appendChild(bar);
+    /* at 760 px or less the tools drop to a second row and the bar grows: the side menu, its scrim and the
+       sticky panels read the real height from --header-h (the style sheet gives the one-row value) */
+    if (window.ResizeObserver) {
+      new ResizeObserver(() => {
+        const h = Math.round(bar.getBoundingClientRect().height);
+        if (h > 0) document.documentElement.style.setProperty('--header-h', h + 'px');
+      }).observe(bar);
+    }
 
     /* ---------- sidebar + main ----------
        The modules stay in the grouped side menu (a drop-down below 900 px): it is

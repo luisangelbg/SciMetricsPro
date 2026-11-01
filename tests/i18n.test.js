@@ -166,7 +166,7 @@ describe('i18n · runtime', () => {
       'The search exceeds the maximum: the most cited record will be downloaded.', '1 citation in 1 document with a count', '1 distinct · in 1 document',
       'The three zones add up to 1 document with a source.', '1 citation in 1 document', '1 distinct work in 1 reference',
       '1 of 1 reference has no year and is left out of the spectrum.', '1 of 1 document has terms in this field.',
-      'References matched to documents of the collection: 1 of 1', 'of 1 document', '1 of 2 documents carries recognisable','1 of 1 document decided (100 %)',
+      'References matched to documents of the collection: 1 of 1', 'of 1 document', '1 of 2 documents carries recognizable','1 of 1 document decided (100 %)',
       'Ready: 1 file (0.1 MB).']);
   });
   it('subtitles and notes with several counts agree in number with each one', () => {

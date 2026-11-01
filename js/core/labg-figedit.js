@@ -83,8 +83,8 @@
   };
   const DASH = { solid: 'none', dash: '6 4', dot: '1.5 3.5', dashdot: '7 3 1.5 3' };
   const POS = [['orig', 'donde la dibuja la figura', 'where the figure draws it'], ['tl', 'dentro, arriba a la izquierda', 'inside, top left'], ['tr', 'dentro, arriba a la derecha', 'inside, top right'],
-    ['bl', 'dentro, abajo a la izquierda', 'inside, bottom left'], ['br', 'dentro, abajo a la derecha', 'inside, bottom right'], ['tc', 'arriba, al centro', 'top, centred'],
-    ['below', 'debajo de la figura', 'below the figure'], ['belowc', 'debajo, al centro', 'below, centred']];
+    ['bl', 'dentro, abajo a la izquierda', 'inside, bottom left'], ['br', 'dentro, abajo a la derecha', 'inside, bottom right'], ['tc', 'arriba, al centro', 'top, centered'],
+    ['below', 'debajo de la figura', 'below the figure'], ['belowc', 'debajo, al centro', 'below, centered']];
   const LAYOUT = [['', 'como la dibuja la figura', 'as the figure draws it'], ['row', 'en fila', 'as a row'], ['col', 'en columna', 'as a column']];
   const GENERAL = ['font', 'fontScale', 'lineScale', 'markerScale', 'textColor', 'bg', 'bgColor', 'border', 'tickScale', 'tickColor', 'axisColor', 'axisWidth', 'grid', 'gridDash', 'gridOpacity', 'gridColor', 'box'];
 
@@ -568,7 +568,7 @@
   let panel = null, cur = null, tab = 'general', cache = { texts: [], series: [] }, showTicks = false;
   const row = (lab, ctl, cls) => `<label class="fe-row${cls ? ' ' + cls : ''}"><span>${lab}</span>${ctl}</label>`;
   const rng = (attr, v, lo, hi, step, suf) => `<input type="range" min="${lo}" max="${hi}" step="${step}" value="${v}" ${attr}><b>${(+v).toFixed(2)}${suf == null ? '×' : suf}</b>`;
-  const colOpt = (name, v, def) => `<span class="fe-col"><input type="color" value="${v || def}" data-feg="${name}"><button type="button" class="fe-b fe-clear${v ? ' on' : ''}" data-fe-clear="${name}" title="${esc(T('quitar: volver al color de la figura', 'clear: back to the figure\'s colour'))}">${v ? '✓' : '—'}</button></span>`;
+  const colOpt = (name, v, def) => `<span class="fe-col"><input type="color" value="${v || def}" data-feg="${name}"><button type="button" class="fe-b fe-clear${v ? ' on' : ''}" data-fe-clear="${name}" title="${esc(T('quitar: volver al color de la figura', 'clear: back to the figure\'s color'))}">${v ? '✓' : '—'}</button></span>`;
   const sel = (attr, v, opts) => `<select ${attr}>${opts.map(([k, es, en]) => `<option value="${k}"${(v || '') === k ? ' selected' : ''}>${esc(T(es, en))}</option>`).join('')}</select>`;
   const chk = (attr, on, es, en) => `<label class="fe-check"><input type="checkbox" ${attr}${on ? ' checked' : ''}> ${T(es, en)}</label>`;
   const DASH_OPTS = [['', 'como está', 'as drawn'], ['solid', 'continua', 'solid'], ['dash', 'guiones', 'dashed'], ['dot', 'puntos', 'dotted'], ['dashdot', 'guion y punto', 'dash-dot']];
@@ -582,15 +582,15 @@
         <input type="text" class="fe-wide" data-feg="title" value="${esc(ed.title || '')}" placeholder="${esc(T('Título (vacío = sin título)', 'Title (empty = none)'))}">
         <input type="text" class="fe-wide" data-feg="subtitle" value="${esc(ed.subtitle || '')}" placeholder="${esc(T('Subtítulo', 'Subtitle'))}">
         <input type="text" class="fe-wide" data-feg="note" value="${esc(ed.note || '')}" placeholder="${esc(T('Nota al pie: fuente de los datos, periodo, n…', 'Footnote: data source, period, n…'))}">
-        ${row(T('Tamaño y alineación del título', 'Title size and alignment'), rng('data-feg="titleScale"', ed.titleScale || 1, 0.7, 1.8, 0.05) + sel('data-feg="titleAlign"', ed.titleAlign || 'left', [['left', 'izquierda', 'left'], ['center', 'centro', 'centre']]), 'fe-row3')}
+        ${row(T('Tamaño y alineación del título', 'Title size and alignment'), rng('data-feg="titleScale"', ed.titleScale || 1, 0.7, 1.8, 0.05) + sel('data-feg="titleAlign"', ed.titleAlign || 'left', [['left', 'izquierda', 'left'], ['center', 'centro', 'center']]), 'fe-row3')}
         <h4>${T('Tipografía y trazo', 'Type and stroke')}</h4>
         ${row(T('Familia tipográfica', 'Font family'), `<select data-feg="font">${Object.keys(FONTS).map(k => `<option value="${k}"${(ed.font || '') === k ? ' selected' : ''}>${esc(T(FONTS[k][0], FONTS[k][1]))}</option>`).join('')}</select>`)}
         ${row(T('Tamaño de todos los textos', 'Size of every text'), rng('data-feg="fontScale"', ed.fontScale || 1, 0.6, 2.2, 0.05))}
-        ${row(T('Color de todos los textos', 'Colour of every text'), colOpt('textColor', ed.textColor, '#152230'))}
+        ${row(T('Color de todos los textos', 'Color of every text'), colOpt('textColor', ed.textColor, '#152230'))}
         ${row(T('Grosor de las líneas', 'Line weight'), rng('data-feg="lineScale"', ed.lineScale || 1, 0.3, 3, 0.05))}
         ${row(T('Tamaño de los puntos', 'Point size'), rng('data-feg="markerScale"', ed.markerScale || 1, 0.3, 3, 0.05))}
         <h4>${T('Fondo y marco', 'Background and frame')}</h4>
-        ${row(T('Fondo', 'Background'), sel('data-feg="bg"', ed.bg || 'none', [['none', 'el de la figura', 'the figure\'s own'], ['white', 'blanco', 'white'], ['custom', 'color propio', 'own colour']]) + ` <input type="color" data-feg="bgColor" value="${ed.bgColor || '#ffffff'}">`, 'fe-row3')}
+        ${row(T('Fondo', 'Background'), sel('data-feg="bg"', ed.bg || 'none', [['none', 'el de la figura', 'the figure\'s own'], ['white', 'blanco', 'white'], ['custom', 'color propio', 'own color']]) + ` <input type="color" data-feg="bgColor" value="${ed.bgColor || '#ffffff'}">`, 'fe-row3')}
         ${chk('data-feg="border"', ed.border, 'Marco alrededor de toda la figura', 'Border around the whole figure')}
       </div>`;
     }
@@ -605,21 +605,21 @@
           <button type="button" class="fe-b${te.hidden ? ' on' : ''}" data-fet="hidden" title="${esc(T('ocultar', 'hide'))}">⦸</button></div>`; }).join('') : `<p class="fe-hint">${T('Esta figura no marca cuáles son sus títulos de eje; todos sus textos están en la pestaña Textos.', 'This figure does not mark its axis titles; all its texts are in the Texts tab.')}</p>`}
         <h4>${T('Marcas y números de los ejes', 'Ticks and axis numbers')}</h4>
         ${row(T('Tamaño de los números', 'Size of the numbers'), rng('data-feg="tickScale"', ed.tickScale || 1, 0.6, 2, 0.05))}
-        ${row(T('Color de los números', 'Colour of the numbers'), colOpt('tickColor', ed.tickColor, '#5a6b7a'))}
-        ${row(T('Color de los ejes', 'Axis colour'), colOpt('axisColor', ed.axisColor, '#8a97a3'))}
+        ${row(T('Color de los números', 'Color of the numbers'), colOpt('tickColor', ed.tickColor, '#5a6b7a'))}
+        ${row(T('Color de los ejes', 'Axis color'), colOpt('axisColor', ed.axisColor, '#8a97a3'))}
         ${row(T('Grosor de los ejes', 'Axis weight'), rng('data-feg="axisWidth"', ed.axisWidth || 1, 0.4, 3, 0.05))}
         ${pr ? chk('data-feg="box"', ed.box, 'Recuadro alrededor del área de trazado (ejes superior y derecho)', 'Box around the plot area (top and right axes)') : ''}
         <h4>${T('Rejilla', 'Grid')}</h4>
         ${chk('data-feg="grid"', ed.grid !== false, 'Líneas de la rejilla', 'Grid lines')}
         ${row(T('Trazo de la rejilla', 'Grid stroke'), sel('data-feg="gridDash"', ed.gridDash || '', DASH_OPTS))}
         ${row(T('Intensidad de la rejilla', 'Grid strength'), rng('data-feg="gridOpacity"', ed.gridOpacity == null ? 0.55 : ed.gridOpacity, 0.1, 1, 0.05, ''))}
-        ${row(T('Color de la rejilla', 'Grid colour'), colOpt('gridColor', ed.gridColor, '#bfcdd9'))}
-        ${hasAxes(svg) ? '' : `<p class="fe-hint">${T('Esta figura no marca sus ejes ni su rejilla: sus líneas aparecen en la pestaña Series, por color.', 'This figure does not mark its axes or grid: its lines are in the Series tab, by colour.')}</p>`}
+        ${row(T('Color de la rejilla', 'Grid color'), colOpt('gridColor', ed.gridColor, '#bfcdd9'))}
+        ${hasAxes(svg) ? '' : `<p class="fe-hint">${T('Esta figura no marca sus ejes ni su rejilla: sus líneas aparecen en la pestaña Series, por color.', 'This figure does not mark its axes or grid: its lines are in the Series tab, by color.')}</p>`}
       </div>`;
     }
     if (tab === 'series') {
       const list = cache.series;
-      return `<p class="fe-hint">${T('Cada color que usa la figura, con el nombre que le da la leyenda. Cambia el color, el grosor, el trazo o la opacidad, u oculta la serie.', 'Every colour the figure uses, named after its legend entry. Change the colour, the weight, the stroke or the opacity, or hide the series.')}</p>
+      return `<p class="fe-hint">${T('Cada color que usa la figura, con el nombre que le da la leyenda. Cambia el color, el grosor, el trazo o la opacidad, u oculta la serie.', 'Every color the figure uses, named after its legend entry. Change the color, the weight, the stroke or the opacity, or hide the series.')}</p>
         <div class="fe-series">${list.map((c, i) => { const se = ed.series[c.key] || {}; return `<div class="fe-s" data-fe-i="${i}">
           <input type="color" data-fes="color" value="${ed.colors[c.key] || c.hex}">
           <span class="fe-sname" title="${esc(c.key)}">${c.name ? esc(c.name) : `<i>${c.n} ${T('elementos', 'elements')}</i>`}${ed.colors[c.key] ? ' ✓' : ''}</span>
@@ -627,11 +627,11 @@
           ${sel('data-fes="dash"', se.dash || '', DASH_OPTS)}
           <input type="range" min="0.1" max="1" step="0.05" value="${se.opacity == null ? 1 : se.opacity}" data-fes="opacity" title="${esc(T('opacidad', 'opacity'))}">
           <button type="button" class="fe-b${se.hidden ? ' on' : ''}" data-fes="hidden" title="${esc(T('ocultar la serie', 'hide the series'))}">⦸</button></div>`; }).join('')}</div>
-        <div class="fe-legend-key">${T('color · nombre · grosor · trazo · opacidad · ocultar', 'colour · name · weight · stroke · opacity · hide')}${Object.keys(ed.colors).length ? ` · <button type="button" class="fe-link" data-fe-nocolors>${T('volver a los colores de la figura', 'back to the figure\'s colours')}</button>` : ''}</div>`;
+        <div class="fe-legend-key">${T('color · nombre · grosor · trazo · opacidad · ocultar', 'color · name · weight · stroke · opacity · hide')}${Object.keys(ed.colors).length ? ` · <button type="button" class="fe-link" data-fe-nocolors>${T('volver a los colores de la figura', 'back to the figure\'s colors')}</button>` : ''}</div>`;
     }
     if (tab === 'legend') {
       const lg = legendOf(svg), L = ed.legend;
-      if (!lg) return `<p class="fe-hint">${T('Esta figura no tiene una leyenda aparte: sus rótulos están dentro del dibujo y se editan en la pestaña Textos; sus colores, en la pestaña Series.', 'This figure has no separate legend: its labels are inside the drawing and are edited in the Texts tab; its colours, in the Series tab.')}</p>`;
+      if (!lg) return `<p class="fe-hint">${T('Esta figura no tiene una leyenda aparte: sus rótulos están dentro del dibujo y se editan en la pestaña Textos; sus colores, en la pestaña Series.', 'This figure has no separate legend: its labels are inside the drawing and are edited in the Texts tab; its colors, in the Series tab.')}</p>`;
       return `<div class="fe-grid">
         ${chk('data-fel="show"', !L.hidden, 'Mostrar la leyenda', 'Show the legend')}
         ${row(T('Posición', 'Position'), sel('data-fel="pos"', L.pos || 'orig', POS))}
@@ -647,7 +647,7 @@
     if (tab === 'texts') {
       const list = cache.texts;
       const anyTick = !!svg.querySelector('text[data-role$="tick"]');
-      return `<p class="fe-hint">${T('Cada texto de la figura, por su redacción original. Escribe otro, cambia su tamaño, su estilo o su color, u ocúltalo. Con el editor abierto, <b>haz clic en un texto de la figura</b> para saltar a su renglón.', 'Every text of the figure, by its original wording. Type another, change its size, style or colour, or hide it. With the editor open, <b>click a text on the figure</b> to jump to its row.')}</p>
+      return `<p class="fe-hint">${T('Cada texto de la figura, por su redacción original. Escribe otro, cambia su tamaño, su estilo o su color, u ocúltalo. Con el editor abierto, <b>haz clic en un texto de la figura</b> para saltar a su renglón.', 'Every text of the figure, by its original wording. Type another, change its size, style or color, or hide it. With the editor open, <b>click a text on the figure</b> to jump to its row.')}</p>
         ${anyTick ? chk('data-fe-ticks', showTicks, 'Listar también los números de los ejes', 'List the axis numbers too') : ''}
         <div class="fe-texts">${list.map((o, i) => { const te = ed.texts[o] || {}; return `<div class="fe-t" data-fe-i="${i}">
           <input type="text" data-fet="t" value="${esc(te.t != null ? te.t : o)}" title="${esc(o)}">

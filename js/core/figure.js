@@ -38,7 +38,7 @@ Fig.palettes = {
 Fig.paletteNames = {
   scimetrics: 'SciMetricsPro', vivid: 'Vivid', harvest: 'Harvest', soil: 'Soil & crop', ocean: 'Ocean', sunset: 'Sunset',
   meadow: 'Meadow', bold: 'Bold', soft: 'Soft', deep: 'Deep',
-  okabe: 'Okabe & Ito 2008 (colour-blind safe)', tol: 'Tol 2021 (colour-blind safe)', pastel: 'Pastel', greys: 'Greyscale',
+  okabe: 'Okabe & Ito 2008 (color-blind safe)', tol: 'Tol 2021 (color-blind safe)', pastel: 'Pastel', greys: 'Grayscale',
 };
 
 function lerp(a, b, t) { return a + (b - a) * t; }
@@ -72,7 +72,7 @@ Fig.colormaps = {
   heat:    rampFrom([[255,247,217],[253,146,62],[158,18,43]]),
 };
 Fig.colormapNames = {
-  viridis: 'Viridis', magma: 'Magma', inferno: 'Inferno', plasma: 'Plasma', cividis: 'Cividis (colour-blind safe)',
+  viridis: 'Viridis', magma: 'Magma', inferno: 'Inferno', plasma: 'Plasma', cividis: 'Cividis (color-blind safe)',
   rdylbu: 'Red–Yellow–Blue', rdbu: 'Red–Blue (diverging)', spectral: 'Spectral', bluered: 'Blue–White–Red',
   greens: 'Greens', ylgn: 'Yellow–Green', browns: 'Browns (soil)', heat: 'Heat',
 };
@@ -962,10 +962,10 @@ Fig.mount = (host, spec) => {
 
   /* --- editor --- */
   const det = mk('details', { class: 'fig-editor' });
-  det.appendChild(mk('summary', null, esc(figT('⚙ Edit figure — titles, colours, fonts, sizes'))));
+  det.appendChild(mk('summary', null, esc(figT('⚙ Edit figure — titles, colors, fonts, sizes'))));
   const tabs = mk('div', { class: 'fig-tabs' });
   const groups = [
-    { name: figT('Content & colours'), controls: spec.controls || [] },
+    { name: figT('Content & colors'), controls: spec.controls || [] },
     { name: figT('Style & typography'), controls: Fig.STYLE_CONTROLS },
   ];
   groups.forEach((gr, gi) => {
@@ -1099,7 +1099,7 @@ Fig.mount = (host, spec) => {
   const grey = mk('input', { type: 'checkbox' });
   grey.checked = !!prefs.grayscale;
   greyLab.appendChild(grey);
-  greyLab.appendChild(document.createTextNode(' ' + figT('Greyscale')));
+  greyLab.appendChild(document.createTextNode(' ' + figT('Grayscale')));
   const btn = mk('button', { class: 'btn btn-secondary btn-sm', type: 'button' }, esc(figT('⬇ Download figure')));
   const info = mk('span', { class: 'hint fig-info', style: 'margin:0' });
   const readPrefs = () => ({ size: size.value, customCm: +custom.value || 12, textPt: +textPt.value || 8, dpi: +res.value || 300, background: bgSel.value, grayscale: grey.checked });
