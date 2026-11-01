@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 2 · Home, project and help</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size sheets, with running heads, page numbers and the table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  /* screenshots of this chapter */
+  .cap2 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap2 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+  .cap2 figure.mini .marco { width: 46%; margin: 0 auto; }
+  .cap2 .celular { display: grid; grid-template-columns: 2.6in 1fr; gap: 0.25in; align-items: start; }
+  .cap2 .celular figure { margin: 0; }
+  .cap2 .celular figure .marco { width: 100%; }
+  .cap2 .celular figcaption { margin: 0.07in 0 0; }
+  .cap2 kbd { font-family: var(--sans); font-size: 0.8em; font-weight: 500; color: var(--negro); background: #f3f5f9; border: 1px solid var(--linea); border-bottom-width: 2px; border-radius: 4px; padding: 0.02em 0.4em; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 2 -->
+<section class="capitulo cap2" id="cap-inicio" data-pestana="2" data-orden="2" style="--acento: var(--b1)">
+  <div class="cap-apertura">
+    <div class="cap-num">2</div>
+    <div class="cap-etiqueta">Chapter two</div>
+    <h1>Home, project and help</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">The app’s home page and what accompanies all the work: the language and the theme, the project that saves your data and decisions in a file, the automatic copy that is recovered when you come back, the guided tour, the help of each indicator, the About page and keyboard use.</p>
+    <div class="cap-franja"><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span><span class="k1"></span></div>
+    <ul class="cap-contenido">
+      <li><b>2.1</b>The home page and the workflow</li>
+      <li><b>2.2</b>Language and theme</li>
+      <li><b>2.3</b>Saving and opening a project</li>
+      <li><b>2.4</b>Autosave and recovery</li>
+      <li><b>2.5</b>The guided tour and the help</li>
+      <li><b>2.6</b>About: license and how to cite</li>
+      <li><b>2.7</b>Keyboard and accessibility</li>
+    </ul>
+  </div>
+
+  <!-- 2.1 -->
+  <h2 id="s2-1"><span class="num">2.1</span>The home page and the workflow</h2>
+  <p class="lead">The home page (<span class="ui">Home</span>) is the entrance: it summarizes what the app does, offers the two ways to start and shows in which order the modules are best visited. It opens when you enter, and you can return to it at any moment with <span class="ui">Home</span> in the sidebar or with a click on the logo in the header.</p>
+  <p>The upper part, which you saw in Figure 1.1, has the <span class="ui">Import my data</span> and <span class="ui">Load example data</span> buttons, the description of the example, the <span class="ui">Take the guided tour</span> link and four guarantees: everything happens in the browser, each formula carries its reference, figures come out at 300&nbsp;dpi and the interface is in Spanish and English. Three more sections follow below.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/inicio-secciones.png" alt="How it works, What you can analyse and Principles sections of the home page">
+      <span class="marca" style="left:16%;top:3.1%">1</span>
+      <span class="marca" style="left:22%;top:20.7%">2</span>
+      <span class="marca" style="left:23%;top:27.3%">3</span>
+      <span class="marca" style="left:40%;top:36.5%">4</span>
+      <span class="marca" style="left:12.6%;top:77%">5</span>
+    </div>
+    <figcaption><b>Figure 2.1.</b> The lower part of the home page: the workflow, the modules and the principles of the app.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span><span class="ui">How it works</span>: the four steps in order (import, clean, analyze and export).</li>
+    <li><span class="n">2</span>Each step card is a button that opens its module.</li>
+    <li><span class="n">3</span><span class="ui">What you can analyse</span>: the eleven modules, grouped as in the sidebar.</li>
+    <li><span class="n">4</span>Each module, with its description, opens its screen with a click.</li>
+    <li><span class="n">5</span><span class="ui">Principles</span>: privacy, rigor, results ready to publish and bilingualism.</li>
+  </ul>
+
+  <p>The modules can be opened even when there are no data yet. In that case they show the notice <span class="ui">Import data first</span> with the same two buttons as the home page, so a screen is never left empty with no way out. In the sidebar, the gray mark next to each module reminds you that it needs data; it disappears as soon as you load them.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · loading the example when data are already loaded</div>
+    <p>If you have already imported files and click <span class="ui">Load example data</span>, the app asks <i>“Loading the example replaces the data you have loaded. Continue?”</i>. If you accept, it removes your files, loads the 300 works and opens the Overview. Since the example carries no author keywords, a notice at the bottom of the screen says that <span class="ui">Index keywords</span> was chosen as the term field. If you do not want to lose your work, save it first as a project (Section 2.3).</p>
+  </div>
+
+  <div class="dos">
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">4</div>
+      <div class="dato-txt"><div class="caja-t">Steps</div>Import, clean, analyze and export: the order of the sidebar.</div>
+    </div>
+    <div class="caja dato" style="margin:0">
+      <div class="dato-cifra">11</div>
+      <div class="dato-txt"><div class="caja-t">Modules</div>In five groups: Data, Descriptive, Structures, Systematic review and Results.</div>
+    </div>
+  </div>
+
+  <!-- 2.2 -->
+  <h2 id="s2-2"><span class="num">2.2</span>Language and theme</h2>
+  <p>The controls on the right of the header change the language and the appearance of the whole app. Both changes are immediate, restart no calculation and are remembered by the browser for the next visit.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/inicio-oscuro-es.png" alt="Overview in Spanish and in dark mode">
+      <span class="marca" style="left:83.6%;top:13.2%">1</span>
+      <span class="marca" style="left:88.2%;top:13.2%">2</span>
+      <span class="marca" style="left:40.6%;top:37%">3</span>
+    </div>
+    <figcaption><b>Figure 2.2.</b> The Overview of the example data with the interface in Spanish and in dark mode.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span><span class="ui">ES</span> · <span class="ui">EN</span>: the active language is highlighted.</li>
+    <li><span class="n">2</span>Theme button: the moon switches to dark mode and the sun back to light.</li>
+    <li><span class="n">3</span>Menus, titles, cards, help and figure labels change language; the numbers do not change.</li>
+  </ul>
+
+  <h3>The language</h3>
+  <p>The app opens in Spanish the first time. When you click <span class="ui">EN</span>, the texts of the interface, the help, the messages, the table titles and the figure labels change, including the names of countries and languages, which take the form of the chosen language. What comes from your records is not translated: titles, keywords and the names of journals and institutions are shown as the database exported them. Your data, your cleaning and your parameters are kept when you switch language.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the report has its own language</div>
+    <p>The report with the methods text is written in Spanish or in English as you choose in <span class="ruta">Export &amp; report<span class="sep">›</span>Report</span>, without changing the language of the interface. You can work in Spanish and deliver the report in English for a journal (Chapter 13).</p>
+  </div>
+
+  <h3>The light or dark theme</h3>
+  <p>Until you choose, the app follows the theme of your operating system. When you click the theme button, your choice is saved and takes precedence over the system’s. Dark mode is for working on screen; figures are always downloaded with <span class="ui">White background</span>, unless you choose <span class="ui">Transparent (PNG)</span> in the figure bar, so the theme does not affect what you publish.</p>
+
+  <!-- 2.3 -->
+  <h2 id="s2-3"><span class="num">2.3</span>Saving and opening a project</h2>
+  <p class="lead">A <b>project</b> is a file with all your work: the imported records and every decision you made about them. It serves to continue another day, to take the work to another computer, to share it with your collaborators and to keep a record of how the results were obtained.</p>
+
+  <table>
+    <caption><b>Table 2.1.</b> What a project saves and what it does not.</caption>
+    <thead><tr><th style="width:50%">Saves</th><th>Does not save</th></tr></thead>
+    <tbody>
+      <tr><td>The complete imported records and the list of files, with their searches in the open catalog.</td><td>The clean set already computed: it is recomputed on opening, with the same decisions, and comes out identical.</td></tr>
+      <tr><td>The cleaning: duplicates separated by hand, author merges, institution and country aliases, synonyms, stop words, term field, filters and reference year.</td><td>The language and theme of the interface, which are preferences of whoever uses the app.</td></tr>
+      <tr><td>The decisions and reasons of the PRISMA screening and the option to analyze only the included documents.</td><td>The access key of the open catalog, which is only remembered in your browser if you tick it.</td></tr>
+      <tr><td>The parameters of each module, the open tab, the settings of each figure and the export and report options.</td><td>The original files you imported, which are never modified.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Saving</h3>
+  <ol class="pasos">
+    <li><b>Click</b> <span class="ui">Save</span> in the header. The button is disabled while there are no data.</li>
+    <li><b>Wait for the notice</b> <span class="ui">Project saved: …</span>. The browser downloads a file named <code>scimetricspro_project_YYYY-MM-DD.smp.json</code>, with the day’s date.</li>
+    <li><b>Move it to a folder of your work</b> and, if you save several times on the same day, rename it to tell the versions apart.</li>
+  </ol>
+  <p>The file is compressed. With the example data it weighs about 355&nbsp;KB, while its uncompressed content takes up about 2.6&nbsp;MB. It grows with large collections: with 10,000 records it is around 12&nbsp;MB and saving it takes a few seconds, during which the app shows the notice <span class="ui">Saving the project…</span>.</p>
+
+  <h3>Opening</h3>
+  <ol class="pasos">
+    <li><b>Click</b> <span class="ui">Open</span> and choose a <code>.smp.json</code> file. Uncompressed projects are also accepted.</li>
+    <li><b>Confirm</b> if you already had data: opening a project replaces the loaded data and decisions.</li>
+    <li><b>Carry on where you left off.</b> The app recomputes the clean set, returns to the screen you had open and reports how many records and files it opened.</li>
+  </ol>
+
+  <table class="compacta">
+    <caption><b>Table 2.2.</b> Messages when opening a project.</caption>
+    <thead><tr><th style="width:46%">Message</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">The file is not a SciMetricsPro project.</span></td><td>You chose another kind of file (an export, a report) or the file is damaged. Exports are loaded in Import.</td></tr>
+      <tr><td><span class="ui">The project was saved with a newer version (…).</span></td><td>Whoever saved it uses a later version of the app. Update your copy of the program.</td></tr>
+      <tr><td><span class="ui">The project could not be opened: …</span></td><td>Another problem reading the file; the text after the colon gives the detail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Why the project saves records and decisions, not results</div>
+    <p>A bibliometric study is reproducible when someone else can start from the same records, apply the same decisions and arrive at the same numbers. That is why the project does not save finished tables or figures: it saves the starting data and every decision, and the app redoes everything on opening. A practical advantage is that nothing is frozen: a merged duplicate can be separated, a filter can be removed and a synonym can be corrected even if the project comes from another computer.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · before sharing a project</div>
+    <p>The project includes the records as you exported them, with abstracts, keywords and references. Subscription databases often limit the redistribution of that content. Share the project with the people working with you on the study; to publish your data, use the results tables or the list of documents exported in Chapter 13, and check the terms of use of each database.</p>
+  </div>
+
+  <!-- 2.4 -->
+  <h2 id="s2-4"><span class="num">2.4</span>Autosave and session recovery</h2>
+  <p class="lead">Besides the project you save yourself, the app saves by itself a copy of the session in your browser’s storage. If you close the tab by accident, the computer shuts down or the browser restarts, when you open SciMetricsPro again you will be able to recover the work.</p>
+  <ul>
+    <li><b>When it is saved:</b> a second and a half after each change (data, cleaning, screening, screen or language), every ten seconds while data are loaded and the moment you close or leave the tab.</li>
+    <li><b>What it saves:</b> the same as a project (Table 2.1). The records are written again only when the files change, so the following copies are instantaneous.</li>
+    <li><b>Where:</b> in the browser and on the computer where you worked. It does not leave your machine and is not shared between browsers.</li>
+  </ul>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/inicio-recuperar.png" alt="Recover the previous session? window with the Recover and Discard buttons">
+      <span class="marca" style="left:64.5%;top:22.9%">1</span>
+      <span class="marca" style="left:90%;top:36.6%">2</span>
+      <span class="marca" style="left:55.5%;top:74.5%">3</span>
+      <span class="marca" style="left:84.5%;top:88.3%">4</span>
+    </div>
+    <figcaption><b>Figure 2.3.</b> The question when the app is opened again after working with the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>It appears when the app opens without data and a saved copy exists.</li>
+    <li><span class="n">2</span>Date and time of the copy, and the records and files it contains.</li>
+    <li><span class="n">3</span><span class="ui">Recover</span> restores everything and returns to the screen you were on.</li>
+    <li><span class="n">4</span><span class="ui">Discard</span> deletes the copy and starts from scratch.</li>
+  </ul>
+
+  <p>While the question is open the app saves nothing, so as not to erase the copy before you decide. If instead of answering you import other files or load the example, the question closes and the new work replaces the previous copy. Removing all the files in Import (<span class="ui">Remove all</span>) also deletes the copy.</p>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · automatic copy or project</div>
+    <table class="compacta">
+      <thead><tr><th style="width:40%">If you need to…</th><th>use…</th></tr></thead>
+      <tbody>
+        <tr><td>continue tomorrow on the same computer</td><td>the automatic copy; just click <span class="ui">Recover</span>.</td></tr>
+        <tr><td>work on another computer or in another browser</td><td>a project saved with <span class="ui">Save</span>.</td></tr>
+        <tr><td>share the work or deliver it with a paper or a thesis</td><td>a project, with name and date, together with the report.</td></tr>
+        <tr><td>keep how the study was before a big change (new filters, another search)</td><td>one project per stage: the automatic copy only keeps the last session.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">The automatic copy is a safety net, not a backup: clearing the browsing data or using a private window removes it.</p>
+  </div>
+
+  <!-- 2.5 -->
+  <h2 id="s2-5"><span class="num">2.5</span>The guided tour and the help</h2>
+  <h3>The guided tour</h3>
+  <p>The first time you open the app in a browser, a seven-step tour starts that points out the main parts. You can follow it, go back or skip it at any moment, and repeat it whenever you want with <span class="ui">Take the guided tour</span> on the home page.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/inicio-recorrido.png" alt="Step 3 of 7 of the guided tour pointing at Cleaning &amp; filters">
+      <span class="marca" style="left:31%;top:51.6%">1</span>
+      <span class="marca" style="left:61.2%;top:11.5%">2</span>
+      <span class="marca" style="left:61.2%;top:72.8%">3</span>
+      <span class="marca" style="left:64.8%;top:85.4%">4</span>
+      <span class="marca" style="left:87%;top:72.8%">5</span>
+    </div>
+    <figcaption><b>Figure 2.4.</b> Step 3 of the guided tour.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The part of the app the step talks about is highlighted.</li>
+    <li><span class="n">2</span>Step number and title.</li>
+    <li><span class="n">3</span>Progress dots: one per step.</li>
+    <li><span class="n">4</span><span class="ui">Skip the tour</span> closes it at any step.</li>
+    <li><span class="n">5</span><span class="ui">Back</span> and <span class="ui">Next</span>; on the last step, <span class="ui">Finish</span>.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 2.3.</b> The seven steps of the tour.</caption>
+    <thead><tr><th style="width:6%" class="c">Step</th><th style="width:34%">Title</th><th>What it points out</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td><span class="ui">Welcome to SciMetricsPro</span></td><td>The app in general and the privacy of the data.</td></tr>
+      <tr><td class="c">2</td><td><span class="ui">Import your records</span></td><td>Import: several databases at once, the open catalog and the example.</td></tr>
+      <tr><td class="c">3</td><td><span class="ui">Clean and filter</span></td><td>Cleaning &amp; filters and the header counter.</td></tr>
+      <tr><td class="c">4</td><td><span class="ui">Analyse</span></td><td>The descriptive modules, the structures and the <span class="ui">?</span> button of each indicator.</td></tr>
+      <tr><td class="c">5</td><td><span class="ui">Systematic review</span></td><td>Screening with the keyboard and the PRISMA 2020 diagram.</td></tr>
+      <tr><td class="c">6</td><td><span class="ui">Export and write</span></td><td>Figures, tables, networks, the ZIP package and the report.</td></tr>
+      <tr><td class="c">7</td><td><span class="ui">Save your work</span></td><td>The <span class="ui">Save</span> button, the automatic copy, the language and the theme.</td></tr>
+    </tbody>
+  </table>
+  <p>With the keyboard, <kbd>→</kbd> moves forward, <kbd>←</kbd> goes back and <kbd>Esc</kbd> closes the tour. On narrow screens, the steps that point at a module first open the sidebar menu.</p>
+
+  <h3>The help of each indicator</h3>
+  <p>The <span class="ui">?</span> button accompanies the indicator cards, the figures, the tables, the parameter groups of the networks and the export options. Its window, which you saw in Figure 1.6, explains what the indicator measures, gives its formula with the meaning of each symbol, says how to interpret it and cites the original article of the method. On the Import, Cleaning and Export screens, which compute no published indicators, the help explains the rule the app applies.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the notices at the bottom of the screen</div>
+    <p>Confirmations (<span class="ui">300 example records were loaded.</span>), warnings and errors appear for a few seconds at the bottom of the screen, in plain language and in the active language. Errors explain what happened and, when possible, what to do; there is no need to open any console.</p>
+  </div>
+
+  <!-- 2.6 -->
+  <h2 id="s2-6"><span class="num">2.6</span>About: license and how to cite</h2>
+  <p>The <span class="ui">About</span> page, at the end of the sidebar and in the page footer, gathers the formal details of the program: version, authorship, license, how to cite it and third-party components.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/inicio-acerca.png" alt="About SciMetricsPro page in English">
+      <span class="marca" style="left:22.5%;top:16.6%">1</span>
+      <span class="marca" style="left:66.5%;top:24.6%">2</span>
+      <span class="marca" style="left:90.6%;top:31.7%">3</span>
+      <span class="marca" style="left:32.4%;top:81.8%">4</span>
+      <span class="marca" style="left:16.6%;top:95.9%">5</span>
+      <span class="marca" style="left:98%;top:72.8%">6</span>
+      <span class="marca" style="left:56.6%;top:82.6%">7</span>
+    </div>
+    <figcaption><b>Figure 2.5.</b> The <span class="ui">About</span> page.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Name and version of the program you are using.</li>
+    <li><span class="n">2</span>ORCID of each author: it opens their profile.</li>
+    <li><span class="n">3</span>Link to the full text of the license.</li>
+    <li><span class="n">4</span>Citation as text and in BibTeX format, for a reference manager.</li>
+    <li><span class="n">5</span><span class="ui">Copy the citation</span> copies both forms to the clipboard.</li>
+    <li><span class="n">6</span>Third-party components and data, each with its license.</li>
+    <li><span class="n">7</span>Link to the full third-party notices.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">§</span>The license in a nutshell</div>
+    <p>SciMetricsPro is distributed under the GNU General Public License, version 3 or later. You may use the program for any purpose, study how it works, share it and modify it. If you distribute a modified version, it must keep the same license and its code must be available. The program comes without warranty. The third-party components keep their own licenses: the spreadsheet reader (Apache 2.0), the country outlines (public domain) and the example data (CC0 1.0).</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · citing the program in the methods section</div>
+    <p>Cite the version with which you obtained your results. The report of Chapter 13 writes the sentence for you, with the version and the year; in English it reads: <i>“Indicators, networks and figures were computed with SciMetricsPro [version] (Barrera-Guzmán &amp; Ramírez-Ojeda, [year]), which applies the published formula of each method in the browser”</i>, and it adds the full reference of the program to the reference list, together with the articles of the methods you used.</p>
+  </div>
+
+  <!-- 2.7 -->
+  <h2 id="s2-7"><span class="num">2.7</span>Keyboard and accessibility</h2>
+  <p>The whole app can be used without a mouse. The keyboard focus is always visible, windows keep it while they are open and figures carry a name that screen readers read out.</p>
+  <table class="compacta">
+    <caption><b>Table 2.4.</b> Keys of the app.</caption>
+    <thead><tr><th style="width:30%">Keys</th><th style="width:26%">Where</th><th>What they do</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Tab</kbd> · <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>The whole app</td><td>Move to the next or previous control. The first <kbd>Tab</kbd> shows the <span class="ui">Skip to content</span> link.</td></tr>
+      <tr><td><kbd>Enter</kbd> · <kbd>Space</kbd></td><td>Buttons, checkboxes, cards</td><td>Activate the control with the focus.</td></tr>
+      <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Tabs of a module</td><td>Switch to the previous or next tab.</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Help, tour, menu</td><td>Close the help window, the guided tour or the menu on narrow screens.</td></tr>
+      <tr><td><kbd>←</kbd> <kbd>→</kbd> · <kbd>Esc</kbd></td><td>Guided tour</td><td>Previous or next step; close.</td></tr>
+      <tr><td><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd> · arrows · <kbd>Esc</kbd></td><td>Interactive network with the focus</td><td>Zoom in, zoom out, fit; move the drawing; clear the selection.</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Search box of a network</td><td>Searches for and selects the typed term.</td></tr>
+      <tr><td><kbd>I</kbd> <kbd>E</kbd> <kbd>D</kbd> <kbd>U</kbd> · <kbd>←</kbd> <kbd>→</kbd></td><td>PRISMA screening</td><td>Include, exclude, doubtful, undo; previous or next document (Chapter 12).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Narrow screens</h3>
+  <div class="celular">
+    <figure class="mini">
+      <div class="marco" style="position:relative">
+        <img src="../img/en/inicio-celular.png" alt="The app at 400 pixels wide with the module menu open">
+        <span class="marca" style="left:6.5%;top:6.4%">1</span>
+        <span class="marca" style="left:27%;top:6.4%">2</span>
+        <span class="marca" style="left:50.5%;top:6.4%">3</span>
+      </div>
+      <figcaption><b>Figure 2.6.</b> The app at 400 pixels wide with the menu open.</figcaption>
+    </figure>
+    <div>
+      <p style="margin-top:0">Below 900 pixels wide the sidebar turns into a menu opened with the button in the header, and the header buttons show only their icon. The app works the same on a tablet or a phone, although networks and large tables are best used on a wide screen.</p>
+      <ul class="leyenda-marcas" style="grid-template-columns:1fr">
+        <li><span class="n">1</span>The menu button; with the menu open it turns into an <span class="ui">×</span> that closes it.</li>
+        <li><span class="n">2</span>The document counter, shortened.</li>
+        <li><span class="n">3</span><span class="ui">Open</span> and <span class="ui">Save</span> with their icon only; their name appears when you point at them and is read by screen readers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · accessibility</div>
+    <p>All screens were checked in light and dark mode: every button and every field has a name, images have alternative text, figures are announced with their title and texts meet the minimum contrast recommended for reading. If you use a screen reader, the table of each figure (<span class="ui">Data</span> button) gives the same numbers in a format that can be traversed cell by cell.</p>
+  </div>
+
+  <p style="margin-top:0.3in">With the app now familiar, the next chapter begins the work with the data: how to turn your research idea into search strings, what to export from each database and how to import the files.</p>
+</section>
+
+</body>
+</html>
