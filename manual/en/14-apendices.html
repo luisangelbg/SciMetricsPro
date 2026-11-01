@@ -65,7 +65,7 @@
       <tr><td><b>RIS</b></td><td>A <code>TY&nbsp;&nbsp;-</code> line among the first lines, or the extension <code>.ris</code>.</td><td>Index A if at least half of the records carry <code>N1</code> notes with “Export Date:” or “Cited By:”; otherwise, RIS of unrecognized origin.</td></tr>
       <tr><td><b>BibTeX</b></td><td>An <code>@type{</code> entry or the extension <code>.bib</code> or <code>.bibtex</code>.</td><td>Index A if its entries carry <code>author_keywords</code>, <code>abbrev_source_title</code>, <code>publication_stage</code> or a “Cited by:” note; index B if they carry <code>keywords-plus</code>, <code>times-cited</code>, <code>cited-references</code>, <code>unique-id</code> or <code>research-areas</code>; otherwise, generic BibTeX.</td></tr>
       <tr><td><b>Delimited text</b> (<code>.csv .tsv .txt .tab</code>) and <b>spreadsheets</b> (<code>.xlsx .xls .xlsm .ods</code>)</td><td>A first line with commas, tabs or semicolons. From a spreadsheet, the first sheet with data is read.</td><td>By the headers: index A if it carries “Author full names”, “Authors with affiliations” or “EID”, and “Source title” or “Title”; tab-delimited index B if the headers are the tags <code>PT</code>, <code>AU</code>, <code>TI</code> and <code>UT</code> or <code>SO</code>; biomedical index (summary) if it carries “PMID” and “Citation”; otherwise, generic table (Table A.3).</td></tr>
-      <tr><td>None of the above</td><td colspan="2">Warning <span class="ui">The file format was not recognised.</span></td></tr>
+      <tr><td>None of the above</td><td colspan="2">Warning <span class="ui">The file format was not recognized.</span></td></tr>
     </tbody>
   </table>
 
@@ -111,7 +111,7 @@
   </div>
 
   <h3 class="ap-sub">A.3 An arbitrary table</h3>
-  <p>A CSV table or a spreadsheet that does not come from a recognized database is read as a generic table, with the warning <span class="ui">Table of unrecognised origin: only columns with usual names were read.</span> The app looks for these headers, ignoring case and accents; the other columns are not used.</p>
+  <p>A CSV table or a spreadsheet that does not come from a recognized database is read as a generic table, with the warning <span class="ui">Table of unrecognized origin: only columns with usual names were read.</span> The app looks for these headers, ignoring case and accents; the other columns are not used.</p>
 
   <table class="compacta">
     <caption><b>Table A.3.</b> Headers the app understands in a generic table.</caption>
@@ -277,8 +277,8 @@
       <tr><td class="termino"><b>Multiple countries (MCP) / Single country (SCP)</b></td><td class="en">Varios países (MCP) / Un solo país (SCP)</td><td>A document of the corresponding author with co-authors from other countries, or only from their own country (7).</td></tr>
       <tr class="letra"><td colspan="3">N – P</td></tr>
       <tr><td class="termino"><b>Node</b></td><td class="en">Nodo</td><td>Each term, reference, document, author, institution or country in a network (9).</td></tr>
-      <tr><td class="termino"><b>Normalisation</b></td><td class="en">Normalización</td><td>Correction of the weights so that the size of the units does not dominate the network (9).</td></tr>
-      <tr><td class="termino"><b>Normalised citations</b></td><td class="en">Citas normalizadas</td><td>Citations of a document divided by the mean of those from its year (8).</td></tr>
+      <tr><td class="termino"><b>Normalization</b></td><td class="en">Normalización</td><td>Correction of the weights so that the size of the units does not dominate the network (9).</td></tr>
+      <tr><td class="termino"><b>Normalized citations</b></td><td class="en">Citas normalizadas</td><td>Citations of a document divided by the mean of those from its year (8).</td></tr>
       <tr><td class="termino"><b>Overview</b></td><td class="en">Panorama general</td><td>The screen with the main indicators of the collection (5).</td></tr>
       <tr><td class="termino"><b>PageRank</b></td><td class="en">PageRank</td><td>Importance of a node according to the importance of its neighbors (9).</td></tr>
       <tr><td class="termino"><b>PRISMA flow diagram</b></td><td class="en">Diagrama de flujo PRISMA</td><td>Boxes with the records of each stage of a systematic review (12).</td></tr>
@@ -327,14 +327,14 @@
     <caption><b>Table D.2.</b> Import.</caption>
     <thead><tr><th style="width:38%">Message or symptom</th><th style="width:28%">Cause</th><th>What to do</th></tr></thead>
     <tbody>
-      <tr><td><span class="ui">The file format was not recognised.</span></td><td>It is not an export in one of the formats of Table A.1.</td><td>Export again in RIS, BibTeX, CSV or tagged text.</td></tr>
+      <tr><td><span class="ui">The file format was not recognized.</span></td><td>It is not an export in one of the formats of Table A.1.</td><td>Export again in RIS, BibTeX, CSV or tagged text.</td></tr>
       <tr><td><span class="ui">No records were found in the file.</span></td><td>The file is empty or no record carries a title.</td><td>Check the export in a text editor.</td></tr>
       <tr><td><span class="ui">… records without a title were skipped.</span></td><td>Incomplete records in the file.</td><td>Nothing, if they are few.</td></tr>
       <tr><td><span class="ui">The file was not UTF-8 and was read as Latin-1: check accented letters.</span></td><td>A file in another encoding.</td><td>Check the preview; if there are odd characters, save it as UTF-8.</td></tr>
-      <tr><td><span class="ui">Table of unrecognised origin: …</span></td><td>A table without the headers of a database.</td><td>Use the headers of Table A.3.</td></tr>
+      <tr><td><span class="ui">Table of unrecognized origin: …</span></td><td>A table without the headers of a database.</td><td>Use the headers of Table A.3.</td></tr>
       <tr><td><span class="ui">No cited references: …</span> or <span class="ui">Only …% of the records carry cited references.</span> (fewer than half)</td><td>It was exported without the references option.</td><td>Export again with the references (Table 3.4).</td></tr>
       <tr><td><span class="ui">No abstracts…</span>, <span class="ui">No keywords…</span>, <span class="ui">No affiliations…</span>, <span class="ui">No citation counts…</span></td><td>The format or the export options do not include them (Table A.2).</td><td>Export the full record, or accept that those analyses will not be available.</td></tr>
-      <tr><td><span class="ui">The country was recognised in only …% of the records.</span> / <span class="ui">Only …% of the records carry a DOI…</span> (fewer than half)</td><td>Affiliations without a country or records without a DOI.</td><td>Check countries in Cleaning (Chapter 4); without a DOI, duplicates are searched by title.</td></tr>
+      <tr><td><span class="ui">The country was recognized in only …% of the records.</span> / <span class="ui">Only …% of the records carry a DOI…</span> (fewer than half)</td><td>Affiliations without a country or records without a DOI.</td><td>Check countries in Cleaning (Chapter 4); without a DOI, duplicates are searched by title.</td></tr>
       <tr><td><span class="ui">… was already imported and was skipped.</span></td><td>Same name and size as a loaded file.</td><td>Nothing: it avoids loading it twice.</td></tr>
       <tr><td><span class="ui">The file could not be read: …</span></td><td>The browser could not open it.</td><td>Copy it to a local folder and try again.</td></tr>
     </tbody>
@@ -351,7 +351,7 @@
       <tr><td><span class="ui">The documents have no cited references</span></td><td>Without references there is no intellectual structure.</td><td>Follow the steps of the warning to export with references.</td></tr>
       <tr><td><span class="ui">With these parameters there are not enough …</span> (networks, thematic map, coupling, historiograph)</td><td>The minimums leave very few items or links.</td><td>Lower the minimum frequency or the minimums per link, or raise the number of nodes, as the warning suggests.</td></tr>
       <tr><td><span class="ui">At least 3 words present in several documents and two dimensions are needed.</span></td><td>The factorial analysis does not have enough data.</td><td>Lower the minimum frequency or change the term field.</td></tr>
-      <tr><td><span class="ui">The network calculation was cancelled.</span> / <span class="ui">The network could not be computed: …</span></td><td><span class="ui">Cancel</span> was pressed or the calculation failed.</td><td>Press <span class="ui">Compute again</span>; with large networks, lower the number of nodes.</td></tr>
+      <tr><td><span class="ui">The network calculation was canceled.</span> / <span class="ui">The network could not be computed: …</span></td><td><span class="ui">Cancel</span> was pressed or the calculation failed.</td><td>Press <span class="ui">Compute again</span>; with large networks, lower the number of nodes.</td></tr>
       <tr><td>A network dominated by generic terms</td><td>Very broad index keywords.</td><td>Add them to the stop words (Chapters 4 and 9).</td></tr>
       <tr><td><span class="ui">The records screened according to the typed numbers (…) do not match…</span></td><td>The numbers typed in the PRISMA panel do not agree with the screened documents.</td><td>Check the records removed before screening (Chapter 12).</td></tr>
     </tbody>
