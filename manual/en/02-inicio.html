@@ -15,7 +15,7 @@
   .cap2 figure.chica .marco { width: 70%; margin: 0 auto; }
   .cap2 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
   .cap2 figure.mini .marco { width: 46%; margin: 0 auto; }
-  .cap2 .celular { display: grid; grid-template-columns: 2.6in 1fr; gap: 0.25in; align-items: start; }
+  .cap2 .celular { display: grid; grid-template-columns: 2.15in 1fr; gap: 0.25in; align-items: start; }
   .cap2 .celular figure { margin: 0; }
   .cap2 .celular figure .marco { width: 100%; }
   .cap2 .celular figcaption { margin: 0.07in 0 0; }
@@ -51,7 +51,7 @@
 
   <figure>
     <div class="marco" style="position:relative">
-      <img src="../img/en/inicio-secciones.png" alt="How it works, What you can analyse and Principles sections of the home page">
+      <img src="../img/en/inicio-secciones.png" alt="How it works, What you can analyze and Principles sections of the home page">
       <span class="marca" style="left:16%;top:3.1%">1</span>
       <span class="marca" style="left:22%;top:20.7%">2</span>
       <span class="marca" style="left:23%;top:27.3%">3</span>
@@ -63,12 +63,15 @@
   <ul class="leyenda-marcas">
     <li><span class="n">1</span><span class="ui">How it works</span>: the four steps in order (import, clean, analyze and export).</li>
     <li><span class="n">2</span>Each step card is a button that opens its module.</li>
-    <li><span class="n">3</span><span class="ui">What you can analyse</span>: the eleven modules, grouped as in the sidebar.</li>
+    <li><span class="n">3</span><span class="ui">What you can analyze</span>: the eleven modules, grouped as in the sidebar.</li>
     <li><span class="n">4</span>Each module, with its description, opens its screen with a click.</li>
     <li><span class="n">5</span><span class="ui">Principles</span>: privacy, rigor, results ready to publish and bilingualism.</li>
   </ul>
 
-  <p>The modules can be opened even when there are no data yet. In that case they show the notice <span class="ui">Import data first</span> with the same two buttons as the home page, so a screen is never left empty with no way out. In the sidebar, the gray mark next to each module reminds you that it needs data; it disappears as soon as you load them.</p>
+  <p>The modules can be opened even when there are no data yet. In that case they show the notice <span class="ui">Import data first</span> with the same two buttons as the home page, so a screen is never left empty with no way out. In the sidebar, the dotted circle next to each module reminds you that it needs data; it disappears as soon as you load them, and a gold check mark marks the modules you have already reviewed.</p>
+
+  <h3>The header and the navigator bar</h3>
+  <p>The header and the bar below it accompany the home page and every module (Figure 1.4); they are the same in all the apps of the LABG Suite. In the header, besides the document counter, <span class="ui">Open</span>, <span class="ui">Save</span>, the language and the theme, there are <span class="ui">LABG Suite</span>, which returns to the portal of the family of apps; <span class="ui">Animations</span>, which turns the waiting animations on or off across the suite; <span class="ui">Report a problem</span>, which opens in the browser a notice for the authors with your browser details already filled in, and <span class="ui">Keyboard shortcuts</span> (<span class="ui">?</span>). The navigator bar shows the path (app › module › section), the reading mode—<span class="ui">Document</span>, every section one after another, or <span class="ui">Focused</span>, one section at a time—, a button that collapses or expands every section and the app’s search box (<span class="ui">Ctrl K</span>), which takes you to any module, tab, section or figure. On the right, the <span class="ui">In this block</span> panel lists the sections of the open screen (on the home page, from <span class="ui">How it works</span> to <span class="ui">Bilingual</span>) and takes you to each one with a click.</p>
 
   <div class="caja ejemplo">
     <div class="caja-t"><span class="ico">▸</span>Example · loading the example when data are already loaded</div>
@@ -238,7 +241,7 @@
       <tr><td class="c">1</td><td><span class="ui">Welcome to SciMetricsPro</span></td><td>The app in general and the privacy of the data.</td></tr>
       <tr><td class="c">2</td><td><span class="ui">Import your records</span></td><td>Import: several databases at once, the open catalog and the example.</td></tr>
       <tr><td class="c">3</td><td><span class="ui">Clean and filter</span></td><td>Cleaning &amp; filters and the header counter.</td></tr>
-      <tr><td class="c">4</td><td><span class="ui">Analyse</span></td><td>The descriptive modules, the structures and the <span class="ui">?</span> button of each indicator.</td></tr>
+      <tr><td class="c">4</td><td><span class="ui">Analyze</span></td><td>The descriptive modules, the structures and the <span class="ui">?</span> button of each indicator.</td></tr>
       <tr><td class="c">5</td><td><span class="ui">Systematic review</span></td><td>Screening with the keyboard and the PRISMA 2020 diagram.</td></tr>
       <tr><td class="c">6</td><td><span class="ui">Export and write</span></td><td>Figures, tables, networks, the ZIP package and the report.</td></tr>
       <tr><td class="c">7</td><td><span class="ui">Save your work</span></td><td>The <span class="ui">Save</span> button, the automatic copy, the language and the theme.</td></tr>
@@ -257,7 +260,7 @@
   <h2 id="s2-6"><span class="num">2.6</span>About: license and how to cite</h2>
   <p>The <span class="ui">About</span> page, at the end of the sidebar and in the page footer, gathers the formal details of the program: version, authorship, license, how to cite it and third-party components.</p>
 
-  <figure class="media">
+  <figure class="chica">
     <div class="marco" style="position:relative">
       <img src="../img/en/inicio-acerca.png" alt="About SciMetricsPro page in English">
       <span class="marca" style="left:22.5%;top:16.6%">1</span>
@@ -298,6 +301,9 @@
     <thead><tr><th style="width:30%">Keys</th><th style="width:26%">Where</th><th>What they do</th></tr></thead>
     <tbody>
       <tr><td><kbd>Tab</kbd> · <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>The whole app</td><td>Move to the next or previous control. The first <kbd>Tab</kbd> shows the <span class="ui">Skip to content</span> link.</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>The whole app</td><td>Opens the app’s search box: modules, tabs, sections, figures and actions such as switching the theme.</td></tr>
+      <tr><td><kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd></td><td>The whole app</td><td>Previous or next module; in <span class="ui">Focused</span> mode, previous or next section.</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Outside a text field</td><td>Opens the <span class="ui">Keyboard shortcuts</span> window.</td></tr>
       <tr><td><kbd>Enter</kbd> · <kbd>Space</kbd></td><td>Buttons, checkboxes, cards</td><td>Activate the control with the focus.</td></tr>
       <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Tabs of a module</td><td>Switch to the previous or next tab.</td></tr>
       <tr><td><kbd>Esc</kbd></td><td>Help, tour, menu</td><td>Close the help window, the guided tour or the menu on narrow screens.</td></tr>
@@ -313,17 +319,17 @@
     <figure class="mini">
       <div class="marco" style="position:relative">
         <img src="../img/en/inicio-celular.png" alt="The app at 400 pixels wide with the module menu open">
-        <span class="marca" style="left:6.5%;top:6.4%">1</span>
-        <span class="marca" style="left:27%;top:6.4%">2</span>
-        <span class="marca" style="left:50.5%;top:6.4%">3</span>
+        <span class="marca" style="left:62%;top:2.6%">1</span>
+        <span class="marca" style="left:29%;top:10.5%">2</span>
+        <span class="marca" style="left:44.5%;top:10.5%">3</span>
       </div>
       <figcaption><b>Figure 2.6.</b> The app at 400 pixels wide with the menu open.</figcaption>
     </figure>
     <div>
-      <p style="margin-top:0">Below 900 pixels wide the sidebar turns into a menu opened with the button in the header, and the header buttons show only their icon. The app works the same on a tablet or a phone, although networks and large tables are best used on a wide screen.</p>
+      <p style="margin-top:0">Below 900 pixels wide the sidebar turns into a menu opened with the button in the header, and the header buttons show only their icon. Below 760 pixels the header takes two lines: on top, the menu button, the logo and the name; below, the tools. The app works the same on a tablet or a phone, although networks and large tables are best used on a wide screen.</p>
       <ul class="leyenda-marcas" style="grid-template-columns:1fr">
-        <li><span class="n">1</span>The menu button; with the menu open it turns into an <span class="ui">×</span> that closes it.</li>
-        <li><span class="n">2</span>The document counter, shortened.</li>
+        <li><span class="n">1</span>The menu button, to the left of the logo; with the menu open it turns into an <span class="ui">×</span> that closes it.</li>
+        <li><span class="n">2</span>The document counter, shortened, at the start of the second line.</li>
         <li><span class="n">3</span><span class="ui">Open</span> and <span class="ui">Save</span> with their icon only; their name appears when you point at them and is read by screen readers.</li>
       </ul>
     </div>
