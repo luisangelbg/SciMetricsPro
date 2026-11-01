@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 7 · Authors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with running heads, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap7 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 7 -->
+<section class="capitulo cap7" id="cap-autores" data-pestana="7" data-orden="7" style="--acento: var(--b6)">
+  <div class="cap-apertura">
+    <div class="cap-num">7</div>
+    <div class="cap-etiqueta">Chapter seven</div>
+    <h1>Authors</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Who produces the literature: the most productive authors with full and fractional counting, their trajectory over time, Lotka’s law with its goodness-of-fit test, the impact of each author within the collection, and the institutions and countries the literature comes from, with their international collaboration and their map.</p>
+    <div class="cap-franja"><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span><span class="k6"></span></div>
+    <ul class="cap-contenido">
+      <li><b>7.1</b>The Authors screen and its cards</li>
+      <li><b>7.2</b>The most productive authors</li>
+      <li><b>7.3</b>Production over time</li>
+      <li><b>7.4</b>Lotka’s law</li>
+      <li><b>7.5</b>Impact by author</li>
+      <li><b>7.6</b>Institutions</li>
+      <li><b>7.7</b>Countries and international collaboration</li>
+    </ul>
+  </div>
+
+  <p class="lead">The <span class="ui">Authors</span> screen moves from journals to people. Its six tabs answer questions that every bibliometric study ends up asking: who publishes the most, since when, whether productivity is distributed as in other fields, who has the most impact and from which institutions and countries the research is done.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the data in this chapter</div>
+    <p>The figures in this chapter were taken with the <b>example data</b>: 300 documents on the mineral nutrition of passion fruit, from the open bibliographic catalog, which carry authors with affiliations and citation counts. You can load them with one click from the home page (<span class="ruta">Home<span class="sep">›</span>Load example data</span>) and reproduce every screen. All the figures quoted were checked by reading that file outside the app.</p>
+  </div>
+
+  <!-- 7.1 -->
+  <h2 id="s7-1"><span class="num">7.1</span>The Authors screen and its cards</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-tarjetas.png" alt="The six cards of the Authors screen, the affiliations notice and the six tabs">
+      <span class="marca" style="left:9%;top:18.5%">1</span>
+      <span class="marca" style="left:32.3%;top:21.5%">2</span>
+      <span class="marca" style="left:49.5%;top:21.5%">3</span>
+      <span class="marca" style="left:67%;top:18.5%">4</span>
+      <span class="marca" style="left:60%;top:79.5%">5</span>
+      <span class="marca" style="left:58%;top:93%">6</span>
+    </div>
+    <figcaption><b>Figure 7.1.</b> The cards of <span class="ui">Authors</span> with the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Distinct authors, identified by surname and initials.</li>
+    <li><span class="n">2</span>Share of authors who sign a single document.</li>
+    <li><span class="n">3</span>Estimated Lotka exponent, with its fit (Section 7.4).</li>
+    <li><span class="n">4</span>The author with the highest h-index within the collection.</li>
+    <li><span class="n">5</span>Notice when part of the documents carries no affiliations.</li>
+    <li><span class="n">6</span>The six tabs of the screen.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 7.1.</b> The six cards of <span class="ui">Authors</span>.</caption>
+    <thead><tr><th style="width:28%">Card</th><th>What it measures</th><th style="width:24%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Authors</span></td><td>Distinct authors in the documents that carry authors.</td><td>932 in 300 documents</td></tr>
+      <tr><td><span class="ui">Authors with a single document</span></td><td>What share of the authors appears only once; the basis of Lotka’s law.</td><td>78.6% (733 authors)</td></tr>
+      <tr><td><span class="ui">Lotka exponent (β)</span></td><td>How fast the share of authors falls as their number of documents grows.</td><td>2.64 · R² = 0.969</td></tr>
+      <tr><td><span class="ui">Highest h-index</span></td><td>The author with the most impact within the collection.</td><td>12 · Cavalcante, L.F.</td></tr>
+      <tr><td><span class="ui">Institutions</span></td><td>Distinct institutions in the affiliations.</td><td>379 in 238 documents</td></tr>
+      <tr><td><span class="ui">Countries</span></td><td>Distinct countries of authors and affiliations.</td><td>31 in 236 documents</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · the affiliations notice</div>
+    <p>When at least a fifth of the documents carries no affiliations, the screen says so above the tabs: in the example, <b>62 of 300 documents (21%)</b>. The author, Lotka and impact tabs are not affected, but the institution and country tabs are computed without those documents. If your study compares countries, complete the affiliations with another export before drawing conclusions (Chapter 3).</p>
+  </div>
+
+  <!-- 7.2 -->
+  <h2 id="s7-2"><span class="num">7.2</span>The most productive authors</h2>
+  <p>The first tab sorts the authors by number of documents and draws the top ones. The <span class="ui">Count</span> selector switches between two ways of counting, and the list changes.</p>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · full counting and fractional counting</div>
+    <p>In <b>full counting</b>, each author adds 1 for every document they sign, no matter how many co-authors there are. It is the most intuitive and the most widely used, but it rewards those who sign in large teams: a ten-author paper hands out ten documents. In <b>fractional counting</b>, each document shares exactly 1 among its authors: with three authors, each adds 1/3. The sum over all authors gives the number of documents, and the list favors those who publish with few co-authors.</p>
+    <p class="formula-linea">fractional count of author <i>a</i> = Σ<sub><i>d</i></sub> 1 ⁄ <i>n</i><sub><i>d</i></sub></p>
+    <p>where the sum runs over the documents <i>d</i> the author signs and <i>n</i><sub><i>d</i></sub> is the number of authors of each.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-productivos.png" alt="Bars of the ten most productive authors with full counting">
+      <span class="marca" style="left:39%;top:5.2%">1</span>
+      <span class="marca" style="left:22.8%;top:23%">2</span>
+      <span class="marca" style="left:85%;top:39%">3</span>
+    </div>
+    <figcaption><b>Figure 7.2.</b> The ten most productive authors of the example, with full counting.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Type of count and how many authors enter the figure.</li>
+    <li><span class="n">2</span>Subtitle: it states the count in use.</li>
+    <li><span class="n">3</span>The most productive author signs 46 of the 300 documents.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-fraccional.png" alt="Bars of the ten most productive authors with fractional counting">
+      <span class="marca" style="left:36.3%;top:9.3%">1</span>
+      <span class="marca" style="left:49%;top:39.8%">2</span>
+    </div>
+    <figcaption><b>Figure 7.3.</b> The same figure with fractional counting: the list changes.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtitle: each document shares 1 among its authors.</li>
+    <li><span class="n">2</span>An author with only 8 documents rises to third place because they publish with few co-authors.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · two lists, two readings</div>
+    <p>With full counting, the list is headed by <span class="ui">Cavalcante, L.F.</span> with 46 documents, followed by <span class="ui">de Lima, G.S.</span> (31), <span class="ui">Soares, L.A.A.</span> (27), <span class="ui">Gheyi, H.R.</span> (24) and <span class="ui">Pereira, W.E.</span> (19): a Brazilian group that publishes in large teams. With fractional counting, the first one stays first (8.28), but in third place comes <span class="ui">Kondo, T.</span>, who with only 8 documents adds up to 3.67 because he signs with one or two co-authors. Neither list is “the right one”: the first measures participation and the second, individual contribution. Both were reproduced outside the app with the same values.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · an author is a surname and initials</div>
+    <p>The app identifies each author by surname and initials, with the variants you joined in <span class="ui">Cleaning &amp; filters</span> (Section 4.4). It is the only rule that works with every database, because most of them carry no author identifiers. It has two consequences: two people with the same surname and initials count as one, and one person written in two ways counts as two until you join them. In the example, the open catalog splits <span class="ui">Cavalcante, L.F.</span> across three of its own identifiers: one with 45 documents, another with 1 and a third with 3 in which the name comes inverted, “Ferreira Cavalcante Lourival”. By name, the app brings the first two together in 46 documents; the third stays apart as <span class="ui">Lourival, F.C.</span>, because no program can know that this “surname” is a given name. If a key author seems to have fewer documents than expected, look for their variants in the table below. Under the figure, the <span class="ui">All authors</span> table lists each author with their documents, fractional count, citations, first and last year, and most frequent institution and country.</p>
+  </div>
+
+  <!-- 7.3 -->
+  <h2 id="s7-3"><span class="num">7.3</span>Production over time</h2>
+  <p>The second tab draws the trajectory of the most productive authors: one row per author and one bubble for each year in which they published. The <b>size</b> of the bubble is the number of documents that year and the <b>color</b>, the citations per year those documents received up to the reference year; a gray line joins each author’s first and last year.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-tiempo.png" alt="Production bubbles per year of the ten most productive authors">
+      <span class="marca" style="left:20%;top:4.7%">1</span>
+      <span class="marca" style="left:37.3%;top:20.9%">2</span>
+      <span class="marca" style="left:66.5%;top:91%">3</span>
+    </div>
+    <figcaption><b>Figure 7.4.</b> Trajectories of the ten most productive authors of the example between 2007 and 2025.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>How many authors enter the figure.</li>
+    <li><span class="n">2</span>Subtitle: size is documents and color, citations per year.</li>
+    <li><span class="n">3</span>Size and color scales; light colors are the most cited years.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a veteran and a group that arrived in 2019</div>
+    <p>The figure separates two generations. <span class="ui">Cavalcante, L.F.</span> has published without interruption since 2007: his row is long and dark, because most of his documents have been accumulating citations at a moderate pace for years. <span class="ui">de Lima, G.S.</span>, <span class="ui">Soares, L.A.A.</span> and <span class="ui">Gheyi, H.R.</span> appear together from 2019, almost always in the same years, and their bubbles from 2020 to 2023 are the lightest in the figure: in a short time their documents are cited more per year than those of the most veteran author. Section 7.5 confirms that reading with the m-index.</p>
+  </div>
+
+  <!-- 7.4 -->
+  <h2 id="s7-4"><span class="num">7.4</span>Lotka’s law</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · many publish once, few publish a lot</div>
+    <p>Lotka (1926) observed that the share of authors with <i>x</i> documents falls as a power of <i>x</i>:</p>
+    <p class="formula-linea"><i>f</i>(<i>x</i>) = <i>C</i> ⁄ <i>x</i><sup>β</sup></p>
+    <p>In its classic form, β = 2 and <i>C</i> = 6/π² ≈ 0.6079: about 61% of the authors publish a single document, a quarter of that figure publish two, a ninth publish three, and so on. The app estimates β and <i>C</i> by least squares on the logarithms, using <i>x</i> = 1, 2, 3… up to the first value without authors, because beyond that point the few highly productive authors appear one at a time and flatten the line (Clauset, Shalizi and Newman, 2009). It then compares the observed distribution with the classic law using the <b>Kolmogorov-Smirnov</b> test: if the maximum difference between the cumulative shares, <i>D</i>, exceeds the critical value 1.36/√<i>N</i>, the collection does not follow the law with β = 2 at 5%. The constant of the fit is computed as proposed by Pao (1985).</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-lotka.png" alt="Lotka’s law cards and the observed, theoretical and fitted curves">
+      <span class="marca" style="left:51%;top:30.8%">1</span>
+      <span class="marca" style="left:70%;top:47.6%">2</span>
+      <span class="marca" style="left:21.5%;top:47.4%">3</span>
+    </div>
+    <figcaption><b>Figure 7.5.</b> Lotka’s law in the example data: 932 authors. The five cards at the top are described in Table 7.2.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The three curves: observed, theoretical with β = 2, and fitted.</li>
+    <li><span class="n">2</span>The fitted curve almost completely overlaps the observed one.</li>
+    <li><span class="n">3</span>78.6% of the authors sign a single document; the classic law expected 60.8%.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 7.2.</b> The five cards of Lotka’s law.</caption>
+    <thead><tr><th style="width:26%">Card</th><th>What it is</th><th style="width:18%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Exponent β</span></td><td>Slope of the fit; greater than 2 means even more occasional authors than in the classic law.</td><td>2.638</td></tr>
+      <tr><td><span class="ui">Constant C</span></td><td>Fitted share of authors with one document; the classic value is 0.6079.</td><td>0.782</td></tr>
+      <tr><td><span class="ui">R² of the fit</span></td><td>How well the points line up on a logarithmic scale, and with how many.</td><td>0.969 with 11</td></tr>
+      <tr><td><span class="ui">Kolmogorov-Smirnov (D)</span></td><td>Maximum difference between the observed and theoretical cumulative shares, with its critical values.</td><td>0.1786 (critical 0.0445)</td></tr>
+      <tr><td><span class="ui">p-value</span></td><td>Probability of such a difference if the classic law were true, with its verdict.</td><td>&lt; 0.001</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a literature with more occasional authors than expected</div>
+    <p>Of the 932 authors of the example, <b>733 sign a single document (78.6%)</b>, 96 sign two and 42 sign three; the classic law expected 60.8%, 15.2% and 6.8%. The fit gives β = 2.638 with R² = 0.969 over the first eleven values, and the Kolmogorov-Smirnov test rejects the classic law: <i>D</i> = 0.1786, four times the critical value at 5% (0.0445). The law with the fitted exponent, on the other hand, describes the data very well: in the figure, its curve merges with the observed one. The reading is that the topic attracts many participants who publish once —students, collaborators on a single project— around a small, highly productive core. The number of authors for each number of documents, β, <i>C</i>, R² and <i>D</i> were reproduced outside the app with the same result.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · how to report Lotka’s law</div>
+    <table class="compacta">
+      <thead><tr><th style="width:44%">If the result is…</th><th>write…</th></tr></thead>
+      <tbody>
+        <tr><td><i>D</i> below the critical value (β = 2 is not rejected)</td><td>“Author productivity fits Lotka’s law (D = …, p = …).”</td></tr>
+        <tr><td><i>D</i> above the critical value, but a high R²</td><td>“The distribution follows a power law with β = … (R² = …), steeper than Lotka’s (D = …, p &lt; …).”</td></tr>
+        <tr><td>Low R² or fewer than four points in the fit</td><td>Do not report β as a result: the collection is too small or irregular to estimate it.</td></tr>
+        <tr><td>35 authors or fewer</td><td>The app warns that the critical values are not reliable; describe the distribution without the test.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">With many authors the test almost always rejects the classic form: β = 2 is a reference, not a physical law. What is informative is the value of β and its comparison with other fields.</p>
+  </div>
+
+  <!-- 7.5 -->
+  <h2 id="s7-5"><span class="num">7.5</span>Impact by author</h2>
+  <p>The <span class="ui">Impact</span> tab works like the one for sources (Section 6.4): the h, g and m indices and the total citations of each author, computed <b>only with their documents in the collection</b>, with a selector for the measure, the number of authors and the reference year of the m-index. Below, the table gives the four values for every author.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-impacto.png" alt="h-index of the ten authors with the highest value, with the measure selector">
+      <span class="marca" style="left:63%;top:5.2%">1</span>
+      <span class="marca" style="left:41%;top:23%">2</span>
+      <span class="marca" style="left:80.5%;top:39.2%">3</span>
+    </div>
+    <figcaption><b>Figure 7.6.</b> h-index of the ten authors with the highest value in the example collection.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Impact measure, number of authors and reference year of the m-index.</li>
+    <li><span class="n">2</span>The indices are computed with the documents in the collection.</li>
+    <li><span class="n">3</span>The most productive author also has the highest h-index: 12.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the m-index separates the generations</div>
+    <p><span class="ui">Cavalcante, L.F.</span> has the highest h-index (12, with 402 citations), but he built it since 2007: his m-index is 12 ÷ 20 years = <b>0.600</b>. <span class="ui">de Lima, G.S.</span> has an h of 11 achieved since 2019, and his m-index is 11 ÷ 8 = <b>1.375</b>, more than double. <span class="ui">Soares, L.A.A.</span>, with an h of 10 since 2019, reaches 1.250. This is what the light bubbles of Figure 7.4 anticipated. The h, g and m indices of the ten most productive authors were recomputed outside the app, and they match.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · an author’s h-index here is not their h-index</div>
+    <p>The index this tab computes uses only the author’s documents that are in your collection, with the citations your files report. A researcher with a career h-index of 40 may have 3 here, if only three of their papers deal with your topic. Report these values as “h-index within the collection” and do not compare them with those of the authors’ public profiles.</p>
+  </div>
+
+  <!-- 7.6 -->
+  <h2 id="s7-6"><span class="num">7.6</span>Institutions</h2>
+  <p>The <span class="ui">Institutions</span> tab counts the organizations in the affiliations, already unified in <span class="ui">Cleaning &amp; filters</span> (Section 4.5), with the same criterion and the same numbers as the table on that screen. The <span class="ui">Count</span> selector chooses between two measures: <b>documents</b> in which the institution appears, or <b>appearances</b>, which count each author from that institution in each document.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-instituciones.png" alt="Bars of the fifteen most productive institutions by documents">
+      <span class="marca" style="left:37%;top:4.1%">1</span>
+      <span class="marca" style="left:32.5%;top:18.4%">2</span>
+      <span class="marca" style="left:56%;top:42.8%">3</span>
+    </div>
+    <figcaption><b>Figure 7.7.</b> The fifteen most productive institutions of the example, by number of documents.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Count by documents or by appearances, and how many institutions enter.</li>
+    <li><span class="n">2</span>Subtitle: what is being counted.</li>
+    <li><span class="n">3</span>The same university written in English stays apart until it is joined with an alias (Section 4.5).</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · documents versus appearances</div>
+    <p><i>Universidade Federal de Campina Grande</i> and <i>Universidade Federal da Paraíba</i> appear in 29 documents each: a tie. By appearances, the first adds up to 149 and the second 84, because its papers carry more authors from the same university. The first measure tells you in how many works an institution takes part; the second, how many of its people sign. For a ranking, use documents; to measure the size of a research group, appearances.</p>
+  </div>
+
+  <!-- 7.7 -->
+  <h2 id="s7-7"><span class="num">7.7</span>Countries and international collaboration</h2>
+  <p>Counting countries has a difficulty: a document with authors from three countries, which country does it belong to? The <span class="ui">Countries</span> tab answers in two ways, with two different figures.</p>
+
+  <table class="compacta">
+    <caption><b>Table 7.3.</b> How a country is assigned to each document, in this order.</caption>
+    <thead><tr><th style="width:8%">Order</th><th>Criterion</th><th style="width:22%">Example documents</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>The country of the corresponding author, if the database indicates it.</td><td>68</td></tr>
+      <tr><td>2</td><td>Otherwise, that of the first author with a country.</td><td>168</td></tr>
+      <tr><td>3</td><td>Otherwise, that of the first affiliation with a recognized country.</td><td>0</td></tr>
+      <tr><td>—</td><td>No country: no author or affiliation makes it possible to tell.</td><td>64</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · SCP and MCP</div>
+    <p>With the country assigned, each document is classified as <b>SCP</b> (<i>single country publication</i>) if all its authors are from the same country, or <b>MCP</b> (<i>multiple country publication</i>) if there are authors from more than one. A country’s MCP ratio measures its international collaboration: a country with a high MCP publishes mostly with foreign partners; one with a low MCP, with its own groups. The map, in contrast, does not assign one country per document: it counts each byline of each author in their country, or each document in all its countries.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-paises.png" alt="Bars of documents per country split into single country and multiple countries">
+      <span class="marca" style="left:85.3%;top:2.8%">1</span>
+      <span class="marca" style="left:23%;top:12.9%">2</span>
+      <span class="marca" style="left:49.3%;top:25.9%">3</span>
+      <span class="marca" style="left:92%;top:38.8%">4</span>
+    </div>
+    <figcaption><b>Figure 7.8.</b> The fifteen countries with the most documents in the example, split into SCP and MCP.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>How many documents got their country by each criterion of Table 7.3.</li>
+    <li><span class="n">2</span>How many countries enter the figures.</li>
+    <li><span class="n">3</span>Subtitle: the country is that of the corresponding author (or the next criterion).</li>
+    <li><span class="n">4</span>Single country (SCP) and multiple countries (MCP); the label of each bar gives the MCP percentage.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/autores-mapa.png" alt="World map colored by the number of author bylines from each country">
+      <span class="marca" style="left:29.5%;top:6.5%">1</span>
+      <span class="marca" style="left:37.5%;top:11.9%">2</span>
+      <span class="marca" style="left:39%;top:70%">3</span>
+      <span class="marca" style="left:69.5%;top:92%">4</span>
+    </div>
+    <figcaption><b>Figure 7.9.</b> Scientific production by country in the example, counting each author byline.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtitle: what the color measures.</li>
+    <li><span class="n">2</span>Map measure: author bylines or documents.</li>
+    <li><span class="n">3</span>Brazil concentrates 990 author bylines.</li>
+    <li><span class="n">4</span>Color scale; countries without data stay gray.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a Brazilian topic with little international collaboration</div>
+    <p>Brazil has 169 of the 236 documents with a country, and only 8% of them are MCP: research on passion fruit nutrition is done mostly by Brazilian groups. On the map, Brazil adds up to 990 author bylines, more than twenty times those of Colombia and China (47 each). Countries with few documents have extreme MCP percentages —Portugal and the United Kingdom, 2 documents and 50%—, which should not be read as a trend. The table of the tab adds the citations per country: Portugal’s two documents average 80 citations, a reminder that with few documents a single highly cited paper changes everything.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · the country comes from the affiliation, and the affiliation can fail</div>
+    <p>An author’s country comes from the code the database carries or, if it carries none, from the end of the affiliation text. Both sources can fail. In the example, the catalog linked an author from a Sri Lankan institute to a Chinese institute with a similar name; the rest of the co-authors carry no code, but the affiliation ends in “Sri Lanka”, and the app assigns the document to Sri Lanka through its first author. These cases are rare, but they exist in every database: if a small country appears where you do not expect it, look it up in the table and check its documents, and correct it with a country alias in <span class="ui">Cleaning &amp; filters</span> (Section 4.5).</p>
+  </div>
+
+  <p style="margin-top:0.12in">With the sources and the authors you now know where and who. The next chapter moves on to <b>what</b>: the most cited documents, the local citations within the collection, the most cited references, reference publication year spectroscopy and the trend topics.</p>
+</section>
+
+</body>
+</html>

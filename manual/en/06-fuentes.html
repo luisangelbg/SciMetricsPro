@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 6 · Sources</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with running heads, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap6 .cap6-svg text { font-family: Jost, sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 6 -->
+<section class="capitulo cap6" id="cap-fuentes" data-pestana="6" data-orden="6" style="--acento: var(--b5)">
+  <div class="cap-apertura">
+    <div class="cap-num">6</div>
+    <div class="cap-etiqueta">Chapter six</div>
+    <h1>Sources</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Where the topic is published: the most productive journals, books and proceedings, the Bradford core that concentrates a third of the literature, the impact of each source within the collection with the h, g and m indices, and the dynamics that show which journals are still active and which have left the topic.</p>
+    <div class="cap-franja"><span class="k5"></span><span class="k5"></span><span class="k5"></span><span class="k5"></span><span class="k5"></span><span class="k5"></span></div>
+    <ul class="cap-contenido">
+      <li><b>6.1</b>The Sources screen and its cards</li>
+      <li><b>6.2</b>The most productive sources</li>
+      <li><b>6.3</b>Bradford’s law</li>
+      <li><b>6.4</b>Impact by source</li>
+      <li><b>6.5</b>Production dynamics</li>
+      <li><b>6.6</b>The full table</li>
+    </ul>
+  </div>
+
+  <p class="lead">Knowing how many documents there are is the start; knowing <b>where they are</b> changes concrete decisions: which journals to search for what is missing, which ones to keep an eye on, where it makes sense to submit your own work and which sources to cite as references for the field. The <span class="ui">Sources</span> screen answers that with five tabs that go from the descriptive to the analytical.</p>
+
+  <!-- 6.1 -->
+  <h2 id="s6-1"><span class="num">6.1</span>The Sources screen and its cards</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-tarjetas.png" alt="The six cards of the Sources screen and its five tabs">
+      <span class="marca" style="left:8.8%;top:20.5%">1</span>
+      <span class="marca" style="left:29.5%;top:23.5%">2</span>
+      <span class="marca" style="left:47%;top:20.5%">3</span>
+      <span class="marca" style="left:69.5%;top:23.5%">4</span>
+      <span class="marca" style="left:7%;top:63.5%">5</span>
+      <span class="marca" style="left:50%;top:91.2%">6</span>
+    </div>
+    <figcaption><b>Figure 6.1.</b> The cards of the <span class="ui">Sources</span> screen with the 328 example documents.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Distinct sources and how many name variants were joined.</li>
+    <li><span class="n">2</span>Documents per source, on average.</li>
+    <li><span class="n">3</span>Bradford core: the sources that publish the first third.</li>
+    <li><span class="n">4</span>Bradford multiplier and the sources in each zone.</li>
+    <li><span class="n">5</span>The source with the highest h-index within the collection.</li>
+    <li><span class="n">6</span>The five tabs of the screen.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 6.1.</b> The six cards of <span class="ui">Sources</span>.</caption>
+    <thead><tr><th style="width:26%">Card</th><th>What it measures</th><th style="width:22%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Sources</span></td><td>Distinct journals, books and proceedings, already unified.</td><td>159 · 5 variants joined</td></tr>
+      <tr><td><span class="ui">Documents per source</span></td><td>Average documents per source; close to 1 points to a very scattered topic.</td><td>2.06</td></tr>
+      <tr><td><span class="ui">Bradford core</span></td><td>Sources of zone 1: they publish about a third of the documents.</td><td>10 sources · 110 documents (33.5%)</td></tr>
+      <tr><td><span class="ui">Bradford multiplier</span></td><td>How many times the number of sources grows from one zone to the next.</td><td>3.36 · zones 10 : 40 : 109</td></tr>
+      <tr><td><span class="ui">Most productive source</span></td><td>The source with the most documents in the collection.</td><td>26 · Revista Brasileira de Fruticultura</td></tr>
+      <tr><td><span class="ui">Highest h-index</span></td><td>The source with the most impact within the collection.</td><td>11 · the same journal</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · when two names are the same source</div>
+    <p>Names are compared without case, accents or punctuation, and “&amp;” counts as “and”: <i>Revista Brasileira de Engenharia Agrícola e Ambiental</i> and <i>…Agricola e Ambiental</i> are the same. In addition, two spellings that share an <b>ISSN</b> are joined even if they are named differently, which is how <i>Plants</i> and <i>Plants (Basel, Switzerland)</i> end up together. In the example, 5 variants were joined; the <span class="ui">Full table</span> tab shows which (Section 6.6). What the app <b>cannot</b> join by itself is an abbreviation without an ISSN (“Rev. Bras. Frutic.”) with the full name: they would appear as two sources.</p>
+  </div>
+
+  <!-- 6.2 -->
+  <h2 id="s6-2"><span class="num">6.2</span>The most productive sources</h2>
+  <p>The first tab sorts the sources by number of documents and draws them as horizontal bars, colored by their Bradford zone. The control at the top chooses how many enter the figure, from 5 to 50.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-productivas.png" alt="Bars of the ten most productive sources, with the control for how many to show and the download bar">
+      <span class="marca" style="left:21%;top:4.1%">1</span>
+      <span class="marca" style="left:29.5%;top:18.3%">2</span>
+      <span class="marca" style="left:67.8%;top:15.2%">3</span>
+      <span class="marca" style="left:92%;top:31%">4</span>
+    </div>
+    <figcaption><b>Figure 6.2.</b> The ten most productive sources of the example; all of them belong to the core zone.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>How many sources enter the figure.</li>
+    <li><span class="n">2</span>Subtitle: the bars are colored by Bradford zone.</li>
+    <li><span class="n">3</span>Download of the figure and of the data behind it.</li>
+    <li><span class="n">4</span>Legend of zones; only zone 1 appears here because the first ten are the core.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a literature spread over 159 journals</div>
+    <p>The ten most productive sources of the example publish between 26 and 6 documents: <i>Revista Brasileira de Fruticultura</i> 26 (7.9% of the collection), <i>Revista Caatinga</i> 14, <i>Revista Brasileira de Engenharia Agrícola e Ambiental</i> 13, <i>Acta Horticulturae</i> 12, <i>Comunicata Scientiae</i> and <i>Journal of Plant Nutrition</i> 9, <i>IRRIGA</i> 8, <i>Semina: Ciências Agrárias</i> 7, and <i>Pesquisa Agropecuária Brasileira</i> and <i>Ciência Rural</i> 6. At the other end, <b>111 of the 159 sources contribute a single document</b>: the topic is widely spread and the most productive journal barely concentrates one in every thirteen documents. All these figures were checked by grouping the sources outside the app.</p>
+  </div>
+
+  <!-- 6.3 -->
+  <h2 id="s6-3"><span class="num">6.3</span>Bradford’s law</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the core and the three zones</div>
+    <p>Bradford (1934) observed that if the journals on a topic are ranked from the most to the least productive and the documents are split into three equal piles, the first third comes from a handful of journals, the second needs quite a few more and the third, a great many. The number of sources in each zone grows in an almost geometric progression, 1 : <i>k</i> : <i>k</i>², and that <i>k</i> is the <b>Bradford multiplier</b>.</p>
+    <p>The app splits the zones where the cumulative count comes closest to one third and two thirds of the documents, estimates <i>k</i> as the mean of the two ratios between consecutive zones, and plots the cumulative count against the rank on a logarithmic scale: if the collection follows the law, that curve looks almost straight in its central part. Zone 1 is the <b>core</b>: the journals most worth reviewing, monitoring and considering for publication.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-bradford.png" alt="Bradford curve: cumulative documents against source rank on a logarithmic scale">
+      <span class="marca" style="left:48%;top:6.7%">1</span>
+      <span class="marca" style="left:22%;top:30%">2</span>
+      <span class="marca" style="left:91.5%;top:36.6%">3</span>
+      <span class="marca" style="left:62%;top:74.4%">4</span>
+    </div>
+    <figcaption><b>Figure 6.3.</b> The Bradford curve of the example, with the core zone shaded and the cuts at one third and two thirds.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Subtitle: the core zone is shaded.</li>
+    <li><span class="n">2</span>Zone 1: the sources that publish the first third of the documents.</li>
+    <li><span class="n">3</span>Reference lines at one third and two thirds of the total.</li>
+    <li><span class="n">4</span>The rank axis is logarithmic: that is why the curve of a collection that follows the law looks almost straight.</li>
+  </ul>
+
+  <p>Below the figure, two tables put numbers to the zones: how many sources and how many documents there are in each, with their percentages and the ratio between consecutive zones, and then the list of sources with their zone, their rank and their cumulative count.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-zonas.png" alt="Table of Bradford zones with sources, documents, percentages and the ratio between zones">
+      <span class="marca" style="left:14%;top:44.7%">1</span>
+      <span class="marca" style="left:36.5%;top:92.4%">2</span>
+    </div>
+    <figcaption><b>Figure 6.4.</b> The three zones of the example: 10, 40 and 109 sources for one third of the documents each.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Sources and documents in each zone, with their percentages.</li>
+    <li><span class="n">2</span>The three zones add up to all the documents that have a source.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · ten journals for a third of the literature</div>
+    <p>In the collection of the six exports, <b>10 sources (6.3%) publish 110 documents, 33.5%</b>; the 40 of zone 2 publish another 109 and the 109 of zone 3, the remaining 109. The ratios between zones are 40 ÷ 10 = 4.00 and 109 ÷ 40 = 2.73, so the estimated multiplier is <b>3.36</b>. That the two ratios are not equal shows that the collection fits the law only roughly, which is to be expected with 159 sources and many with a single document. The three zones and their counts were reproduced outside the app by applying the same cutting rule.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · what to do with the core</div>
+    <table class="compacta">
+      <thead><tr><th style="width:42%">If your goal is to…</th><th>use the core like this…</th></tr></thead>
+      <tbody>
+        <tr><td>not miss any literature on the topic</td><td>browse the tables of contents of those journals by hand and set up alerts for them; that is where new work will appear.</td></tr>
+        <tr><td>choose where to submit your paper</td><td>look at the core together with impact (Section 6.4) and with the dynamics (6.5): a core journal that stopped publishing on the topic is no longer the best option.</td></tr>
+        <tr><td>describe the field in a paper</td><td>report the three zones, the multiplier and the percentage of documents in the core, citing Bradford (1934).</td></tr>
+        <tr><td>compare two topics or two periods</td><td>compare the size of the core as a percentage of sources, not as a number: it depends on how many sources there are in total.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">The cuts are discrete: with few sources, moving one document can change the size of the core.</p>
+  </div>
+
+  <!-- 6.4 -->
+  <h2 id="s6-4"><span class="num">6.4</span>Impact by source</h2>
+  <p>Publishing a lot is not the same as publishing what is cited the most. The <span class="ui">Impact</span> tab computes, for each source and <b>only with the documents in the collection</b>, four measures: the h, g and m indices and total citations. The selector at the top chooses which one is drawn, how many sources enter and the reference year of the m-index, which is the same as in the overview.</p>
+
+  <table class="compacta">
+    <caption><b>Table 6.2.</b> The four impact measures of the tab.</caption>
+    <thead><tr><th style="width:18%">Measure</th><th>What it is</th><th style="width:30%">What it adds</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">h-index</span></td><td>The largest number <i>h</i> such that <i>h</i> documents of the source have at least <i>h</i> citations each (Hirsch, 2005).</td><td>It sums up productivity and impact in one number; a single highly cited paper does not sway it.</td></tr>
+      <tr><td><span class="ui">g-index</span></td><td>The largest <i>g</i> such that the <i>g</i> most cited documents add up to at least <i>g</i>² citations (Egghe, 2006).</td><td>It does reward highly cited papers: it is always greater than or equal to h.</td></tr>
+      <tr><td><span class="ui">m-index</span></td><td>The h-index divided by the years elapsed since the first document of the source in the collection.</td><td>It compares sources that have been in the topic for different lengths of time.</td></tr>
+      <tr><td><span class="ui">Total citations</span></td><td>Sum of the citations of the documents of the source.</td><td>Gross size of the impact; dominated by the source with the most documents.</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-impacto.png" alt="h-index of the ten sources with the highest value, with the selectors of measure, number and reference year">
+      <span class="marca" style="left:71%;top:5.7%">1</span>
+      <span class="marca" style="left:41%;top:18.9%">2</span>
+      <span class="marca" style="left:85%;top:31.8%">3</span>
+      <span class="marca" style="left:64%;top:43.3%">4</span>
+    </div>
+    <figcaption><b>Figure 6.5.</b> h-index of the ten sources with the highest value in the example collection.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The control bar: impact measure, how many sources enter and the reference year of the m-index.</li>
+    <li><span class="n">2</span>Subtitle: the indices are computed with the documents in the collection.</li>
+    <li><span class="n">3</span>The most productive source is also the one with the highest h-index (11).</li>
+    <li><span class="n">4</span>A journal with 6 documents reaches an h-index of 6: all its documents are well cited.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-impacto-tabla.png" alt="Source impact table with h, g and m indices, total citations, documents and first year">
+      <span class="marca" style="left:24%;top:32.6%">1</span>
+      <span class="marca" style="left:80%;top:14.8%">2</span>
+    </div>
+    <figcaption><b>Figure 6.6.</b> The impact table, sorted by h-index.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Each source with its three indices, its total citations, its documents and its first year in the collection.</li>
+    <li><span class="n">2</span>It sorts by any column and downloads in full.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · productivity is not impact</div>
+    <p><i>Revista Brasileira de Fruticultura</i> heads both lists: 26 documents, 266 citations, an h-index of 11 and a g of 15. But right after that the order changes. <i>Revista Brasileira de Engenharia Agrícola e Ambiental</i>, third in documents (13), is second in impact (h 9, 174 citations) and has the highest m-index of the group, 0.563, because it has been in the topic for less time. <i>Pesquisa Agropecuária Brasileira</i> contributes only 6 documents and reaches an <b>h-index of 6</b>: all its papers in the collection are well cited. At the other extreme, <i>Acta Horticulturae</i> is fourth in documents (12) but its h-index is 4 and it adds up to 39 citations: these are conference proceedings, which are cited little (Chapter 5, table of types). The three indices of the top ten sources were recomputed outside the app with the same definitions, and they match.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · what these indices mean and what they do not</div>
+    <p>The h-index you see here is that of the journal <b>within your collection</b>: it is computed only with the documents of your search and with the citations your files report. It is not the h-index of the whole journal, nor its impact factor, and it does not replace the official indicators of the databases. Put that way it is useful and honest: “in this collection of 328 documents, such journal has an h-index of 11”. Moreover, sources whose documents carry no citation count do not appear in this tab; if none carries it, the app says so and the tab stays empty.</p>
+  </div>
+
+  <!-- 6.5 -->
+  <h2 id="s6-5"><span class="num">6.5</span>Production dynamics</h2>
+  <p>The cards and the bars are snapshots; this tab is the movie. For the most productive sources, it draws how many documents they have accumulated each year: a line that rises with a constant slope is a journal that publishes on the topic regularly, one that shoots up points to a special issue and <b>one that flattens out is a journal that left the topic</b>.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-dinamica.png" alt="Cumulative lines of the five most productive sources between 2000 and 2026">
+      <span class="marca" style="left:23.5%;top:4.1%">1</span>
+      <span class="marca" style="left:37%;top:18.3%">2</span>
+      <span class="marca" style="left:81%;top:33%">3</span>
+    </div>
+    <figcaption><b>Figure 6.7.</b> Cumulative documents per year of the five most productive sources of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>How many sources enter the figure (from 5 to 10).</li>
+    <li><span class="n">2</span>Each line is the cumulative count of one source over the years of the whole collection.</li>
+    <li><span class="n">3</span>A line that flattens out: that source stopped publishing on the topic.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the most productive journal stopped in 2023</div>
+    <p>The line of <i>Revista Brasileira de Fruticultura</i> rises steeply from 2006, reaches 26 documents and flattens out: <b>its last document in the collection is from 2023</b>. Meanwhile, <i>Revista Caatinga</i> (2010–2026) and <i>Revista Brasileira de Engenharia Agrícola e Ambiental</i> (2011–2026) keep rising until the end of the timespan. If the goal were to choose where to submit a paper today, the “most productive” list would point to a journal that no longer publishes on the topic, and the dynamics correct it. The first and last years of each source were checked outside the app.</p>
+  </div>
+
+  <!-- 6.6 -->
+  <h2 id="s6-6"><span class="num">6.6</span>The full table</h2>
+  <p>The last tab brings everything together in a single table: one row per source and sixteen columns with its identity, its production, its zone and its impact. It sorts by any column, searches by name and downloads in full as a spreadsheet or CSV. Since it is wider than the screen, it scrolls sideways.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/fuentes-tabla.png" alt="Full table of sources with rank, name, joined variants, abbreviation, ISSN and documents">
+      <span class="marca" style="left:42.5%;top:23.1%">1</span>
+      <span class="marca" style="left:45%;top:74.5%">2</span>
+      <span class="marca" style="left:61.5%;top:73%">3</span>
+    </div>
+    <figcaption><b>Figure 6.8.</b> The first rows of the full table; the production and impact columns continue to the right.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>159 sources, 25 at a time.</li>
+    <li><span class="n">2</span>The name variants that were joined into that source.</li>
+    <li><span class="n">3</span>Abbreviation and ISSN, when the export carries them.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 6.3.</b> The columns of the full table.</caption>
+    <thead><tr><th style="width:34%">Columns</th><th>What they contain</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Rank</span> · <span class="ui">Source</span> · <span class="ui">Joined variants</span> · <span class="ui">Abbreviation</span> · <span class="ui">ISSN</span></td><td>Identity of the source: its position by documents, the preferred name, the other spellings that were joined and the identifiers the files carried.</td></tr>
+      <tr><td><span class="ui">Documents</span> · <span class="ui">Percentage</span> · <span class="ui">Cumulative percentage</span> · <span class="ui">Zone</span></td><td>Production and place in the Bradford zones.</td></tr>
+      <tr><td><span class="ui">Total citations</span> · <span class="ui">Average citations</span> · <span class="ui">h-index</span> · <span class="ui">g-index</span> · <span class="ui">m-index</span></td><td>Impact within the collection; empty if the source carries no citation count.</td></tr>
+      <tr><td><span class="ui">First year</span> · <span class="ui">Last year</span></td><td>Period in which that source published on the topic; the gap to the current year is the signal of Section 6.5.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · three practical uses of this table</div>
+    <ul style="margin:0">
+      <li><b>Look up a specific journal.</b> Type part of the name in the search box to see how many documents it contributes, which zone it is in and since when it has published on the topic.</li>
+      <li><b>Audit the unification.</b> Sort by <span class="ui">Joined variants</span> to see which spellings were merged, and by <span class="ui">Documents</span> in ascending order to detect single-document sources that are in fact variants of another one without an ISSN.</li>
+      <li><b>Take it to your paper.</b> The spreadsheet download keeps the sixteen columns; the top ten sources and the columns of documents, percentage, zone, citations and h-index are almost always enough.</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:0.3in">With the sources you now know where the topic is published. The next chapter asks <b>who</b> publishes it: the most productive and most cited authors, Lotka’s law, their impact indices and the countries and institutions they work from.</p>
+</section>
+
+</body>
+</html>

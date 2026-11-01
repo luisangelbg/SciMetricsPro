@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 8 · Documents</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with running heads, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap8 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 8 -->
+<section class="capitulo cap8" id="cap-documentos" data-pestana="8" data-orden="8" style="--acento: var(--b7)">
+  <div class="cap-apertura">
+    <div class="cap-num">8</div>
+    <div class="cap-etiqueta">Chapter eight</div>
+    <h1>Documents</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">What is published and what is cited: the most cited documents with three different measures, the local citations the documents make to one another, the most cited references, reference publication year spectroscopy, which reveals the founding works of the field, and the words, their growth and the trend topics.</p>
+    <div class="cap-franja"><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span><span class="k7"></span></div>
+    <ul class="cap-contenido">
+      <li><b>8.1</b>The Documents screen and its cards</li>
+      <li><b>8.2</b>Most cited documents</li>
+      <li><b>8.3</b>Local citations</li>
+      <li><b>8.4</b>Most cited references</li>
+      <li><b>8.5</b>Reference publication year spectroscopy (RPYS)</li>
+      <li><b>8.6</b>Words</li>
+      <li><b>8.7</b>Growth and trend topics</li>
+    </ul>
+  </div>
+
+  <p class="lead">After the sources and the authors, the <span class="ui">Documents</span> screen looks at the works themselves: which have received the most attention, which form the common base of the field and what they are about. Its seven tabs fall into two families: the first four work with citations and references; the last three, with the words of the term field you chose in <span class="ui">Cleaning &amp; filters</span>.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the data in this chapter</div>
+    <p>The figures use the passion fruit <b>example data</b> (300 documents from the open catalog), except those of the RPYS. That catalog’s references arrive as work identifiers, without a year, and without a year there is no RPYS: for Section 8.5 a public collection of 147 papers on co-citation analysis and bibliographic coupling (1985–2015) was used, exported with its full references from multidisciplinary citation index B. All the figures quoted were checked by reading the files outside the app.</p>
+  </div>
+
+  <!-- 8.1 -->
+  <h2 id="s8-1"><span class="num">8.1</span>The Documents screen and its cards</h2>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-tarjetas.png" alt="The six cards of the Documents screen and its seven tabs">
+      <span class="marca" style="left:10.7%;top:19.5%">1</span>
+      <span class="marca" style="left:28.5%;top:23%">2</span>
+      <span class="marca" style="left:48.7%;top:19.5%">3</span>
+      <span class="marca" style="left:70.8%;top:19.5%">4</span>
+      <span class="marca" style="left:86.7%;top:19.5%">5</span>
+      <span class="marca" style="left:8.6%;top:64.5%">6</span>
+      <span class="marca" style="left:62.3%;top:92%">7</span>
+    </div>
+    <figcaption><b>Figure 8.1.</b> The cards of <span class="ui">Documents</span> with the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Total citations reported by the databases.</li>
+    <li><span class="n">2</span>The most cited document.</li>
+    <li><span class="n">3</span>Local citations: times a document of the collection cites another document of the collection.</li>
+    <li><span class="n">4</span>Distinct references in the bibliographies.</li>
+    <li><span class="n">5</span>Main RPYS peak; here the references carry no year.</li>
+    <li><span class="n">6</span>Distinct terms of the field chosen in Cleaning.</li>
+    <li><span class="n">7</span>The seven tabs of the screen.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 8.1.</b> The six cards of <span class="ui">Documents</span>.</caption>
+    <thead><tr><th style="width:26%">Card</th><th>What it measures</th><th style="width:24%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Total citations</span></td><td>Sum of the citations reported by the databases, from their whole coverage.</td><td>2,978 in 300 documents</td></tr>
+      <tr><td><span class="ui">Most cited document</span></td><td>The document with the most global citations.</td><td>153 · Fonseca A., 2022</td></tr>
+      <tr><td><span class="ui">Local citations</span></td><td>Citation links within the collection (Section 8.3).</td><td>396 · 150 documents cited</td></tr>
+      <tr><td><span class="ui">Distinct references</span></td><td>Distinct works in the reference lists, already unified.</td><td>4,546 · 6,141 citations in 236 documents</td></tr>
+      <tr><td><span class="ui">Main RPYS peak</span></td><td>Reference year with the largest positive deviation (Section 8.5).</td><td>— · the references carry no year</td></tr>
+      <tr><td><span class="ui">Distinct terms</span></td><td>Terms of the analysis field, with synonyms and stop words applied.</td><td>618 · index keywords</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · computing the references</div>
+    <p>Local citations, the most cited references and the RPYS depend on matching thousands of references with one another and with the documents of the collection. With few references the computation is immediate; with more than 25,000 it runs in the background, with a progress bar and a <span class="ui">Cancel</span> button, and meanwhile the screen says <span class="ui">Computing the local citations and cited references of this collection…</span>. If you cancel, <span class="ui">Compute again</span> appears. The result is shared with the overview and with the intellectual structure, so it is not repeated when you change screens.</p>
+  </div>
+
+  <!-- 8.2 -->
+  <h2 id="s8-2"><span class="num">8.2</span>Most cited documents</h2>
+  <p>The first tab ranks the documents by their citations. The <span class="ui">Impact measure</span> selector offers three ways of counting them, because “the most cited” depends on how long each document has had to be cited.</p>
+
+  <table class="compacta">
+    <caption><b>Table 8.2.</b> The three citation measures per document.</caption>
+    <thead><tr><th style="width:22%">Measure</th><th>How it is computed</th><th style="width:30%">What it corrects</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Total citations</span></td><td>The citations the database reports.</td><td>Nothing: it rewards old documents.</td></tr>
+      <tr><td><span class="ui">Citations per year</span></td><td>Citations ÷ years elapsed from publication to the reference year, counting the publication year.</td><td>The age of the document.</td></tr>
+      <tr><td><span class="ui">Normalised citations</span></td><td>Citations ÷ average citations of the documents of the collection published in the same year.</td><td>The age and the citation pace of each year; 1 is the average of its year.</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-citados.png" alt="Bars of the ten documents with the most total citations, with the measure selector">
+      <span class="marca" style="left:66.7%;top:5.2%">1</span>
+      <span class="marca" style="left:37.3%;top:23.2%">2</span>
+      <span class="marca" style="left:83.5%;top:39.5%">3</span>
+    </div>
+    <figcaption><b>Figure 8.2.</b> The ten documents with the most total citations in the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Impact measure, number of documents and reference year.</li>
+    <li><span class="n">2</span>The citations come from the databases; citations per year, up to the reference year.</li>
+    <li><span class="n">3</span>The most cited document has accumulated 153 citations since 2022.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · three measures, three winners</div>
+    <p>By <b>total citations</b> the winner is a 2022 review published in <i>Food Research International</i>, with 153 citations. By <b>citations per year</b> the same one wins, with 30.6 citations a year, but the list changes further down: a 1988 paper with 50 citations, seventh in totals, averages barely 1.28 a year. By <b>normalized citations</b> first place goes to a 2015 paper with 70 citations, <b>9.13 times</b> the average of the documents of its year, ahead of the 2022 review (8.80). The three measures, with the same values, were reproduced outside the app. Under the figure, the table gives the three measures for every document that has a citation count.</p>
+  </div>
+
+  <!-- 8.3 -->
+  <h2 id="s8-3"><span class="num">8.3</span>Local citations</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · global citations and local citations</div>
+    <p>The citations a database reports are <b>global</b>: they count every document in the database that cites yours, whether or not it belongs to the topic. <b>Local</b> citations count only those that come from other documents of your collection (Garfield, Pudovkin and Istomin, 2003). A document with many global citations and few local ones is influential outside the topic; one with many local ones is a reference work within it, even if its global count is modest. To compute them, the app matches each reference of each document against the documents of the collection, in this order: by DOI, by open-catalog identifier and, failing that, by first author and year together with the source, the pages or the title. References that match more than one document are discarded as ambiguous.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-locales.png" alt="Matching notice and bars of the ten documents with the most local citations">
+      <span class="marca" style="left:94%;top:3.1%">1</span>
+      <span class="marca" style="left:20%;top:15.8%">2</span>
+      <span class="marca" style="left:38.3%;top:31.9%">3</span>
+      <span class="marca" style="left:83.7%;top:46.3%">4</span>
+    </div>
+    <figcaption><b>Figure 8.3.</b> The ten documents with the most local citations in the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>How many references were matched to documents of the collection, and by which route.</li>
+    <li><span class="n">2</span>How many documents enter the figure.</li>
+    <li><span class="n">3</span>Subtitle: times other documents of the collection cite each one.</li>
+    <li><span class="n">4</span>The document with the most local citations: 12.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the most cited in the world is not the most cited in the topic</div>
+    <p>In the example data, <b>396 of the 6,141 references</b> were matched, all by catalog identifier: 150 documents of the collection are cited by some other one, from 151 citing documents. First place goes to a 1993 paper in the <i>Journal of Horticultural Science</i>, with 12 local citations out of 38 global ones. In contrast, the 2022 review with 153 global citations —the most cited in the collection— has only 7 local ones: it is cited mostly by work outside the topic, such as food science, the field its journal belongs to, and by few papers on crop nutrition. The table of the tab gives the ratio of local to global citations for each document, and marks with <span class="ui">▲</span> those with more local than global citations, which points to a global count that comes from another database or to a doubtful match. The 396 local citations and the top places were reproduced outside the app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · without references there are no local citations</div>
+    <p>Local citations, the most cited references and the RPYS need exports that include each document’s reference list. If your files do not carry it, these three tabs say so instead of showing zeros. It is the same warning as on the <span class="ui">Import</span> screen (Chapter 3): export again with the references option before drawing conclusions.</p>
+  </div>
+
+  <!-- 8.4 -->
+  <h2 id="s8-4"><span class="num">8.4</span>Most cited references</h2>
+  <p>The <span class="ui">References</span> tab counts how many documents of the collection cite each work, whether or not it is in the collection. It is the shared intellectual base of the field: the works almost everyone cites. Before counting, the app joins references that are the same work written in different ways: those that share a DOI or identifier, those with the same first author, year, volume and first page, those whose text matches without case, accents or punctuation, and those that point to the same document of the collection.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-referencias.png" alt="Bars of the ten most cited references, identified by their catalog code">
+      <span class="marca" style="left:72.5%;top:3.1%">1</span>
+      <span class="marca" style="left:28%;top:31.9%">2</span>
+      <span class="marca" style="left:79%;top:46.3%">3</span>
+    </div>
+    <figcaption><b>Figure 8.4.</b> The ten most cited references in the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Notice: the references of the open catalog are work identifiers.</li>
+    <li><span class="n">2</span>Subtitle: documents of the collection that cite each work.</li>
+    <li><span class="n">3</span>The most cited work appears in the references of 25 documents.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · 6,141 references, 4,546 works</div>
+    <p>The 300 documents of the example carry references in 236 cases: 6,141 in total, corresponding to 4,546 distinct works. The most cited one appears in 25 documents and is not part of the collection: it is a work the topic uses, but it is not about passion fruit nutrition. Since the open catalog delivers its references as codes, the figure shows the code of each work; the table of the tab lists them all, and those in the collection are flagged in the <span class="ui">In the collection</span> column. With exports from the citation indices, the labels are readable (“SMALL H, 1973, J AM SOC INFORM SCI”), as in Section 8.5.</p>
+  </div>
+
+  <!-- 8.5 -->
+  <h2 id="s8-5"><span class="num">8.5</span>Reference publication year spectroscopy (RPYS)</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · how to find the roots of a field</div>
+    <p>RPYS (Marx, Bornmann, Barth and Leydesdorff, 2014) counts how many cited references were published each year, regardless of who cites them. If a year has many more references than its neighbors, it is almost always because a work the whole field cites was published that year: a founding work. To see those years above the general growth of the literature, the median of its five-year window is subtracted from each year:</p>
+    <p class="formula-linea"><i>D</i><sub><i>t</i></sub> = <i>NCR</i><sub><i>t</i></sub> − median(<i>NCR</i><sub><i>t</i>−2</sub>, …, <i>NCR</i><sub><i>t</i>+2</sub>)</p>
+    <p>where <i>NCR</i><sub><i>t</i></sub> is the number of cited references published in year <i>t</i>. A <b>peak</b> is a year with a positive deviation greater than that of the previous year and not smaller than that of the next. The app sorts them by deviation and shows the most cited references of each one.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-rpys.png" alt="Spectrum of publication years of the references between 1950 and 2015 with its labeled peaks">
+      <span class="marca" style="left:36%;top:4.3%">1</span>
+      <span class="marca" style="left:42.5%;top:13.3%">2</span>
+      <span class="marca" style="left:48.5%;top:26.4%">3</span>
+      <span class="marca" style="left:38%;top:67.3%">4</span>
+      <span class="marca" style="left:50%;top:82.8%">5</span>
+    </div>
+    <figcaption><b>Figure 8.5.</b> The RPYS of 147 papers on co-citation and bibliographic coupling, between 1950 and 2015.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Range of years; <span class="ui">All years</span> resets it.</li>
+    <li><span class="n">2</span>References without a year, which are left out of the spectrum.</li>
+    <li><span class="n">3</span>Subtitle: range and deviation from the 5-year median.</li>
+    <li><span class="n">4</span>The 1973 peak, with its most cited reference.</li>
+    <li><span class="n">5</span>The deviation: the peaks are its local maxima.</li>
+  </ul>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-picos.png" alt="Table of RPYS peaks with year, cited references, median, deviation and most cited references">
+      <span class="marca" style="left:41.8%;top:24.6%">1</span>
+      <span class="marca" style="left:18%;top:46.2%">2</span>
+    </div>
+    <figcaption><b>Figure 8.6.</b> The peaks sorted by deviation, with the three most cited references of each year.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Peaks found in the chosen range.</li>
+    <li><span class="n">2</span>Each peak with its number of references, the median of its window and the deviation.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · RPYS finds the founders</div>
+    <p>The highest peak is <b>1973</b>: 99 references against a median of 29, a deviation of 70. It is made up of Small’s 1973 paper in the <i>Journal of the American Society for Information Science</i>, cited 63 times, and Marshakova-Shaikevich’s paper of the same year, cited 12: the two works that proposed co-citation analysis, each independently. The <b>1963</b> peak (deviation of 37) is Kessler’s paper that defined bibliographic coupling, cited 35 times. Those of 1990 and 1998 correspond to the works by McCain and by White and McCain that brought co-citation to the mapping of authors and disciplines. In other words, without reading a single document, RPYS reconstructs the intellectual history of the topic. The peaks, their order and their counts per year were reproduced outside the app by reading the references in the file; only one reference from 1998 differs (184 versus 183).</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · when there is no RPYS</div>
+    <p>RPYS needs the year of each reference. Exports from the citation indices carry it; those from the open catalog do not, because their references are identifiers. With the example data the tab says <span class="ui">The references carry no publication year, so RPYS cannot be computed.</span> and the peak card stays at “—”. When only part of the references carries a year, the tab warns about it above the spectrum, like the notice of 28 references without a year in Figure 8.5.</p>
+  </div>
+
+  <!-- 8.6 -->
+  <h2 id="s8-6"><span class="num">8.6</span>Words</h2>
+  <p>The <span class="ui">Words</span> tab counts in how many documents each term of the analysis field appears (author or index keywords, or word pairs from titles or abstracts), with the synonyms and stop words you defined in Chapter 4. The <span class="ui">Term field</span> selector is the same as in <span class="ui">Cleaning &amp; filters</span>: changing it here changes it across the app. The <span class="ui">Figure</span> selector offers three views: bars, word cloud and treemap.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-nube.png" alt="Cloud of the hundred most frequent index keywords">
+      <span class="marca" style="left:62%;top:3.4%">1</span>
+      <span class="marca" style="left:33.3%;top:21.9%">2</span>
+    </div>
+    <figcaption><b>Figure 8.7.</b> The cloud of the 100 most frequent terms of the example; the size of each word is its number of documents.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Term field, type of figure and number of terms.</li>
+    <li><span class="n">2</span>Subtitle: documents in which each term appears, and the field used.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · 618 terms and a few intruders</div>
+    <p>The index keywords of the example add up to 618 distinct terms. The most frequent are <i>Biology</i> (288 documents), <i>Horticulture</i> (259), <i>Growth and nutrition in plants</i> (213), <i>Passion fruit</i> (201) and <i>Agronomy</i> (188). The cloud also reveals terms the catalog assigned wrongly: <i>Human fertilization</i> appears in 68 documents that deal with the fertilization of the crop, and there are others such as <i>Psychology</i>, <i>Medicine</i> or <i>Pulp (tooth)</i>. They are not errors of the app but of the catalog’s automatic classification, and they are corrected by sending them to the stop words (Section 4.6). The counts were reproduced outside the app from the keywords, topics and concepts of each work.</p>
+  </div>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · which word view to use</div>
+    <table class="compacta">
+      <thead><tr><th style="width:30%">View</th><th>Use it for…</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ui">Bars</span></td><td>a paper: it reads precisely and compares values; with 10 to 20 terms.</td></tr>
+        <tr><td><span class="ui">Word cloud</span></td><td>a presentation or a first exploration; it does not let you read values, only orders of magnitude.</td></tr>
+        <tr><td><span class="ui">Treemap</span></td><td>seeing the share of each term in the total with many terms at once; areas are easier to compare than font sizes.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">The three views use the same data, which can be downloaded with <span class="ui">Data</span> or from the table of the tab.</p>
+  </div>
+
+  <!-- 8.7 -->
+  <h2 id="s8-7"><span class="num">8.7</span>Growth and trend topics</h2>
+  <p>The last two tabs add time to the words. <span class="ui">Growth</span> draws, for the most frequent terms, how many documents use them each year or cumulatively. <span class="ui">Trend topics</span> sums up the life of each term in three years: the first quartile, the median and the third quartile of the years of the documents that use it.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-crecimiento.png" alt="Cumulative growth lines of the five most frequent terms">
+      <span class="marca" style="left:63%;top:4.3%">1</span>
+      <span class="marca" style="left:32.7%;top:19.8%">2</span>
+      <span class="marca" style="left:65%;top:72%">3</span>
+    </div>
+    <figcaption><b>Figure 8.8.</b> Cumulative growth of the five most frequent terms of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Field, number of terms and cumulative or per-year frequency.</li>
+    <li><span class="n">2</span>Subtitle: documents in which each term appears.</li>
+    <li><span class="n">3</span>The curves separate from 2005 onward: the topic takes off.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the median of a term’s years</div>
+    <p>For each term with at least the chosen minimum frequency, the app sorts the years of the documents that use it and computes three type-7 quantiles (Hyndman and Fan, 1996): the first quartile (Q1), the median and the third quartile (Q3). The segment in the figure runs from Q1 to Q3 and the point marks the median, with a size proportional to the frequency. The terms are sorted by their median year, and for each year the most frequent ones are shown, up to the number you choose in <span class="ui">Terms per year</span>. Read from top to bottom, the chart is a chronology of the topic’s vocabulary: old terms at the top, recent ones at the bottom.</p>
+  </div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/documentos-tendencias.png" alt="Segments from the first to the third quartile and the median year of each frequent term">
+      <span class="marca" style="left:61%;top:3.4%">1</span>
+      <span class="marca" style="left:58%;top:15.5%">2</span>
+      <span class="marca" style="left:87.5%;top:86.3%">3</span>
+      <span class="marca" style="left:50%;top:96.1%">4</span>
+    </div>
+    <figcaption><b>Figure 8.9.</b> Trend topics of the example with a minimum frequency of 15 documents and two terms per year.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Minimum frequency and terms per year.</li>
+    <li><span class="n">2</span>Subtitle: the segment is Q1–Q3 and the point, the median.</li>
+    <li><span class="n">3</span>One of the most recent topics: photosynthesis, with its median in 2022.</li>
+    <li><span class="n">4</span>The size of the point is the number of documents of the term.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · from phosphorus to salinity</div>
+    <p>The chronology of the example begins with floral biology and pollination, goes through phosphorus nutrition and biofertilizers (median in 2015; the middle half of its 40 documents between 2012 and 2017) and arrives at the recent topics: saline water (median in 2019), postharvest quality and <b>photosynthesis</b>, with its median in 2022 and the middle half of its 23 documents between 2020 and 2022.5. The reading for a thesis is straightforward: salt stress and physiology under irrigation with saline water are the active front of the topic. The quartiles of these terms were recomputed outside the app with the same rule, and they match.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · what trend topics do not tell you</div>
+    <p>A recent term is not necessarily a booming one: it may appear in a few recent documents and then disappear. That is why it is worth raising the minimum frequency until the terms left have enough documents, and checking the <span class="ui">Growth</span> tab in <span class="ui">Per year</span> mode to confirm that their use is increasing. To see how topics cluster and evolve, Chapter 9 offers the thematic map and thematic evolution.</p>
+  </div>
+
+  <p style="margin-top:0.12in">With the documents, the descriptive part of the analysis ends. The next three chapters move on to networks: the conceptual structure (what the field talks about), the intellectual one (what it rests on) and the social one (who collaborates with whom).</p>
+</section>
+
+</body>
+</html>
