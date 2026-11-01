@@ -78,7 +78,7 @@ my $html = <<"HTML";
 <html lang="$lang">
 <head>
 <meta charset="utf-8">
-<title>SciMetricsPro · Manual de usuario</title>
+<title>@{[ $lang eq 'en' ? 'SciMetricsPro · User&#8217;s Manual' : 'SciMetricsPro · Manual de usuario' ]}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- documento generado por herramientas/unir-manual.pl: no se edita a mano; se corrigen las partes -->
 $links
