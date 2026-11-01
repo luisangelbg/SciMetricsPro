@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 9 · Conceptual structure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with headers, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap9 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+  /* the node card is tall and narrow: it is shown smaller */
+  .cap9 figure.angosta .marco { width: 58%; margin: 0 auto; }
+  .cap9 figure.angosta figcaption { margin-left: 21%; margin-right: 21%; }
+  /* the two tables of the factorial analysis fit with their caption on the same page */
+  .cap9 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap9 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 9 -->
+<section class="capitulo cap9" id="cap-conceptual" data-pestana="9" data-orden="9" style="--acento: var(--b8)">
+  <div class="cap-apertura">
+    <div class="cap-num">9</div>
+    <div class="cap-etiqueta">Chapter nine</div>
+    <h1>Conceptual structure</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">What the field talks about: the network of words that appear together in the same documents, the themes they form and their place on the thematic map, how those themes change from one period to the next, and the factorial map that arranges the words on a plane.</p>
+    <div class="cap-franja"><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span><span class="k8"></span></div>
+    <ul class="cap-contenido">
+      <li><b>9.1</b>The screen and its four tabs</li>
+      <li><b>9.2</b>Co-occurrence network</li>
+      <li><b>9.3</b>The card of a term</li>
+      <li><b>9.4</b>Thematic map</li>
+      <li><b>9.5</b>Thematic evolution</li>
+      <li><b>9.6</b>Factorial analysis</li>
+    </ul>
+  </div>
+
+  <p class="lead">Networks begin with this chapter. The <b>conceptual structure</b> studies words: two terms are related when they appear in the same documents, and the groups of terms that are strongly related to one another are the <b>themes</b> of the field. The <span class="ui">Conceptual</span> screen, in the <span class="ui">Structures</span> group of the sidebar, offers four ways of looking at them.</p>
+
+  <!-- 9.1 -->
+  <h2 id="s9-1"><span class="num">9.1</span>The screen and its four tabs</h2>
+  <p>The four tabs work with the same <b>term field</b>: the one you chose in <span class="ui">Cleaning &amp; filters</span> (Chapter 4), with its synonyms and stop words. Each tab has a parameter panel on the left; when you change a value, the tab is recalculated. The <span class="ui">Term field</span> selector in the panel is the same one as in Cleaning: if you change it here, it changes throughout the app.</p>
+
+  <table class="compacta">
+    <caption><b>Table 9.1.</b> The four tabs of the conceptual structure.</caption>
+    <thead><tr><th style="width:24%">Tab</th><th>What it shows</th><th style="width:28%">Question it answers</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Co-occurrence network</span></td><td>The most frequent terms, joined when they appear in the same documents and colored by community.</td><td>Which words go together?</td></tr>
+      <tr><td><span class="ui">Thematic map</span></td><td>The themes (groups of words) placed by their centrality and density, in four quadrants.</td><td>Which themes are central and which are mature?</td></tr>
+      <tr><td><span class="ui">Thematic evolution</span></td><td>A thematic map per period and the bands that join the themes that share words.</td><td>Where does each theme come from and where is it going?</td></tr>
+      <tr><td><span class="ui">Factorial analysis</span></td><td>The words on a plane by correspondence analysis, grouped with k-means.</td><td>Which words are alike in the documents they appear in?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the data in this chapter</div>
+    <p>The figures use the passion fruit <b>example data</b> (300 documents from the open catalog) with the <span class="ui">Index keywords</span> field, the only one that catalog provides. The catalog assigns broad areas of science to almost every document—<i>Biology</i> appears in 288 of the 300, <i>Chemistry</i> in 170, <i>Mathematics</i> in 60—and some wrong assignments caused by similar words: <i>Human fertilization</i> in 68 documents that deal with fertilizing the crop, <i>Pulp (tooth)</i> in 8 that deal with the pulp of the fruit. Those terms would take the center of every network without saying anything about the subject, so for this chapter 14 stop words were added to the English list: <i>Biology, Chemistry, Mathematics, Physics, Psychology, Medicine, Economics, Business, Geography, Art, Materials science, Human fertilization, Pulp (tooth)</i> and <i>Composition (language)</i>. To reproduce the figures, type them in <span class="ruta">Cleaning &amp; filters › Keywords</span>, in the English stop-word list, and press <span class="ui">Save lists</span> (Section 4.6). With them there are 604 distinct terms, 258 of them in two documents or more. Every figure quoted was checked outside the app.</p>
+  </div>
+
+  <!-- 9.2 -->
+  <h2 id="s9-2"><span class="num">9.2</span>Co-occurrence network</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · co-occurrence and association strength</div>
+    <p>Two terms <b>co-occur</b> when they appear in the same document; the count <i>c<sub>ij</sub></i> is the number of documents that have both. Counts favor frequent terms, which co-occur with almost everything just because they are frequent. That is why the app normalizes by default with the <b>association strength</b> (van Eck and Waltman, 2009), which divides the count by what would be expected by chance given the frequency of each term:</p>
+    <p class="formula-linea"><i>AS<sub>ij</sub></i> = <i>c<sub>ij</sub></i> / (<i>c<sub>i</sub></i> · <i>c<sub>j</sub></i>)</p>
+    <p>where <i>c<sub>i</sub></i> and <i>c<sub>j</sub></i> are the documents of each term. On that network, the Louvain algorithm (Blondel et al., 2008) forms <b>communities</b>: groups of terms more tightly joined to one another than to the rest, measured by the <b>modularity</b> <i>Q</i>. The resolution γ controls their size: with γ greater than 1 there are more, smaller communities.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Table 9.2.</b> Parameters of the co-occurrence network and their default values.</caption>
+    <thead><tr><th style="width:30%">Parameter</th><th>What it does</th><th style="width:20%">Default</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Minimum frequency (documents)</span></td><td>Leaves out the terms that appear in fewer documents.</td><td>2</td></tr>
+      <tr><td><span class="ui">Maximum number of nodes</span></td><td>How many terms enter, from the most frequent down (up to 500).</td><td>50</td></tr>
+      <tr><td><span class="ui">Minimum co-occurrences per edge</span></td><td>Joins two terms only if they share at least that number of documents. It applies to the count, before normalizing.</td><td>1</td></tr>
+      <tr><td><span class="ui">Remove isolated nodes</span></td><td>Hides the terms left without edges.</td><td>Yes</td></tr>
+      <tr><td><span class="ui">Normalisation</span></td><td>None (counts), association strength, Salton’s cosine, Jaccard, inclusion index or equivalence index.</td><td>Association strength</td></tr>
+      <tr><td><span class="ui">Algorithm</span></td><td>Louvain or fast greedy (Clauset, Newman and Moore, 2004).</td><td>Louvain</td></tr>
+      <tr><td><span class="ui">Resolution (γ)</span></td><td>Size of the communities: the higher γ, the more communities.</td><td>1</td></tr>
+      <tr><td><span class="ui">Layout</span></td><td>ForceAtlas2 (joined terms attract each other) or circular.</td><td>ForceAtlas2</td></tr>
+      <tr><td><span class="ui">Node size</span></td><td>Frequency, degree, strength, betweenness or PageRank.</td><td>Frequency</td></tr>
+      <tr><td><span class="ui">Visible labels</span></td><td>How many names are written, from the largest nodes; more appear as you zoom in.</td><td>20</td></tr>
+    </tbody>
+  </table>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-red.png" alt="Parameter panel, six network cards and interactive network of 50 terms in three communities">
+      <span class="marca" style="left:16.8%;top:10.7%">1</span>
+      <span class="marca" style="left:19.2%;top:40.1%">2</span>
+      <span class="marca" style="left:16.8%;top:49.9%">3</span>
+      <span class="marca" style="left:16.2%;top:64.3%">4</span>
+      <span class="marca" style="left:77.3%;top:11.9%">5</span>
+      <span class="marca" style="left:29.2%;top:23.8%">6</span>
+      <span class="marca" style="left:73.1%;top:37.8%">7</span>
+      <span class="marca" style="left:82.1%;top:42.2%">8</span>
+      <span class="marca" style="left:41.2%;top:66.5%">9</span>
+    </div>
+    <figcaption><b>Figure 9.1.</b> The co-occurrence network of the 50 most frequent terms of the example, with the default parameters.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Selection: term field, minimum frequency, number of nodes and minimum co-occurrences.</li>
+    <li><span class="n">2</span>Edge weights: the normalization.</li>
+    <li><span class="n">3</span>Communities: algorithm and resolution γ.</li>
+    <li><span class="n">4</span>Display: layout, node size and visible labels.</li>
+    <li><span class="n">5</span>Modularity of the partition into communities.</li>
+    <li><span class="n">6</span>Density: proportion of the possible edges that exist.</li>
+    <li><span class="n">7</span>Subtitle: field, normalization and meaning of the color.</li>
+    <li><span class="n">8</span>Search for a term, zoom in, zoom out and fit the network.</li>
+    <li><span class="n">9</span>The orange community: salinity, irrigation, saline water and ecology.</li>
+  </ul>
+
+  <p>The six cards summarize the network. The network is calculated in the background; if it takes more than a moment, a progress window appears (<span class="ui">Measuring the network</span>, <span class="ui">Placing the nodes</span>) with a <span class="ui">Cancel</span> button; changing the algorithm, the resolution or the display recolors the same drawing without repeating the calculation.</p>
+
+  <table class="compacta">
+    <caption><b>Table 9.3.</b> The network cards and their values in the example.</caption>
+    <thead><tr><th style="width:20%">Card</th><th>What it measures</th><th style="width:26%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Nodes</span></td><td>Terms in the network and edges between them.</td><td>50 · 944 edges</td></tr>
+      <tr><td><span class="ui">Communities</span></td><td>Groups formed by the algorithm.</td><td>3 · Louvain</td></tr>
+      <tr><td><span class="ui">Modularity (Q)</span></td><td>How separate the communities are: from 0 (not at all) to close to 1. With γ other than 1, Q<sub>γ</sub> is reported as well.</td><td>0.215</td></tr>
+      <tr><td><span class="ui">Density</span></td><td>Existing edges ÷ possible edges, <i>n</i>(<i>n</i> − 1)/2.</td><td>0.771 (944 of 1,225)</td></tr>
+      <tr><td><span class="ui">Transitivity</span></td><td>Probability that two neighbors of a term are also joined (3 × triangles ÷ triplets).</td><td>0.84 · 10,191 triangles</td></tr>
+      <tr><td><span class="ui">Diameter</span></td><td>The largest number of steps between two terms, and how many pieces the network has.</td><td>2 · 1 connected component</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a very dense network with three communities</div>
+    <p>The 50 most frequent terms of the example form an almost complete network: 944 of the 1,225 possible edges exist (density 0.771) and any term reaches any other in two steps at most. That is to be expected in a single-topic set, where the main terms appear together again and again. Even so, Louvain distinguishes three communities: the <b>blue</b> one, the largest, with the agronomic core (<i>Horticulture</i>, <i>Growth and nutrition in plants</i>, <i>Passion fruit</i>, <i>Agronomy</i>, <i>Fertilizer</i>); the <b>orange</b> one, with salt stress and irrigation (<i>Salinity</i>, <i>Saline water</i>, <i>Irrigation</i>, <i>Ecology</i>); and the <b>green</b> one, with the botany of the genus (<i>Botany</i>, <i>Passiflora</i>). The low modularity (0.215) warns that the boundaries between them are faint. The counts of the 944 edges, the density and the neighbors of each term were reproduced outside the app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · the communities depend on the parameters</div>
+    <p>The partition into communities is not a fact of the data: it changes with the normalization, the resolution and the number of terms. Before naming the communities in a paper, try two or three resolutions (for example 0.8, 1 and 1.2) and keep the groups that persist. If the network is very dense, raise the <span class="ui">Minimum co-occurrences per edge</span> to 2 or 3 to see only the repeated links. And remember that, with association strength, the most frequent terms end up on the periphery of the drawing: they co-occur with everything, but with low weights.</p>
+  </div>
+
+  <p>Below the interactive network are the <span class="ui">Term co-occurrence network</span> ready for publication (with its editing and export bar, like every figure) and three tables: nodes with their metrics, communities with their terms, and edges with their count and weight. The export card downloads the network in the formats of network analysis programs (Chapter 13).</p>
+
+  <!-- 9.3 -->
+  <h2 id="s9-3"><span class="num">9.3</span>The card of a term</h2>
+  <p>When you click a node, or search for it, the network highlights its edges and a card appears below with its metrics, its neighbors and the documents in which it appears.</p>
+
+  <ol class="pasos">
+    <li>Type the term in <span class="ui">Search for a term…</span> and choose it from the list, or click its node.</li>
+    <li>Read the card below the network. Each neighbor in the list is a button: pressing it moves the card to that term.</li>
+    <li>Press <span class="ui">Clear selection</span> or the <kbd>Esc</kbd> key to go back to the whole network.</li>
+  </ol>
+
+  <table class="compacta">
+    <caption><b>Table 9.4.</b> The metrics of a node.</caption>
+    <thead><tr><th style="width:20%">Metric</th><th>What it measures</th><th style="width:22%"><i>Salinity</i></th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Frequency</span></td><td>Documents in which the term appears.</td><td>58</td></tr>
+      <tr><td><span class="ui">Degree</span></td><td>Terms it co-occurs with.</td><td>45 of 49 possible</td></tr>
+      <tr><td><span class="ui">Strength</span></td><td>Sum of the weights of its edges.</td><td>0.2147</td></tr>
+      <tr><td><span class="ui">Betweenness</span></td><td>Fraction of the shortest paths between two other terms that pass through it (Brandes, 2001), from 0 to 1.</td><td>0.0066</td></tr>
+      <tr><td><span class="ui">Closeness</span></td><td>Inverse of the mean distance to the other terms (Freeman, 1979), from 0 to 1.</td><td>0.9245</td></tr>
+      <tr><td><span class="ui">PageRank</span></td><td>Importance inherited from that of its neighbors (Brin and Page, 1998); it adds up to 1 over the whole network.</td><td>0.0242</td></tr>
+    </tbody>
+  </table>
+
+  <p>Betweenness and closeness count steps, not weights: in a network as dense as the example’s, almost every term is one or two steps away, so betweenness is small and closeness high for all of them. To compare terms in dense networks, strength and PageRank discriminate better.</p>
+
+  <figure class="angosta">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-nodo.png" alt="Network with the term Salinity selected and its card with metrics, neighbors and documents">
+      <span class="marca" style="left:17.6%;top:2.7%">1</span>
+      <span class="marca" style="left:41.3%;top:26.3%">2</span>
+      <span class="marca" style="left:82%;top:53.7%">3</span>
+      <span class="marca" style="left:38.7%;top:56.2%">4</span>
+      <span class="marca" style="left:38.8%;top:62.2%">5</span>
+      <span class="marca" style="left:14.5%;top:84.8%">6</span>
+      <span class="marca" style="left:29.6%;top:90.4%">7</span>
+    </div>
+    <figcaption><b>Figure 9.2.</b> The card of the term <i>Salinity</i>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Search for the term.</li>
+    <li><span class="n">2</span>The chosen node gets an outline and its edges are highlighted.</li>
+    <li><span class="n">3</span><span class="ui">Clear selection</span>.</li>
+    <li><span class="n">4</span>The community, with the name of its most frequent term.</li>
+    <li><span class="n">5</span>The metrics of the node (Table 9.4).</li>
+    <li><span class="n">6</span>The eight neighbors with the most co-occurrences; each one opens its card.</li>
+    <li><span class="n">7</span>Documents in which it appears, the eight most cited.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · salinity</div>
+    <p><i>Salinity</i> appears in 58 documents and co-occurs with 45 of the other 49 terms. Its strongest neighbor is <i>Horticulture</i>, in 57 of its 58 documents: the catalog assigns that area to almost the whole set. The neighbors that say something about the subject come next: <i>Irrigation</i> (43), <i>Saline water</i> (39). Among its most cited documents are a 2019 study of the responses of two passion fruit species and their hybrid to salinity (77 citations) and a 2020 one on saline water and potassium fertilization (61 citations). The card is a good starting point for reading: it leads from a term to the most influential works that use it.</p>
+  </div>
+
+  <!-- 9.4 -->
+  <h2 id="s9-4"><span class="num">9.4</span>Thematic map</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · Callon’s centrality and density</div>
+    <p>The thematic map (Cobo et al., 2011) starts from a larger co-occurrence network—250 words by default, with association strength—and takes each Louvain community as a <b>theme</b>. Each theme is measured with two numbers from Callon, Courtial and Laville (1991):</p>
+    <p class="formula-linea">centrality = 10 × Σ weights of the edges leaving the theme &nbsp;&nbsp;·&nbsp;&nbsp; density = 100 × Σ weights of the internal edges / words in the theme</p>
+    <p><b>Centrality</b> measures how much the theme relates to the others (its relevance to the field); <b>density</b>, how tightly its words are joined (its degree of development). The axes of the map pass through the <b>medians</b> of the two measures and divide it into four quadrants.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Table 9.5.</b> How to read the four quadrants.</caption>
+    <thead><tr><th style="width:26%">Quadrant</th><th style="width:26%">Position</th><th>Reading</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Motor themes</span></td><td>Upper right: high centrality and density.</td><td>Developed and important; they drive the field.</td></tr>
+      <tr><td><span class="ui">Niche themes</span></td><td>Upper left: high density, low centrality.</td><td>Highly developed but isolated; specialized.</td></tr>
+      <tr><td><span class="ui">Emerging or declining themes</span></td><td>Lower left: both low.</td><td>Underdeveloped and marginal; the thematic evolution tells whether they are being born or fading.</td></tr>
+      <tr><td><span class="ui">Basic themes</span></td><td>Lower right: high centrality, low density.</td><td>Cross-cutting and general; the common ground of the field.</td></tr>
+    </tbody>
+  </table>
+
+  <p>The <span class="ui">Map parameters</span> panel holds the word selection (field, minimum frequency 2, <span class="ui">Number of words</span> 250 and minimum co-occurrences 1) and the theme parameters: resolution 1, <span class="ui">Minimum words per theme</span> 2 (smaller groups are not drawn, although their edges count toward the centrality of the others) and <span class="ui">Words in the label</span> 3. Below the map, the <span class="ui">Themes</span> table lists all the words, the frequency, the centrality and the density of each theme, with the two medians, and the <span class="ui">Documents of each theme</span> table assigns each document to the theme with the most of its words.</p>
+
+  <table class="compacta">
+    <caption><b>Table 9.6.</b> The nine themes of the example, from highest to lowest centrality. Medians: centrality 76.99 and density 38.58.</caption>
+    <thead><tr><th style="width:18%">Quadrant</th><th>Main words</th><th style="width:10%">Words</th><th style="width:13%">Centrality</th><th style="width:11%">Density</th></tr></thead>
+    <tbody>
+      <tr><td>Basic</td><td><i>Horticulture, Growth and nutrition in plants, Passion fruit</i></td><td>76</td><td>209.39</td><td>20.13</td></tr>
+      <tr><td>Motor</td><td><i>Food science, Titratable acid, Botanical Research and Applications</i></td><td>33</td><td>154.44</td><td>45.47</td></tr>
+      <tr><td>Motor</td><td><i>Plant Stress Responses and Tolerance, Biochemistry, Plant Micronutrient…</i></td><td>22</td><td>102.15</td><td>38.58</td></tr>
+      <tr><td>Motor</td><td><i>Medicinal Plant Extracts Effects, Plant and soil sciences, Inoculation</i></td><td>17</td><td>85.63</td><td>82.36</td></tr>
+      <tr><td>Basic</td><td><i>Botany, Passiflora, Plant tissue culture and regeneration</i></td><td>27</td><td>76.99</td><td>38.01</td></tr>
+      <tr><td>Niche</td><td><i>Passion, Saline, Silicon Effects in Agriculture</i></td><td>18</td><td>74.46</td><td>45.90</td></tr>
+      <tr><td>Emerging or declining</td><td><i>Nutrient, Nitrogen, Phosphorus</i></td><td>16</td><td>68.40</td><td>35.62</td></tr>
+      <tr><td>Niche</td><td><i>Agricultural and Food Sciences, Production (economics), Agriculture</i></td><td>29</td><td>58.00</td><td>42.05</td></tr>
+      <tr><td>Emerging or declining</td><td><i>Cultivar, Composting and Vermicomposting Techniques, Leaf Properties…</i></td><td>12</td><td>46.74</td><td>29.18</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Rule · a theme on the axis</div>
+    <p>With an odd number of themes, the median is the value of one of them, and that theme lies exactly on an axis. The app puts it on the high side: a theme with centrality equal to or greater than the median is central, and one with density equal to or greater than the median is dense. In the example this happens twice: the theme of botany and <i>Passiflora</i> lies on the vertical axis (centrality 76.99, the median) and counts as basic; the theme of stress and micronutrients lies on the horizontal axis (density 38.58, the median) and counts as motor. When discussing these themes in a paper, it is worth saying that they are on the boundary.</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · what the map says about passion fruit</div>
+    <p>The 300 documents fall into 9 themes. The dominant <b>basic</b> theme is the general one—horticulture, growth and nutrition of passion fruit, 76 words—: it is joined to everything, but it is not very cohesive. The <b>motor</b> themes are fruit quality (food science, titratable acidity), the response to stress with micronutrients, and medicinal plant extracts with inoculation, the densest theme of all. The <b>niches</b> hold salt stress with silicon and the economics of production. The <b>emerging or declining</b> themes are nutrition with nitrogen and phosphorus, and cultivars with composting: the thematic evolution in the next section tells which of the two they are. The centrality and density of the nine themes, the medians and the quadrants were recalculated outside the app and agree.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-mapa.png" alt="Quadrant cards and thematic map with nine themes in the four quadrants">
+      <span class="marca" style="left:4.3%;top:9.2%">1</span>
+      <span class="marca" style="left:37.5%;top:9.2%">2</span>
+      <span class="marca" style="left:70.8%;top:9.2%">3</span>
+      <span class="marca" style="left:54.4%;top:42.2%">4</span>
+      <span class="marca" style="left:68.7%;top:52.8%">5</span>
+      <span class="marca" style="left:32.5%;top:65%">6</span>
+      <span class="marca" style="left:87%;top:84%">7</span>
+    </div>
+    <figcaption><b>Figure 9.3.</b> The thematic map of the example, with the default parameters.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Themes and words in the network.</li>
+    <li><span class="n">2</span>Documents that fall into some theme.</li>
+    <li><span class="n">3</span>One card per quadrant, with the words of its most frequent theme.</li>
+    <li><span class="n">4</span>Subtitle: the size of the bubble is the frequency of the theme.</li>
+    <li><span class="n">5</span>The densest theme: medicinal plant extracts.</li>
+    <li><span class="n">6</span>The vertical axis passes through the median of centrality; the horizontal one, through that of density.</li>
+    <li><span class="n">7</span>The largest basic theme: horticulture, nutrition and passion fruit.</li>
+  </ul>
+
+  <!-- 9.5 -->
+  <h2 id="s9-5"><span class="num">9.5</span>Thematic evolution</h2>
+  <p>The thematic evolution divides the documents into periods, calculates a thematic map in each one with the same parameters and joins the themes of consecutive periods that share words. In the <span class="ui">Periods</span> group of the <span class="ui">Evolution parameters</span> panel, type up to four cut years, from <span class="ui">Cut year 1</span> to <span class="ui">Cut year 4</span>: each period ends in a cut year and the last one reaches the most recent year. With no cut years, the app uses the <b>median year</b>, so the two periods have almost the same number of documents.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-evolucion.png" alt="Notice with the two periods and band diagram between the themes of 1956–2017 and 2018–2026">
+      <span class="marca" style="left:3.25%;top:14.2%">1</span>
+      <span class="marca" style="left:57.6%;top:34.3%">2</span>
+      <span class="marca" style="left:13.8%;top:46.3%">3</span>
+      <span class="marca" style="left:77.5%;top:79%">4</span>
+      <span class="marca" style="left:77.5%;top:92.1%">5</span>
+    </div>
+    <figcaption><b>Figure 9.4.</b> The thematic evolution of the example, with the default cut at the median year.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The periods, with their documents and themes.</li>
+    <li><span class="n">2</span>Subtitle: the thickness is the inclusion index and the color, the quadrant.</li>
+    <li><span class="n">3</span>One column per period; the height of each block is the frequency of the theme.</li>
+    <li><span class="n">4</span>The basic theme of the second period receives bands from almost all the earlier themes.</li>
+    <li><span class="n">5</span>Floral biology: motor before 2018, emerging or declining afterward.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the inclusion index</div>
+    <p>Two themes of consecutive periods are joined when they share at least one word. The thickness of the band is the <b>inclusion index</b> (Cobo et al., 2011):</p>
+    <p class="formula-linea">inclusion = shared words / words of the smaller theme</p>
+    <p>It equals 1 when the small theme is entirely contained in the other. A theme that receives bands from several earlier themes is a <b>merger</b>; one that splits its words among several later themes is a <b>split</b>; one without bands is born or disappears in that period.</p>
+  </div>
+
+  <p>Hovering over a band shows its inclusion index and the shared words. Below the diagram are the <span class="ui">Thematic map of each period</span> (a small map per period, with the same bubble scale so they can be compared) and the <span class="ui">Links between themes</span> and <span class="ui">Themes of each period</span> tables. The <span class="ui">Minimum inclusion index</span> control hides the weak bands, which is useful when there are many.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · floral biology fades and nutrition concentrates</div>
+    <p>The median year of the example is 2017: 151 documents from 1956 to 2017 form 6 themes and 149 from 2018 to 2026 form 8, joined by 31 bands. The thickest one (inclusion 0.75) joins the <b>motor</b> theme of floral biology in the first period—botany, pollination, pollen, 20 words—to an <b>emerging or declining</b> theme in the second that keeps 6 of its 8 words: the theme is not being born, it is fading. The economics of production remains a niche in both periods (inclusion 0.50). Nutrition, by contrast, concentrates: the <b>motor</b> theme of the second period (<i>Nutrient, Seedling, Nitrogen</i>) brings together nitrogen, phosphorus and shoots from the earlier basic theme and the term <i>Nutrient</i> from the earlier emerging theme. The documents and words of each period, the centrality, density and quadrant of the 14 themes, and the inclusion index of the 31 bands were reproduced outside the app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · meaningful periods</div>
+    <p>The cut at the median year is fine to begin with, but the periods of a paper should follow the history of the field: a policy change, the arrival of a technique, a decade. Also make sure each period has enough documents; with few, the themes are made of a handful of words and change a lot with any parameter. The inclusion index counts words, not occurrences: a thick band between two small themes may come from two or three shared words, which are worth checking in the links table.</p>
+  </div>
+
+  <!-- 9.6 -->
+  <h2 id="s9-6"><span class="num">9.6</span>Factorial analysis</h2>
+  <p>The factorial analysis arranges the words on a plane so that words appearing in the same documents end up close together. By default it uses <b>multiple correspondence analysis</b> (MCA) of the documents × words table, with each word as a variable with two categories, present or absent; the other option, <span class="ui">Correspondence analysis</span>, works directly with the presence table. It then groups the words with <b>k-means</b> on the first two dimensions; with <span class="ui">Automatic (silhouette)</span> it tries 2 to 8 clusters and keeps the one with the highest mean silhouette (Rousseeuw, 1987).</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-factorial.png" alt="Analysis parameter panel, five cards and factorial map of 50 words in two clusters">
+      <span class="marca" style="left:11.6%;top:18%">1</span>
+      <span class="marca" style="left:18.4%;top:45.5%">2</span>
+      <span class="marca" style="left:21.5%;top:65.8%">3</span>
+      <span class="marca" style="left:53.9%;top:10.4%">4</span>
+      <span class="marca" style="left:53.9%;top:25.8%">5</span>
+      <span class="marca" style="left:71.5%;top:46.3%">6</span>
+      <span class="marca" style="left:71.3%;top:60.2%">7</span>
+      <span class="marca" style="left:57.5%;top:61.8%">8</span>
+    </div>
+    <figcaption><b>Figure 9.5.</b> The factorial map of the 50 most frequent words of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Method: multiple or simple correspondence analysis.</li>
+    <li><span class="n">2</span>Number of clusters: by the silhouette or from 2 to 8.</li>
+    <li><span class="n">3</span>Shows Ward’s dendrogram below the map.</li>
+    <li><span class="n">4</span>Dimension 1: Benzécri’s adjusted inertia.</li>
+    <li><span class="n">5</span>The number of clusters suggested by the silhouette.</li>
+    <li><span class="n">6</span>Subtitle: words and clusters.</li>
+    <li><span class="n">7</span>Legend of the clusters, with their first three words.</li>
+    <li><span class="n">8</span>Cluster 2: floral biology, far from the rest.</li>
+  </ul>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · why the MCA inertia is adjusted</div>
+    <p>In MCA, each dimension explains a share of the total <b>inertia</b>, the variation in the table. With many two-category variables those percentages always come out small—in the example, 9.81% for the first dimension—because the table of presences and absences inflates the inertia with variation that is not association between words. Benzécri’s correction (1979) removes that part: only the eigenvalues λ greater than 1/<i>Q</i> count, with <i>Q</i> the number of words, and each one is transformed as follows:</p>
+    <p class="formula-linea">λ<sub>adjusted</sub> = [ <i>Q</i> / (<i>Q</i> − 1) · (λ − 1/<i>Q</i>) ]²</p>
+    <p>The adjusted percentages are computed on the sum of the adjusted λ. They are the ones worth reporting for MCA (Greenacre, 2007); the eigenvalue table shows both.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-valores.png" alt="Eigenvalue table with adjusted percentages and silhouette table by number of clusters">
+      <span class="marca" style="left:18%;top:16.5%">1</span>
+      <span class="marca" style="left:62.6%;top:16.5%">2</span>
+      <span class="marca" style="left:50.1%;top:68.9%">3</span>
+      <span class="marca" style="left:65.1%;top:89.9%">4</span>
+    </div>
+    <figcaption><b>Figure 9.6.</b> Eigenvalues and silhouette by number of clusters in the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Dimension 1 explains 9.81% of the unadjusted inertia…</li>
+    <li><span class="n">2</span>… and 51.53% with Benzécri’s adjustment; the first two add up to 73.3%.</li>
+    <li><span class="n">3</span>Two clusters have the highest mean silhouette (0.623): that is the suggested k.</li>
+    <li><span class="n">4</span>The sum of squares always falls as k rises; on its own it is no use for choosing it.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · floral biology apart</div>
+    <p>The 50 words appear in 299 of the 300 documents. The first dimension (51.5% adjusted) separates a small group—pollination, pollen, <i>Passifloraceae</i>, floral biology, medicinal extracts—from the rest of the vocabulary; the second (21.8%) orders that rest: photosynthesis, salinity and stress at the top; yield, dry weight and fertilizers at the bottom. The silhouette suggests two clusters, of 6 and 44 words. Eigenvalues, percentages, coordinates, clusters, silhouettes and Ward heights were reproduced with another statistical program.</p>
+  </div>
+
+  <p>If you check <span class="ui">Show the dendrogram</span>, Ward’s (1963) hierarchical clustering on the same coordinates appears below the map, with the leaves colored by k-means cluster. The <span class="ui">Coordinates of the words</span> table gives, for each word, its frequency, its cluster, its two coordinates, its contribution to each dimension and its quality of representation on the plane (cos²).</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/conceptual-dendrograma.png" alt="Ward dendrogram of the 50 words with the leaves colored by k-means cluster">
+      <span class="marca" style="left:68.6%;top:14.2%">1</span>
+      <span class="marca" style="left:92.3%;top:31.6%">2</span>
+      <span class="marca" style="left:40%;top:38.5%">3</span>
+      <span class="marca" style="left:69.7%;top:97.2%">4</span>
+    </div>
+    <figcaption><b>Figure 9.7.</b> The dendrogram of the words of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The figure for publication: Ward on the map coordinates; the color is the k-means cluster.</li>
+    <li><span class="n">2</span>The first split separates four pollination words (height 8.61).</li>
+    <li><span class="n">3</span>Two words of k-means cluster 2 fall on another branch of the tree.</li>
+    <li><span class="n">4</span>Ward height: how much the within-group variation grows when two branches are joined.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · k-means and Ward need not agree</div>
+    <p>The two methods group the same coordinates with different criteria: k-means seeks the partition with the smallest sum of squares for a given k; Ward joins the most similar groups step by step and cannot undo a merge. In the example they agree on the essentials—pollination stays apart—, but the two words of cluster 2 closest to the center of the map (<i>Medicinal Plant Extracts Effects</i> and <i>Flowering Plant Growth and Cultivation</i>) join the botany branch in the tree. Words that both methods put together form a solid group; those that change group are on the boundary and should not be given much weight in the interpretation. Remember, too, that the plane shows only two dimensions: two words close on the map may be far apart in the third.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · to go further</div>
+    <p>The factorial analysis in SciMetricsPro is an exploratory view of the words, as in the bibliometric literature. For a complete multivariate analysis—more dimensions, supplementary variables, other clustering methods and their validation—, the app says so in its notice: export the coordinates table or the clean set and analyze it with the factorial analysis and clustering apps of the same family.</p>
+  </div>
+
+  <p style="margin-top:0.12in">The conceptual structure looks at the words of the documents. Chapter 10 looks at their references: which works are cited together, which documents share a bibliography and how citations link up within the set.</p>
+</section>
+
+</body>
+</html>

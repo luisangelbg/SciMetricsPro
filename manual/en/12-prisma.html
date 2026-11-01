@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 12 · PRISMA 2020 systematic review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with headers, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap12 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap12 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 12 -->
+<section class="capitulo cap12" id="cap-prisma" data-pestana="12" data-orden="12" style="--acento: var(--b11)">
+  <div class="cap-apertura">
+    <div class="cap-num">12</div>
+    <div class="cap-etiqueta">Chapter twelve</div>
+    <h1>PRISMA 2020 systematic review</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">From the set of documents to the studies of a review: screening document by document with keyboard shortcuts, the reasons for exclusion, the PRISMA 2020 flow diagram that fills itself in, and the option of analyzing only the included studies with every module.</p>
+    <div class="cap-franja"><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span><span class="k11"></span></div>
+    <ul class="cap-contenido">
+      <li><b>12.1</b>The systematic review in the app</li>
+      <li><b>12.2</b>Screening</li>
+      <li><b>12.3</b>Flow diagram</li>
+      <li><b>12.4</b>Reasons for exclusion</li>
+      <li><b>12.5</b>Analyzing only the included studies</li>
+    </ul>
+  </div>
+
+  <p class="lead">A bibliometric analysis describes everything that was published on a topic; a <b>systematic review</b> chooses, with explicit criteria, the studies that answer a question. The <span class="ui">PRISMA</span> screen, in the <span class="ui">Systematic review</span> group of the sidebar, brings that process into the app: you decide document by document, note why you exclude each one, and the app draws the flow diagram that journals ask for.</p>
+
+  <!-- 12.1 -->
+  <h2 id="s12-1"><span class="num">12.1</span>The systematic review in the app</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the PRISMA 2020 statement</div>
+    <p>PRISMA (<i>Preferred Reporting Items for Systematic reviews and Meta-Analyses</i>) is the guideline journals use for reporting a systematic review (Page et al., 2021). Its <b>flow diagram</b> counts the records at each stage: how many were <b>identified</b> in each database, how many were removed before being reviewed (duplicates and other reasons), how many were <b>screened</b> by title and abstract, how many reports were sought and assessed in full text, why each one was excluded and how many studies were finally <b>included</b>. The diagram makes the review reproducible: anyone can check that the numbers add up.</p>
+  </div>
+
+  <p>The app builds the diagram with information from three places: the <b>records of each file</b> imported (Chapter 3), the <b>duplicates and filters</b> of <span class="ui">Cleaning &amp; filters</span> (Chapter 4) and the <b>decisions</b> you make in the <span class="ui">Screening</span> tab. Only a few numbers cannot be known to it, and they are typed by hand in the diagram panel.</p>
+
+  <table class="compacta">
+    <caption><b>Table 12.1.</b> Where each box of the PRISMA 2020 diagram comes from.</caption>
+    <thead><tr><th style="width:34%">Box</th><th>How it is calculated</th></tr></thead>
+    <tbody>
+      <tr><td>Records identified</td><td>Records of each imported file, plus the records from study registers typed by hand.</td></tr>
+      <tr><td>Records removed before screening</td><td>Duplicates merged in Cleaning + marked by automation tools (by hand) + other reasons: those removed by the Cleaning filters plus those typed by hand.</td></tr>
+      <tr><td>Records screened</td><td>Identified − removed before screening: the documents of the <span class="ui">Screening</span> tab.</td></tr>
+      <tr><td>Records excluded</td><td>Documents excluded <b>without a reason</b>: discarded by title and abstract.</td></tr>
+      <tr><td>Reports sought for retrieval</td><td>Screened − excluded by title and abstract.</td></tr>
+      <tr><td>Reports not retrieved</td><td>Excluded with the reason <span class="ui">Full text not retrieved</span>.</td></tr>
+      <tr><td>Reports assessed for eligibility</td><td>Sought − not retrieved.</td></tr>
+      <tr><td>Reports excluded</td><td>Excluded with any other reason, one line per reason.</td></tr>
+      <tr><td>Studies included in review</td><td>Included documents, and separately those still pending (undecided or doubtful).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the example in this chapter</div>
+    <p>The figures use the passion fruit <b>example data</b> (300 documents from the open catalog). Two things were done to simulate a review: in <span class="ruta">Cleaning &amp; filters › Filters</span> only articles were kept (282 of 300; the other 18—theses, proceedings, chapters and a review—count as removed for other reasons), and the first 20 documents were screened with the keyboard: 5 included, 8 excluded by title and abstract, 5 excluded in full text with their reason, 1 not retrieved and 1 doubtful. Each box of the diagram was checked by hand from those 20 decisions.</p>
+  </div>
+
+  <!-- 12.2 -->
+  <h2 id="s12-2"><span class="num">12.2</span>Screening</h2>
+  <p>The <span class="ui">Screening</span> tab shows one document at a time, in the order of the set (in the example, from most to least cited), with what you need to decide: title, authors, year, source, DOI with a link, abstract and keywords. At the top are the toolbar and the progress; at the bottom, the decision buttons.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/prisma-cribado.png" alt="Toolbar, progress bar and screening card of a document with highlighted terms and decision buttons">
+      <span class="marca" style="left:90.7%;top:4.1%">1</span>
+      <span class="marca" style="left:39.5%;top:24%">2</span>
+      <span class="marca" style="left:61.4%;top:29%">3</span>
+      <span class="marca" style="left:95%;top:24%">4</span>
+      <span class="marca" style="left:47%;top:29.3%">5</span>
+      <span class="marca" style="left:62.3%;top:39.5%">6</span>
+      <span class="marca" style="left:91.4%;top:57.6%">7</span>
+      <span class="marca" style="left:52.5%;top:81.1%">8</span>
+      <span class="marca" style="left:43.5%;top:87%">9</span>
+    </div>
+    <figcaption><b>Figure 12.1.</b> The screening card of the example, after 20 decisions.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Analyze only the included studies (Section 12.5).</li>
+    <li><span class="n">2</span>Terms highlighted in the card.</li>
+    <li><span class="n">3</span>Which documents to show.</li>
+    <li><span class="n">4</span>Move on to the next one after deciding.</li>
+    <li><span class="n">5</span>Export or clear the decisions.</li>
+    <li><span class="n">6</span>Progress: decided and each status.</li>
+    <li><span class="n">7</span>A term highlighted in the title.</li>
+    <li><span class="n">8</span>Include, exclude, doubtful, clear decision.</li>
+    <li><span class="n">9</span>Reason for the exclusion.</li>
+  </ul>
+
+  <p>With the keyboard, screening is fast: <kbd>I</kbd> includes, <kbd>E</kbd> excludes with the chosen reason, <kbd>D</kbd> marks as doubtful, <kbd>U</kbd> clears the decision and <kbd>←</kbd> <kbd>→</kbd> go to the previous and next document. The keys work anywhere in the tab, except while you are typing in a field, and the app lists them below the card.</p>
+
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Rule · the reason decides the stage</div>
+    <table>
+      <thead><tr><th>If you exclude with…</th><th>the document counts in…</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ui">No reason (title and abstract screening)</span></td><td>Records excluded, at the screening stage.</td></tr>
+        <tr><td><span class="ui">Full text not retrieved</span></td><td>Reports not retrieved.</td></tr>
+        <tr><td>Any other reason (population, design, intervention…)</td><td>Reports excluded, on the line of that reason.</td></tr>
+      </tbody>
+    </table>
+    <p class="regla-pie">The selector keeps the last reason chosen: set it back to <span class="ui">No reason (title and abstract screening)</span> when you return to screening by title and abstract.</p>
+  </div>
+
+  <p>The <span class="ui">Show</span> selector has five views: <span class="ui">Pending (undecided and doubtful)</span>, the one used for screening, where each decided document leaves the list and the next one appears; <span class="ui">All</span>; and one view per status—included, excluded and doubtful—to review what was decided. Decisions are saved on this computer at once and travel inside the project (Chapter 2); each document is identified by its DOI or, if it has none, by its title and year, so the decisions are kept even if you import the files again. <span class="ui">Export decisions (.xlsx)</span> downloads a spreadsheet with each document, its decision, the stage, the reason and the date, and another sheet with the numbers of the diagram.</p>
+
+  <!-- 12.3 -->
+  <h2 id="s12-3"><span class="num">12.3</span>Flow diagram</h2>
+  <p>The <span class="ui">Flow diagram</span> tab has the <span class="ui">Diagram parameters</span> panel on the left. Its first group, <span class="ui">Databases</span>, asks for a name for each imported file: by default it is the file name, and it is worth changing it to the name of the database and the date of the search, as will be reported in the paper. The second group, <span class="ui">Numbers the app does not compute</span>, takes the records identified from study registers, those marked by automation tools and those removed for other reasons besides the filters.</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/prisma-diagrama-pantalla.png" alt="Diagram parameter panel, pending notice and five cards with the numbers of the diagram">
+      <span class="marca" style="left:22.6%;top:24.8%">1</span>
+      <span class="marca" style="left:20%;top:67.3%">2</span>
+      <span class="marca" style="left:75.9%;top:34.5%">3</span>
+      <span class="marca" style="left:86%;top:83%">4</span>
+    </div>
+    <figcaption><b>Figure 12.2.</b> The diagram panel and its cards in the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Name of the database for each file.</li>
+    <li><span class="n">2</span>Numbers typed by hand.</li>
+    <li><span class="n">3</span>Documents still pending.</li>
+    <li><span class="n">4</span>The cards summarize the diagram.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/prisma-diagrama.png" alt="PRISMA 2020 flow diagram of the example with the identification, screening and inclusion boxes">
+      <span class="marca" style="left:4.8%;top:37%">1</span>
+      <span class="marca" style="left:46.5%;top:29.6%">2</span>
+      <span class="marca" style="left:95.5%;top:34.2%">3</span>
+      <span class="marca" style="left:75%;top:42%">4</span>
+      <span class="marca" style="left:77.5%;top:52.8%">5</span>
+      <span class="marca" style="left:92%;top:71%">6</span>
+      <span class="marca" style="left:40.5%;top:86.4%">7</span>
+    </div>
+    <figcaption><b>Figure 12.3.</b> The PRISMA 2020 flow diagram of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The three phases: identification, screening, included.</li>
+    <li><span class="n">2</span>The name typed in the panel.</li>
+    <li><span class="n">3</span>The 18 removed by the type filter.</li>
+    <li><span class="n">4</span>Excluded by title and abstract.</li>
+    <li><span class="n">5</span>Full text not retrieved.</li>
+    <li><span class="n">6</span>Excluded in full text, by reason.</li>
+    <li><span class="n">7</span>Included and pending.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · twenty decisions in the diagram</div>
+    <p>The 300 records of the catalog are identified in one database, with the name given to it in the panel. There are no duplicates; the article filter removes 18 records, which appear as removed for other reasons, leaving <b>282 screened</b>. Of the 20 decided, 8 were excluded without a reason by title and abstract, so 274 reports are sought; one was not retrieved and <b>273</b> are assessed. In full text 5 were excluded: one for population, one for design, two for intervention and one for outcomes. That leaves <b>5 studies included</b> and 263 pending (262 undecided and 1 doubtful). The accounts balance: 273 assessed − 5 excluded = 5 included + 263 pending.</p>
+  </div>
+
+  <p>While there are undecided documents, a notice says so and the diagram shows them in the final box as pending; with all of them decided, the diagram is complete. If the numbers did not add up—for example, because you changed the files after screening—, a notice points out the difference. From <span class="ui">Edit figure</span> you can change the header texts, the colors, the text size and whether the pending documents are shown; the figure is exported like any other (Chapter 13).</p>
+
+  <!-- 12.4 -->
+  <h2 id="s12-4"><span class="num">12.4</span>Reasons for exclusion</h2>
+  <p>Below the diagram is the list of reasons for excluding full texts. The app comes with six common ones; change their text or add those of your protocol, so that the diagram states exactly the criteria of your review.</p>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/prisma-motivos.png" alt="Editor of the six reasons for exclusion with how many documents use each one">
+      <span class="marca" style="left:62%;top:26.6%">1</span>
+      <span class="marca" style="left:62%;top:69.5%">2</span>
+      <span class="marca" style="left:62%;top:91.8%">3</span>
+    </div>
+    <figcaption><b>Figure 12.4.</b> The editor of reasons for exclusion in the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The text is changed in the field.</li>
+    <li><span class="n">2</span>Only unused reasons can be deleted.</li>
+    <li><span class="n">3</span>Add a new reason.</li>
+  </ul>
+
+  <p>Changing the text of a reason changes it in the screening card, in the diagram and in the exported sheet, also for the documents already excluded with it. A reason that has been used cannot be deleted: those decisions must first be cleared or changed, so that no exclusion is left unexplained.</p>
+
+  <!-- 12.5 -->
+  <h2 id="s12-5"><span class="num">12.5</span>Analyzing only the included studies</h2>
+  <p>When screening is over, the <span class="ui">Analyse only the included</span> check box, above the tabs, makes <b>every module</b>—overview, sources, authors, documents, the three structures and export—use only the included documents. That way, the bibliometric analysis of a systematic review describes the studies the review chose, not everything the search returned. The counter in the header reminds you of it on every screen.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the overview of five studies</div>
+    <p>With the box checked, the overview of the example goes from 300 documents to the 5 included: they were published between 2014 and 2022 in 3 journals, are signed by 20 distinct authors (25 author appearances in all, 5 per document) and have 42.4 citations on average. Those numbers were checked by hand against the five records: three studies on irrigation with saline water and potassium or organomineral fertilization, one on biofertilizers and one on mycorrhizal fungi and vermicompost, with 61, 43, 35, 33 and 40 citations. A new inclusion reaches every module instantly.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/prisma-incluidos.png" alt="Overview with the counter “5 of 300 documents · included only” and the cards calculated with the five included studies">
+      <span class="marca" style="left:50.5%;top:4.8%">1</span>
+      <span class="marca" style="left:45.5%;top:58.2%">2</span>
+      <span class="marca" style="left:29%;top:80.5%">3</span>
+      <span class="marca" style="left:69.5%;top:80.5%">4</span>
+    </div>
+    <figcaption><b>Figure 12.5.</b> The overview of the example with only the five included studies.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>The counter warns that only the included documents count.</li>
+    <li><span class="n">2</span>The indicators use 5 of the 300 documents.</li>
+    <li><span class="n">3</span>The five included studies.</li>
+    <li><span class="n">4</span>Their 20 distinct authors.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · what the PRISMA module does not do</div>
+    <p>The app follows the PRISMA 2020 template for new reviews with searches of databases and registers; it does not draw the “other methods” column (citation searching, websites, organizations) or the template for updating a review. It records the decisions of a single person: independent double screening and agreement between reviewers are done outside the app, for example by comparing the sheets exported by each reviewer. And it counts one study per document: if several reports describe the same study, note it in the paper. The numbers typed by hand in the panel are not linked to specific documents.</p>
+  </div>
+
+  <p style="margin-top:0.12in">With screening finished and the diagram complete, what remains is to take the results to the paper. Chapter 13 explains how to export the figures, tables and networks, and how to generate the report with its methods text.</p>
+</section>
+
+</body>
+</html>

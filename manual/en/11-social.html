@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 11 · Social structure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with headers, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap11 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap11 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 11 -->
+<section class="capitulo cap11" id="cap-social" data-pestana="11" data-orden="11" style="--acento: var(--b10)">
+  <div class="cap-apertura">
+    <div class="cap-num">11</div>
+    <div class="cap-etiqueta">Chapter eleven</div>
+    <h1>Social structure</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Who works with whom: the co-authorship network of authors, institutions and countries, the world map of international collaboration with its arcs between countries, and the timeline that shows how collaboration changes over the years.</p>
+    <div class="cap-franja"><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span><span class="k10"></span></div>
+    <ul class="cap-contenido">
+      <li><b>11.1</b>The screen and its three tabs</li>
+      <li><b>11.2</b>Collaboration network</li>
+      <li><b>11.3</b>World collaboration map</li>
+      <li><b>11.4</b>Collaboration over time</li>
+    </ul>
+  </div>
+
+  <p class="lead">After words (Chapter 9) and references (Chapter 10), the <b>social structure</b> looks at people and places. Two authors, two institutions or two countries are joined when they sign a document together. The <span class="ui">Social</span> screen, in the <span class="ui">Structures</span> group, offers three views of that collaboration.</p>
+
+  <!-- 11.1 -->
+  <h2 id="s11-1"><span class="num">11.1</span>The screen and its three tabs</h2>
+  <p>The social structure uses the authors, institutions and countries as they were left in <span class="ui">Cleaning &amp; filters</span> (Chapter 4): the author variants you merged, the institution equivalences and the country aliases. That is why it is worth reviewing those Cleaning tabs before drawing a collaboration network.</p>
+
+  <table class="compacta">
+    <caption><b>Table 11.1.</b> The three tabs of the social structure.</caption>
+    <thead><tr><th style="width:26%">Tab</th><th>What it shows</th><th style="width:30%">Question it answers</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Collaboration network</span></td><td>Authors, institutions or countries joined by the documents they sign together.</td><td>Who works with whom?</td></tr>
+      <tr><td><span class="ui">World collaboration map</span></td><td>The countries colored by their output and arcs between those that sign together.</td><td>Which countries does each country collaborate with?</td></tr>
+      <tr><td><span class="ui">Collaboration over time</span></td><td>Authors, institutions and countries per document, year by year, and the percentage of international documents.</td><td>Does collaboration grow over time?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the data in this chapter</div>
+    <p>The figures use the passion fruit <b>example data</b> (300 documents from the open catalog), with no changes in Cleaning: the social structure does not depend on the term field, so the 14 stop words of Chapters 9 and 10 change nothing here. Of the 300 documents, 62 carry no affiliations and 236 have at least one recognized country. The author and country networks, the map and the timeline were checked by reading the example file outside the app.</p>
+  </div>
+
+  <!-- 11.2 -->
+  <h2 id="s11-2"><span class="num">11.2</span>Collaboration network</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · co-authorship as a trace of collaboration</div>
+    <p>The co-authorship network (Newman, 2001) joins two authors by the number of documents they sign together; with institutions or countries, two units are joined by the documents with authors from both, and each document counts once for each pair. It is built like the co-occurrence network of Chapter 9, with the same weights, communities and metrics: a community is a research group or a network of institutions that publishes together more often than with the rest. Signing together is a partial measure of collaboration (Katz and Martin, 1997): it leaves out work that does not end in a joint paper, and it counts the person who led a study the same as the one who contributed a sample.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Table 11.2.</b> The three units of the network and the minimum documents the app proposes for each one.</caption>
+    <thead><tr><th style="width:18%">Unit</th><th>What a node is</th><th style="width:18%">Minimum documents</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Authors</span></td><td>An author, with the variants merged in Cleaning (surname and initials).</td><td>2</td></tr>
+      <tr><td><span class="ui">Institutions</span></td><td>The organization of each affiliation, with the Cleaning equivalences.</td><td>2</td></tr>
+      <tr><td><span class="ui">Countries</span></td><td>A country of the affiliations, recognized by its name or by an alias.</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <p>When you change the <span class="ui">Unit of analysis</span>, the app sets the minimum documents of the table; you can change them afterward. The other parameters are those of Table 9.2, with <span class="ui">Minimum co-authored documents</span> instead of the minimum co-occurrences. If some documents do not carry the information for the chosen unit, a notice says how many are left out of the network.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/social-red.png" alt="Parameter panel, six cards and collaboration network of the 49 most productive authors of the example">
+      <span class="marca" style="left:18.3%;top:16%">1</span>
+      <span class="marca" style="left:18.3%;top:21.95%">2</span>
+      <span class="marca" style="left:21.2%;top:36.9%">3</span>
+      <span class="marca" style="left:90%;top:25.1%">4</span>
+      <span class="marca" style="left:95.7%;top:75%">5</span>
+      <span class="marca" style="left:63.8%;top:79.5%">6</span>
+    </div>
+    <figcaption><b>Figure 11.1.</b> The collaboration network of the authors of the example with two documents or more.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unit: authors, institutions or countries.</li>
+    <li><span class="n">2</span>Minimum documents of each unit.</li>
+    <li><span class="n">3</span>Minimum co-authorships per edge and isolated nodes.</li>
+    <li><span class="n">4</span>The network has four separate pieces.</li>
+    <li><span class="n">5</span>A small piece, next to the main one.</li>
+    <li><span class="n">6</span>Orange: the saline-water irrigation group.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · two Brazilian groups joined by a few bridges</div>
+    <p>Of the 300 documents, 289 have two authors or more. The 49 authors with at least two documents signed with someone form 226 edges in 7 communities, with modularity 0.555: well-defined groups. The two largest are Brazilian. The blue one revolves around the most productive author of the set (46 documents) and works on biofertilizers and nutrition; the orange one is the saline-water irrigation group, whose three main authors sign together more than any other pair: 25, 23 and 20 documents. Between the two groups, a few authors act as bridges (in red). Three pairs stay apart, with no co-authors in the Brazilian groups: a Japanese pair, another Brazilian pair and Menzel and Simpson, the Australian authors of the classic studies of Chapter 10. The 49 authors, their documents and the 226 edges with their co-authored documents were reproduced outside the app, without a single difference.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the pieces of a network</div>
+    <p>When the network has several pieces with no connection between them, the app draws each with its own layout and packs them together, with the largest in the center, instead of letting the small ones drift away and shrink the drawing. The <span class="ui">Diameter</span> card says how many pieces there are (connected components). In the viewer, a label that does not fit to the right of its node is written to its left.</p>
+  </div>
+
+  <p>When you click a node, its card appears, as in Chapter 9: metrics, <span class="ui">Most frequent collaborators</span> with their co-authored documents, and the documents of the author, institution or country, starting with the most cited. Below the viewer are the figure for publication, the tables of nodes, communities and edges, and the card that saves the network for other programs (Chapter 13).</p>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · the institution network depends on Cleaning</div>
+    <p>The institution network is only as good as the recognition of the institutions. In the example, the same university appears in Portuguese and in English (<i>Universidade Federal de Campina Grande</i> and <i>Federal University of Campina Grande</i>) and the network draws them as two nodes that do not even touch: the English version forms its own group with the other universities written in English (<i>Federal University of Paraiba</i>, <i>Federal Rural University of the Semi-Arid</i>), a mirror image of the Portuguese group. Before interpreting an institution network, review the first rows of <span class="ruta">Cleaning &amp; filters › Institutions &amp; countries</span> and join with equivalences those that are the same (Section 4.5). Something similar happens with countries: affiliations that do not end in a recognizable country do not enter the network until you assign them an alias.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/social-paises.png" alt="Collaboration network of 25 countries in five communities, with Brazil at the center">
+      <span class="marca" style="left:38%;top:67.9%">1</span>
+      <span class="marca" style="left:81.9%;top:19.8%">2</span>
+      <span class="marca" style="left:47.7%;top:19.8%">3</span>
+    </div>
+    <figcaption><b>Figure 11.2.</b> The collaboration network among the countries of the example, ready for publication.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Brazil, in 173 documents: the center.</li>
+    <li><span class="n">2</span>Each community, with its largest country.</li>
+    <li><span class="n">3</span>Japan and India, in the community of the United States.</li>
+  </ul>
+
+  <!-- 11.3 -->
+  <h2 id="s11-3"><span class="num">11.3</span>World collaboration map</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · international documents and country pairs</div>
+    <p>A document is <b>international</b> when its authors have affiliations in two or more countries (Glänzel and Schubert, 2004). Each international document adds 1 to each pair of its countries: an article with authors from Brazil, Colombia and Spain counts for the pairs Brazil–Colombia, Brazil–Spain and Colombia–Spain (full counting). The map draws one arc per pair, with a thickness proportional to its co-authored documents, over the countries colored by the measure you choose: documents, international documents or number of partner countries.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/social-mapa.png" alt="Map panel, coverage notice, five cards and world map with the collaboration arcs between countries">
+      <span class="marca" style="left:21.7%;top:19.9%">1</span>
+      <span class="marca" style="left:21.7%;top:26.6%">2</span>
+      <span class="marca" style="left:19%;top:37.2%">3</span>
+      <span class="marca" style="left:82.7%;top:14.2%">4</span>
+      <span class="marca" style="left:44.5%;top:42%">5</span>
+      <span class="marca" style="left:48.8%;top:73.5%">6</span>
+      <span class="marca" style="left:31.6%;top:96.3%">7</span>
+      <span class="marca" style="left:66.7%;top:96.3%">8</span>
+    </div>
+    <figcaption><b>Figure 11.3.</b> The world collaboration map of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Minimum co-authored documents per arc.</li>
+    <li><span class="n">2</span>Maximum number of arcs (the strongest).</li>
+    <li><span class="n">3</span>Measure that colors the countries.</li>
+    <li><span class="n">4</span>Documents that carry some country.</li>
+    <li><span class="n">5</span>The strongest pair: Brazil–United States, 5.</li>
+    <li><span class="n">6</span>The thickest arc on the map.</li>
+    <li><span class="n">7</span>Color scale of the countries.</li>
+    <li><span class="n">8</span>Thickness of the arcs.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 11.3.</b> The map cards and their values in the example.</caption>
+    <thead><tr><th style="width:26%">Card</th><th>What it measures</th><th style="width:26%">Example</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Countries</span></td><td>Countries in the affiliations and how many collaborate with another country.</td><td>31 · 25 with collaboration</td></tr>
+      <tr><td><span class="ui">International collaboration</span></td><td>International documents and their percentage among the documents with a country.</td><td>27 · 11.4% of 236</td></tr>
+      <tr><td><span class="ui">Country pairs</span></td><td>Pairs that sign at least one document together, and arcs drawn.</td><td>39 pairs and 39 arcs</td></tr>
+      <tr><td><span class="ui">Strongest collaboration</span></td><td>The pair with the most co-authored documents.</td><td>5 · Brazil–United States</td></tr>
+      <tr><td><span class="ui">Most partner countries</span></td><td>The country that collaborates with the most distinct countries.</td><td>16 · Brazil</td></tr>
+    </tbody>
+  </table>
+  <p>Below the map, the <span class="ui">Collaboration between countries</span> table lists the country pairs from most to least frequent, and the <span class="ui">Countries and their partners</span> table gives, for each country, its documents, the international ones and their percentage, its partners, the main one and the full list with the documents of each.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · a national literature with bridges abroad</div>
+    <p>Brazil appears in 173 of the 236 documents with a country: passion fruit is above all a Brazilian topic. Only 27 documents (11.4%) are international, but Brazil collaborates with 16 countries; its most frequent partners are the United States (5 documents), Belgium and Colombia (3 each), Chile and Indonesia (2). Outside Brazil, Colombia, the United States, China, India and Japan complete the countries with the most documents. The documents, international documents and partners of 29 of the 30 countries, and the 38 country pairs, were reproduced outside the app with the country codes of the catalog. The only difference favors the app: a document whose author the catalog assigns to a Chinese institute carries a Sri Lankan university in the text of its affiliation, which the app recognizes, adding the pair China–Sri Lanka.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · what the map simplifies</div>
+    <p>The arcs do not wrap around the world: an arc between Mexico and Japan crosses the Atlantic instead of the Pacific. Small countries that do not appear in the outline of the map are drawn with an approximate point at their capital, and if a country has no location, a notice says so and its pairs remain in the tables. The map counts documents, not authors: an article with ten Brazilian authors and one from the United States adds the same as one with one author from each country.</p>
+  </div>
+
+  <!-- 11.4 -->
+  <h2 id="s11-4"><span class="num">11.4</span>Collaboration over time</h2>
+  <p>The third tab follows collaboration over time. Its four cards give the means for the whole set; the two figures, the means for each year. Each mean uses only the documents that carry that information, so a year without affiliations is left empty and the line breaks, instead of dropping to zero.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · beware of years with few documents</div>
+    <p>A percentage for a year with one or two documents can jump from 0 to 100%: in 1976 there is a single document with a country, and it is international. The <span class="ui">Collaboration per year</span> table, below the figures, gives for each year the documents, those with an institution and a country, and the means, so you can see how many documents each point rests on. To compare periods, group years or use the Cleaning filters.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/social-cronologia.png" alt="Four cards with the collaboration means and lines of countries and institutions per document per year">
+      <span class="marca" style="left:14.3%;top:9.2%">1</span>
+      <span class="marca" style="left:34.1%;top:9.2%">2</span>
+      <span class="marca" style="left:54%;top:9.2%">3</span>
+      <span class="marca" style="left:74.7%;top:9.2%">4</span>
+      <span class="marca" style="left:37.5%;top:52%">5</span>
+      <span class="marca" style="left:54%;top:70%">6</span>
+    </div>
+    <figcaption><b>Figure 11.4.</b> Timeline cards and countries and institutions per document in each year of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Authors per document, among those that carry authors.</li>
+    <li><span class="n">2</span>Institutions, among those that carry an affiliation.</li>
+    <li><span class="n">3</span>Countries, among those that carry a country.</li>
+    <li><span class="n">4</span>Percentage of international documents.</li>
+    <li><span class="n">5</span>An isolated year with data: it is marked with a point.</li>
+    <li><span class="n">6</span>Years without affiliations: the line breaks.</li>
+  </ul>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/social-internacional.png" alt="Percentage of documents in international collaboration per year, from 0 to 100%">
+      <span class="marca" style="left:37.5%;top:24.5%">1</span>
+      <span class="marca" style="left:69%;top:50%">2</span>
+      <span class="marca" style="left:84%;top:65.2%">3</span>
+    </div>
+    <figcaption><b>Figure 11.5.</b> Documents in international collaboration per year in the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>1976: a single document, international.</li>
+    <li><span class="n">2</span>2005 to 2007: half of the documents.</li>
+    <li><span class="n">3</span>2019: the recent maximum, 25%.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · more authors, few countries</div>
+    <p>The documents of the example have on average 5.17 authors, 2.5 institutions and 1.16 countries. Institutions per document rise from 1 or 2 in the late 1980s to between 2.5 and 3 in the last decade, while countries per document stay close to 1: collaboration grows among institutions of the same country, not among countries. International collaboration peaked between 2005 and 2007, when half of the few documents with a country were international, and since 2010 it has ranged between 0 and 25%. The values of 32 of the 33 years with a country were reproduced outside the app; the one that differs, 2019, is that of the document with Sri Lanka from the previous section.</p>
+  </div>
+
+  <p style="margin-top:0.12in">The bibliometric analyses end with the social structure. Chapter 12 turns to the systematic review: screening the documents one by one and the PRISMA 2020 flow diagram.</p>
+</section>
+
+</body>
+</html>

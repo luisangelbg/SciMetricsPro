@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 13 · Export and report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with headers, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap13 figure.angosta .marco { width: 58%; margin: 0 auto; }
+  .cap13 figure.angosta figcaption { margin-left: 21%; margin-right: 21%; }
+  /* the same figure at one and two columns, at the same scale (8.5 : 17 = 1 : 2) */
+  .cap13 .par13 { display: flex; gap: 4%; align-items: flex-end; }
+  .cap13 .par13 .una { width: 32%; }
+  .cap13 .par13 .dos-col { width: 64%; }
+  .cap13 .par13-pie { display: flex; gap: 4%; font-family: var(--sans); font-size: 8pt; color: var(--gris); margin-top: 0.04in; }
+  .cap13 .par13-pie span:first-child { width: 32%; text-align: center; }
+  .cap13 .par13-pie span:last-child { width: 64%; text-align: center; }
+  .cap13 figure .marco + .marco { margin-top: 0.08in; }
+  .cap13 .arbol { font-family: var(--mono, ui-monospace, monospace); font-size: 8.4pt; line-height: 1.45; background: #f6f7f9; border: 1px solid var(--linea); border-radius: 6px; padding: 0.1in 0.16in; white-space: pre; margin: 0.12in 0 0.18in; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 13 -->
+<section class="capitulo cap13" id="cap-exportar" data-pestana="13" data-orden="13" style="--acento: var(--b12)">
+  <div class="cap-apertura">
+    <div class="cap-num">13</div>
+    <div class="cap-etiqueta">Chapter thirteen</div>
+    <h1>Export and report</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">From the analysis to the paper: figures redrawn to the width of one or two columns with the text size and resolution the journal asks for, tables in a spreadsheet, networks for other programs, the clean set in CSV and BibTeX, a ZIP package with everything in order and a report with the methods text written from your data.</p>
+    <div class="cap-franja"><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span><span class="k12"></span></div>
+    <ul class="cap-contenido">
+      <li><b>13.1</b>Figures at journal size</li>
+      <li><b>13.2</b>Tables, networks and data</li>
+      <li><b>13.3</b>The ZIP package</li>
+      <li><b>13.4</b>The report with the methods text</li>
+    </ul>
+  </div>
+
+  <p class="lead">Every result of SciMetricsPro can be taken out of the app. What you see on screen—a figure, a table, a network—is downloaded from its own card; the <span class="ui">Export &amp; report</span> screen, at the end of the sidebar, gathers everything in a single ZIP file and drafts a report with the methods, the figures, the tables and the references of the methods. Nothing leaves your computer: the files are generated in the browser.</p>
+
+  <table class="compacta">
+    <caption><b>Table 13.1.</b> What is downloaded and from where.</caption>
+    <thead><tr><th style="width:24%">You want…</th><th style="width:36%">Where</th><th>Formats</th></tr></thead>
+    <tbody>
+      <tr><td>A figure</td><td>The bar of the figure</td><td>PNG, TIFF, PDF, SVG, JPG or WEBP.</td></tr>
+      <tr><td>The data of a figure</td><td>The <span class="ui">Data</span> button of the figure</td><td>Spreadsheet (.xlsx).</td></tr>
+      <tr><td>A table</td><td>The buttons of the table</td><td>Spreadsheet (.xlsx) or CSV.</td></tr>
+      <tr><td>A network</td><td>The card below each network</td><td>GraphML, GEXF, .net text and CSV.</td></tr>
+      <tr><td>The clean set</td><td><span class="ruta">Export &amp; report<span class="sep">›</span>Files</span></td><td>CSV, BibTeX and the synonym dictionary.</td></tr>
+      <tr><td>Everything together</td><td><span class="ruta">Export &amp; report<span class="sep">›</span>Files</span></td><td>A ZIP with folders and an index.</td></tr>
+      <tr><td>The report</td><td><span class="ruta">Export &amp; report<span class="sep">›</span>Report</span></td><td>Document (.docx), PDF or web page (.html).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 13.1 -->
+  <h2 id="s13-1"><span class="num">13.1</span>Figures at journal size</h2>
+  <p>All the figures of the app have the same card. At the top right, the quick buttons <span class="ui">PNG</span>, <span class="ui">SVG</span> and <span class="ui">PDF</span> download the figure with the chosen print format, and <span class="ui">Data</span> downloads the table that feeds it. Below the drawing, <span class="ui">Edit figure</span> opens the editor and the download bar sets the format of the file.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-barra.png" alt="Card of the figure of the 10 most productive sources with the PNG, SVG, PDF and Data buttons, the collapsed editor and the download bar with format, width, text size, resolution, background, greyscale and the information line">
+      <span class="marca" style="left:69%;top:3.9%">1</span>
+      <span class="marca" style="left:28%;top:79.1%">2</span>
+      <span class="marca" style="left:97.4%;top:82.5%">3</span>
+      <span class="marca" style="left:40%;top:94.5%">4</span>
+    </div>
+    <figcaption><b>Figure 13.1.</b> A figure of the example with its download bar, in <span class="ruta">Sources<span class="sep">›</span>Most productive</span>.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Quick download and data of the figure.</li>
+    <li><span class="n">2</span>Editor: titles, colors, fonts and sizes.</li>
+    <li><span class="n">3</span>Format, width, text size, resolution and background.</li>
+    <li><span class="n">4</span>Size of the file that will be downloaded.</li>
+  </ul>
+
+  <p>The bar has six controls. <span class="ui">Format</span> chooses the file type (Table 13.2). <span class="ui">Width</span> offers <span class="ui">One column · 8.5 cm</span>, <span class="ui">Two columns · 17 cm</span>—the most common widths in journals—, a custom width from 2 to 60 cm and <span class="ui">Size on screen</span>. <span class="ui">Text (pt)</span> is the size of the base text of the printed figure, from 5 to 16 points; <span class="ui">Resolution</span> is 300, 600 or 1200 dpi; the background can be white or transparent (PNG only); and <span class="ui">Greyscale</span> replaces each color with the gray of the same lightness. <span class="ui">Download figure</span> downloads the file and the line on the right says how big it will be. These preferences apply to all figures and to the quick buttons, and they are saved in the project.</p>
+
+  <table class="compacta">
+    <caption><b>Table 13.2.</b> The figure formats and what each one is for.</caption>
+    <thead><tr><th style="width:12%">Format</th><th style="width:36%">What it is</th><th>Use it for</th></tr></thead>
+    <tbody>
+      <tr><td>PNG</td><td>Lossless image, with the resolution inside the file.</td><td>Documents, presentations and most journals.</td></tr>
+      <tr><td>TIFF</td><td>Uncompressed image, with the resolution inside the file.</td><td>Journals that ask for it for submission. It is much larger: in the example, 6.2 MB against 0.18 MB for the PNG at 17 cm and 300 dpi.</td></tr>
+      <tr><td>PDF</td><td>Vector, with text as text.</td><td>Printing at any size without losing sharpness.</td></tr>
+      <tr><td>SVG</td><td>Vector and editable.</td><td>Touching up the figure in a vector drawing program.</td></tr>
+      <tr><td>JPG</td><td>Lossy compressed image.</td><td>Quick previews; avoid it for figures with fine text.</td></tr>
+      <tr><td>WEBP</td><td>Compressed image.</td><td>Web pages.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the figure is redrawn for its width</div>
+    <p>Enlarging or reducing a screenshot also changes the size of the text: a figure designed for a wide screen, reduced to one column, ends up with illegible text. That is why the app does not shrink the figure: it <b>redraws it</b> with the width and text size you chose. The base text of the figures measures 11 drawing units; for it to print at <i>p</i> points in a width of <i>w</i> centimeters, the drawing is made with a width of <i>w</i>&nbsp;/&nbsp;2.54&nbsp;×&nbsp;72&nbsp;/&nbsp;(<i>p</i>&nbsp;/&nbsp;11) units, and the labels, margins and legend adapt to that space. The file then receives its physical size: in PNG and TIFF, <i>w</i>&nbsp;/&nbsp;2.54&nbsp;×&nbsp;dpi pixels with the resolution written inside, so the word processor inserts it at the exact width; in SVG, the width in centimeters; in PDF, a page of that size. At 300 dpi, a 17 cm figure is 2008 pixels wide and an 8.5 cm one, 1004.</p>
+  </div>
+
+  <figure>
+    <div class="par13">
+      <div class="marco una"><img src="../img/en/exportar-8-5cm.png" alt="The annual scientific production figure downloaded at one column, with years every twenty and the legend on one line"></div>
+      <div class="marco dos-col"><img src="../img/en/exportar-17cm.png" alt="The same figure downloaded at two columns, with years every five and the legend on one line"></div>
+    </div>
+    <div class="par13-pie"><span>8.5 cm · 1004 × 837 px</span><span>17 cm · 2008 × 1027 px</span></div>
+    <figcaption><b>Figure 13.2.</b> The annual scientific production figure of the example downloaded as PNG at one and two columns, at the same scale. The text is 8 pt in both; in the narrow one the number of years on the axis and the proportions change.</figcaption>
+  </figure>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the files measured outside the app</div>
+    <p>The files of Figure 13.1 were read with independent programs. At two columns, the PNG measures 2008 × 869 pixels and carries 300 dpi written inside, exactly what the information line announces; at one column, 1004 × 710 pixels, with the text at 8.0 pt. The PDF of the annual production at 17 cm has a page 481.89 points wide (17 cm), and the SVG, <code>width="17.00cm"</code> with the base text at 7.995 pt. The TIFF of the annual production carries its 300 dpi in the resolution tags; its greyscale version has the three channels equal in every pixel, and the transparent-background one, 88% transparent pixels.</p>
+  </div>
+
+  <p>A narrow figure does not always have room for everything. The app first tries to fit it: a long title moves to two lines, the legend is spread over several, the names of horizontal bars that take more than half the figure are cut with “…” and the axis shows fewer numbers. If the labels still do not fit, the drawing is widened and the printed text ends up smaller than requested. In that case, the information line is colored and says at what size the text will print.</p>
+
+  <figure>
+    <div class="marco"><img src="../img/en/exportar-aviso.png" alt="Download bar of the coupling network at one column with the notice: the labels do not fit at this width, the text prints at 5.7 pt"></div>
+    <figcaption><b>Figure 13.3.</b> The notice for the coupling network of the example at one column: with the names of its communities in the legend, the text would print at 5.7 pt instead of 8.</figcaption>
+  </figure>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · when the labels do not fit</div>
+    <p>The notice can be dealt with in three ways: shorten the names with <span class="ui">Maximum name length (characters)</span> in <span class="ui">Edit figure</span>, move or remove the legend, or use a larger width. In the example, 23 of the 34 figures come out at one column with the exact text size and one more at 7.9 pt; the rest are mostly maps and networks with many labels or with the legend at one side. Those figures read better at two columns. The PRISMA diagram always keeps its arrangement of boxes and, at one column, prints whole with smaller text.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · before submitting the figures</div>
+    <p>Check the journal’s instructions: almost all ask for 300 dpi for figures with color or shading and 600 or 1200 for line art, in TIFF, PNG or PDF. If the journal is printed in black and white, download a greyscale version and check that the series can still be told apart. The PDF uses the standard fonts of the format without embedding them; if the journal requires embedded fonts, send TIFF or PNG.</p>
+  </div>
+
+  <h3>Edit figure</h3>
+  <p><span class="ui">Edit figure — titles, colours, fonts, sizes</span> opens two tabs. <span class="ui">Content &amp; colours</span> is specific to each figure: title and subtitle, axis titles, palette or color of the bars, position of the legend, maximum name length and the options of that type of figure (Bradford zones, logarithmic scale, markers…). <span class="ui">Style &amp; typography</span> is common to all: theme (the <span class="ui">Journal (black &amp; white axes)</span> theme has black-and-white axes), font family, text sizes for titles, axes and labels, bold axis titles and grid lines. A style change applies to all figures, so that the paper has a uniform look.</p>
+
+  <!-- 13.2 -->
+  <h2 id="s13-2"><span class="num">13.2</span>Tables, networks and data</h2>
+  <p><b>Tables.</b> Each table has two buttons above its header: <span class="ui">.xlsx</span> and <span class="ui">CSV</span>. Both download <b>all the rows of the current view</b>, not just the visible page: with the search you typed applied and in the order you chose. The spreadsheet has a formatted header, the first row frozen, filters on each column and numbers as numbers; the CSV is in UTF-8, so that accents read correctly in any program.</p>
+
+  <p><b>Networks.</b> Below each network—co-occurrence, co-citation, coupling and collaboration—the <span class="ui">Save the network for other programs</span> card saves the network <b>as it is drawn</b>: the same nodes, their communities with their color, the positions of the layout, the weight and count of each edge and the metrics of each node.</p>
+
+  <table class="compacta">
+    <caption><b>Table 13.3.</b> The four network formats.</caption>
+    <thead><tr><th style="width:24%">Button</th><th>Content</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">GraphML (.graphml)</span></td><td>XML with the name, community, size, position, color and metrics of each node, and the weight and count of each edge; almost every network analysis program opens it.</td></tr>
+      <tr><td><span class="ui">GEXF (.gexf)</span></td><td>XML with the same attributes and the color, position and size for drawing.</td></tr>
+      <tr><td><span class="ui">Network text (.net)</span></td><td>Plain text: <code>*Vertices</code> with name and coordinates from 0 to 1, and <code>*Edges</code> with their weight.</td></tr>
+      <tr><td><span class="ui">Nodes and edges (CSV)</span></td><td>Two files: one with the nodes and their metrics and another with the edges, their names, their count and their weight.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the four networks read by another program</div>
+    <p>The four networks of the example—co-occurrence (50 terms, 1,040 edges), co-citation (50 references, 508), coupling (45 documents, 208) and author collaboration (49 authors, 226)—were opened with a network analysis library independent of the app, in their three formats, with the same nodes, edges and weights. That library recalculated the degree, strength, normalized betweenness, closeness and PageRank of each node, and they agreed with those in the file with differences below 5 × 10<sup>−9</sup>, which is the rounding to eight decimals.</p>
+  </div>
+
+  <p><b>The clean set.</b> In <span class="ruta">Export &amp; report<span class="sep">›</span>Files</span>, the <span class="ui">Data of the clean collection</span> card downloads the documents used by the analyses: with the duplicates merged, the authors, institutions and countries normalized, the filters applied and, if you turned on the check box of Chapter 12, only the included ones.</p>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-archivos.png" alt="Files tab with the cards for formats, data of the clean collection, figures, tables and networks of every module, and package of results">
+      <span class="marca" style="left:14.8%;top:11.6%">1</span>
+      <span class="marca" style="left:86.3%;top:34.4%">2</span>
+      <span class="marca" style="left:56.8%;top:58.4%">3</span>
+      <span class="marca" style="left:21.8%;top:71.9%">4</span>
+      <span class="marca" style="left:51.8%;top:88.7%">5</span>
+    </div>
+    <figcaption><b>Figure 13.4.</b> The <span class="ui">Files</span> tab of <span class="ui">Export &amp; report</span> with the example data, before finding the figures.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Formats of figures, tables, networks and data.</li>
+    <li><span class="n">2</span>Width, text size, resolution and greyscale.</li>
+    <li><span class="n">3</span>Download each data file.</li>
+    <li><span class="n">4</span>Find figures, tables and networks.</li>
+    <li><span class="n">5</span>What the package will contain.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 13.4.</b> The files of the clean set.</caption>
+    <thead><tr><th style="width:27%">Button</th><th>Content</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Documents (CSV)</span></td><td>One row per document with 30 fields: the bibliographic data (authors, title, year, source, volume, pages, DOI, ISSN…), abstract, keywords, affiliations, institutions, countries, citations, references and identifiers. Lists are separated by “; ”.</td></tr>
+      <tr><td><span class="ui">Documents (BibTeX)</span></td><td>One entry per document for a reference manager or a LaTeX document (article, proceedings, chapter, book, thesis or report) with its data, abstract, keywords and citations. The key is the surname of the first author, the year and the first long word of the title (with a, b, c… if it repeats).</td></tr>
+      <tr><td><span class="ui">Synonym dictionary (CSV)</span></td><td>The Cleaning synonyms in the format the app reads back (Chapter 4), for use in another project.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the clean set checked</div>
+    <p>The CSV of the example has 300 rows and 30 columns; its citations add up to 2,978 and it carries 244 distinct DOIs, the same as the example file read without the app. The BibTeX was read with two independent parsers: the first recovered all 300 entries; the stricter one, 281, because 19 documents lack in the catalog the journal, institution or publisher that BibTeX considers mandatory. Checking it revealed an error: the catalog had a whole affiliation recorded as an author, and its commas made the name invalid. It was fixed: those parts now go between braces.</p>
+  </div>
+
+  <!-- 13.3 -->
+  <h2 id="s13-3"><span class="num">13.3</span>The ZIP package</h2>
+  <p>To take all the results at once, the <span class="ui">Files</span> tab builds a single ZIP file with the figures, tables and networks of every module, the data and an index.</p>
+
+  <ol class="pasos">
+    <li><b>Choose the formats</b> in the <span class="ui">Formats</span> card (Figure 13.4): those for figures, tables, networks and data, and the width, text size and resolution of the figures, which are the same as in the bar of each figure.</li>
+    <li>Press <span class="ui">Find figures and tables</span>. The app draws out of sight every tab of <span class="ui">Overview</span>, <span class="ui">Sources</span>, <span class="ui">Authors</span>, <span class="ui">Documents</span>, the three structures and <span class="ui">PRISMA</span>, with the parameters you left in each; it waits for the networks calculated in the background to finish.</li>
+    <li><b>Review the list</b> (Figure 13.5). Each group is a tab of a module; expanding it shows its figures, tables and networks, each with a check box. Everything starts ticked; <span class="ui">Untick all</span> and the check box of each group help you choose only what you will use.</li>
+    <li>Press <span class="ui">Download ZIP</span>. The progress appears below the button and, at the end, the number of files and the size of the package.</li>
+  </ol>
+
+  <p>The files in the ZIP have orderly names, without accents or spaces, numbered in the order of the modules; the index describes them one by one with their number, kind, module, tab and title.</p>
+
+  <div class="arbol">scimetricspro_results_2026-09-18.zip
+├── index.csv
+├── figures/01_annual_scientific_production.png
+│          02_average_citations_per_year.png …
+├── tables/01_document_types.xlsx …
+├── networks/01_co-occurrence_network.graphml
+│           01_co-occurrence_network_nodes.csv
+│           01_co-occurrence_network_edges.csv …
+└── data/documents.csv
+         documents.bib
+         synonyms.csv</div>
+
+  <figure>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-paquete.png" alt="List of figures, tables and networks grouped by module and tab, with the Bradford’s law group expanded">
+      <span class="marca" style="left:28.5%;top:12.9%">1</span>
+      <span class="marca" style="left:26%;top:27.4%">2</span>
+      <span class="marca" style="left:21%;top:34.5%">3</span>
+      <span class="marca" style="left:26%;top:56.6%">4</span>
+    </div>
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-paquete-zip.png" alt="Package of results card with 79 ticked figures, tables and networks and the Download ZIP button">
+      <span class="marca" style="left:50.8%;top:43.5%">5</span>
+    </div>
+    <figcaption><b>Figure 13.5.</b> The list of results of the example after the search, with one group expanded, and the package card.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Find again, tick or untick all.</li>
+    <li><span class="n">2</span>How many figures, tables and networks there are.</li>
+    <li><span class="n">3</span>A group: module · tab.</li>
+    <li><span class="n">4</span>Each item with its kind.</li>
+    <li><span class="n">5</span>What the ZIP will contain.</li>
+  </ul>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the package reflects what you left on each screen</div>
+    <p>Each figure in the ZIP comes out with the parameters its tab had and with the style of <span class="ui">Edit figure</span>, at the sizes of the <span class="ui">Formats</span> card and with a white background. If after the search you change a filter or a parameter, a notice asks you to <span class="ui">Find again</span> so that the package reflects what you see.</p>
+  </div>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the complete package of the example</div>
+    <p>The search found <b>34 figures, 41 tables and 4 networks</b>. With the default formats—figures in PNG, tables as spreadsheets, networks in GraphML and CSV, and the three data files—the ZIP has <b>91 files</b> (15.4 MB): the index, 34 figures, 41 tables, 12 network files and 3 data files. An independent decompression program checked the integrity of each file, and the 41 tables, read with another spreadsheet reader, have the same rows, columns and titles as on screen.</p>
+  </div>
+
+  <!-- 13.4 -->
+  <h2 id="s13-4"><span class="num">13.4</span>The report with the methods text</h2>
+  <p>The <span class="ui">Report</span> tab drafts a document with your results: a cover page, the <b>methods</b> written from your data and the parameters of each analysis, the <b>results</b> of the chosen sections—each figure and table numbered, with a paragraph that gives its figures—, the <b>references</b> of the methods used and how to cite the app. It is a draft to adapt to your paper or thesis, not a final text.</p>
+
+  <p>In <span class="ui">Contents of the report</span> you type the title (by default, “Bibliometric analysis”) and the authors, and choose the <span class="ui">Language of the report</span>: Spanish or English, regardless of the language of the interface; the figures are also drawn in that language. <span class="ui">Page size</span> is letter or A4; <span class="ui">Rows per table</span>, from 3 to 50 (10 by default), limits long tables to their first rows with a note; and <span class="ui">Figures in greyscale</span> is for a journal printed in black and white. The eight <span class="ui">Sections</span> correspond to the analysis modules.</p>
+
+  <p>The <span class="ui">Data sources</span> card has one line per imported file. The search string and the date of retrieval are not included in the exports: type them here as you used them. Searches made in the search tab of Import already carry both (Chapter 3). The name of the source is the same as in the PRISMA diagram (Chapter 12); if you leave it empty, the text describes the source generically. Everything you type goes into the first paragraph of the methods.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-informe.png" alt="Report tab with the contents of the report, the sections, the data source with its search string and date, and the Build the preview button">
+      <span class="marca" style="left:87.5%;top:21%">1</span>
+      <span class="marca" style="left:57.5%;top:27.3%">2</span>
+      <span class="marca" style="left:90%;top:42.7%">3</span>
+      <span class="marca" style="left:49.5%;top:66.9%">4</span>
+      <span class="marca" style="left:21.5%;top:87.6%">5</span>
+    </div>
+    <figcaption><b>Figure 13.6.</b> The report options with the example data.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Title, authors and language of the report.</li>
+    <li><span class="n">2</span>Page, rows per table and greyscale.</li>
+    <li><span class="n">3</span>The sections included.</li>
+    <li><span class="n">4</span>Name, search string and date of each file.</li>
+    <li><span class="n">5</span>Draft the report.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 13.5.</b> The parts of the report.</caption>
+    <thead><tr><th style="width:26%">Part</th><th>What it contains</th></tr></thead>
+    <tbody>
+      <tr><td>Cover page</td><td>Title, number of documents and period, authors, date and version of the app.</td></tr>
+      <tr><td>Methods · Data</td><td>The sources with their search string, date and records; the duplicates and the threshold; the normalization of authors, institutions and countries; the term field, synonyms and stop words; the filters; and the final set by document type.</td></tr>
+      <tr><td>Methods · Analysis</td><td>One paragraph per analysis with its parameters: number of nodes, minimum frequencies, normalization, community algorithm, resolution, periods, number of clusters… each method with its citation.</td></tr>
+      <tr><td>Results</td><td>For each section, the main figures and tables, numbered, each preceded by a paragraph with its figures.</td></tr>
+      <tr><td>References and citation</td><td>Only the methods cited in the text, in alphabetical order, plus the suggested citation of SciMetricsPro.</td></tr>
+    </tbody>
+  </table>
+
+  <p><span class="ui">Build the preview</span> draws the figures in the language of the report and assembles the document on the same screen. In the report, figures are 16 cm wide with a 9 pt base text; a figure that would exceed 19 cm in height keeps its arrangement and prints smaller.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-vista.png" alt="Report preview with the summary of 24 figures and 10 tables, the download buttons and the start of the document: cover page and methods">
+      <span class="marca" style="left:75%;top:6.8%">1</span>
+      <span class="marca" style="left:63.6%;top:11%">2</span>
+      <span class="marca" style="left:10.7%;top:31.5%">3</span>
+    </div>
+    <figcaption><b>Figure 13.7.</b> The report preview of the example with the eight sections.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Figures, tables and language of the report.</li>
+    <li><span class="n">2</span>Document, PDF by printing or web page.</li>
+    <li><span class="n">3</span>The report as it is downloaded.</li>
+  </ul>
+
+  <p>The preview is the same report that is downloaded, in three forms. <span class="ui">Download document (.docx)</span> produces an editable text document, with heading styles, the figures as images at 300 dpi, the numbering of figures and tables as fields that update themselves and the page number in the footer. <span class="ui">Print or save as PDF</span> opens the browser’s print dialog; choose saving as PDF there. <span class="ui">Download page (.html)</span> saves a page that opens in any browser; in the printout and in the page, the figures remain vector graphics.</p>
+
+  <figure class="angosta">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/exportar-resultados.png" alt="Sources results section of the report with a paragraph of figures, the figure of the ten most productive sources, its caption, Bradford’s law and the zones table">
+      <span class="marca" style="left:4%;top:12.6%">1</span>
+      <span class="marca" style="left:4%;top:27.9%">2</span>
+      <span class="marca" style="left:4%;top:41.9%">3</span>
+      <span class="marca" style="left:4%;top:92.2%">4</span>
+    </div>
+    <figcaption><b>Figure 13.8.</b> The results of a report with only the <span class="ui">Sources</span> section.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Paragraph with the figures of the figure.</li>
+    <li><span class="n">2</span>The figure at 16 cm.</li>
+    <li><span class="n">3</span>Caption with number and title.</li>
+    <li><span class="n">4</span>Table with top and bottom rules.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the report of the example checked</div>
+    <p>With the eight sections, the report of the example has <b>24 figures and 10 tables</b>. Its figures agree with those checked in the previous chapters: 396 local citations, 8 clusters in the coupling map, 49 authors and 226 links in the collaboration network. Those that depend on the whole set were counted in the example file without the app: 141 sources and 282 articles, 9 conference papers, 5 theses, 3 chapters and 1 review. The .docx was opened as a package: all its parts are well-formed XML, and it carries 24 images of 1890 pixels (16 cm at 300 dpi), 10 tables, 34 numbering fields—one per figure and table—and a letter page. The check also found misleading wording: the main source had “5.3% of the total”, but that percentage is calculated over the 282 documents with a source. The text now says “of the documents with a source”.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · the report describes; you interpret</div>
+    <p>The paragraphs of the report only state figures; they do not interpret or discuss. Read them before copying them. For example, the one for the overview of the example says that the annual growth rate was 0%: the first year (1956) and the last (2026) have one document each, and the formula only compares those two ends. That is the trap explained in Chapter 5. Also check that the parameters described in the methods are the ones you want to report: the report uses those you left on each screen.</p>
+  </div>
+
+  <p>If you change the documents after generating the report, a notice asks you to generate it again. With the report downloaded, the results are ready for the paper. The appendices gather, for quick reference, the formats of each database, the formulas of the indicators with their references, a glossary and the solution to the most common problems.</p>
+</section>
+
+</body>
+</html>

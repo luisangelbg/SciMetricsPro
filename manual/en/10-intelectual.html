@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SciMetricsPro · User’s Manual · Chapter 10 · Intellectual structure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- splits the content into letter-size pages, with headers, page numbers and table of contents -->
+<script src="../paginar.js"></script>
+<style>
+  .cap10 .formula-linea { font-family: var(--serif); font-size: 12pt; text-align: center; margin: 0.08in 0; }
+  /* the coupling map is taller than it is wide: it is shown smaller */
+  .cap10 figure.chica .marco { width: 70%; margin: 0 auto; }
+  .cap10 figure.chica figcaption { margin-left: 15%; margin-right: 15%; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CHAPTER 10 -->
+<section class="capitulo cap10" id="cap-intelectual" data-pestana="10" data-orden="10" style="--acento: var(--b9)">
+  <div class="cap-apertura">
+    <div class="cap-num">10</div>
+    <div class="cap-etiqueta">Chapter ten</div>
+    <h1>Intellectual structure</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">What the field rests on: the works, authors and journals that are cited together, the documents that share a bibliography, the clusters they form according to their centrality and impact, and the chain of direct citations among the documents of the set.</p>
+    <div class="cap-franja"><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span><span class="k9"></span></div>
+    <ul class="cap-contenido">
+      <li><b>10.1</b>The screen and its four tabs</li>
+      <li><b>10.2</b>Co-citation</li>
+      <li><b>10.3</b>Bibliographic coupling</li>
+      <li><b>10.4</b>Coupling map</li>
+      <li><b>10.5</b>Historiograph</li>
+    </ul>
+  </div>
+
+  <p class="lead">The conceptual structure of Chapter 9 looks at words; the <b>intellectual structure</b> looks at references. What a document cites tells which works it builds on, and when many documents cite the same works the common ground of the field appears: its classics, its schools and its research fronts. The <span class="ui">Intellectual</span> screen, in the <span class="ui">Structures</span> group, brings together four citation analyses.</p>
+
+  <!-- 10.1 -->
+  <h2 id="s10-1"><span class="num">10.1</span>The screen and its four tabs</h2>
+  <p>The four analyses start from the references of each document, unified as in <span class="ruta">Documents › References</span> (Chapter 8): the occurrences of the same work with the same DOI, the same author, year, volume and page, or the same text count as a single work. The network tabs use the parameter panel of Chapter 9, with the units and minimums specific to each analysis.</p>
+
+  <table class="compacta">
+    <caption><b>Table 10.1.</b> The four tabs of the intellectual structure.</caption>
+    <thead><tr><th style="width:24%">Tab</th><th>What it joins</th><th style="width:30%">Question it answers</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Co-citation</span></td><td>Two works, authors or sources cited by the same document of the set.</td><td>Which works form the foundation of the field?</td></tr>
+      <tr><td><span class="ui">Bibliographic coupling</span></td><td>Two documents, authors or sources of the set that cite the same works.</td><td>Which documents work on the same thing?</td></tr>
+      <tr><td><span class="ui">Coupling map</span></td><td>The coupling clusters, placed by their centrality and impact.</td><td>Which lines of work are central and which are cited most?</td></tr>
+      <tr><td><span class="ui">Historiograph</span></td><td>The direct citations among the documents of the set, ordered by year.</td><td>How do the works link up over time?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · the data in this chapter</div>
+    <p>The references of the open catalog arrive as work identifiers, with no author, year or journal. They are enough for coupling, the coupling map and the historiograph, which only need to know which works each document cites, and for the co-citation of references, although with names such as “W2996734229” when the cited work is not a document of the set. That is why Sections 10.3 to 10.5 use the passion fruit <b>example data</b>, with the 14 stop words of Chapter 9, and Section 10.2 uses the public set of 147 articles on co-citation and coupling analysis introduced in Chapter 8, with its complete references. Every figure quoted was checked by reading the files outside the app.</p>
+  </div>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · no references, no intellectual structure</div>
+    <p>If no document carries references—for example, with an export from the biomedical index—, the screen shows, instead of the tabs, the notice <span class="ui">The documents have no cited references</span>, explains how to export each type of file again with its references and offers the <span class="ui">See in Import how to export each database</span> button, which opens the instructions on the import screen. While the references of a large set are calculated in the background, the screen says so and waits.</p>
+  </div>
+
+  <!-- 10.2 -->
+  <h2 id="s10-2"><span class="num">10.2</span>Co-citation</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · two works cited together</div>
+    <p>Two works are <b>co-cited</b> when the same document cites both (Small, 1973; Marshakova, 1973). The more documents cite them together, the more related the authors of the field perceive them to be, even if they do not cite each other. Co-citation looks backward: it joins what the field considers its foundation, and it changes over time as new citing documents are published. The same idea applies to <b>cited authors</b> (White and Griffith, 1981) and to <b>cited sources</b> (McCain, 1991). The network is built like the co-occurrence network of Chapter 9: the most cited works are the nodes, the co-citation count is the weight of each edge and the default normalization is the association strength.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/intelectual-cocitacion.png" alt="Parameter panel, cards and co-citation network of the 50 most cited references of the scientometrics set">
+      <span class="marca" style="left:18.2%;top:15.1%">1</span>
+      <span class="marca" style="left:38.6%;top:15.5%">2</span>
+      <span class="marca" style="left:57.2%;top:42%">3</span>
+      <span class="marca" style="left:35.5%;top:84.5%">4</span>
+      <span class="marca" style="left:93.6%;top:88.8%">5</span>
+    </div>
+    <figcaption><b>Figure 10.1.</b> The co-citation network of the 50 most cited references of the scientometrics set.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unit: references, cited authors or cited sources.</li>
+    <li><span class="n">2</span>The network cards (Table 9.3).</li>
+    <li><span class="n">3</span>Search for a reference.</li>
+    <li><span class="n">4</span>Two works by Small (1985): with volume and page.</li>
+    <li><span class="n">5</span>The most cited: Small 1973 (63 documents).</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 10.2.</b> The three co-citation units and the most cited ones in the scientometrics set.</caption>
+    <thead><tr><th style="width:18%">Unit</th><th>What a node is</th><th style="width:36%">The most cited</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">References</span></td><td>A cited work, with its occurrences unified. If the work is a document of the set, it is named as that document.</td><td>Small 1973 (63), Kessler 1963 (35), White and Griffith 1981 (27), Small 1974 (25)</td></tr>
+      <tr><td><span class="ui">Cited authors</span></td><td>The first author of the cited works, by surname and initial. It counts the documents that cite any of their works.</td><td>Small H (95), Leydesdorff L (46), White HD (46), Garfield E (41)</td></tr>
+      <tr><td><span class="ui">Cited sources</span></td><td>The journal or book of the cited works. Abbreviations are joined to the full title when there is no ambiguity.</td><td>Scientometrics (131), the journal of the American information science society (112)</td></tr>
+    </tbody>
+  </table>
+
+  <p>The panel changes two names with respect to the word network: <span class="ui">Minimum citations (citing documents)</span>, instead of the minimum frequency, and <span class="ui">Minimum co-citations per edge</span>. When you choose a node, the card shows the complete reference with its DOI link, the works most often co-cited with it and the documents of the set that cite it, starting with the most cited.</p>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/intelectual-autores.png" alt="Co-citation network of the 50 most cited authors in three communities">
+      <span class="marca" style="left:79.8%;top:19.8%">1</span>
+      <span class="marca" style="left:73%;top:36.8%">2</span>
+      <span class="marca" style="left:81%;top:57.3%">3</span>
+      <span class="marca" style="left:33%;top:92.1%">4</span>
+    </div>
+    <figcaption><b>Figure 10.2.</b> The co-citation network of cited authors, ready for publication, of the scientometrics set.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Each community, with its most cited author.</li>
+    <li><span class="n">2</span>Leydesdorff: networks and indicators.</li>
+    <li><span class="n">3</span>White: author co-citation.</li>
+    <li><span class="n">4</span>Small (95 documents): the founders.</li>
+  </ul>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the classics of citation analysis</div>
+    <p>In the 147 articles on co-citation and coupling analysis, the most cited work is the article in which Small proposed co-citation in 1973 (63 documents), followed by Kessler’s, which proposed coupling in 1963 (35), and White and Griffith’s, which took co-citation to authors in 1981 (27): the set cites its own founders. With authors, the network separates three communities: Small’s, with Garfield, Kessler and Glänzel; White’s, with McCain and Chen; and Leydesdorff’s, with Newman and Boyack. The citations of the 50 references and of the 30 most cited authors, and the co-citations of 598 of the 610 edges, were reproduced by reading the reference field of the file without the app. The other differences come from two references that the app rightly joins (“SMALL HG” and “SMALL H”, with the same volume and page) or because they point to the same document of the set.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Note · names that look alike</div>
+    <p>A work is named by its first author, year and source. When two different works would have the same name—two articles by the same author in the same journal and the same year—, the app adds their volume and first page (“SMALL H, 1985, SCIENTOMETRICS, 7:391” and “…, 8:321”), or their DOI if they have none. The same holds in <span class="ruta">Documents › References</span> and in the RPYS peaks.</p>
+  </div>
+
+  <!-- 10.3 -->
+  <h2 id="s10-3"><span class="num">10.3</span>Bibliographic coupling</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · two documents with a common bibliography</div>
+    <p>Two documents are <b>coupled</b> when they cite the same works (Kessler, 1963); the coupling strength is the number of references they share. Unlike co-citation, coupling joins the citing documents and is fixed as soon as they are published: two recent articles that share a bibliography work on the same research front, even if nobody cites them yet. Since a document with many references shares more simply because of its size, the app normalizes by default with Salton’s cosine:</p>
+    <p class="formula-linea">cos<sub><i>ij</i></sub> = <i>c<sub>ij</sub></i> / √(<i>n<sub>i</sub></i> · <i>n<sub>j</sub></i>)</p>
+    <p>where <i>c<sub>ij</sub></i> is the number of shared references and <i>n<sub>i</sub></i>, <i>n<sub>j</sub></i> the distinct references of each document. It equals 1 if the two bibliographies are identical. The coupling of <b>authors</b> and of <b>sources</b> pools all the references of the documents of each author or journal (Zhao and Strotmann, 2008).</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/intelectual-acoplamiento.png" alt="Parameter panel, cards and coupling network of the 50 most cited documents of the example">
+      <span class="marca" style="left:18.2%;top:15.3%">1</span>
+      <span class="marca" style="left:38.6%;top:14%">2</span>
+      <span class="marca" style="left:45.8%;top:37.5%">3</span>
+      <span class="marca" style="left:50.8%;top:52.1%">4</span>
+      <span class="marca" style="left:18.2%;top:70.5%">5</span>
+      <span class="marca" style="left:43.4%;top:83.7%">6</span>
+    </div>
+    <figcaption><b>Figure 10.3.</b> The coupling network of the 50 most cited documents of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Unit: documents, authors or sources.</li>
+    <li><span class="n">2</span>45 of the 50 documents have edges.</li>
+    <li><span class="n">3</span>Weights with Salton’s cosine.</li>
+    <li><span class="n">4</span>Orange: irrigation with saline water.</li>
+    <li><span class="n">5</span>Node size: total citations.</li>
+    <li><span class="n">6</span>Blue: fruit composition and nutrition.</li>
+  </ul>
+
+  <table class="compacta">
+    <caption><b>Table 10.3.</b> The parameters specific to coupling and their default values. The others are those of Table 9.2, with Salton’s cosine and size by total citations.</caption>
+    <thead><tr><th style="width:36%">Parameter</th><th>What it does</th><th style="width:16%">Default</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Minimum documents per unit</span></td><td>Authors and sources only: documents they must have.</td><td>1</td></tr>
+      <tr><td><span class="ui">Maximum number of units (most cited)</span></td><td>How many units enter, from the most cited down.</td><td>50</td></tr>
+      <tr><td><span class="ui">Minimum shared references per edge</span></td><td>Works in common needed to join two units.</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · two twin articles and four fronts</div>
+    <p>Of the 50 most cited documents of the example, 45 share some reference; the other five—among them a 1988 botany study and a 1992 one from a pharmacy journal—are left out as isolated nodes. The strongest pair are two 2012 articles on biofertilizers in yellow passion fruit, whose first authors share a surname and which were published in different journals; they share 29 references (cosine 0.744). Louvain distinguishes four communities: the orange one, with irrigation with saline water and salt stress; the blue one, with fruit composition, reviews of the genus and mineral nutrition; the green one, with biofertilizers, organic manures and substrates; and the red one, with Menzel’s classic studies on water, temperature and nutrition, and the works that follow them. The 50 documents, the 208 edges, the shared references of each and their cosine were reproduced outside the app, without a single difference.</p>
+  </div>
+
+  <!-- 10.4 -->
+  <h2 id="s10-4"><span class="num">10.4</span>Coupling map</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · centrality and impact of each cluster</div>
+    <p>The coupling map (Aria, Misuraca and Spano, 2020) does with documents what the thematic map does with words. It starts from a larger coupling network—up to 250 documents, with Salton’s cosine—, takes each Louvain community as a cluster and places it with two measures: <b>Callon’s centrality</b>, 10 × the sum of the weights of the edges leaving the cluster (how connected it is to the others), and the <b>impact</b>, the mean of the normalized citations of its documents. The normalized citation of a document is its number of citations divided by the mean citations of the documents of the set published in the same year, so 1 is the mean for its year. The axes pass through the medians.</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Table 10.4.</b> The four quadrants of the coupling map.</caption>
+    <thead><tr><th style="width:30%">Quadrant</th><th style="width:28%">Position</th><th>Reading</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Central and high impact</span></td><td>Upper right.</td><td>Lines connected to the rest and highly cited: the core of the field.</td></tr>
+      <tr><td><span class="ui">Peripheral and high impact</span></td><td>Upper left.</td><td>Isolated but highly cited lines: influential specialties.</td></tr>
+      <tr><td><span class="ui">Peripheral and low impact</span></td><td>Lower left.</td><td>Marginal, little-cited lines: emerging or receding.</td></tr>
+      <tr><td><span class="ui">Central and low impact</span></td><td>Lower right.</td><td>Connected but little-cited lines: supporting topics.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Each cluster is named with the terms most characteristic of its documents, from the chosen term field: those that combine frequency in the cluster and exclusivity (frequency × documents of the cluster that use it ÷ documents of the set that use it). The <span class="ui">Map parameters</span> panel holds the unit, the number of units (250) and the minimum shared references; under <span class="ui">Clusters</span>, the <span class="ui">Impact measure</span> (normalized total or local citations), the resolution and the <span class="ui">Minimum units per cluster</span> (2); and under <span class="ui">Labels</span>, the term field and the <span class="ui">Terms in the label</span> (3). Below the map, the <span class="ui">Clusters of the coupling map</span> table gives the medians, the documents, the centrality, the impact and the terms of each cluster, and the <span class="ui">Documents of each cluster</span> table gives the normalized citation of each document.</p>
+
+  <table class="compacta">
+    <caption><b>Table 10.5.</b> The eight clusters of the example. Medians: centrality 127.30 and impact 0.921.</caption>
+    <thead><tr><th style="width:17%">Quadrant</th><th>Terms of the cluster</th><th style="width:11%">Documents</th><th style="width:13%">Centrality</th><th style="width:10%">Impact</th></tr></thead>
+    <tbody>
+      <tr><td>Central, high</td><td><i>Salinity, Irrigation, Photosynthesis</i></td><td>65</td><td>251.33</td><td>1.110</td></tr>
+      <tr><td>Central, high</td><td><i>Medicinal Plant Extracts Effects, Passiflora, Botany</i></td><td>49</td><td>185.32</td><td>1.465</td></tr>
+      <tr><td>Central, high</td><td><i>Horticulture, Growth and nutrition in plants, Passion fruit</i></td><td>42</td><td>270.63</td><td>1.262</td></tr>
+      <tr><td>Central, high</td><td><i>Horticulture, Passion fruit, Pineapple and bromelain studies</i></td><td>37</td><td>259.55</td><td>0.947</td></tr>
+      <tr><td>Peripheral, low</td><td><i>Nitrogen fertilizer, Plant Physiology and Cultivation Studies, Cutting</i></td><td>17</td><td>69.28</td><td>0.720</td></tr>
+      <tr><td>Peripheral, low</td><td><i>Biofertilizer, Soil salinity, Saline water</i></td><td>4</td><td>26.65</td><td>0.894</td></tr>
+      <tr><td>Peripheral, low</td><td><i>Economic growth, Agricultural economics, Economic and Environmental Valuation</i></td><td>4</td><td>1.32</td><td>0.329</td></tr>
+      <tr><td>Peripheral, low</td><td><i>Biofertilizer, Nutrient, Agronomy</i></td><td>3</td><td>3.75</td><td>0.868</td></tr>
+    </tbody>
+  </table>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · the center and the edge of passion fruit research</div>
+    <p>Of the 250 most cited documents, 236 have references and 221 share some with another; they form 8 clusters. In this set centrality and impact go together: the four large clusters (193 documents) are central and high impact, and the four small ones are peripheral and little cited; the other two quadrants are empty. The cluster with the highest impact brings together medicinal plant extracts and the botany of the genus (1.47 times the mean for its year); the most remote, agricultural economics, has a centrality of 1.3 and a third of the mean impact. The centrality, impact, medians and quadrants of the 8 clusters were recalculated outside the app and agree to the last digit.</p>
+  </div>
+
+  <figure class="chica">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/intelectual-mapa.png" alt="Quadrant cards and coupling map with eight clusters of documents">
+      <span class="marca" style="left:23.4%;top:14%">1</span>
+      <span class="marca" style="left:55.9%;top:14.7%">2</span>
+      <span class="marca" style="left:50%;top:42.1%">3</span>
+      <span class="marca" style="left:58.8%;top:53.75%">4</span>
+      <span class="marca" style="left:51.4%;top:60%">5</span>
+      <span class="marca" style="left:19.9%;top:86%">6</span>
+    </div>
+    <figcaption><b>Figure 10.4.</b> The coupling map of the documents of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Clusters and documents in the network.</li>
+    <li><span class="n">2</span>One card per quadrant.</li>
+    <li><span class="n">3</span>Subtitle: clusters and impact measure.</li>
+    <li><span class="n">4</span>Highest impact: medicinal extracts.</li>
+    <li><span class="n">5</span>The axes pass through the medians.</li>
+    <li><span class="n">6</span>Lowest impact: agricultural economics.</li>
+  </ul>
+
+  <!-- 10.5 -->
+  <h2 id="s10-5"><span class="num">10.5</span>Historiograph</h2>
+
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · the family tree of a topic</div>
+    <p>The historiograph (Garfield, 2004) draws the <b>direct citations</b> among the documents of the set with the most local citations, those they receive from other documents of the set (Garfield, Pudovkin and Istomin, 2003). Each column is a year with documents—years without documents take up no space—and each arrow runs from the cited, older document to the one that cites it. The chains of arrows show how one work inspired the next; the groups of documents joined by citations are <b>families</b>, each with its color. Within each year the documents are ordered to reduce crossings (Sugiyama, Tagawa and Toda, 1981).</p>
+  </div>
+
+  <table class="compacta">
+    <caption><b>Table 10.6.</b> The parameters of the historiograph.</caption>
+    <thead><tr><th style="width:38%">Parameter</th><th>What it does</th><th style="width:14%">Default</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Number of documents (most locally cited)</span></td><td>How many documents enter (up to 200); in a tie, those that cite others of the set and then those with the most total citations.</td><td>30</td></tr>
+      <tr><td><span class="ui">Minimum local citations</span></td><td>With 0, documents that only cite also enter, which is useful in small sets.</td><td>1</td></tr>
+      <tr><td><span class="ui">Remove documents without drawn citations</span></td><td>Keeps only the documents joined by some arrow.</td><td>No</td></tr>
+      <tr><td><span class="ui">Document names</span></td><td>First author and year, or the start of the title.</td><td>First author and year</td></tr>
+    </tbody>
+  </table>
+
+  <p>When you click a document, or choose it with the keyboard and <kbd>Enter</kbd>, its card appears: title, authors, source, DOI with a link, local and total citations, and two lists, <span class="ui">Cites</span> and <span class="ui">Cited by</span>, whose items lead to the card of each document. Below are the <span class="ui">Documents of the historiograph</span> and <span class="ui">Citations among the documents of the historiograph</span> tables; the latter says, for each citation, whether it was drawn or why not.</p>
+
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · two genealogies of passion fruit research</div>
+    <p>The 30 documents with the most local citations run from 1986 to 2023 and are joined by 33 citations into three families. The orange one is Menzel’s line: his 1986 and 1987 studies on water and temperature lead to his 1993 proposal of leaf concentrations, the most cited document within the set (12 local citations), which is later cited by works from 2011 and 2018. The blue one, the largest (20 documents, from 2002 to 2023), is the line of fertilization and irrigation with saline water: it passes through two 2020 articles by the same first author and reaches a 2023 article on salt stress that cites eight documents of the figure. The third, in green, joins two articles from 2012 and 2016 on organic manures. Three documents remain in gray: they have local citations, but from documents that did not make it into the 30. The 30 documents, their order and the 33 citations among them were reproduced outside the app.</p>
+  </div>
+
+  <figure class="media">
+    <div class="marco" style="position:relative">
+      <img src="../img/en/intelectual-historiografia.png" alt="Cards and diagram of direct citations among the 30 documents with the most local citations of the example">
+      <span class="marca" style="left:16.7%;top:13.6%">1</span>
+      <span class="marca" style="left:42%;top:13.6%">2</span>
+      <span class="marca" style="left:64.8%;top:13.6%">3</span>
+      <span class="marca" style="left:37.7%;top:32.4%">4</span>
+      <span class="marca" style="left:20.2%;top:71.6%">5</span>
+      <span class="marca" style="left:29.1%;top:71.6%">6</span>
+      <span class="marca" style="left:95.6%;top:85.1%">7</span>
+      <span class="marca" style="left:39.6%;top:97.3%">8</span>
+    </div>
+    <figcaption><b>Figure 10.5.</b> The historiograph of the 30 documents with the most local citations of the example.</figcaption>
+  </figure>
+  <ul class="leyenda-marcas">
+    <li><span class="n">1</span>Documents chosen (out of 150 cited).</li>
+    <li><span class="n">2</span>Citations drawn (out of 396 local).</li>
+    <li><span class="n">3</span>Citation families.</li>
+    <li><span class="n">4</span>Citations not drawn (none here).</li>
+    <li><span class="n">5</span>Menzel 1993: the most locally cited.</li>
+    <li><span class="n">6</span>In gray: no drawn citations.</li>
+    <li><span class="n">7</span>A 2023 article that cites eight.</li>
+    <li><span class="n">8</span>One column per year with documents.</li>
+  </ul>
+
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Important · citations that are not drawn</div>
+    <p>A citation to a document with a later year than the citing one is not drawn: this happens when one database uses the year of the online version and another that of the print version, or when a chapter or a thesis has a late date. Citations between documents of the same year that would close a cycle are not drawn either. The <span class="ui">Citations not drawn</span> card and a notice above the figure count them, and the citations table says which they are. Remember too that the historiograph only sees citations within the set: a classic that is not among your documents does not appear, even if everyone cites it (that is what co-citation is for).</p>
+  </div>
+
+  <p style="margin-top:0.12in">Words and references describe what the field is about and what it rests on. Chapter 11 turns to people: who writes with whom, which institutions and countries collaborate and how collaboration changes over the years.</p>
+</section>
+
+</body>
+</html>
